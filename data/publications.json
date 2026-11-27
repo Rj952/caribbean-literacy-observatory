@@ -1,30 +1,59 @@
 {
  "meta": {
-  "note": "Planned outputs are listed as planned; nothing is shown as published until it is."
+  "note": "Observatory publications. Items are listed as available only once they are online."
  },
  "records": [
   {
-   "id": "clo-audit-note-1",
-   "series": "Audit note",
+   "id": "clo-strategies-guide",
+   "series": "Evidence guide",
    "number": "1",
-   "title": "Caribbean Literacy Open Data Audit: first pass (World Bank WDI literacy series)",
+   "title": "What Works to Grow Readers: Research-Based Literacy Strategies from the Early Years to Adulthood",
    "status": "published",
    "date": "2026-11",
    "authors": [
     "Caribbean Literacy Observatory"
    ],
-   "summary": "What the international literacy series do and do not cover for the 15 CARICOM member states. Read it on the Methods & data page.",
+   "summary": "Fifteen practical strategies for homes, schools and communities, each linked to the research behind it, with a Caribbean lens.",
+   "url": "#strategies"
+  },
+  {
+   "id": "clo-audit-note-1",
+   "series": "Audit note",
+   "number": "1",
+   "title": "Caribbean Literacy Open Data Audit: First Pass (World Bank WDI Literacy Series)",
+   "status": "published",
+   "date": "2026-11",
+   "authors": [
+    "Caribbean Literacy Observatory"
+   ],
+   "summary": "What the international literacy statistics do and do not cover for the 15 CARICOM member states, including missing and outdated figures.",
    "url": "#methods"
   },
   {
+   "id": "clo-daily-briefing",
+   "series": "Daily briefing",
+   "number": "",
+   "title": "Caribbean Literacy Briefing",
+   "status": "published",
+   "date": "2026-11",
+   "authors": [
+    "Caribbean Literacy Observatory"
+   ],
+   "summary": "Literacy news, official releases and data updates from across the region, refreshed every day.",
+   "url": "#news",
+   "frequency": "Updated daily"
+  },
+  {
    "id": "clo-wp-1",
-   "series": "Working Paper",
+   "series": "Working paper",
    "number": "1",
    "title": "Mapping the Caribbean Literacy Data Landscape: Availability, Accessibility and Research Gaps",
    "status": "planned",
    "date": "",
-   "authors": [],
-   "summary": "First working paper, built on the open data audit.",
+   "authors": [
+    "Caribbean Literacy Observatory"
+   ],
+   "summary": "The first working paper, building on the open data audit.",
    "url": ""
   },
   {
@@ -34,8 +63,10 @@
    "title": "State of Literacy in the Caribbean 2027: Mapping the Evidence, Identifying the Gaps and Reimagining Literacy Development",
    "status": "planned",
    "date": "2027",
-   "authors": [],
-   "summary": "Scoping review of Caribbean literacy research with an audit of statistics, national policies and assessment frameworks.",
+   "authors": [
+    "Caribbean Literacy Observatory"
+   ],
+   "summary": "A scoping review of Caribbean literacy research, with an audit of statistics, national policies and assessment frameworks.",
    "url": ""
   }
  ]

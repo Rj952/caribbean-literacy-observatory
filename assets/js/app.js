@@ -367,10 +367,19 @@ function renderRepo() {
 }
 
 function renderPubs() {
-  $('#pubList').innerHTML = S.publications.records.map(p => `<article class="pub"><div><span class="series">${esc(p.series)}${p.number ? ' ' + esc(p.number) : ''}</span><br><span class="st ${esc(p.status)}">${esc({ draft: 'Draft for review', planned: 'Planned', published: 'Online' }[p.status] || p.status)}</span></div><div><h3>${p.url && p.url.startsWith('#') ? `<a href="${esc(p.url)}">${esc(p.title)}</a>` : esc(p.title)}</h3><p class="note">${esc(p.summary)}${p.date ? ' · ' + esc(p.date) : ''}</p></div></article>`).join('');
+  const SITE = 'https://rj952.github.io/caribbean-literacy-observatory/';
+  const nice = d => d ? fmtDate(d) : '';
+  const cite = p => `Caribbean Literacy Observatory. (${(p.date || '').slice(0, 4) || 'n.d.'}). ${p.title}${p.series ? ` (${p.series}${p.number ? ' ' + p.number : ''})` : ''}. ${SITE}${p.url && p.url.startsWith('#') ? p.url : ''}`;
+  const card = p => {
+    const live = p.status === 'published', link = p.url && p.url.startsWith('#') ? esc(p.url) : safeUrl(p.url);
+    return `<article class="pub ${live ? 'live' : 'next'}"><div class="pub-side"><span class="series">${esc(p.series)}${p.number ? ' ' + esc(p.number) : ''}</span><span class="st ${live ? 'on' : 'soon'}">${live ? '● Available' : '○ In preparation'}</span>${p.frequency ? `<span class="when">${esc(p.frequency)}</span>` : p.date ? `<span class="when">${live ? 'Published ' : 'Expected '}${esc(nice(p.date))}</span>` : ''}</div><div><h3>${live && link ? `<a href="${link}">${esc(p.title)}</a>` : esc(p.title)}</h3><p>${esc(p.summary)}</p>${live ? `<div class="pub-actions">${link ? `<a class="btn small" href="${link}">Read it</a>` : ''}<button class="btn small ghost" type="button" data-cite="${esc(cite(p))}">Copy citation</button></div>` : ''}</div></article>`;
+  };
+  const recs = S.publications.records;
+  $('#pubNow').innerHTML = recs.filter(p => p.status === 'published').map(card).join('') || '<div class="empty">Nothing published yet.</div>';
+  $('#pubNext').innerHTML = recs.filter(p => p.status !== 'published').map(card).join('') || '<div class="empty">Nothing in preparation.</div>';
   const pol = S.policy.records.filter(r => r.review && r.review.status === 'approved');
   $('#policyList').innerHTML = pol.length ? `<div class="toolbar"><label>Country <select id="polCountry"><option value="">All</option>${countryOptions()}</select></label></div><div class="results" id="polResults"></div>`
-    : `<div class="empty"><p><b>The archive is open for entries but holds no approved documents yet.</b></p><p>It will collect national literacy policies, curriculum frameworks, assessment frameworks and language-in-education policies, starting with Jamaica and continuing country by country. Each document is linked to its official public copy, never re-hosted without permission.</p></div>`;
+    : `<div class="empty"><p><b>The archive is open for entries but holds no documents yet.</b></p></div>`;
 }
 
 function renderPolicyList() {
@@ -429,7 +438,7 @@ function renderStrategies() {
 
 /* ---------- daily briefing ---------- */
 const TYPE_LABEL = { news: 'News', official: 'Official release', opinion: 'Opinion', research: 'Research', headline: 'Automated headline' };
-const fmtDate = d => { if (!d) return 'Date not shown'; const p = String(d).split('-'); const dt = new Date(Date.UTC(+p[0], (+p[1] || 1) - 1, +p[2] || 1)); return dt.toLocaleDateString('en-GB', { timeZone: 'UTC', day: p[2] ? 'numeric' : undefined, month: 'long', year: 'numeric' }); };
+const fmtDate = d => { if (!d) return 'Date not shown'; const p = String(d).split('-'); if (p.length === 1) return p[0]; const dt = new Date(Date.UTC(+p[0], (+p[1] || 1) - 1, +p[2] || 1)); return dt.toLocaleDateString('en-GB', { timeZone: 'UTC', day: p[2] ? 'numeric' : undefined, month: 'long', year: 'numeric' }); };
 const daysOld = iso => Math.floor((Date.now() - new Date(iso)) / 86400000);
 function renderNews() {
   const N = S.news; if (!N || !N.meta) return;
@@ -527,6 +536,7 @@ function bind() {
       m.innerHTML = `Your enquiry is ready. <a class="btn small" href="${esc(href)}">Open it in your email app</a> or copy it below and send it to <b>${esc(mail)}</b>.`;
     } else m.textContent = 'Enquiry prepared. Copy it below to keep it.';
   });
+  document.addEventListener('click', async e => { const b = e.target.closest('[data-cite]'); if (!b) return; try { await navigator.clipboard.writeText(b.dataset.cite); $('#pubMsg').textContent = 'Citation copied.'; } catch (err) { $('#pubMsg').textContent = b.dataset.cite; } });
   $('#copyEnquiry').addEventListener('click', async () => { try { await navigator.clipboard.writeText($('#enquiryOut').textContent); $('#formMsg').textContent = 'Copied.'; } catch (e) { $('#formMsg').textContent = 'Copy was blocked; select the text instead.'; } });
   document.addEventListener('visibilitychange', () => { if (!document.hidden && S.live.mode === 'live-api' && Date.now() - new Date(S.live.checkedAt) > LIVE_EVERY_MS) refreshLive(false); });
 }
