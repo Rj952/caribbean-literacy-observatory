@@ -1,0 +1,19 @@
+{
+ "meta": {
+  "note": "Version history and correction log. Append only."
+ },
+ "records": [
+  {
+   "date": "2026-11-27",
+   "type": "ingest",
+   "summary": "First audit ingest: 51 records across 5 literacy series for 15 CARICOM member states from the World Bank API.",
+   "records": 51
+  },
+  {
+   "date": "2026-11-27",
+   "type": "flag",
+   "summary": "Youth gender parity index for Jamaica (2022) and Trinidad and Tobago (2022) cannot be reproduced from the published female and male rates. Values shown as published; query to be raised with the source.",
+   "records": 2
+  }
+ ]
+}

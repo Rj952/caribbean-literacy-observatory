@@ -1,0 +1,107 @@
+{
+ "meta": {
+  "note": "Only indicators with audited:true have records. Others are listed so the gap is visible."
+ },
+ "records": [
+  {
+   "code": "SE.ADT.1524.LT.ZS",
+   "short": "Youth literacy",
+   "name": "Literacy rate, youth total (% of people ages 15\u201324)",
+   "domain": "Youth literacy",
+   "unit": "%",
+   "kind": "direct",
+   "audited": true,
+   "definition": "Share of people aged 15\u201324 who can read and write, with understanding, a short simple statement about everyday life. Usually self-reported or household-reported through censuses and surveys."
+  },
+  {
+   "code": "SE.ADT.1524.LT.FE.ZS",
+   "short": "Youth literacy, female",
+   "name": "Literacy rate, youth female (% of females ages 15\u201324)",
+   "domain": "Gender equity",
+   "unit": "%",
+   "kind": "direct",
+   "audited": true,
+   "definition": "As youth literacy, for females aged 15\u201324."
+  },
+  {
+   "code": "SE.ADT.1524.LT.MA.ZS",
+   "short": "Youth literacy, male",
+   "name": "Literacy rate, youth male (% of males ages 15\u201324)",
+   "domain": "Gender equity",
+   "unit": "%",
+   "kind": "direct",
+   "audited": true,
+   "definition": "As youth literacy, for males aged 15\u201324."
+  },
+  {
+   "code": "SE.ADT.1524.LT.FM.ZS",
+   "short": "Youth gender parity index",
+   "name": "Literacy rate, youth (ages 15\u201324), gender parity index (GPI)",
+   "domain": "Gender equity",
+   "unit": "index",
+   "kind": "derived-by-source",
+   "audited": true,
+   "definition": "Female youth literacy rate relative to the male rate, as published by the source. A value above 1 means the female rate is proportionally higher."
+  },
+  {
+   "code": "SE.ADT.LITR.ZS",
+   "short": "Adult literacy",
+   "name": "Literacy rate, adult total (% of people ages 15 and above)",
+   "domain": "Adult literacy",
+   "unit": "%",
+   "kind": "direct",
+   "audited": true,
+   "definition": "Share of people aged 15 and above who can read and write, with understanding, a short simple statement about everyday life."
+  },
+  {
+   "code": "CLO.FLS",
+   "short": "Foundational reading skills",
+   "name": "Foundational learning skills \u2014 reading (children 7\u201314)",
+   "domain": "Foundational literacy",
+   "unit": "%",
+   "kind": "direct",
+   "audited": false,
+   "definition": "UNICEF Foundational Learning Skills module: reading accuracy, literal and inferential comprehension, where survey reports are public. Audit not yet started."
+  },
+  {
+   "code": "CLO.NATASSESS",
+   "short": "National reading assessments",
+   "name": "Publicly released national reading / literacy assessment results",
+   "domain": "Reading proficiency",
+   "unit": "varies",
+   "kind": "direct",
+   "audited": false,
+   "definition": "Results published by ministries of education (e.g. primary-level literacy tests). Audit not yet started."
+  },
+  {
+   "code": "CLO.CXC.ENGA",
+   "short": "CSEC English A results",
+   "name": "Publicly released CSEC English A examination results",
+   "domain": "Academic literacy",
+   "unit": "%",
+   "kind": "proxy",
+   "audited": false,
+   "definition": "Examination performance. A proxy indicator: it measures examination outcomes, not literacy directly. Audit not yet started."
+  },
+  {
+   "code": "CLO.DIGLIT",
+   "short": "Digital literacy",
+   "name": "Publicly reported digital competency indicators",
+   "domain": "Digital literacy",
+   "unit": "varies",
+   "kind": "proxy",
+   "audited": false,
+   "definition": "Audit not yet started."
+  },
+  {
+   "code": "CLO.DISAB",
+   "short": "Disability-disaggregated literacy",
+   "name": "Published disability-disaggregated literacy indicators",
+   "domain": "Inclusive literacy",
+   "unit": "%",
+   "kind": "direct",
+   "audited": false,
+   "definition": "Audit not yet started."
+  }
+ ]
+}

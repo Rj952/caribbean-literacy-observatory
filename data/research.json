@@ -1,0 +1,18 @@
+{
+ "meta": {
+  "note": "Curated research records. Only records with review.status 'approved' are shown publicly.",
+  "fields": [
+   "country",
+   "domain",
+   "level",
+   "year",
+   "methodology",
+   "framework",
+   "findings",
+   "indicators",
+   "limitations",
+   "citation"
+  ]
+ },
+ "records": []
+}

@@ -1,0 +1,114 @@
+# Editor for the Research Director: review, edit, approve and publish without code.
+# Setup: replace OWNER/REPO below, then follow docs/EDITOR-SETUP.md for GitHub sign-in.
+backend:
+  name: github
+  repo: OWNER/caribbean-literacy-observatory
+  branch: main
+publish_mode: editorial_workflow   # Draft -> In review -> Ready, each a pull request
+media_folder: assets/uploads
+site_url: https://OWNER.github.io/caribbean-literacy-observatory/
+
+collections:
+  - name: content
+    label: Observatory content
+    editor: { preview: false }
+    files:
+      - name: research
+        label: Research repository
+        file: data/research.json
+        format: json
+        fields:
+          - { name: meta, label: About this file, widget: object, collapsed: true, fields: [ { name: note, label: Note, widget: text, required: false } ] }
+          - name: records
+            label: Research records
+            label_singular: research record
+            widget: list
+            summary: '{{fields.year}} · {{fields.title}} · {{fields.review.status}}'
+            fields:
+              - { name: id, label: Record id (lowercase, hyphens), widget: string }
+              - { name: title, label: Title, widget: string }
+              - { name: country, label: Country (ISO3, e.g. JAM), widget: select, options: [ATG, BHS, BRB, BLZ, DMA, GRD, GUY, HTI, JAM, MSR, KNA, LCA, VCT, SUR, TTO, REGIONAL] }
+              - { name: domain, label: Literacy domain, widget: select, options: [Foundational literacy, Youth literacy, Adult literacy, Gender equity, Reading proficiency, Academic literacy, Digital literacy, Inclusive literacy, Language and identity, Literacy pedagogy, Literacy policy, Lifelong literacy] }
+              - { name: level, label: Educational level, widget: select, options: [Early childhood, Primary, Secondary, Tertiary, Adult and community, Teacher education, Multiple] }
+              - { name: year, label: Publication year, widget: number, value_type: int }
+              - { name: methodology, label: Research methodology, widget: string }
+              - { name: framework, label: Theoretical framework, widget: string, required: false }
+              - { name: findings, label: Research findings (summarised in your own words), widget: text }
+              - { name: indicators, label: Statistical indicators reported, widget: text, required: false }
+              - { name: limitations, label: Data limitations, widget: text, required: false }
+              - { name: citation, label: Full citation (APA 7), widget: text }
+              - { name: url, label: Public link (https; DOI preferred), widget: string, required: false }
+              - name: review
+                label: Review
+                widget: object
+                fields:
+                  - { name: status, label: Status, widget: select, options: [draft, in_review, approved, rejected], default: draft }
+                  - { name: approved_by, label: Approved by, widget: string, required: false }
+                  - { name: approved_on, label: Approved on, widget: datetime, format: 'YYYY-MM-DD', date_format: 'YYYY-MM-DD', time_format: false, required: false }
+      - name: policy
+        label: Policy and curriculum archive
+        file: data/policy.json
+        format: json
+        fields:
+          - { name: meta, label: About this file, widget: object, collapsed: true, fields: [ { name: note, label: Note, widget: text, required: false } ] }
+          - name: records
+            label: Documents
+            widget: list
+            summary: '{{fields.country}} · {{fields.year}} · {{fields.title}}'
+            fields:
+              - { name: id, label: Record id, widget: string }
+              - { name: title, label: Title, widget: string }
+              - { name: country, label: Country (ISO3), widget: string }
+              - { name: year, label: Year, widget: number, value_type: int }
+              - { name: type, label: Type, widget: select, options: [Literacy policy, Curriculum framework, Assessment framework, Language-in-education policy, Strategy or plan, Other] }
+              - { name: url, label: Link to official public copy (https), widget: string }
+              - { name: summary, label: Summary, widget: text, required: false }
+              - name: review
+                label: Review
+                widget: object
+                fields:
+                  - { name: status, label: Status, widget: select, options: [draft, in_review, approved, rejected], default: draft }
+                  - { name: approved_by, label: Approved by, widget: string, required: false }
+      - name: publications
+        label: Publications and working papers
+        file: data/publications.json
+        format: json
+        fields:
+          - { name: meta, label: About this file, widget: object, collapsed: true, fields: [ { name: note, label: Note, widget: text, required: false } ] }
+          - name: records
+            label: Publications
+            widget: list
+            summary: '{{fields.series}} {{fields.number}} · {{fields.status}}'
+            fields:
+              - { name: id, label: Id, widget: string }
+              - { name: series, label: Series, widget: string }
+              - { name: number, label: Number, widget: string, required: false }
+              - { name: title, label: Title, widget: string }
+              - { name: status, label: Status, widget: select, options: [planned, draft, published] }
+              - { name: date, label: Date, widget: string, required: false }
+              - { name: authors, label: Authors, widget: list, required: false }
+              - { name: summary, label: Summary, widget: text }
+              - { name: url, label: Link, widget: string, required: false }
+      - name: sources
+        label: Data source catalogue
+        file: data/sources.json
+        format: json
+        fields:
+          - { name: meta, label: About this file, widget: object, collapsed: true, fields: [ { name: note, label: Note, widget: text, required: false } ] }
+          - name: records
+            label: Sources
+            widget: list
+            summary: '{{fields.publisher}} · {{fields.name}} · licence {{fields.licence_status}}'
+            fields:
+              - { name: id, label: Id, widget: string }
+              - { name: name, label: Name, widget: string }
+              - { name: publisher, label: Publisher, widget: string }
+              - { name: url, label: Website (https), widget: string }
+              - { name: api, label: API address, widget: string, required: false }
+              - { name: access, label: Access, widget: string }
+              - { name: licence, label: Licence, widget: string }
+              - { name: licence_status, label: Licence checked?, widget: select, options: [verified, to-verify] }
+              - { name: coverage, label: Coverage, widget: text }
+              - { name: audit, label: Audit stage, widget: select, options: [ingested, next, pending, excluded] }
+              - { name: indicators, label: Indicators, widget: list }
+              - { name: notes, label: Notes, widget: text, required: false }

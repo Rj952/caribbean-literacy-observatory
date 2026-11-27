@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CLO statistical observation",
+  "type": "object",
+  "required": ["id", "country", "indicator", "ref_year", "value", "source_id", "source_url", "licence", "retrieved", "verification"],
+  "properties": {
+    "id": { "type": "string" },
+    "country": { "type": "string", "pattern": "^[A-Z]{3}$" },
+    "indicator": { "type": "string" },
+    "ref_year": { "type": "integer" },
+    "value": { "type": "number" },
+    "source_id": { "type": "string" },
+    "original_producer": { "type": "string" },
+    "source_url": { "type": "string", "pattern": "^https://" },
+    "licence": { "type": "string" },
+    "retrieved": { "type": "string", "format": "date" },
+    "is_estimate": { "type": ["boolean", "null"], "description": "null when the source does not say" },
+    "transformations": { "type": "array", "items": { "type": "string" } },
+    "verification": {
+      "type": "object",
+      "properties": {
+        "source_check": { "type": "string" },
+        "scholarly_review": { "enum": ["pending", "approved", "queried"] }
+      }
+    },
+    "flags": { "type": "array", "items": { "type": "string" } },
+    "notes": { "type": "string" }
+  }
+}

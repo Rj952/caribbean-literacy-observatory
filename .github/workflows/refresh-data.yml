@@ -1,0 +1,25 @@
+name: Refresh data from source
+# Checks the World Bank API daily. Any change is proposed as a pull request,
+# so the Research Director reviews it before it becomes the verified snapshot.
+on:
+  schedule: [{ cron: '17 11 * * *' }]
+  workflow_dispatch:
+permissions: { contents: write, pull-requests: write }
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 20 }
+      - run: node scripts/fetch-worldbank.mjs
+      - run: node scripts/validate.mjs
+      - uses: peter-evans/create-pull-request@v6
+        with:
+          branch: data/worldbank-refresh
+          title: 'Data refresh: World Bank literacy series'
+          commit-message: 'Data refresh from World Bank API'
+          body: |
+            Automated retrieval from the World Bank API. Raw responses are preserved in `data/raw/worldbank/`.
+            New and changed values are marked `scholarly_review: pending`. Review against the source before merging.
+          labels: data-refresh, needs-review

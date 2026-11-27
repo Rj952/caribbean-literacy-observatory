@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CLO research record",
+  "type": "object",
+  "required": ["id", "title", "country", "domain", "level", "year", "methodology", "citation", "review"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+    "title": { "type": "string" },
+    "country": { "type": "string", "description": "ISO3 code or REGIONAL" },
+    "domain": { "type": "string" },
+    "level": { "type": "string" },
+    "year": { "type": "integer", "minimum": 1900 },
+    "methodology": { "type": "string" },
+    "framework": { "type": "string" },
+    "findings": { "type": "string", "description": "Summary in the reviewer's own words" },
+    "indicators": { "type": "string" },
+    "limitations": { "type": "string" },
+    "citation": { "type": "string", "description": "APA 7" },
+    "url": { "type": "string", "pattern": "^https://" },
+    "review": {
+      "type": "object", "required": ["status"],
+      "properties": {
+        "status": { "enum": ["draft", "in_review", "approved", "rejected"] },
+        "approved_by": { "type": "string" }, "approved_on": { "type": "string" }
+      }
+    }
+  }
+}

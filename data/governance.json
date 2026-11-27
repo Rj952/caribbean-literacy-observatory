@@ -1,0 +1,17 @@
+{
+ "outdated_after_years": 10,
+ "gpi_tolerance": 0.01,
+ "public_requires_review_status": "approved",
+ "statuses": {
+  "available": "Published and verified, reference year within the threshold",
+  "outdated": "Published, but the reference year is older than the threshold",
+  "incomplete": "Some required categories or years are missing",
+  "unavailable": "No suitable public dataset identified",
+  "not-comparable": "Methodological differences prevent a valid comparison",
+  "not-audited": "The audit has not reached this source or country yet"
+ },
+ "contact": {
+  "email": "",
+  "form_endpoint": ""
+ }
+}

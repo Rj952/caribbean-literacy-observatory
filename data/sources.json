@@ -1,0 +1,173 @@
+{
+ "meta": {
+  "note": "licence_status 'verified' means the licence was read on the source's own page during the audit."
+ },
+ "records": [
+  {
+   "id": "worldbank-wdi",
+   "name": "World Development Indicators",
+   "publisher": "World Bank",
+   "url": "https://data.worldbank.org/indicator/SE.ADT.1524.LT.ZS",
+   "api": "https://api.worldbank.org/v2",
+   "access": "Open API and bulk download",
+   "licence": "CC BY 4.0",
+   "licence_status": "verified",
+   "coverage": "Literacy series redistributed from UIS",
+   "audit": "ingested",
+   "indicators": [
+    "Youth literacy",
+    "Adult literacy",
+    "Gender parity"
+   ],
+   "notes": "Literacy values originate with the UNESCO Institute for Statistics."
+  },
+  {
+   "id": "uis",
+   "name": "UIS Data Browser",
+   "publisher": "UNESCO Institute for Statistics",
+   "url": "https://databrowser.uis.unesco.org",
+   "api": "https://api.uis.unesco.org",
+   "access": "Open data browser, API and bulk download",
+   "licence": "To confirm",
+   "licence_status": "to-verify",
+   "coverage": "International education and literacy indicators",
+   "audit": "next",
+   "indicators": [
+    "Adult literacy",
+    "Youth literacy",
+    "Reading proficiency",
+    "Gender parity"
+   ],
+   "notes": "Primary producer of the literacy series. Next step: ingest directly and compare with WDI copies."
+  },
+  {
+   "id": "unicef-data",
+   "name": "UNICEF Data \u2014 Foundational Learning Skills",
+   "publisher": "UNICEF",
+   "url": "https://data.unicef.org",
+   "api": "",
+   "access": "Published tables and reports",
+   "licence": "To confirm",
+   "licence_status": "to-verify",
+   "coverage": "Reading skills of children 7\u201314 where MICS surveys include the module",
+   "audit": "next",
+   "indicators": [
+    "Foundational literacy"
+   ],
+   "notes": "Only published aggregate results are eligible. Survey microdata that require registration fall outside the public-data rule."
+  },
+  {
+   "id": "statin",
+   "name": "Statistical Institute of Jamaica",
+   "publisher": "STATIN",
+   "url": "https://statinja.gov.jm",
+   "api": "",
+   "access": "Published reports and tables",
+   "licence": "To confirm",
+   "licence_status": "to-verify",
+   "coverage": "Census and population statistics",
+   "audit": "pending",
+   "indicators": [
+    "Census literacy"
+   ],
+   "notes": ""
+  },
+  {
+   "id": "caricom-stats",
+   "name": "CARICOM Statistics",
+   "publisher": "CARICOM Secretariat",
+   "url": "https://statistics.caricom.org",
+   "api": "",
+   "access": "Published tables",
+   "licence": "To confirm",
+   "licence_status": "to-verify",
+   "coverage": "Regional socioeconomic and education statistics",
+   "audit": "pending",
+   "indicators": [
+    "Education statistics"
+   ],
+   "notes": ""
+  },
+  {
+   "id": "cxc",
+   "name": "Caribbean Examinations Council",
+   "publisher": "CXC",
+   "url": "https://www.cxc.org",
+   "api": "",
+   "access": "Published examination reports",
+   "licence": "To confirm",
+   "licence_status": "to-verify",
+   "coverage": "Publicly released examination results",
+   "audit": "pending",
+   "indicators": [
+    "Academic literacy (proxy)"
+   ],
+   "notes": "Examination results are a proxy, not a direct literacy measure."
+  },
+  {
+   "id": "pioj",
+   "name": "Planning Institute of Jamaica",
+   "publisher": "PIOJ",
+   "url": "https://www.pioj.gov.jm",
+   "api": "",
+   "access": "Published reports",
+   "licence": "To confirm",
+   "licence_status": "to-verify",
+   "coverage": "Education and development indicators",
+   "audit": "pending",
+   "indicators": [
+    "Education indicators"
+   ],
+   "notes": ""
+  },
+  {
+   "id": "moey-jm",
+   "name": "Ministry of Education and Youth (Jamaica)",
+   "publisher": "Government of Jamaica",
+   "url": "https://moey.gov.jm",
+   "api": "",
+   "access": "Published reports and releases",
+   "licence": "To confirm",
+   "licence_status": "to-verify",
+   "coverage": "National assessment results, policy and curriculum documents",
+   "audit": "pending",
+   "indicators": [
+    "National reading assessments",
+    "Policy"
+   ],
+   "notes": "Other national ministries to be added country by country."
+  },
+  {
+   "id": "openalex",
+   "name": "OpenAlex",
+   "publisher": "OurResearch",
+   "url": "https://openalex.org",
+   "api": "https://api.openalex.org",
+   "access": "Open API",
+   "licence": "To confirm",
+   "licence_status": "to-verify",
+   "coverage": "Scholarly research metadata",
+   "audit": "pending",
+   "indicators": [
+    "Research trends"
+   ],
+   "notes": "Used for discovering research records; every record is reviewed before entering the repository."
+  },
+  {
+   "id": "eric",
+   "name": "ERIC",
+   "publisher": "Institute of Education Sciences (US)",
+   "url": "https://eric.ed.gov",
+   "api": "https://api.ies.ed.gov/eric/",
+   "access": "Open API",
+   "licence": "To confirm",
+   "licence_status": "to-verify",
+   "coverage": "Education research records",
+   "audit": "pending",
+   "indicators": [
+    "Research trends"
+   ],
+   "notes": ""
+  }
+ ]
+}

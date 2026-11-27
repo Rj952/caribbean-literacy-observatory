@@ -1,0 +1,273 @@
+{
+ "retrieved": "2026-11-27",
+ "api": "https://api.worldbank.org/v2",
+ "countries": "ATG;BHS;BRB;BLZ;DMA;GRD;GUY;HTI;JAM;KNA;LCA;VCT;SUR;TTO",
+ "note": "Transcription of API responses (mrnev=1). Countries absent here returned no non-empty value. Replace with raw output of scripts/fetch-worldbank.mjs.",
+ "series": {
+  "SE.ADT.1524.LT.ZS": [
+   {
+    "countryiso3code": "BLZ",
+    "date": "2022",
+    "value": 96.1500015258789
+   },
+   {
+    "countryiso3code": "BRB",
+    "date": "2012",
+    "value": 100
+   },
+   {
+    "countryiso3code": "GRD",
+    "date": "1970",
+    "value": 98.9599990844727
+   },
+   {
+    "countryiso3code": "GUY",
+    "date": "2020",
+    "value": 99.1399993896484
+   },
+   {
+    "countryiso3code": "HTI",
+    "date": "2017",
+    "value": 88.870002746582
+   },
+   {
+    "countryiso3code": "JAM",
+    "date": "2022",
+    "value": 93.57
+   },
+   {
+    "countryiso3code": "LCA",
+    "date": "2012",
+    "value": 99.98
+   },
+   {
+    "countryiso3code": "SUR",
+    "date": "2018",
+    "value": 97.6900024414062
+   },
+   {
+    "countryiso3code": "TTO",
+    "date": "2022",
+    "value": 92
+   },
+   {
+    "countryiso3code": "VCT",
+    "date": "1970",
+    "value": 97.9599990844727
+   },
+   {
+    "countryiso3code": "JAM",
+    "date": "1999",
+    "value": 91.5999984741211
+   }
+  ],
+  "SE.ADT.1524.LT.FE.ZS": [
+   {
+    "countryiso3code": "BLZ",
+    "date": "2022",
+    "value": 96.629997253418
+   },
+   {
+    "countryiso3code": "BRB",
+    "date": "2012",
+    "value": 100
+   },
+   {
+    "countryiso3code": "GRD",
+    "date": "1970",
+    "value": 99.0800018310547
+   },
+   {
+    "countryiso3code": "GUY",
+    "date": "2020",
+    "value": 99.0299987792969
+   },
+   {
+    "countryiso3code": "HTI",
+    "date": "2017",
+    "value": 89.3300018310547
+   },
+   {
+    "countryiso3code": "JAM",
+    "date": "2022",
+    "value": 99.3000030517578
+   },
+   {
+    "countryiso3code": "LCA",
+    "date": "2012",
+    "value": 99.96
+   },
+   {
+    "countryiso3code": "SUR",
+    "date": "2018",
+    "value": 97.9599990844727
+   },
+   {
+    "countryiso3code": "TTO",
+    "date": "2022",
+    "value": 99.7300033569336
+   },
+   {
+    "countryiso3code": "VCT",
+    "date": "1970",
+    "value": 98
+   }
+  ],
+  "SE.ADT.1524.LT.MA.ZS": [
+   {
+    "countryiso3code": "BLZ",
+    "date": "2022",
+    "value": 95.6699981689453
+   },
+   {
+    "countryiso3code": "BRB",
+    "date": "2012",
+    "value": 100
+   },
+   {
+    "countryiso3code": "GRD",
+    "date": "1970",
+    "value": 98.8499984741211
+   },
+   {
+    "countryiso3code": "GUY",
+    "date": "2020",
+    "value": 99.2699966430664
+   },
+   {
+    "countryiso3code": "HTI",
+    "date": "2017",
+    "value": 88.379997253418
+   },
+   {
+    "countryiso3code": "JAM",
+    "date": "2022",
+    "value": 88.23
+   },
+   {
+    "countryiso3code": "LCA",
+    "date": "2012",
+    "value": 100
+   },
+   {
+    "countryiso3code": "SUR",
+    "date": "2018",
+    "value": 97.4400024414062
+   },
+   {
+    "countryiso3code": "TTO",
+    "date": "2022",
+    "value": 89.05
+   },
+   {
+    "countryiso3code": "VCT",
+    "date": "1970",
+    "value": 97.9199981689453
+   }
+  ],
+  "SE.ADT.1524.LT.FM.ZS": [
+   {
+    "countryiso3code": "BLZ",
+    "date": "2022",
+    "value": 1.00999999046326
+   },
+   {
+    "countryiso3code": "BRB",
+    "date": "2012",
+    "value": 1
+   },
+   {
+    "countryiso3code": "GRD",
+    "date": "1970",
+    "value": 1
+   },
+   {
+    "countryiso3code": "GUY",
+    "date": "2020",
+    "value": 1
+   },
+   {
+    "countryiso3code": "HTI",
+    "date": "2017",
+    "value": 1.00999999046326
+   },
+   {
+    "countryiso3code": "JAM",
+    "date": "2022",
+    "value": 1.10607898235321
+   },
+   {
+    "countryiso3code": "LCA",
+    "date": "2012",
+    "value": 0.999599993228912
+   },
+   {
+    "countryiso3code": "SUR",
+    "date": "2018",
+    "value": 1.00999999046326
+   },
+   {
+    "countryiso3code": "TTO",
+    "date": "2022",
+    "value": 1.06675744056702
+   },
+   {
+    "countryiso3code": "VCT",
+    "date": "1970",
+    "value": 1
+   }
+  ],
+  "SE.ADT.LITR.ZS": [
+   {
+    "countryiso3code": "ATG",
+    "date": "2001",
+    "value": 98.9499969482422
+   },
+   {
+    "countryiso3code": "BLZ",
+    "date": "2022",
+    "value": 87.879997253418
+   },
+   {
+    "countryiso3code": "BRB",
+    "date": "1970",
+    "value": 99.2699966430664
+   },
+   {
+    "countryiso3code": "GRD",
+    "date": "1970",
+    "value": 97.7900009155273
+   },
+   {
+    "countryiso3code": "GUY",
+    "date": "2020",
+    "value": 85.6399993896484
+   },
+   {
+    "countryiso3code": "HTI",
+    "date": "2017",
+    "value": 68.0100021362305
+   },
+   {
+    "countryiso3code": "JAM",
+    "date": "1999",
+    "value": 79.9199981689453
+   },
+   {
+    "countryiso3code": "SUR",
+    "date": "2012",
+    "value": 92.870002746582
+   },
+   {
+    "countryiso3code": "TTO",
+    "date": "1990",
+    "value": 96.9400024414062
+   },
+   {
+    "countryiso3code": "VCT",
+    "date": "1970",
+    "value": 95.629997253418
+   }
+  ]
+ }
+}

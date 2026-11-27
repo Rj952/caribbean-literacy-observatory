@@ -1,0 +1,1032 @@
+{
+ "meta": {
+  "dataset": "World Bank World Development Indicators (literacy series, data from UIS)",
+  "retrieved": "2026-11-27",
+  "source_last_updated": "2026-11-11",
+  "retrieval_method": "World Bank API v2; most recent non-empty value per country (mrnev=1), plus Jamaica youth-literacy history.",
+  "caveat": "Values transcribed from API responses on 2026-11-27. Run scripts/fetch-worldbank.mjs to replace with byte-exact raw responses before public launch.",
+  "is_estimate": "The API records retrieved do not state whether a value is a UIS estimate. Marked null (unknown) until checked against UIS metadata."
+ },
+ "records": [
+  {
+   "id": "wb-se-adt-1524-lt-zs-blz-2022",
+   "country": "BLZ",
+   "indicator": "SE.ADT.1524.LT.ZS",
+   "ref_year": 2022,
+   "value": 96.1500015258789,
+   "source_id": "worldbank-wdi",
+   "original_producer": "UNESCO Institute for Statistics (UIS)",
+   "source_url": "https://api.worldbank.org/v2/country/BLZ/indicator/SE.ADT.1524.LT.ZS?format=json&date=2022",
+   "licence": "CC BY 4.0",
+   "retrieved": "2026-11-27",
+   "is_estimate": null,
+   "transformations": [],
+   "verification": {
+    "source_check": "matched-api-response",
+    "scholarly_review": "pending"
+   },
+   "flags": [],
+   "notes": ""
+  },
+  {
+   "id": "wb-se-adt-1524-lt-zs-brb-2012",
+   "country": "BRB",
+   "indicator": "SE.ADT.1524.LT.ZS",
+   "ref_year": 2012,
+   "value": 100,
+   "source_id": "worldbank-wdi",
+   "original_producer": "UNESCO Institute for Statistics (UIS)",
+   "source_url": "https://api.worldbank.org/v2/country/BRB/indicator/SE.ADT.1524.LT.ZS?format=json&date=2012",
+   "licence": "CC BY 4.0",
+   "retrieved": "2026-11-27",
+   "is_estimate": null,
+   "transformations": [],
+   "verification": {
+    "source_check": "matched-api-response",
+    "scholarly_review": "pending"
+   },
+   "flags": [],
+   "notes": ""
+  },
+  {
+   "id": "wb-se-adt-1524-lt-zs-grd-1970",
+   "country": "GRD",
+   "indicator": "SE.ADT.1524.LT.ZS",
+   "ref_year": 1970,
+   "value": 98.9599990844727,
+   "source_id": "worldbank-wdi",
+   "original_producer": "UNESCO Institute for Statistics (UIS)",
+   "source_url": "https://api.worldbank.org/v2/country/GRD/indicator/SE.ADT.1524.LT.ZS?format=json&date=1970",
+   "licence": "CC BY 4.0",
+   "retrieved": "2026-11-27",
+   "is_estimate": null,
+   "transformations": [],
+   "verification": {
+    "source_check": "matched-api-response",
+    "scholarly_review": "pending"
+   },
+   "flags": [],
+   "notes": ""
+  },
+  {
+   "id": "wb-se-adt-1524-lt-zs-guy-2020",
+   "country": "GUY",
+   "indicator": "SE.ADT.1524.LT.ZS",
+   "ref_year": 2020,
+   "value": 99.1399993896484,
+   "source_id": "worldbank-wdi",
+   "original_producer": "UNESCO Institute for Statistics (UIS)",
+   "source_url": "https://api.worldbank.org/v2/country/GUY/indicator/SE.ADT.1524.LT.ZS?format=json&date=2020",
+   "licence": "CC BY 4.0",
+   "retrieved": "2026-11-27",
+   "is_estimate": null,
+   "transformations": [],
+   "verification": {
+    "source_check": "matched-api-response",
+    "scholarly_review": "pending"
+   },
+   "flags": [],
+   "notes": ""
+  },
+  {
+   "id": "wb-se-adt-1524-lt-zs-hti-2017",
+   "country": "HTI",
+   "indicator": "SE.ADT.1524.LT.ZS",
+   "ref_year": 2017,
+   "value": 88.870002746582,
+   "source_id": "worldbank-wdi",
+   "original_producer": "UNESCO Institute for Statistics (UIS)",
+   "source_url": "https://api.worldbank.org/v2/country/HTI/indicator/SE.ADT.1524.LT.ZS?format=json&date=2017",
+   "licence": "CC BY 4.0",
+   "retrieved": "2026-11-27",
+   "is_estimate": null,
+   "transformations": [],
+   "verification": {
+    "source_check": "matched-api-response",
+    "scholarly_review": "pending"
+   },
+   "flags": [],
+   "notes": ""
+  },
+  {
+   "id": "wb-se-adt-1524-lt-zs-jam-2022",
+   "country": "JAM",
+   "indicator": "SE.ADT.1524.LT.ZS",
+   "ref_year": 2022,
+   "value": 93.57,
+   "source_id": "worldbank-wdi",
+   "original_producer": "UNESCO Institute for Statistics (UIS)",
+   "source_url": "https://api.worldbank.org/v2/country/JAM/indicator/SE.ADT.1524.LT.ZS?format=json&date=2022",
+   "licence": "CC BY 4.0",
+   "retrieved": "2026-11-27",
+   "is_estimate": null,
+   "transformations": [],
+   "verification": {
+    "source_check": "matched-api-response",
+    "scholarly_review": "pending"
+   },
+   "flags": [],
+   "notes": ""
+  },
+  {
+   "id": "wb-se-adt-1524-lt-zs-lca-2012",
+   "country": "LCA",
+   "indicator": "SE.ADT.1524.LT.ZS",
+   "ref_year": 2012,
+   "value": 99.98,
+   "source_id": "worldbank-wdi",
+   "original_producer": "UNESCO Institute for Statistics (UIS)",
+   "source_url": "https://api.worldbank.org/v2/country/LCA/indicator/SE.ADT.1524.LT.ZS?format=json&date=2012",
+   "licence": "CC BY 4.0",
+   "retrieved": "2026-11-27",
+   "is_estimate": null,
+   "transformations": [],
+   "verification": {
+    "source_check": "matched-api-response",
+    "scholarly_review": "pending"
+   },
+   "flags": [],
+   "notes": ""
+  },
+  {
+   "id": "wb-se-adt-1524-lt-zs-sur-2018",
+   "country": "SUR",
+   "indicator": "SE.ADT.1524.LT.ZS",
+   "ref_year": 2018,
+   "value": 97.6900024414062,
+   "source_id": "worldbank-wdi",
+   "original_producer": "UNESCO Institute for Statistics (UIS)",
+   "source_url": "https://api.worldbank.org/v2/country/SUR/indicator/SE.ADT.1524.LT.ZS?format=json&date=2018",
+   "licence": "CC BY 4.0",
+   "retrieved": "2026-11-27",
+   "is_estimate": null,
+   "transformations": [],
+   "verification": {
+    "source_check": "matched-api-response",
+    "scholarly_review": "pending"
+   },
+   "flags": [],
+   "notes": ""
+  },
+  {
+   "id": "wb-se-adt-1524-lt-zs-tto-2022",
+   "country": "TTO",
+   "indicator": "SE.ADT.1524.LT.ZS",
+   "ref_year": 2022,
+   "value": 92,
+   "source_id": "worldbank-wdi",
+   "original_producer": "UNESCO Institute for Statistics (UIS)",
+   "source_url": "https://api.worldbank.org/v2/country/TTO/indicator/SE.ADT.1524.LT.ZS?format=json&date=2022",
+   "licence": "CC BY 4.0",
+   "retrieved": "2026-11-27",
+   "is_estimate": null,
+   "transformations": [],
+   "verification": {
+    "source_check": "matched-api-response",
+    "scholarly_review": "pending"
+   },
+   "flags": [],
+   "notes": ""
+  },
+  {
+   "id": "wb-se-adt-1524-lt-zs-vct-1970",
+   "country": "VCT",
+   "indicator": "SE.ADT.1524.LT.ZS",
+   "ref_year": 1970,
+   "value": 97.9599990844727,
+   "source_id": "worldbank-wdi",
+   "original_producer": "UNESCO Institute for Statistics (UIS)",
+   "source_url": "https://api.worldbank.org/v2/country/VCT/indicator/SE.ADT.1524.LT.ZS?format=json&date=1970",
+   "licence": "CC BY 4.0",
+   "retrieved": "2026-11-27",
+   "is_estimate": null,
+   "transformations": [],
+   "verification": {
+    "source_check": "matched-api-response",
+    "scholarly_review": "pending"
+   },
+   "flags": [],
+   "notes": ""
+  },
+  {
+   "id": "wb-se-adt-1524-lt-fe-zs-blz-2022",
+   "country": "BLZ",
+   "indicator": "SE.ADT.1524.LT.FE.ZS",
+   "ref_year": 2022,
+   "value": 96.629997253418,
+   "source_id": "worldbank-wdi",
+   "original_producer": "UNESCO Institute for Statistics (UIS)",
+   "source_url": "https://api.worldbank.org/v2/country/BLZ/indicator/SE.ADT.1524.LT.FE.ZS?format=json&date=2022",
+   "licence": "CC BY 4.0",
+   "retrieved": "2026-11-27",
+   "is_estimate": null,
+   "transformations": [],
+   "verification": {
+    "source_check": "matched-api-response",
+    "scholarly_review": "pending"
+   },
+   "flags": [],
+   "notes": ""
+  },
+  {
+   "id": "wb-se-adt-1524-lt-fe-zs-brb-2012",
+   "country": "BRB",
+   "indicator": "SE.ADT.1524.LT.FE.ZS",
+   "ref_year": 2012,
+   "value": 100,
+   "source_id": "worldbank-wdi",
+   "original_producer": "UNESCO Institute for Statistics (UIS)",
+   "source_url": "https://api.worldbank.org/v2/country/BRB/indicator/SE.ADT.1524.LT.FE.ZS?format=json&date=2012",
+   "licence": "CC BY 4.0",
+   "retrieved": "2026-11-27",
+   "is_estimate": null,
+   "transformations": [],
+   "verification": {
+    "source_check": "matched-api-response",
+    "scholarly_review": "pending"
+   },
+   "flags": [],
+   "notes": ""
+  },
+  {
+   "id": "wb-se-adt-1524-lt-fe-zs-grd-1970",
+   "country": "GRD",
+   "indicator": "SE.ADT.1524.LT.FE.ZS",
+   "ref_year": 1970,
+   "value": 99.0800018310547,
+   "source_id": "worldbank-wdi",
+   "original_producer": "UNESCO Institute for Statistics (UIS)",
+   "source_url": "https://api.worldbank.org/v2/country/GRD/indicator/SE.ADT.1524.LT.FE.ZS?format=json&date=1970",
+   "licence": "CC BY 4.0",
+   "retrieved": "2026-11-27",
+   "is_estimate": null,
+   "transformations": [],
+   "verification": {
+    "source_check": "matched-api-response",
+    "scholarly_review": "pending"
+   },
+   "flags": [],
+   "notes": ""
+  },
+  {
+   "id": "wb-se-adt-1524-lt-fe-zs-guy-2020",
+   "country": "GUY",
+   "indicator": "SE.ADT.1524.LT.FE.ZS",
+   "ref_year": 2020,
+   "value": 99.0299987792969,
+   "source_id": "worldbank-wdi",
+   "original_producer": "UNESCO Institute for Statistics (UIS)",
+   "source_url": "https://api.worldbank.org/v2/country/GUY/indicator/SE.ADT.1524.LT.FE.ZS?format=json&date=2020",
+   "licence": "CC BY 4.0",
+   "retrieved": "2026-11-27",
+   "is_estimate": null,
+   "transformations": [],
+   "verification": {
+    "source_check": "matched-api-response",
+    "scholarly_review": "pending"
+   },
+   "flags": [],
+   "notes": ""
+  },
+  {
+   "id": "wb-se-adt-1524-lt-fe-zs-hti-2017",
+   "country": "HTI",
+   "indicator": "SE.ADT.1524.LT.FE.ZS",
+   "ref_year": 2017,
+   "value": 89.3300018310547,
+   "source_id": "worldbank-wdi",
+   "original_producer": "UNESCO Institute for Statistics (UIS)",
+   "source_url": "https://api.worldbank.org/v2/country/HTI/indicator/SE.ADT.1524.LT.FE.ZS?format=json&date=2017",
+   "licence": "CC BY 4.0",
+   "retrieved": "2026-11-27",
+   "is_estimate": null,
+   "transformations": [],
+   "verification": {
+    "source_check": "matched-api-response",
+    "scholarly_review": "pending"
+   },
+   "flags": [],
+   "notes": ""
+  },
+  {
+   "id": "wb-se-adt-1524-lt-fe-zs-jam-2022",
+   "country": "JAM",
+   "indicator": "SE.ADT.1524.LT.FE.ZS",
+   "ref_year": 2022,
+   "value": 99.3000030517578,
+   "source_id": "worldbank-wdi",
+   "original_producer": "UNESCO Institute for Statistics (UIS)",
+   "source_url": "https://api.worldbank.org/v2/country/JAM/indicator/SE.ADT.1524.LT.FE.ZS?format=json&date=2022",
+   "licence": "CC BY 4.0",
+   "retrieved": "2026-11-27",
+   "is_estimate": null,
+   "transformations": [],
+   "verification": {
+    "source_check": "matched-api-response",
+    "scholarly_review": "pending"
+   },
+   "flags": [],
+   "notes": ""
+  },
+  {
+   "id": "wb-se-adt-1524-lt-fe-zs-lca-2012",
+   "country": "LCA",
+   "indicator": "SE.ADT.1524.LT.FE.ZS",
+   "ref_year": 2012,
+   "value": 99.96,
+   "source_id": "worldbank-wdi",
+   "original_producer": "UNESCO Institute for Statistics (UIS)",
+   "source_url": "https://api.worldbank.org/v2/country/LCA/indicator/SE.ADT.1524.LT.FE.ZS?format=json&date=2012",
+   "licence": "CC BY 4.0",
+   "retrieved": "2026-11-27",
+   "is_estimate": null,
+   "transformations": [],
+   "verification": {
+    "source_check": "matched-api-response",
+    "scholarly_review": "pending"
+   },
+   "flags": [],
+   "notes": ""
+  },
+  {
+   "id": "wb-se-adt-1524-lt-fe-zs-sur-2018",
+   "country": "SUR",
+   "indicator": "SE.ADT.1524.LT.FE.ZS",
+   "ref_year": 2018,
+   "value": 97.9599990844727,
+   "source_id": "worldbank-wdi",
+   "original_producer": "UNESCO Institute for Statistics (UIS)",
+   "source_url": "https://api.worldbank.org/v2/country/SUR/indicator/SE.ADT.1524.LT.FE.ZS?format=json&date=2018",
+   "licence": "CC BY 4.0",
+   "retrieved": "2026-11-27",
+   "is_estimate": null,
+   "transformations": [],
+   "verification": {
+    "source_check": "matched-api-response",
+    "scholarly_review": "pending"
+   },
+   "flags": [],
+   "notes": ""
+  },
+  {
+   "id": "wb-se-adt-1524-lt-fe-zs-tto-2022",
+   "country": "TTO",
+   "indicator": "SE.ADT.1524.LT.FE.ZS",
+   "ref_year": 2022,
+   "value": 99.7300033569336,
+   "source_id": "worldbank-wdi",
+   "original_producer": "UNESCO Institute for Statistics (UIS)",
+   "source_url": "https://api.worldbank.org/v2/country/TTO/indicator/SE.ADT.1524.LT.FE.ZS?format=json&date=2022",
+   "licence": "CC BY 4.0",
+   "retrieved": "2026-11-27",
+   "is_estimate": null,
+   "transformations": [],
+   "verification": {
+    "source_check": "matched-api-response",
+    "scholarly_review": "pending"
+   },
+   "flags": [],
+   "notes": ""
+  },
+  {
+   "id": "wb-se-adt-1524-lt-fe-zs-vct-1970",
+   "country": "VCT",
+   "indicator": "SE.ADT.1524.LT.FE.ZS",
+   "ref_year": 1970,
+   "value": 98,
+   "source_id": "worldbank-wdi",
+   "original_producer": "UNESCO Institute for Statistics (UIS)",
+   "source_url": "https://api.worldbank.org/v2/country/VCT/indicator/SE.ADT.1524.LT.FE.ZS?format=json&date=1970",
+   "licence": "CC BY 4.0",
+   "retrieved": "2026-11-27",
+   "is_estimate": null,
+   "transformations": [],
+   "verification": {
+    "source_check": "matched-api-response",
+    "scholarly_review": "pending"
+   },
+   "flags": [],
+   "notes": ""
+  },
+  {
+   "id": "wb-se-adt-1524-lt-ma-zs-blz-2022",
+   "country": "BLZ",
+   "indicator": "SE.ADT.1524.LT.MA.ZS",
+   "ref_year": 2022,
+   "value": 95.6699981689453,
+   "source_id": "worldbank-wdi",
+   "original_producer": "UNESCO Institute for Statistics (UIS)",
+   "source_url": "https://api.worldbank.org/v2/country/BLZ/indicator/SE.ADT.1524.LT.MA.ZS?format=json&date=2022",
+   "licence": "CC BY 4.0",
+   "retrieved": "2026-11-27",
+   "is_estimate": null,
+   "transformations": [],
+   "verification": {
+    "source_check": "matched-api-response",
+    "scholarly_review": "pending"
+   },
+   "flags": [],
+   "notes": ""
+  },
+  {
+   "id": "wb-se-adt-1524-lt-ma-zs-brb-2012",
+   "country": "BRB",
+   "indicator": "SE.ADT.1524.LT.MA.ZS",
+   "ref_year": 2012,
+   "value": 100,
+   "source_id": "worldbank-wdi",
+   "original_producer": "UNESCO Institute for Statistics (UIS)",
+   "source_url": "https://api.worldbank.org/v2/country/BRB/indicator/SE.ADT.1524.LT.MA.ZS?format=json&date=2012",
+   "licence": "CC BY 4.0",
+   "retrieved": "2026-11-27",
+   "is_estimate": null,
+   "transformations": [],
+   "verification": {
+    "source_check": "matched-api-response",
+    "scholarly_review": "pending"
+   },
+   "flags": [],
+   "notes": ""
+  },
+  {
+   "id": "wb-se-adt-1524-lt-ma-zs-grd-1970",
+   "country": "GRD",
+   "indicator": "SE.ADT.1524.LT.MA.ZS",
+   "ref_year": 1970,
+   "value": 98.8499984741211,
+   "source_id": "worldbank-wdi",
+   "original_producer": "UNESCO Institute for Statistics (UIS)",
+   "source_url": "https://api.worldbank.org/v2/country/GRD/indicator/SE.ADT.1524.LT.MA.ZS?format=json&date=1970",
+   "licence": "CC BY 4.0",
+   "retrieved": "2026-11-27",
+   "is_estimate": null,
+   "transformations": [],
+   "verification": {
+    "source_check": "matched-api-response",
+    "scholarly_review": "pending"
+   },
+   "flags": [],
+   "notes": ""
+  },
+  {
+   "id": "wb-se-adt-1524-lt-ma-zs-guy-2020",
+   "country": "GUY",
+   "indicator": "SE.ADT.1524.LT.MA.ZS",
+   "ref_year": 2020,
+   "value": 99.2699966430664,
+   "source_id": "worldbank-wdi",
+   "original_producer": "UNESCO Institute for Statistics (UIS)",
+   "source_url": "https://api.worldbank.org/v2/country/GUY/indicator/SE.ADT.1524.LT.MA.ZS?format=json&date=2020",
+   "licence": "CC BY 4.0",
+   "retrieved": "2026-11-27",
+   "is_estimate": null,
+   "transformations": [],
+   "verification": {
+    "source_check": "matched-api-response",
+    "scholarly_review": "pending"
+   },
+   "flags": [],
+   "notes": ""
+  },
+  {
+   "id": "wb-se-adt-1524-lt-ma-zs-hti-2017",
+   "country": "HTI",
+   "indicator": "SE.ADT.1524.LT.MA.ZS",
+   "ref_year": 2017,
+   "value": 88.379997253418,
+   "source_id": "worldbank-wdi",
+   "original_producer": "UNESCO Institute for Statistics (UIS)",
+   "source_url": "https://api.worldbank.org/v2/country/HTI/indicator/SE.ADT.1524.LT.MA.ZS?format=json&date=2017",
+   "licence": "CC BY 4.0",
+   "retrieved": "2026-11-27",
+   "is_estimate": null,
+   "transformations": [],
+   "verification": {
+    "source_check": "matched-api-response",
+    "scholarly_review": "pending"
+   },
+   "flags": [],
+   "notes": ""
+  },
+  {
+   "id": "wb-se-adt-1524-lt-ma-zs-jam-2022",
+   "country": "JAM",
+   "indicator": "SE.ADT.1524.LT.MA.ZS",
+   "ref_year": 2022,
+   "value": 88.23,
+   "source_id": "worldbank-wdi",
+   "original_producer": "UNESCO Institute for Statistics (UIS)",
+   "source_url": "https://api.worldbank.org/v2/country/JAM/indicator/SE.ADT.1524.LT.MA.ZS?format=json&date=2022",
+   "licence": "CC BY 4.0",
+   "retrieved": "2026-11-27",
+   "is_estimate": null,
+   "transformations": [],
+   "verification": {
+    "source_check": "matched-api-response",
+    "scholarly_review": "pending"
+   },
+   "flags": [],
+   "notes": ""
+  },
+  {
+   "id": "wb-se-adt-1524-lt-ma-zs-lca-2012",
+   "country": "LCA",
+   "indicator": "SE.ADT.1524.LT.MA.ZS",
+   "ref_year": 2012,
+   "value": 100,
+   "source_id": "worldbank-wdi",
+   "original_producer": "UNESCO Institute for Statistics (UIS)",
+   "source_url": "https://api.worldbank.org/v2/country/LCA/indicator/SE.ADT.1524.LT.MA.ZS?format=json&date=2012",
+   "licence": "CC BY 4.0",
+   "retrieved": "2026-11-27",
+   "is_estimate": null,
+   "transformations": [],
+   "verification": {
+    "source_check": "matched-api-response",
+    "scholarly_review": "pending"
+   },
+   "flags": [],
+   "notes": ""
+  },
+  {
+   "id": "wb-se-adt-1524-lt-ma-zs-sur-2018",
+   "country": "SUR",
+   "indicator": "SE.ADT.1524.LT.MA.ZS",
+   "ref_year": 2018,
+   "value": 97.4400024414062,
+   "source_id": "worldbank-wdi",
+   "original_producer": "UNESCO Institute for Statistics (UIS)",
+   "source_url": "https://api.worldbank.org/v2/country/SUR/indicator/SE.ADT.1524.LT.MA.ZS?format=json&date=2018",
+   "licence": "CC BY 4.0",
+   "retrieved": "2026-11-27",
+   "is_estimate": null,
+   "transformations": [],
+   "verification": {
+    "source_check": "matched-api-response",
+    "scholarly_review": "pending"
+   },
+   "flags": [],
+   "notes": ""
+  },
+  {
+   "id": "wb-se-adt-1524-lt-ma-zs-tto-2022",
+   "country": "TTO",
+   "indicator": "SE.ADT.1524.LT.MA.ZS",
+   "ref_year": 2022,
+   "value": 89.05,
+   "source_id": "worldbank-wdi",
+   "original_producer": "UNESCO Institute for Statistics (UIS)",
+   "source_url": "https://api.worldbank.org/v2/country/TTO/indicator/SE.ADT.1524.LT.MA.ZS?format=json&date=2022",
+   "licence": "CC BY 4.0",
+   "retrieved": "2026-11-27",
+   "is_estimate": null,
+   "transformations": [],
+   "verification": {
+    "source_check": "matched-api-response",
+    "scholarly_review": "pending"
+   },
+   "flags": [],
+   "notes": ""
+  },
+  {
+   "id": "wb-se-adt-1524-lt-ma-zs-vct-1970",
+   "country": "VCT",
+   "indicator": "SE.ADT.1524.LT.MA.ZS",
+   "ref_year": 1970,
+   "value": 97.9199981689453,
+   "source_id": "worldbank-wdi",
+   "original_producer": "UNESCO Institute for Statistics (UIS)",
+   "source_url": "https://api.worldbank.org/v2/country/VCT/indicator/SE.ADT.1524.LT.MA.ZS?format=json&date=1970",
+   "licence": "CC BY 4.0",
+   "retrieved": "2026-11-27",
+   "is_estimate": null,
+   "transformations": [],
+   "verification": {
+    "source_check": "matched-api-response",
+    "scholarly_review": "pending"
+   },
+   "flags": [],
+   "notes": ""
+  },
+  {
+   "id": "wb-se-adt-1524-lt-fm-zs-blz-2022",
+   "country": "BLZ",
+   "indicator": "SE.ADT.1524.LT.FM.ZS",
+   "ref_year": 2022,
+   "value": 1.00999999046326,
+   "source_id": "worldbank-wdi",
+   "original_producer": "UNESCO Institute for Statistics (UIS)",
+   "source_url": "https://api.worldbank.org/v2/country/BLZ/indicator/SE.ADT.1524.LT.FM.ZS?format=json&date=2022",
+   "licence": "CC BY 4.0",
+   "retrieved": "2026-11-27",
+   "is_estimate": null,
+   "transformations": [],
+   "verification": {
+    "source_check": "matched-api-response",
+    "scholarly_review": "pending"
+   },
+   "flags": [],
+   "notes": ""
+  },
+  {
+   "id": "wb-se-adt-1524-lt-fm-zs-brb-2012",
+   "country": "BRB",
+   "indicator": "SE.ADT.1524.LT.FM.ZS",
+   "ref_year": 2012,
+   "value": 1,
+   "source_id": "worldbank-wdi",
+   "original_producer": "UNESCO Institute for Statistics (UIS)",
+   "source_url": "https://api.worldbank.org/v2/country/BRB/indicator/SE.ADT.1524.LT.FM.ZS?format=json&date=2012",
+   "licence": "CC BY 4.0",
+   "retrieved": "2026-11-27",
+   "is_estimate": null,
+   "transformations": [],
+   "verification": {
+    "source_check": "matched-api-response",
+    "scholarly_review": "pending"
+   },
+   "flags": [],
+   "notes": ""
+  },
+  {
+   "id": "wb-se-adt-1524-lt-fm-zs-grd-1970",
+   "country": "GRD",
+   "indicator": "SE.ADT.1524.LT.FM.ZS",
+   "ref_year": 1970,
+   "value": 1,
+   "source_id": "worldbank-wdi",
+   "original_producer": "UNESCO Institute for Statistics (UIS)",
+   "source_url": "https://api.worldbank.org/v2/country/GRD/indicator/SE.ADT.1524.LT.FM.ZS?format=json&date=1970",
+   "licence": "CC BY 4.0",
+   "retrieved": "2026-11-27",
+   "is_estimate": null,
+   "transformations": [],
+   "verification": {
+    "source_check": "matched-api-response",
+    "scholarly_review": "pending"
+   },
+   "flags": [],
+   "notes": ""
+  },
+  {
+   "id": "wb-se-adt-1524-lt-fm-zs-guy-2020",
+   "country": "GUY",
+   "indicator": "SE.ADT.1524.LT.FM.ZS",
+   "ref_year": 2020,
+   "value": 1,
+   "source_id": "worldbank-wdi",
+   "original_producer": "UNESCO Institute for Statistics (UIS)",
+   "source_url": "https://api.worldbank.org/v2/country/GUY/indicator/SE.ADT.1524.LT.FM.ZS?format=json&date=2020",
+   "licence": "CC BY 4.0",
+   "retrieved": "2026-11-27",
+   "is_estimate": null,
+   "transformations": [],
+   "verification": {
+    "source_check": "matched-api-response",
+    "scholarly_review": "pending"
+   },
+   "flags": [],
+   "notes": ""
+  },
+  {
+   "id": "wb-se-adt-1524-lt-fm-zs-hti-2017",
+   "country": "HTI",
+   "indicator": "SE.ADT.1524.LT.FM.ZS",
+   "ref_year": 2017,
+   "value": 1.00999999046326,
+   "source_id": "worldbank-wdi",
+   "original_producer": "UNESCO Institute for Statistics (UIS)",
+   "source_url": "https://api.worldbank.org/v2/country/HTI/indicator/SE.ADT.1524.LT.FM.ZS?format=json&date=2017",
+   "licence": "CC BY 4.0",
+   "retrieved": "2026-11-27",
+   "is_estimate": null,
+   "transformations": [],
+   "verification": {
+    "source_check": "matched-api-response",
+    "scholarly_review": "pending"
+   },
+   "flags": [],
+   "notes": ""
+  },
+  {
+   "id": "wb-se-adt-1524-lt-fm-zs-jam-2022",
+   "country": "JAM",
+   "indicator": "SE.ADT.1524.LT.FM.ZS",
+   "ref_year": 2022,
+   "value": 1.10607898235321,
+   "source_id": "worldbank-wdi",
+   "original_producer": "UNESCO Institute for Statistics (UIS)",
+   "source_url": "https://api.worldbank.org/v2/country/JAM/indicator/SE.ADT.1524.LT.FM.ZS?format=json&date=2022",
+   "licence": "CC BY 4.0",
+   "retrieved": "2026-11-27",
+   "is_estimate": null,
+   "transformations": [],
+   "verification": {
+    "source_check": "matched-api-response",
+    "scholarly_review": "pending"
+   },
+   "flags": [],
+   "notes": ""
+  },
+  {
+   "id": "wb-se-adt-1524-lt-fm-zs-lca-2012",
+   "country": "LCA",
+   "indicator": "SE.ADT.1524.LT.FM.ZS",
+   "ref_year": 2012,
+   "value": 0.999599993228912,
+   "source_id": "worldbank-wdi",
+   "original_producer": "UNESCO Institute for Statistics (UIS)",
+   "source_url": "https://api.worldbank.org/v2/country/LCA/indicator/SE.ADT.1524.LT.FM.ZS?format=json&date=2012",
+   "licence": "CC BY 4.0",
+   "retrieved": "2026-11-27",
+   "is_estimate": null,
+   "transformations": [],
+   "verification": {
+    "source_check": "matched-api-response",
+    "scholarly_review": "pending"
+   },
+   "flags": [],
+   "notes": ""
+  },
+  {
+   "id": "wb-se-adt-1524-lt-fm-zs-sur-2018",
+   "country": "SUR",
+   "indicator": "SE.ADT.1524.LT.FM.ZS",
+   "ref_year": 2018,
+   "value": 1.00999999046326,
+   "source_id": "worldbank-wdi",
+   "original_producer": "UNESCO Institute for Statistics (UIS)",
+   "source_url": "https://api.worldbank.org/v2/country/SUR/indicator/SE.ADT.1524.LT.FM.ZS?format=json&date=2018",
+   "licence": "CC BY 4.0",
+   "retrieved": "2026-11-27",
+   "is_estimate": null,
+   "transformations": [],
+   "verification": {
+    "source_check": "matched-api-response",
+    "scholarly_review": "pending"
+   },
+   "flags": [],
+   "notes": ""
+  },
+  {
+   "id": "wb-se-adt-1524-lt-fm-zs-tto-2022",
+   "country": "TTO",
+   "indicator": "SE.ADT.1524.LT.FM.ZS",
+   "ref_year": 2022,
+   "value": 1.06675744056702,
+   "source_id": "worldbank-wdi",
+   "original_producer": "UNESCO Institute for Statistics (UIS)",
+   "source_url": "https://api.worldbank.org/v2/country/TTO/indicator/SE.ADT.1524.LT.FM.ZS?format=json&date=2022",
+   "licence": "CC BY 4.0",
+   "retrieved": "2026-11-27",
+   "is_estimate": null,
+   "transformations": [],
+   "verification": {
+    "source_check": "matched-api-response",
+    "scholarly_review": "pending"
+   },
+   "flags": [],
+   "notes": ""
+  },
+  {
+   "id": "wb-se-adt-1524-lt-fm-zs-vct-1970",
+   "country": "VCT",
+   "indicator": "SE.ADT.1524.LT.FM.ZS",
+   "ref_year": 1970,
+   "value": 1,
+   "source_id": "worldbank-wdi",
+   "original_producer": "UNESCO Institute for Statistics (UIS)",
+   "source_url": "https://api.worldbank.org/v2/country/VCT/indicator/SE.ADT.1524.LT.FM.ZS?format=json&date=1970",
+   "licence": "CC BY 4.0",
+   "retrieved": "2026-11-27",
+   "is_estimate": null,
+   "transformations": [],
+   "verification": {
+    "source_check": "matched-api-response",
+    "scholarly_review": "pending"
+   },
+   "flags": [],
+   "notes": ""
+  },
+  {
+   "id": "wb-se-adt-litr-zs-atg-2001",
+   "country": "ATG",
+   "indicator": "SE.ADT.LITR.ZS",
+   "ref_year": 2001,
+   "value": 98.9499969482422,
+   "source_id": "worldbank-wdi",
+   "original_producer": "UNESCO Institute for Statistics (UIS)",
+   "source_url": "https://api.worldbank.org/v2/country/ATG/indicator/SE.ADT.LITR.ZS?format=json&date=2001",
+   "licence": "CC BY 4.0",
+   "retrieved": "2026-11-27",
+   "is_estimate": null,
+   "transformations": [],
+   "verification": {
+    "source_check": "matched-api-response",
+    "scholarly_review": "pending"
+   },
+   "flags": [],
+   "notes": ""
+  },
+  {
+   "id": "wb-se-adt-litr-zs-blz-2022",
+   "country": "BLZ",
+   "indicator": "SE.ADT.LITR.ZS",
+   "ref_year": 2022,
+   "value": 87.879997253418,
+   "source_id": "worldbank-wdi",
+   "original_producer": "UNESCO Institute for Statistics (UIS)",
+   "source_url": "https://api.worldbank.org/v2/country/BLZ/indicator/SE.ADT.LITR.ZS?format=json&date=2022",
+   "licence": "CC BY 4.0",
+   "retrieved": "2026-11-27",
+   "is_estimate": null,
+   "transformations": [],
+   "verification": {
+    "source_check": "matched-api-response",
+    "scholarly_review": "pending"
+   },
+   "flags": [],
+   "notes": ""
+  },
+  {
+   "id": "wb-se-adt-litr-zs-brb-1970",
+   "country": "BRB",
+   "indicator": "SE.ADT.LITR.ZS",
+   "ref_year": 1970,
+   "value": 99.2699966430664,
+   "source_id": "worldbank-wdi",
+   "original_producer": "UNESCO Institute for Statistics (UIS)",
+   "source_url": "https://api.worldbank.org/v2/country/BRB/indicator/SE.ADT.LITR.ZS?format=json&date=1970",
+   "licence": "CC BY 4.0",
+   "retrieved": "2026-11-27",
+   "is_estimate": null,
+   "transformations": [],
+   "verification": {
+    "source_check": "matched-api-response",
+    "scholarly_review": "pending"
+   },
+   "flags": [],
+   "notes": ""
+  },
+  {
+   "id": "wb-se-adt-litr-zs-grd-1970",
+   "country": "GRD",
+   "indicator": "SE.ADT.LITR.ZS",
+   "ref_year": 1970,
+   "value": 97.7900009155273,
+   "source_id": "worldbank-wdi",
+   "original_producer": "UNESCO Institute for Statistics (UIS)",
+   "source_url": "https://api.worldbank.org/v2/country/GRD/indicator/SE.ADT.LITR.ZS?format=json&date=1970",
+   "licence": "CC BY 4.0",
+   "retrieved": "2026-11-27",
+   "is_estimate": null,
+   "transformations": [],
+   "verification": {
+    "source_check": "matched-api-response",
+    "scholarly_review": "pending"
+   },
+   "flags": [],
+   "notes": ""
+  },
+  {
+   "id": "wb-se-adt-litr-zs-guy-2020",
+   "country": "GUY",
+   "indicator": "SE.ADT.LITR.ZS",
+   "ref_year": 2020,
+   "value": 85.6399993896484,
+   "source_id": "worldbank-wdi",
+   "original_producer": "UNESCO Institute for Statistics (UIS)",
+   "source_url": "https://api.worldbank.org/v2/country/GUY/indicator/SE.ADT.LITR.ZS?format=json&date=2020",
+   "licence": "CC BY 4.0",
+   "retrieved": "2026-11-27",
+   "is_estimate": null,
+   "transformations": [],
+   "verification": {
+    "source_check": "matched-api-response",
+    "scholarly_review": "pending"
+   },
+   "flags": [],
+   "notes": ""
+  },
+  {
+   "id": "wb-se-adt-litr-zs-hti-2017",
+   "country": "HTI",
+   "indicator": "SE.ADT.LITR.ZS",
+   "ref_year": 2017,
+   "value": 68.0100021362305,
+   "source_id": "worldbank-wdi",
+   "original_producer": "UNESCO Institute for Statistics (UIS)",
+   "source_url": "https://api.worldbank.org/v2/country/HTI/indicator/SE.ADT.LITR.ZS?format=json&date=2017",
+   "licence": "CC BY 4.0",
+   "retrieved": "2026-11-27",
+   "is_estimate": null,
+   "transformations": [],
+   "verification": {
+    "source_check": "matched-api-response",
+    "scholarly_review": "pending"
+   },
+   "flags": [],
+   "notes": ""
+  },
+  {
+   "id": "wb-se-adt-litr-zs-jam-1999",
+   "country": "JAM",
+   "indicator": "SE.ADT.LITR.ZS",
+   "ref_year": 1999,
+   "value": 79.9199981689453,
+   "source_id": "worldbank-wdi",
+   "original_producer": "UNESCO Institute for Statistics (UIS)",
+   "source_url": "https://api.worldbank.org/v2/country/JAM/indicator/SE.ADT.LITR.ZS?format=json&date=1999",
+   "licence": "CC BY 4.0",
+   "retrieved": "2026-11-27",
+   "is_estimate": null,
+   "transformations": [],
+   "verification": {
+    "source_check": "matched-api-response",
+    "scholarly_review": "pending"
+   },
+   "flags": [],
+   "notes": ""
+  },
+  {
+   "id": "wb-se-adt-litr-zs-sur-2012",
+   "country": "SUR",
+   "indicator": "SE.ADT.LITR.ZS",
+   "ref_year": 2012,
+   "value": 92.870002746582,
+   "source_id": "worldbank-wdi",
+   "original_producer": "UNESCO Institute for Statistics (UIS)",
+   "source_url": "https://api.worldbank.org/v2/country/SUR/indicator/SE.ADT.LITR.ZS?format=json&date=2012",
+   "licence": "CC BY 4.0",
+   "retrieved": "2026-11-27",
+   "is_estimate": null,
+   "transformations": [],
+   "verification": {
+    "source_check": "matched-api-response",
+    "scholarly_review": "pending"
+   },
+   "flags": [],
+   "notes": ""
+  },
+  {
+   "id": "wb-se-adt-litr-zs-tto-1990",
+   "country": "TTO",
+   "indicator": "SE.ADT.LITR.ZS",
+   "ref_year": 1990,
+   "value": 96.9400024414062,
+   "source_id": "worldbank-wdi",
+   "original_producer": "UNESCO Institute for Statistics (UIS)",
+   "source_url": "https://api.worldbank.org/v2/country/TTO/indicator/SE.ADT.LITR.ZS?format=json&date=1990",
+   "licence": "CC BY 4.0",
+   "retrieved": "2026-11-27",
+   "is_estimate": null,
+   "transformations": [],
+   "verification": {
+    "source_check": "matched-api-response",
+    "scholarly_review": "pending"
+   },
+   "flags": [],
+   "notes": ""
+  },
+  {
+   "id": "wb-se-adt-litr-zs-vct-1970",
+   "country": "VCT",
+   "indicator": "SE.ADT.LITR.ZS",
+   "ref_year": 1970,
+   "value": 95.629997253418,
+   "source_id": "worldbank-wdi",
+   "original_producer": "UNESCO Institute for Statistics (UIS)",
+   "source_url": "https://api.worldbank.org/v2/country/VCT/indicator/SE.ADT.LITR.ZS?format=json&date=1970",
+   "licence": "CC BY 4.0",
+   "retrieved": "2026-11-27",
+   "is_estimate": null,
+   "transformations": [],
+   "verification": {
+    "source_check": "matched-api-response",
+    "scholarly_review": "pending"
+   },
+   "flags": [],
+   "notes": ""
+  },
+  {
+   "id": "wb-se-adt-1524-lt-zs-jam-1999",
+   "country": "JAM",
+   "indicator": "SE.ADT.1524.LT.ZS",
+   "ref_year": 1999,
+   "value": 91.5999984741211,
+   "source_id": "worldbank-wdi",
+   "original_producer": "UNESCO Institute for Statistics (UIS)",
+   "source_url": "https://api.worldbank.org/v2/country/JAM/indicator/SE.ADT.1524.LT.ZS?format=json&date=1999",
+   "licence": "CC BY 4.0",
+   "retrieved": "2026-11-27",
+   "is_estimate": null,
+   "transformations": [],
+   "verification": {
+    "source_check": "matched-api-response",
+    "scholarly_review": "pending"
+   },
+   "flags": [],
+   "notes": ""
+  }
+ ]
+}

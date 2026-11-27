@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+title: Caribbean Literacy Observatory
+message: If you use this platform or its data catalogue, please cite it, and cite the original data sources.
+type: software
+authors:
+  - name: Caribbean Literacy Observatory
+  - family-names: Jowallah
+    given-names: Rohan
+license: MIT

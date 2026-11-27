@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Caribbean Literacy Observatory</title>
+<meta name="description" content="An open data research initiative on literacy across the Caribbean. Every figure traced to a public source.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,400..900,0..100,0..1&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap">
+<link rel="stylesheet" href="assets/css/site.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='15' fill='%231240ff'/%3E%3Cpath d='M8 13h16M8 17h12M8 21h9' stroke='%23ffd23f' stroke-width='2.4' stroke-linecap='round'/%3E%3C/svg%3E">
+</head>
+<body>
+<a class="skip" href="#view">Skip to content</a>
+
+<header class="top">
+  <a class="brand" href="#home" aria-label="Caribbean Literacy Observatory, home">
+    <svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="18.5" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="20" cy="20" r="12" fill="var(--sun)"/><path d="M13 17h14M13 21h10M13 25h6" stroke="var(--blue)" stroke-width="2.6" stroke-linecap="round"/></svg>
+    <span><b>Caribbean Literacy</b> Observatory</span>
+  </a>
+  <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="nav">Menu</button>
+  <nav id="nav" aria-label="Main">
+    <a href="#about">About</a>
+    <a href="#agenda">Research agenda</a>
+    <a href="#dashboard">Dashboard</a>
+    <a href="#profiles">Country profiles</a>
+    <a href="#repository">Repository</a>
+    <a href="#publications">Publications</a>
+    <a href="#policy">Policy archive</a>
+    <a href="#methods">Methods &amp; data</a>
+    <a href="#collaborate" class="nav-cta">Collaborate</a>
+  </nav>
+</header>
+
+<main id="view">
+
+<!-- HOME -->
+<section data-view="home">
+  <div class="hero band">
+    <div class="hero-text">
+      <p class="kicker">An open data research initiative</p>
+      <h1>Caribbean <em>Literacy</em> Observatory</h1>
+      <p class="tag">Caribbean knowledge. Research evidence. Literacy transformation.</p>
+      <p class="lede" id="heroFinding">Loading the public record…</p>
+      <div class="actions">
+        <a class="btn sun" href="#dashboard">Open the dashboard</a>
+        <a class="btn ghost" href="#methods">How we verify</a>
+      </div>
+    </div>
+    <figure class="chart-sky" aria-labelledby="skyCap">
+      <svg id="sky" viewBox="0 0 610 400" role="img" aria-label="Chart of the 15 CARICOM member states showing whether a recent youth literacy figure exists"></svg>
+      <figcaption id="skyCap">Youth literacy (15–24): what the public record holds for each CARICOM member state. <span id="skyLegend" class="legend"></span></figcaption>
+    </figure>
+  </div>
+
+  <div class="band finding-band">
+    <div class="wrap counts" id="statusCounts"></div>
+  </div>
+
+  <div class="band wrap">
+    <h2>Six pillars</h2>
+    <div class="pillars">
+      <article><h3>Research and scholarship</h3><p>Generate, synthesise and disseminate literacy knowledge.</p></article>
+      <article><h3>Data and evidence</h3><p>Collect, analyse and visualise credible literacy indicators.</p></article>
+      <article><h3>Equity and inclusion</h3><p>Investigate disparities and barriers to literacy development.</p></article>
+      <article><h3>Policy and practice</h3><p>Connect research evidence with educational decision-making.</p></article>
+      <article><h3>Caribbean identity</h3><p>Centre regional languages, cultures and intellectual traditions.</p></article>
+      <article><h3>Literacy innovation</h3><p>Explore emerging technologies and changing literacy practices.</p></article>
+    </div>
+  </div>
+
+  <div class="band principle">
+    <div class="wrap">
+      <p class="big-quote">Research produces knowledge, technology amplifies knowledge, and the Observatory preserves and disseminates that knowledge.</p>
+      <p>The software sits beneath the research. It retrieves, checks and displays public evidence; it is never the source of a statistic.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section data-view="about" hidden>
+  <div class="band page-head"><div class="wrap"><p class="kicker">About</p><h1>Founding statement</h1></div></div>
+  <div class="band wrap prose">
+    <p class="lead">The Caribbean Literacy Observatory is a research-led initiative established to advance the understanding, development and transformation of literacy across the Caribbean.</p>
+    <p>Recognising literacy as a multidimensional, dynamic and lifelong process, the Observatory seeks to bring together educational research, statistical evidence, theoretical perspectives, policy analysis and technological innovation within a Caribbean-centred intellectual framework.</p>
+    <p>Its purpose is to strengthen regional knowledge production, increase the visibility of Caribbean literacy scholarship, identify research gaps and support evidence-informed educational practices and policies.</p>
+    <p>The Observatory embraces linguistic diversity, cultural identity, educational equity, inclusion and the evolving nature of literacy in an increasingly digital and AI-mediated society.</p>
+    <p>Through research, collaboration and responsible technological innovation, the Observatory seeks to contribute to the development of more equitable and literate Caribbean societies.</p>
+    <p class="sig">Founder and Research Director: <a href="#director">Dr. Rohan Jowallah</a></p>
+
+    <h2>Open data commitment</h2>
+    <p>The Observatory works only with publicly available datasets and publicly accessible research. It does not collect student records, confidential institutional data or personally identifiable information. Its methods are secondary data analysis, evidence synthesis and documentary research.</p>
+    <ul class="ticks">
+      <li>Publicly accessible without special institutional permission</li>
+      <li>Published by an identifiable, credible source, with verifiable attribution</li>
+      <li>Licensed for the intended analysis, reuse and dissemination</li>
+      <li>Accompanied by indicator definitions and methodological information</li>
+      <li>Free from personal or confidential information, and independently verifiable</li>
+    </ul>
+    <p class="note">Public access does not by itself grant the right to redistribute. Each dataset's licence is checked and recorded before reuse.</p>
+
+    <h2>Governance</h2>
+    <p>The Observatory is proposed as an independent initiative. Institutional affiliation, research ethics arrangements, data licensing and funding are still to be established, and the governance framework is a Days 1–15 deliverable.</p>
+  </div>
+</section>
+
+<!-- AGENDA -->
+<section data-view="agenda" hidden>
+  <div class="band page-head"><div class="wrap"><p class="kicker">Research agenda · three years</p><h1>Seven research streams</h1></div></div>
+  <div class="band wrap">
+    <div class="streams" id="streams"></div>
+    <h2 class="mt">First 90 days</h2>
+    <ol class="timeline" id="timeline"></ol>
+    <h2 class="mt">Flagship project</h2>
+    <div class="flagship">
+      <p class="kicker">Planned · 2027</p>
+      <h3>State of Literacy in the Caribbean 2027</h3>
+      <p class="sub">Mapping the Evidence, Identifying the Gaps and Reimagining Literacy Development</p>
+      <p>A systematic scoping review of Caribbean literacy research alongside an audit of literacy statistics, national policies and assessment frameworks. It will also ask whether existing literacy measures reflect Caribbean linguistic and cultural realities.</p>
+    </div>
+    <h2 class="mt">Long-term research ecosystem</h2>
+    <ul class="eco">
+      <li>Caribbean Literacy Observatory</li><li>Caribbean Literacy Research Network</li><li>Caribbean Literacy Working Paper Series</li>
+      <li>Annual Caribbean Literacy Symposium</li><li>Caribbean Literacy Research Laboratory</li><li>Caribbean Literacy Innovation Lab</li>
+    </ul>
+  </div>
+</section>
+
+<!-- DIRECTOR -->
+<section data-view="director" hidden>
+  <div class="band page-head"><div class="wrap"><p class="kicker">Founder and Research Director</p><h1>Dr. Rohan Jowallah</h1></div></div>
+  <div class="band wrap director">
+    <div class="monogram" aria-hidden="true">RJ</div>
+    <div class="prose">
+      <p class="lead">An educator and scholar whose work runs <em>from the word to the algorithm</em>: from critical literacy and Freirean pedagogy to the governance of artificial intelligence in the Caribbean and the Global South.</p>
+      <p>He has taught for more than thirty years in Jamaica, England and the United States, and has delivered over fifty invited presentations and keynotes. He holds an Ed.D. in Language and Literacy in Education from the University of Sheffield and is a Fellow of the Higher Education Academy (FHEA). In 2025 he received the USDLA Outstanding Leadership Award (Gold).</p>
+      <p>At the Observatory he sets the research agenda, approves methods and interpretations, and signs off every substantive publication.</p>
+      <p class="note">Profile draft — awaiting the Research Director's approval.</p>
+    </div>
+  </div>
+</section>
+
+<!-- DASHBOARD -->
+<section data-view="dashboard" hidden>
+  <div class="band page-head"><div class="wrap"><p class="kicker">Statistics dashboard</p><h1 id="dashTitle">Literacy indicators, as published</h1><p class="sub" id="dashSub"></p></div></div>
+  <div class="band wrap">
+    <div class="caution"><b>Read the years.</b> Each figure is the most recent value its source has published, and those years range from 1970 to 2022. Figures from different years are shown side by side for reference, not ranked or compared.</div>
+    <div class="dash-grid">
+      <article class="panel wide">
+        <h2>Youth literacy, ages 15–24</h2>
+        <p class="sub">Most recent published value per country. Shape shows data status.</p>
+        <div id="barsYouth" class="bars"></div>
+      </article>
+      <article class="panel">
+        <h2>Gender gap among young people</h2>
+        <p class="sub">Female <span class="dot f"></span> and male <span class="dot m"></span> youth literacy. Axis starts at 85%.</p>
+        <div id="dumbbell" class="dumbbell"></div>
+      </article>
+      <article class="panel">
+        <h2>Adult literacy, ages 15+</h2>
+        <p class="sub">Most recent published value. Several are decades old.</p>
+        <div id="barsAdult" class="bars"></div>
+      </article>
+      <article class="panel wide">
+        <h2>The data landscape</h2>
+        <p class="sub">Status of every audited indicator for every member state, plus indicators the audit has not reached.</p>
+        <div class="scroll"><table class="matrix" id="matrix"></table></div>
+        <div class="legend" id="matrixLegend"></div>
+      </article>
+    </div>
+    <h2 class="mt">Every record</h2>
+    <p class="sub">Each row links to the exact API query that returned it.</p>
+    <div class="toolbar">
+      <label>Indicator <select id="obsInd"></select></label>
+      <button class="btn small" id="copyCsv" type="button">Copy as CSV</button>
+      <a class="btn small ghost" href="data/observations.json">Raw JSON</a>
+      <button class="btn small ghost" id="liveCheck" type="button">Check against source now</button>
+    </div>
+    <p class="note" id="liveMsg" role="status"></p>
+    <div class="scroll"><table class="data stack" id="obsTable"></table></div>
+  </div>
+</section>
+
+<!-- PROFILES -->
+<section data-view="profiles" hidden>
+  <div class="band page-head"><div class="wrap"><p class="kicker">National literacy profiles</p><h1>Fifteen member states</h1><p class="sub">Choose a country to see every audited figure, its status and its source.</p></div></div>
+  <div class="band wrap"><div class="country-grid" id="countryGrid"></div></div>
+</section>
+<section data-view="country" hidden>
+  <div class="band page-head"><div class="wrap"><p class="kicker"><a href="#profiles">Country profiles</a></p><h1 id="cName"></h1><p class="sub" id="cSub"></p></div></div>
+  <div class="band wrap" id="cBody"></div>
+</section>
+
+<!-- REPOSITORY -->
+<section data-view="repository" hidden>
+  <div class="band page-head"><div class="wrap"><p class="kicker">Searchable repository</p><h1>Research, data and sources</h1><p class="sub">Search approved research records, every statistic and every source in the catalogue.</p></div></div>
+  <div class="band wrap">
+    <div class="search">
+      <input id="q" type="search" placeholder="Search: Jamaica, gender, adult literacy, UNICEF…" aria-label="Search the repository">
+      <div class="filters">
+        <label>Type <select id="fType"><option value="">All</option><option>Research record</option><option>Statistic</option><option>Source</option></select></label>
+        <label>Country <select id="fCountry"><option value="">All</option></select></label>
+        <label>Domain <select id="fDomain"><option value="">All</option></select></label>
+      </div>
+    </div>
+    <p class="count" id="repoCount" role="status"></p>
+    <div id="repoResults" class="results"></div>
+    <details class="schema">
+      <summary>What each research record captures</summary>
+      <p>Country or territory · literacy domain · educational level · publication year · research methodology · theoretical framework · findings · statistical indicators · data limitations · original source and citation. Records enter through the review workflow and appear only once the Research Director approves them.</p>
+    </details>
+  </div>
+</section>
+
+<!-- PUBLICATIONS -->
+<section data-view="publications" hidden>
+  <div class="band page-head"><div class="wrap"><p class="kicker">Publications and working papers</p><h1>Outputs</h1><p class="sub">Planned work is labelled as planned. Nothing is listed as published until it is.</p></div></div>
+  <div class="band wrap"><div id="pubList" class="pubs"></div></div>
+</section>
+
+<!-- POLICY -->
+<section data-view="policy" hidden>
+  <div class="band page-head"><div class="wrap"><p class="kicker">Literacy policy and curriculum archive</p><h1>Policy archive</h1></div></div>
+  <div class="band wrap"><div id="policyList"></div></div>
+</section>
+
+<!-- METHODS -->
+<section data-view="methods" hidden>
+  <div class="band page-head"><div class="wrap"><p class="kicker">Research methodology and data provenance</p><h1>How every number gets here</h1></div></div>
+  <div class="band wrap">
+    <ol class="pipeline">
+      <li><b>Public sources</b><span>Official APIs, downloadable datasets, published reports</span></li>
+      <li><b>Collection</b><span>Retrieve and preserve the original dataset</span></li>
+      <li><b>Validation</b><span>Check source, definition, licence and completeness</span></li>
+      <li><b>Research database</b><span>Store data, metadata and every version</span></li>
+      <li><b>Scholarly review</b><span>Approve methods and interpretations</span></li>
+      <li><b>Public observatory</b><span>Publish statistics, charts and findings</span></li>
+    </ol>
+    <div class="two">
+      <div class="prose">
+        <h2>Data status</h2>
+        <div id="statusDefs"></div>
+        <h2>Gaps are findings</h2>
+        <p>Where a figure is missing, old or not comparable, the Observatory says so. It never fills a gap with an invented, interpolated or extrapolated number. Estimates published by official sources are labelled as estimates.</p>
+        <h2>What literacy rates measure</h2>
+        <p>The youth and adult literacy rates in the international series are usually based on census or household survey questions, often self- or household-reported, and record literacy as a yes-or-no state. They say little about depth of reading, and nothing about literacy in Caribbean Creole languages. Examining that limit is part of the research agenda.</p>
+      </div>
+      <div class="prose">
+        <h2>Audit note 1 — first pass</h2>
+        <div id="auditNote"></div>
+        <h2>Correction log</h2>
+        <ul class="log" id="changelog"></ul>
+      </div>
+    </div>
+    <h2 class="mt">Public data governance directive</h2>
+    <ol class="directive">
+      <li>Retrieve data only from credible, publicly accessible sources.</li>
+      <li>Prioritise official national, regional and international repositories.</li>
+      <li>Exclude confidential records, private student information and personal data.</li>
+      <li>Verify the licence and permitted use of every dataset.</li>
+      <li>Preserve original datasets and document every transformation.</li>
+      <li>Record source URL, publisher, reference year, publication date, retrieval date and method.</li>
+      <li>Separate published statistics from the Observatory's own calculations and interpretations.</li>
+      <li>Mark missing, outdated, incomplete and non-comparable data.</li>
+      <li>Never fabricate, interpolate or extrapolate missing statistics.</li>
+      <li>Never show synthetic or demonstration data on the public platform.</li>
+      <li>Make every visualisation traceable to its source.</li>
+      <li>Let users reach original datasets and reproduce findings, within licence terms.</li>
+      <li>Separate direct literacy measures from proxies such as examination results.</li>
+      <li>Do not present correlation as causation.</li>
+      <li>Require scholarly approval before publishing substantive interpretations.</li>
+      <li>Keep a transparent data catalogue, version history and correction log.</li>
+    </ol>
+    <p class="note">Artificial intelligence may help retrieve, organise, validate, analyse and visualise data. It is never the source of a statistic. The Observatory's credibility comes before the volume of data or the sophistication of its technology.</p>
+  </div>
+</section>
+
+<!-- COLLABORATE -->
+<section data-view="collaborate" hidden>
+  <div class="band page-head"><div class="wrap"><p class="kicker">Research collaboration and contact</p><h1>Work with the Observatory</h1><p class="sub">Propose a collaboration, point us to a public dataset, or report an error in a record.</p></div></div>
+  <div class="band wrap two">
+    <form id="contactForm" class="form" novalidate>
+      <label>Name <input id="fName" required autocomplete="name"></label>
+      <label>Email <input id="fEmail" type="email" required autocomplete="email"></label>
+      <label>Institution or affiliation (optional) <input id="fAff" autocomplete="organization"></label>
+      <label>Purpose
+        <select id="fPurpose">
+          <option>Research collaboration</option><option>Suggest a public dataset or study</option>
+          <option>Report a data error</option><option>Media or policy enquiry</option><option>Other</option>
+        </select>
+      </label>
+      <label>Record reference (optional) <input id="fRef" placeholder="e.g. a record id from the dashboard"></label>
+      <label>Message <textarea id="fMsg" rows="6" required></textarea></label>
+      <p class="note">Please do not send personal data about students or other individuals.</p>
+      <button class="btn sun" type="submit">Prepare enquiry</button>
+      <p id="formMsg" class="note" role="status"></p>
+    </form>
+    <div class="prose">
+      <h2>Corrections</h2>
+      <p>Every statistic carries a record id. If a figure does not match its source, choose <b>Report a data error</b> and give the id. Confirmed corrections are entered in the public correction log.</p>
+      <h2>Contribute research</h2>
+      <p>Suggest published, publicly accessible studies on Caribbean literacy. Each suggestion is checked and reviewed before it enters the repository.</p>
+      <pre id="enquiryOut" class="enquiry" hidden></pre>
+      <button class="btn small" id="copyEnquiry" type="button" hidden>Copy enquiry</button>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot band">
+  <div class="wrap foot-grid">
+    <div><b>Caribbean Literacy Observatory</b><br>Open Data · Open Scholarship · Research Integrity<br>Founder and Research Director: Dr. Rohan Jowallah</div>
+    <div>Statistics: World Bank World Development Indicators, data from the UNESCO Institute for Statistics, CC BY 4.0. Retrieved <span id="retrieved"></span>.</div>
+    <div><a href="#methods">Methods &amp; provenance</a><br><a href="#collaborate">Report an error</a><br><a href="admin/">Editor sign-in</a></div>
+  </div>
+</footer>
+
+<script src="assets/js/app.js"></script>
+</body>
+</html>
