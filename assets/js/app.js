@@ -119,10 +119,12 @@ function applyLive(live) {
       if (Math.abs(s.value - l.value) > 1e-6) { o.value = l.value; o.live = 'changed'; o.snapshot_value = s.value; changed++; }
       else o.live = 'match';
     } else if (S.c[l.country]) {
+      const snapLatest = Math.max(-Infinity, ...S.snapshot.filter(o => o.country === l.country && o.indicator === l.indicator).map(o => o.ref_year));
+      const isNew = l.ref_year > snapLatest;
+      if (isNew) added++;
       merged.push({ id: `live-${k}`.toLowerCase().replace(/[|.]/g, '-'), ...l, source_id: 'worldbank-wdi', original_producer: 'UNESCO Institute for Statistics (UIS)',
         source_url: `${WB}/country/${l.country}/indicator/${l.indicator}?format=json&date=${l.ref_year}`, licence: 'CC BY 4.0', retrieved: new Date().toISOString().slice(0, 10),
-        verification: { source_check: 'live', scholarly_review: 'pending' }, flags: [], live: 'new', origin: 'live' });
-      added++;
+        verification: { source_check: 'live', scholarly_review: 'pending' }, flags: [], live: isNew ? 'new' : 'history', origin: 'live' });
     }
   }
   S.obs = merged;
