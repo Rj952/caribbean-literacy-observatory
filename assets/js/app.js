@@ -23,13 +23,6 @@ const STREAMS = [
   ['Literacy policy', 'How effectively do national policies respond to literacy challenges?'],
   ['Digital and AI literacy', 'How are emerging technologies transforming literacy practices?'],
   ['Lifelong literacy', 'How does literacy develop beyond formal schooling?']];
-const PLAN = [
-  ['Days 1–15', 'Founding statement and research agenda', 'Done'],
-  ['Days 16–30', 'Website prototype and literacy data source audit', 'Started'],
-  ['Days 31–45', 'Searchable literacy research repository', 'Structure built'],
-  ['Days 46–60', 'Jamaica literacy profile and verified statistical dashboard', 'Planned'],
-  ['Days 61–75', 'Initial Caribbean research mapping report', 'Planned'],
-  ['Days 76–90', 'Public website launch and first working paper', 'Planned']];
 
 /* ---------- status shapes (shape carries meaning, not only colour) ---------- */
 const SHAPE = {
@@ -245,7 +238,6 @@ function drawSky() {
 
 function renderAgenda() {
   $('#streams').innerHTML = STREAMS.map(([t, q], i) => `<article class="stream"><span class="n">${i + 1}</span><h3>${t}</h3><p>${q}</p></article>`).join('');
-  $('#timeline').innerHTML = PLAN.map(([d, t, s]) => `<li><span class="days">${d}</span><span>${t}</span><span class="state${s === 'Planned' ? '' : ' on'}">${s}</span></li>`).join('');
 }
 
 function refLines(code) {
@@ -363,7 +355,7 @@ function renderRepo() {
   const approved = S.research.records.filter(r => r.review && r.review.status === 'approved').length;
   $('#repoCount').textContent = `${hits.length} result${hits.length === 1 ? '' : 's'} · ${approved} approved research record${approved === 1 ? '' : 's'} so far`;
   const shown = hits.slice(0, 60);
-  $('#repoResults').innerHTML = (t === 'Research record' && !approved ? `<div class="empty">No research records have been approved yet. Entries are added through the review workflow; the first are scheduled for Days 31–45.</div>` : '') +
+  $('#repoResults').innerHTML = (t === 'Research record' && !approved ? `<div class="empty">No research records have been added yet. Entries appear here once they are checked against their sources.</div>` : '') +
     shown.map(it => `<article class="result"><div class="meta"><span class="pill">${esc(it.type)}</span>${it.year ? `<span class="pill">${esc(it.year)}</span>` : ''}${it.domain ? `<span class="pill">${esc(it.domain)}</span>` : ''}</div><h3>${safeUrl(it.url) ? `<a href="${safeUrl(it.url)}">${esc(it.title)}</a>` : esc(it.title)}</h3><p class="note">${esc(it.body)}</p></article>`).join('') +
     (hits.length > 60 ? `<p class="note">Showing 60 of ${hits.length}. Narrow the search to see more.</p>` : '');
 }
