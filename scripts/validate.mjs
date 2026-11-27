@@ -15,6 +15,7 @@ const obs = load('observations');
 const research = load('research').records;
 const policy = load('policy').records;
 const pubs = load('publications').records;
+const news = load('news');
 
 const iso = new Set(countries.map(c => c.iso3));
 const ind = new Map(indicators.map(i => [i.code, i]));
@@ -70,8 +71,20 @@ for (const r of policy) {
 }
 for (const p of pubs) if (!['planned', 'draft', 'published'].includes(p.status)) err(`publications/${p.id}: bad status`);
 for (const s of sources) if (!https(s.url)) err(`sources/${s.id}: url must be https`);
+// News: links only to https sources; no article text beyond a short summary in our own words.
+const nIds = new Set();
+for (const i of news.items || []) {
+  if (!i.id || nIds.has(i.id)) err(`news/${i.id}: missing or duplicate id`); nIds.add(i.id);
+  if (!https(i.url)) err(`news/${i.id}: url must be https`);
+  if (!i.title || !i.source) err(`news/${i.id}: title and source required`);
+  if ((i.summary || '').length > 400) err(`news/${i.id}: summary too long — keep summaries brief and in our own words`);
+  if (!['news', 'official', 'opinion', 'research', 'headline'].includes(i.type)) err(`news/${i.id}: bad type`);
+}
+if (!news.briefing || !Array.isArray(news.briefing.points)) err('news: briefing.points missing');
+const age = (Date.now() - new Date(news.meta.updated)) / 864e5;
+if (age > 2) warn(`news: briefing is ${age.toFixed(1)} days old`);
 
 warnings.forEach(w => console.log('warn ', w));
 errors.forEach(e => console.log('ERROR', e));
-console.log(`\n${obs.records.length} observations, ${sources.length} sources, ${research.length} research, ${policy.length} policy records — ${errors.length} error(s), ${warnings.length} warning(s).`);
+console.log(`\n${obs.records.length} observations, ${sources.length} sources, ${research.length} research, ${policy.length} policy records, ${(news.items||[]).length} news items — ${errors.length} error(s), ${warnings.length} warning(s).`);
 process.exit(errors.length ? 1 : 0);

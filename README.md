@@ -13,6 +13,7 @@ A research website for literacy across the Caribbean. Every statistic on it come
 | About | Founding statement, open data commitment, governance |
 | Research agenda | Seven streams, first 90 days, flagship project, long-term ecosystem |
 | Research director | Profile (draft, awaiting approval) |
+| Daily briefing | Caribbean literacy news, a short written briefing and a data watch, updated every day |
 | Dashboard | Youth, gender and adult literacy; data-landscape matrix; every record, copyable as CSV |
 | Country profiles | One page per member state with status, consistency checks and gaps |
 | Repository | Search across approved research records, statistics and sources |
@@ -34,7 +35,13 @@ The page checks the World Bank API when it opens and every 30 minutes. Values ar
 - **Changed or new at source** — shown with the live value and flagged *awaiting review*. The header badge counts them.
 - **Source unreachable** — the verified snapshot is shown and the badge says so.
 
-A daily GitHub Action (`refresh-data.yml`) also retrieves the series, preserves the raw responses and opens a pull request. Merging it, after review, updates the verified snapshot.
+A daily GitHub Action (`daily-update.yml`, 05:17 Jamaica time) re-retrieves the series, preserves the raw responses, gathers news headlines, validates everything, commits and redeploys, so the public site is always current. New or changed statistics go live at once with `scholarly_review: pending` and are flagged on the site until reviewed.
+
+## Daily briefing
+
+`data/news.json` holds the briefing: a few key points, a data watch (when each source last updated), and stories with links and short summaries in the Observatory's own words — never copied article text.
+- **Written briefing:** produced each morning by a Claude scheduled task that searches the news and commits the update.
+- **Automatic fallback:** `scripts/fetch-news.mjs` (run by the daily Action) adds headlines from the open GDELT news index and, if no written briefing exists for the day, publishes an automated digest labelled as such. The page warns readers if the briefing is ever more than two days old.
 
 When the site is hosted inside Claude, the browser cannot contact outside sites; there a scheduled task checks the source daily and writes the result into the page's own database, which the page reads live.
 

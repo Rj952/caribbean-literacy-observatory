@@ -1,0 +1,170 @@
+{
+ "meta": {
+  "edition": "2026-11-27",
+  "updated": "2026-11-27T14:20:00Z",
+  "method": "Searched public news and official sources for literacy and education news on the Caribbean. Summaries are written by the Observatory in its own words; headlines link to the original publisher.",
+  "disclaimer": "Inclusion is not endorsement. Figures quoted in news items are reported by those sources and have not been verified by the Observatory; they do not enter the statistics dashboard until audited.",
+  "schedule": "Updated daily",
+  "stale_after_days": 2
+ },
+ "briefing": {
+  "date": "2026-11-27",
+  "points": [
+   "Secondary literacy is in focus in Jamaica: a mid-November letter in the Jamaica Observer cites the Ministry's reading of the 2026 Primary Exit Profile, that about 8,700 students entered high school below proficiency in language arts.",
+   "Teacher capacity remains the main lever across the region \u2014 from reading-methods training in Jamaica to Barbados's structured literacy programme, which the Ministry links to reading gains in a sample of primary students.",
+   "Regional assessment is expanding: CXC has new literacy and numeracy standards, Guyana is adding Grade 2 and Grade 4 literacy assessments, and the OECS runs annual Grade 2 reading assessments.",
+   "Data watch: the World Bank's literacy series were last updated on 11 November 2026; the dashboard reflects that release."
+  ]
+ },
+ "data_watch": [
+  {
+   "label": "World Bank WDI literacy series",
+   "detail": "Last updated 11 November 2026 (API header). Checked by the Observatory on 27 November 2026.",
+   "url": "https://data.worldbank.org/indicator/SE.ADT.1524.LT.ZS"
+  },
+  {
+   "label": "UNESCO Institute for Statistics literacy data",
+   "detail": "2026 release; Our World in Data lists its copy as updated 12 May 2026 with the next update expected May 2027.",
+   "url": "https://ourworldindata.org/grapher/literacy-rate-by-country"
+  },
+  {
+   "label": "UN SDG Report 2026 \u2014 Goal 4",
+   "detail": "Reports 273 million children and young people out of school and low reading and mathematics proficiency worldwide.",
+   "url": "https://unstats.un.org/sdgs/report/2026/goal-04/"
+  }
+ ],
+ "items": [
+  {
+   "id": "n-2026-11-16-jo-letter",
+   "date": "2026-11-16",
+   "title": "There is a literacy crisis in high schools",
+   "source": "Jamaica Observer",
+   "url": "https://www.jamaicaobserver.com/2026/11/16/literacy-crisis-high-schools/",
+   "country": "JAM",
+   "topic": "Secondary literacy",
+   "type": "opinion",
+   "summary": "Letter to the editor arguing that high schools face a literacy crisis, citing the Ministry's conclusion from 2026 PEP results that roughly 8,700 incoming students were below proficient in language arts."
+  },
+  {
+   "id": "n-2026-11-04-unicef-jm",
+   "date": "2026-11-04",
+   "title": "Teachers at the Forefront of Digital Transformation",
+   "source": "UNICEF Jamaica",
+   "url": "https://www.unicef.org/jamaica/press-releases/teachers-forefront-digital-transformation",
+   "country": "JAM",
+   "topic": "Digital literacy",
+   "type": "official",
+   "summary": "Press release on teachers at Elletson Primary building confidence to use digital technology in everyday teaching."
+  },
+  {
+   "id": "n-2026-10-18-gleaner-history",
+   "date": "2026-10-18",
+   "title": "A brief history of literacy in Jamaica",
+   "source": "The Gleaner",
+   "url": "https://jamaica-gleaner.com/article/news/20261018/brief-history-literacy-jamaica",
+   "country": "JAM",
+   "topic": "Adult literacy",
+   "type": "news",
+   "summary": "Feature tracing Jamaica's literacy efforts from early free schools through adult literacy work in the 1960s to the JAMAL programme of the 1970s."
+  },
+  {
+   "id": "n-2026-10-17-gleaner-wwkids",
+   "date": "2026-10-17",
+   "title": "WWKIDS Conference trains teachers in proven reading methods",
+   "source": "The Gleaner",
+   "url": "https://jamaica-gleaner.com/article/news/20261017/wwkids-conference-trains-teachers-proven-reading-methods",
+   "country": "JAM",
+   "topic": "Literacy pedagogy",
+   "type": "news",
+   "summary": "Report on a conference training Jamaican teachers in reading instruction methods."
+  },
+  {
+   "id": "n-2026-08-24-gleaner-grade7",
+   "date": "2026-08-24",
+   "title": "Reading renaissance \u2014 results continue to give implementers of grade-seven literacy initiative reason to smile",
+   "source": "The Gleaner",
+   "url": "https://jamaica-gleaner.com/index%2ephp/article/news/20260824/reading-renaissance-results-continue-give-implementers-grade-seven-literacy",
+   "country": "JAM",
+   "topic": "Secondary literacy",
+   "type": "news",
+   "summary": "Report on continued positive results from a grade-seven literacy initiative in Jamaica."
+  },
+  {
+   "id": "n-2026-07-22-bt-exam",
+   "date": "2026-07-22",
+   "title": "Stronger literacy push after exam decline",
+   "source": "Barbados Today",
+   "url": "https://barbadostoday.bb/2026/07/22/stronger-literacy-push-after-exam-decline/",
+   "country": "BRB",
+   "topic": "Secondary literacy",
+   "type": "news",
+   "summary": "Barbados steps up literacy support for students following a decline in examination results."
+  },
+  {
+   "id": "n-2026-07-bvi-oecs",
+   "date": "2026-07",
+   "title": "British Virgin Islands tops OECS in Grade 2 reading and mathematics assessments",
+   "source": "Government of the Virgin Islands",
+   "url": "https://gov.vg/news/british-virgin-islands-tops-oecs-grade-2-reading-and-mathematics-assessments",
+   "country": "REGIONAL",
+   "topic": "Foundational literacy",
+   "type": "official",
+   "summary": "Government release on the annual OECS Grade 2 reading and mathematics assessments, in which the Virgin Islands ranked first among eight participating states. The assessments are a possible public source for the Observatory's foundational-literacy audit."
+  },
+  {
+   "id": "n-2026-06-22-jo-pep",
+   "date": "2026-06-22",
+   "title": "79 per cent of PEP students master literacy, 75 per cent numeracy",
+   "source": "Jamaica Observer",
+   "url": "https://www.jamaicaobserver.com/2026/06/22/79-per-cent-pep-students-master-literacy-75-per-cent-numeracy/",
+   "country": "JAM",
+   "topic": "National assessment",
+   "type": "news",
+   "summary": "Report that 79% of students leaving primary school in June 2026 demonstrated literacy mastery and 75% numeracy mastery. National assessment results like these are queued for the Observatory's audit."
+  },
+  {
+   "id": "n-2026-04-03-bt-reading",
+   "date": "2026-04-03",
+   "title": "Reading levels improve by over 40 per cent in two years",
+   "source": "Barbados Today",
+   "url": "https://barbadostoday.bb/2026/04/03/reading-levels-improved-by-over-40-per-cent-in-two-years/",
+   "country": "BRB",
+   "topic": "Literacy pedagogy",
+   "type": "news",
+   "summary": "Barbados's Chief Education Officer reports reading gains among a sample of primary students under the National Literacy Programme, supported by structured-literacy training for over 587 teachers and a daily 35-minute reading period."
+  },
+  {
+   "id": "n-2026-01-10-jo-cxc",
+   "date": "2026-01-10",
+   "title": "CXC develops new literacy and numeracy standards aimed at improving performance in key subjects",
+   "source": "Jamaica Observer",
+   "url": "https://www.jamaicaobserver.com/2026/01/10/cxc-develops-new-literacy-numeracy-standards-aimed-improving-performance-key-subjects/",
+   "country": "REGIONAL",
+   "topic": "Assessment",
+   "type": "news",
+   "summary": "The Caribbean Examinations Council has developed new literacy and numeracy standards to lift outcomes in English and mathematics across the region."
+  },
+  {
+   "id": "n-guyana-assessments",
+   "date": "",
+   "title": "Guyana Moves to Boost Literacy With New School Assessments",
+   "source": "Caribbean Today",
+   "url": "https://caribbeantoday.com/sections/education/guyana-moves-to-boost-literacy-with-new-school-assessments",
+   "country": "GUY",
+   "topic": "Assessment",
+   "type": "news",
+   "summary": "Guyana plans literacy assessments at Grade Two and Grade Four amid regional concern about reading outcomes. Publication date not shown on the page retrieved."
+  },
+  {
+   "id": "n-uwi-mori-coy",
+   "date": "",
+   "title": "LITERACY: AI-Powered Reading Support for Classrooms",
+   "source": "UWI Mona \u2014 MORI research spotlight",
+   "url": "https://www.mona.uwi.edu/mori/research-spotlight/literacy-ai-powered-reading-support-classrooms",
+   "country": "JAM",
+   "topic": "Digital and AI literacy",
+   "type": "research",
+   "summary": "Research spotlight on an AI-driven tutoring system designed to support reading in large, under-resourced classrooms. Date not shown on the page retrieved."
+  }
+ ]
+}

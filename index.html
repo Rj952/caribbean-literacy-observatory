@@ -24,6 +24,7 @@
   <nav id="nav" aria-label="Main">
     <a href="#about">About</a>
     <a href="#agenda">Research agenda</a>
+    <a href="#news">Daily briefing</a>
     <a href="#dashboard">Dashboard</a>
     <a href="#profiles">Country profiles</a>
     <a href="#repository">Repository</a>
@@ -68,6 +69,12 @@
 
   <div class="band finding-band">
     <div class="wrap counts" id="statusCounts"></div>
+  </div>
+
+  <div class="band wrap brief-teaser">
+    <div class="bt-head"><h2>Today's literacy briefing</h2><p class="note" id="teaserDate"></p></div>
+    <ul class="bt-list" id="teaserList"></ul>
+    <a class="btn" href="#news">Read the full briefing</a>
   </div>
 
   <div class="band wrap">
@@ -285,6 +292,32 @@
       <li>Keep a transparent data catalogue, version history and correction log.</li>
     </ol>
     <p class="note">Artificial intelligence may help retrieve, organise, validate, analyse and visualise data. It is never the source of a statistic. The Observatory's credibility comes before the volume of data or the sophistication of its technology.</p>
+  </div>
+</section>
+
+<!-- NEWS -->
+<section data-view="news" hidden>
+  <div class="band page-head"><div class="wrap"><p class="kicker">Daily briefing · updated every day</p><h1 id="newsTitle">Caribbean literacy briefing</h1><p class="sub" id="newsSub"></p></div></div>
+  <div class="band wrap">
+    <p class="callout" id="newsStale" hidden></p>
+    <div class="two">
+      <div>
+        <h2>In brief</h2>
+        <ol class="brief-points" id="briefPoints"></ol>
+      </div>
+      <div>
+        <h2>Data watch</h2>
+        <ul class="watch" id="dataWatch"></ul>
+      </div>
+    </div>
+    <h2 class="mt">Stories and releases</h2>
+    <div class="toolbar">
+      <label>Country <select id="nCountry"><option value="">All</option></select></label>
+      <label>Topic <select id="nTopic"><option value="">All</option></select></label>
+      <label>Type <select id="nType"><option value="">All</option><option value="news">News</option><option value="official">Official release</option><option value="opinion">Opinion</option><option value="research">Research</option><option value="headline">Automated headline</option></select></label>
+    </div>
+    <div id="newsList" class="results"></div>
+    <p class="note" id="newsMethod"></p>
   </div>
 </section>
 

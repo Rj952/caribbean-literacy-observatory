@@ -1,0 +1,43 @@
+name: Daily update (data + briefing)
+# Every morning: re-check the World Bank literacy series, gather news headlines,
+# validate everything, commit, and redeploy — so the public site is always current.
+# New or changed statistics are published with scholarly_review: "pending" and flagged on the site.
+on:
+  schedule: [{ cron: '17 10 * * *' }]   # 05:17 Jamaica time
+  workflow_dispatch:
+permissions: { contents: write, pages: write, id-token: write }
+concurrency: { group: pages, cancel-in-progress: false }
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 20 }
+      - name: Refresh statistics from the World Bank API
+        run: node scripts/fetch-worldbank.mjs
+        continue-on-error: true
+      - name: Gather today's headlines
+        run: node scripts/fetch-news.mjs
+        continue-on-error: true
+      - name: Enforce the public data governance directive
+        run: node scripts/validate.mjs
+      - name: Commit if anything changed
+        run: |
+          git config user.name "CLO daily update"
+          git config user.email "actions@users.noreply.github.com"
+          git add data
+          git diff --cached --quiet || git commit -m "Daily update $(date -u +%F): data and briefing"
+          git push
+  deploy:
+    needs: update
+    runs-on: ubuntu-latest
+    environment: { name: github-pages, url: '${{ steps.deployment.outputs.page_url }}' }
+    steps:
+      - uses: actions/checkout@v4
+        with: { ref: main }
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with: { path: . }
+      - id: deployment
+        uses: actions/deploy-pages@v4

@@ -54,7 +54,7 @@ obsFile.meta = { ...obsFile.meta, retrieved: today, source_last_updated: lastUpd
 obsFile.records = records.sort((a, b) => a.country.localeCompare(b.country) || a.indicator.localeCompare(b.indicator) || a.ref_year - b.ref_year);
 write('data/observations.json', obsFile);
 if (changed || added || removed) {
-  log.records.push({ date: today, type: 'refresh', summary: `World Bank refresh: ${added} new, ${changed} changed, ${removed} no longer published. Changed and new values await scholarly review.`, records: added + changed + removed });
+  log.records.push({ date: today, type: 'refresh', summary: `World Bank refresh: ${added} new, ${changed} changed, ${removed} no longer published. Published at once and flagged; scholarly review pending.`, records: added + changed + removed });
   write('data/changelog.json', log);
 }
 console.log(`Retrieved ${records.length} values (source updated ${lastUpdated}). New ${added}, changed ${changed}, removed ${removed}.`);

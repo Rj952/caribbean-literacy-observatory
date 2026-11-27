@@ -47,7 +47,7 @@ const pill = st => `<span class="pill">${icon(st)}${LABEL[st]}</span>`;
 async function getJSON(p) { const r = await fetch(p, { cache: 'no-cache' }); if (!r.ok) throw new Error(p + ' ' + r.status); return r.json(); }
 
 async function load() {
-  const names = ['countries', 'indicators', 'observations', 'sources', 'research', 'policy', 'publications', 'changelog', 'governance'];
+  const names = ['countries', 'indicators', 'observations', 'sources', 'research', 'policy', 'publications', 'changelog', 'governance', 'news'];
   const got = await Promise.all(names.map(n => getJSON(`data/${n}.json`)));
   names.forEach((n, i) => S[n] = got[i]);
   S.gov = S.governance;
@@ -139,6 +139,12 @@ async function liveViaClaude() {
   let db = null; try { db = await window.claude.use('db'); } catch (e) { return; }
   if (!db) return;
   try {
+    db.doc('live/news').onSnapshot(snap => {
+      const v = snap && typeof snap.data === 'function' ? snap.data() : snap;
+      if (!v || !v.meta || !Array.isArray(v.items) || !v.briefing) return;
+      if (S.news && String(v.meta.updated) <= String(S.news.meta.updated)) return;
+      S.news = v; renderNews();
+    }, () => {});
     db.doc('live/worldbank').onSnapshot(snap => {
       const v = snap && typeof snap.data === 'function' ? snap.data() : snap;
       if (!v || !Array.isArray(v.records)) return;
@@ -163,7 +169,7 @@ function renderLiveBadge() {
 }
 
 /* ---------- views ---------- */
-const VIEWS = ['home', 'about', 'agenda', 'director', 'dashboard', 'profiles', 'repository', 'publications', 'policy', 'methods', 'collaborate', 'accessibility'];
+const VIEWS = ['home', 'about', 'agenda', 'director', 'dashboard', 'profiles', 'repository', 'publications', 'policy', 'methods', 'collaborate', 'accessibility', 'news'];
 function route() {
   let h = location.hash.slice(1) || 'home', view = h;
   if (h.startsWith('country-')) { view = 'country'; renderCountry(h.slice(8).toUpperCase()); }
@@ -342,7 +348,36 @@ function renderMethods() {
   $('#retrieved').textContent = S.observations.meta.retrieved;
 }
 
-function renderAll() { renderLiveBadge(); renderHome(); renderDashboard(); renderProfiles(); renderRepo(); renderMethods(); if (location.hash.startsWith('#country-')) renderCountry(location.hash.slice(9).toUpperCase()); }
+function renderAll() { renderLiveBadge(); renderHome(); renderNews(); renderDashboard(); renderProfiles(); renderRepo(); renderMethods(); if (location.hash.startsWith('#country-')) renderCountry(location.hash.slice(9).toUpperCase()); }
+
+/* ---------- daily briefing ---------- */
+const TYPE_LABEL = { news: 'News', official: 'Official release', opinion: 'Opinion', research: 'Research', headline: 'Automated headline' };
+const fmtDate = d => { if (!d) return 'Date not shown'; const p = String(d).split('-'); const dt = new Date(Date.UTC(+p[0], (+p[1] || 1) - 1, +p[2] || 1)); return dt.toLocaleDateString('en-GB', { timeZone: 'UTC', day: p[2] ? 'numeric' : undefined, month: 'long', year: 'numeric' }); };
+const daysOld = iso => Math.floor((Date.now() - new Date(iso)) / 86400000);
+function renderNews() {
+  const N = S.news; if (!N) return;
+  const ed = N.meta.edition, age = daysOld(N.meta.updated);
+  $('#newsTitle').textContent = `Caribbean literacy briefing — ${fmtDate(ed)}`;
+  $('#newsSub').textContent = `${N.meta.schedule}. Last updated ${new Date(N.meta.updated).toLocaleString([], { dateStyle: 'medium', timeStyle: 'short' })}.`;
+  const st = $('#newsStale');
+  if (age >= (N.meta.stale_after_days || 2)) { st.hidden = false; st.textContent = `This briefing is ${age} days old. The daily update has not run since; the stories below may not include the latest news.`; } else st.hidden = true;
+  $('#briefPoints').innerHTML = (N.briefing.points || []).map(p => `<li>${esc(p)}</li>`).join('');
+  $('#dataWatch').innerHTML = (N.data_watch || []).map(w => `<li><b>${safeUrl(w.url) ? `<a href="${safeUrl(w.url)}">${esc(w.label)}</a>` : esc(w.label)}</b><br>${esc(w.detail)}</li>`).join('');
+  const items = (N.items || []).slice().sort((a, b) => String(b.date || '0').localeCompare(String(a.date || '0')));
+  const cSel = $('#nCountry'), tSel = $('#nTopic');
+  if (cSel.options.length < 2) {
+    const cs = [...new Set(items.map(i => i.country).filter(Boolean))];
+    cSel.innerHTML += cs.map(c => `<option value="${esc(c)}">${esc(S.c[c]?.name || (c === 'REGIONAL' ? 'Regional' : c))}</option>`).join('');
+    tSel.innerHTML += [...new Set(items.map(i => i.topic).filter(Boolean))].sort().map(t => `<option>${esc(t)}</option>`).join('');
+    ['#nCountry', '#nTopic', '#nType'].forEach(id => $(id).addEventListener('input', renderNews));
+  }
+  const fc = cSel.value, ft = tSel.value, fy = $('#nType').value;
+  const shown = items.filter(i => (!fc || i.country === fc) && (!ft || i.topic === ft) && (!fy || i.type === fy));
+  $('#newsList').innerHTML = shown.length ? shown.map(i => `<article class="result news-item"><div class="meta"><span class="pill"><time datetime="${esc(i.date)}">${esc(fmtDate(i.date))}</time></span><span class="pill type-${esc(i.type)}">${esc(TYPE_LABEL[i.type] || i.type)}</span>${i.topic ? `<span class="pill">${esc(i.topic)}</span>` : ''}${i.country ? `<span class="pill">${esc(S.c[i.country]?.name || (i.country === 'REGIONAL' ? 'Regional' : i.country))}</span>` : ''}</div><h3>${safeUrl(i.url) ? `<a href="${safeUrl(i.url)}">${esc(i.title)}</a>` : esc(i.title)}</h3><p class="note"><b>${esc(i.source)}.</b> ${esc(i.summary || '')}</p></article>`).join('') : '<div class="empty">No stories match these filters.</div>';
+  $('#newsMethod').textContent = `${N.meta.method} ${N.meta.disclaimer}`;
+  $('#teaserDate').textContent = `${fmtDate(ed)}${age >= (N.meta.stale_after_days || 2) ? ` · ${age} days old` : ''}`;
+  $('#teaserList').innerHTML = items.slice(0, 3).map(i => `<li>${safeUrl(i.url) ? `<a href="${safeUrl(i.url)}">${esc(i.title)}</a>` : esc(i.title)}<span class="src">${esc(i.source)} · ${esc(fmtDate(i.date))}</span></li>`).join('');
+}
 
 /* ---------- reading options ---------- */
 const OPTS = [
