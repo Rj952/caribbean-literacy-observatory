@@ -1,6 +1,6 @@
 {
  "meta": {
-  "note": "Policy and curriculum archive. Each entry links to a publicly accessible copy; documents are not re-hosted."
+  "note": "Policy, curriculum and standards archive for regional bodies (CARICOM, OECS, CXC) and member-state governments. Each entry links to a publicly accessible copy; documents are not re-hosted."
  },
  "records": [
   {
@@ -50,7 +50,7 @@
   },
   {
    "id": "jm-nsc-english-7-9-2018",
-   "title": "National Standards Curriculum Guide, Grades 7\u20139: English Language/Literature",
+   "title": "National Standards Curriculum Guide, Grades 7–9: English Language/Literature",
    "country": "JAM",
    "year": 2018,
    "type": "Curriculum framework",
@@ -65,7 +65,7 @@
   },
   {
    "id": "jm-nesp-2011-2020",
-   "title": "National Education Strategic Plan 2011\u20132020",
+   "title": "National Education Strategic Plan 2011–2020",
    "country": "JAM",
    "year": 2012,
    "type": "Strategy or plan",
@@ -95,7 +95,7 @@
   },
   {
    "id": "tt-education-policy-2023-2027",
-   "title": "Education Policy 2023\u20132027",
+   "title": "Education Policy 2023–2027",
    "country": "TTO",
    "year": 2023,
    "type": "Strategy or plan",
@@ -110,7 +110,7 @@
   },
   {
    "id": "tt-primary-ela-2013",
-   "title": "Primary School Curriculum: English Language Arts, Infants 1 \u2013 Standard 5",
+   "title": "Primary School Curriculum: English Language Arts, Infants 1 – Standard 5",
    "country": "TTO",
    "year": 2013,
    "type": "Curriculum framework",
@@ -125,7 +125,7 @@
   },
   {
    "id": "tt-secondary-ela-2008",
-   "title": "Secondary School Curriculum, Forms 1\u20133: English Language Arts",
+   "title": "Secondary School Curriculum, Forms 1–3: English Language Arts",
    "country": "TTO",
    "year": 2008,
    "type": "Curriculum framework",
@@ -136,6 +136,381 @@
     "status": "approved",
     "checked_on": "2026-11-27",
     "note": "Checked against the publicly accessible source"
+   }
+  },
+  {
+   "id": "caricom-hrd-2030-strategy",
+   "title": "CARICOM Human Resource Development 2030 Strategy: Unlocking Caribbean Human Potential",
+   "country": "REGIONAL",
+   "year": 2017,
+   "type": "Regional strategy",
+   "url": "https://caricom.org/wp-content/uploads/HRD-STRATEGY-CARICOM-FEB.pdf",
+   "publisher": "Caribbean Community (CARICOM) Secretariat",
+   "summary": "The region's education roadmap, approved by education ministers in March 2017 and endorsed by Heads of Government in July 2017. Sets the shared direction for early childhood to tertiary education, including foundational and 21st-century literacies.",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "note": "Link opened and title confirmed against the publicly accessible copy"
+   }
+  },
+  {
+   "id": "oecs-education-sector-strategy-2012-2026",
+   "title": "OECS Education Sector Strategy 2012–2026",
+   "country": "REGIONAL",
+   "year": 2016,
+   "type": "Regional strategy",
+   "url": "https://oecs.int/en/our-work/knowledge/library/education/oecs-education-strategy",
+   "publisher": "Organisation of Eastern Caribbean States (OECS) Commission",
+   "summary": "The overarching education strategy for OECS member states, which they use to align their national plans. Extended edition of the 2012–2021 strategy.",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "note": "Link opened and title confirmed against the publicly accessible copy"
+   }
+  },
+  {
+   "id": "oecs-harmonised-language-arts",
+   "title": "OECS Curriculum Harmonisation: Primary School Language Arts (Grades K–2, 3–4 and 5–6)",
+   "country": "REGIONAL",
+   "year": null,
+   "type": "Learning standards",
+   "url": "https://www.oecs.int/en/our-work/knowledge/library/education/oecs-curriculum-camdu/language-arts",
+   "publisher": "OECS Education Reform Unit",
+   "summary": "Shared content standards, attainment targets and learning outcomes for primary language arts across the Eastern Caribbean, in three grade bands. Developed from a sub-regional workshop held in Antigua in 1998.",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "note": "Link opened and title confirmed against the publicly accessible copy"
+   }
+  },
+  {
+   "id": "oecs-early-learners-programme",
+   "title": "OECS/USAID Early Learners Programme",
+   "country": "REGIONAL",
+   "year": 2015,
+   "type": "Literacy programme",
+   "url": "https://oecs.int/en/elp-about",
+   "publisher": "OECS Commission with USAID",
+   "summary": "A reading programme for Kindergarten to Grade 3 in six OECS member states. Its components include language policy, a reading curriculum framework, teacher training, student assessment and school reading improvement plans.",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "note": "Link opened and title confirmed against the publicly accessible copy"
+   }
+  },
+  {
+   "id": "cxc-csec-english-syllabus-2025",
+   "title": "CSEC English Syllabus (English A and English B), revised 2025",
+   "country": "REGIONAL",
+   "year": 2025,
+   "type": "Examination standard",
+   "url": "https://www.cxc.org/wp-content/uploads/2018/11/CSEC-English-Syllabus-Revised-2025.pdf",
+   "publisher": "Caribbean Examinations Council (CXC)",
+   "summary": "The regional secondary standard for English, organised under understanding, analysing, evaluating and creating. Effective for examinations from May–June 2027.",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "note": "Link opened and title confirmed against the publicly accessible copy"
+   }
+  },
+  {
+   "id": "cxc-cpea-standards-2026",
+   "title": "Caribbean Primary Exit Assessment (CPEA): Standards and Performance Criteria, revised 2026",
+   "country": "REGIONAL",
+   "year": 2026,
+   "type": "Examination standard",
+   "url": "https://www.cxc.org/wp-content/uploads/2018/11/CPEA-Standards-and-Performance-Criteria-Revised-2026.pdf",
+   "publisher": "Caribbean Examinations Council (CXC)",
+   "summary": "End-of-primary standards, including Language Arts. The CPEA assesses the literacies pupils need when they leave primary school and is used by several member states.",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "note": "Link opened and title confirmed against the publicly accessible copy"
+   }
+  },
+  {
+   "id": "cxc-ccslc-english-2012",
+   "title": "Caribbean Certificate of Secondary Level Competence (CCSLC): English Syllabus",
+   "country": "REGIONAL",
+   "year": 2012,
+   "type": "Examination standard",
+   "url": "https://www.cxc.org/SiteAssets/CCSLC/SYLLABUSES/CCSLCENGLISHSYLLABUSJune%202012.pdf",
+   "publisher": "Caribbean Examinations Council (CXC)",
+   "summary": "A competency-based English syllabus for lower secondary students, offering a regional benchmark below CSEC.",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "note": "Link opened and title confirmed against the publicly accessible copy"
+   }
+  },
+  {
+   "id": "atg-draft-education-sector-plan-2013-2018",
+   "title": "Draft Education Sector Plan 2013–2018 (Second Basic Education Project, Phase I)",
+   "country": "ATG",
+   "year": 2012,
+   "type": "Strategy or plan",
+   "url": "https://planipolis.iiep.unesco.org/en/2012/second-basic-education-project-phase-i-preparation-studies-draft-education-sector-plan-2013",
+   "publisher": "Prepared for the Government of Antigua and Barbuda (Ministry of Education)",
+   "summary": "A draft sector plan prepared for Caribbean Development Bank financing. Link is to UNESCO's planning library record; the full text is held in UNESCO's web archive.",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "note": "Link opened and title confirmed against the publicly accessible copy"
+   }
+  },
+  {
+   "id": "bhs-10-year-education-plan-2009",
+   "title": "10 Year Education Plan",
+   "country": "BHS",
+   "year": 2009,
+   "type": "Strategy or plan",
+   "url": "https://planipolis.iiep.unesco.org/sites/default/files/ressources/bahamas_aug_2009_20_year_education_plan.pdf",
+   "publisher": "Ministry of Education, The Bahamas",
+   "summary": "National plan updated in August 2009. Literacy appears as a goal under curriculum and instruction.",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "note": "Link opened and title confirmed against the publicly accessible copy"
+   }
+  },
+  {
+   "id": "brb-national-policy-on-reading",
+   "title": "National Policy on Reading",
+   "country": "BRB",
+   "year": null,
+   "type": "Literacy policy",
+   "url": "https://uwispace.sta.uwi.edu/items/7c9eb945-983b-485a-b7fb-234b119e9355",
+   "publisher": "Ministry of Education, Youth Affairs and Sports, Barbados",
+   "summary": "Barbados's national reading policy. Copy held in the UWI library repository; the publication date is not shown on the record.",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "note": "Link opened and title confirmed against the publicly accessible copy"
+   }
+  },
+  {
+   "id": "brb-primary-language-arts-class-4",
+   "title": "Primary Language Arts Syllabus, Class Four",
+   "country": "BRB",
+   "year": null,
+   "type": "Curriculum framework",
+   "url": "https://mrd.gov.bb/attachments/Class%204%20Language%20Arts%20Syllabus.pdf",
+   "publisher": "Ministry of Education and Human Resource Development, Barbados",
+   "summary": "National primary language arts syllabus with a strong focus on oral language and literacy development. Syllabuses for other classes are published on the same government site.",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "note": "Link opened and title confirmed against the publicly accessible copy"
+   }
+  },
+  {
+   "id": "blz-language-arts-standards-2007",
+   "title": "National Standards and Curriculum Web for Language Arts, Lower Division",
+   "country": "BLZ",
+   "year": 2007,
+   "type": "Learning standards",
+   "url": "https://uwispace.sta.uwi.edu/bitstreams/38b0daa0-14f4-4ff9-a1d7-b664b110bcd6/download",
+   "publisher": "Ministry of Education, Belize",
+   "summary": "Language arts content standards and learning outcomes for Infant 1 to Standard 2, with Belize's language policy. Copy held in the UWI library repository.",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "note": "Link opened and title confirmed against the publicly accessible copy"
+   }
+  },
+  {
+   "id": "blz-education-sector-plan-2021-2025",
+   "title": "Belize Education Sector Plan 2021–2025: Making Education Work for Belize",
+   "country": "BLZ",
+   "year": 2021,
+   "type": "Strategy or plan",
+   "url": "https://planipolis.iiep.unesco.org/sites/default/files/ressources/belize-education-sector-plan-2021-2025_moecst.pdf",
+   "publisher": "Ministry of Education, Culture, Science and Technology, Belize",
+   "summary": "National sector plan built on access, equity and quality, referring to SDG target 4.6 on youth and adult literacy. A successor plan for 2026–2030 has been announced.",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "note": "Link opened and title confirmed against the publicly accessible copy"
+   }
+  },
+  {
+   "id": "dma-partnership-compact-2024",
+   "title": "Dominica Partnership Compact",
+   "country": "DMA",
+   "year": 2024,
+   "type": "Strategy or plan",
+   "url": "https://globalpartnership.org/content/dominica-partnership-compact-2024",
+   "publisher": "Government of Dominica with the Global Partnership for Education",
+   "summary": "Sets Dominica's priority reform: a comprehensive, inclusive and equitable curriculum serving all learners, in general and special education.",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "note": "Link opened and title confirmed against the publicly accessible copy"
+   }
+  },
+  {
+   "id": "grd-education-sector-plan-2023-2030",
+   "title": "Education Sector Plan 2023–2030: Grenada, Carriacou and Petite Martinique",
+   "country": "GRD",
+   "year": 2023,
+   "type": "Strategy or plan",
+   "url": "https://planipolis.iiep.unesco.org/sites/default/files/ressources/Grenadas-Education-Sector-Plan-2023-2030-2-1-1.pdf",
+   "publisher": "Ministry of Education, Grenada",
+   "summary": "Identifies weak literacy and numeracy in primary and lower secondary school as a system-wide challenge, with boys more affected than girls.",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "note": "Link opened and title confirmed against the publicly accessible copy"
+   }
+  },
+  {
+   "id": "guy-education-strategic-plan-2021-2025",
+   "title": "Education Strategic Plan 2021–2025: Vision 2030",
+   "country": "GUY",
+   "year": 2021,
+   "type": "Strategy or plan",
+   "url": "https://planipolis.iiep.unesco.org/sites/default/files/ressources/guyana_moe_education_sector_plan_2021_-_2025.pdf",
+   "publisher": "Ministry of Education, Guyana",
+   "summary": "National sector plan. Notes higher illiteracy in hinterland areas and sets the direction for eliminating illiteracy.",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "note": "Link opened and title confirmed against the publicly accessible copy"
+   }
+  },
+  {
+   "id": "guy-national-literacy-department",
+   "title": "National Literacy Programmes (National Literacy Department)",
+   "country": "GUY",
+   "year": 2025,
+   "type": "Literacy programme",
+   "url": "https://nld.gov.gy/",
+   "publisher": "Ministry of Education, Guyana",
+   "summary": "The ministry's literacy site, with resources for nursery, primary and secondary levels, teacher training and reading assessments. The programmes were launched in August 2025.",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "note": "Link opened and title confirmed against the publicly accessible copy"
+   }
+  },
+  {
+   "id": "hti-pdef-2020-2030",
+   "title": "Plan décennal d'éducation et de formation (PDEF) 2020–2030",
+   "country": "HTI",
+   "year": 2020,
+   "type": "Strategy or plan",
+   "url": "https://planipolis.iiep.unesco.org/sites/default/files/ressources/haiti_menfp_plan_decennal_education_decembre2020.pdf",
+   "publisher": "Ministère de l'Éducation Nationale et de la Formation Professionnelle (MENFP), Haiti",
+   "summary": "Haiti's ten-year education plan (in French). Notes that reading is mostly taught in French although guidance recommends Kreyòl, and that the Kreyòl–French bilingual policy is only partly implemented.",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "note": "Link opened and title confirmed against the publicly accessible copy"
+   }
+  },
+  {
+   "id": "jam-national-comprehensive-literacy-programme",
+   "title": "National Comprehensive Literacy Programme",
+   "country": "JAM",
+   "year": 2011,
+   "type": "Literacy programme",
+   "url": "https://jis.gov.jm/education-ministry-develops-comprehensive-literacy-programme-2/",
+   "publisher": "Ministry of Education, Jamaica (reported by the Jamaica Information Service)",
+   "summary": "Jamaica's primary literacy programme, built on twelve pillars including age-defined reading competencies, literacy standards and benchmarks, and standardised national assessment.",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "note": "Link opened and title confirmed against the publicly accessible copy"
+   }
+  },
+  {
+   "id": "msr-education-development-plan-2012-2020",
+   "title": "Education Development Plan 2011-12 to 2019-20",
+   "country": "MSR",
+   "year": 2012,
+   "type": "Strategy or plan",
+   "url": "https://www.gov.ms/wp-content/uploads/2022/10/EDUCATION-DEVELOPMENT-PLAN-2011-12-TO-2019-20_001.pdf",
+   "publisher": "Ministry of Education, Montserrat",
+   "summary": "Ten-year plan that assesses learning outcomes, including weak English results, and sets strategic objectives to 2020.",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "note": "Link opened and title confirmed against the publicly accessible copy"
+   }
+  },
+  {
+   "id": "kna-education-sector-plan-2017-2021",
+   "title": "2017–2021 Education Sector Plan: Education for All: Embracing Change, Securing the Future",
+   "country": "KNA",
+   "year": 2017,
+   "type": "Strategy or plan",
+   "url": "https://planipolis.iiep.unesco.org/sites/default/files/ressources/st_kitts_education_sector_plan_2017-2021_0.pdf",
+   "publisher": "Ministry of Education, St Kitts and Nevis",
+   "summary": "Reports literacy outcomes at primary and secondary levels and builds on the White Paper on Education Development and Policy 2009–2019.",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "note": "Link opened and title confirmed against the publicly accessible copy"
+   }
+  },
+  {
+   "id": "lca-esdp-2009-2014",
+   "title": "Education Sector Development Plan 2009–2014 and Beyond",
+   "country": "LCA",
+   "year": 2009,
+   "type": "Strategy or plan",
+   "url": "https://planipolis.iiep.unesco.org/sites/default/files/ressources/saint_lucia_education_sector_development_plan_2009-2014.pdf",
+   "publisher": "Ministry of Education and Culture, Saint Lucia",
+   "summary": "Commits to surveying the national level of illiteracy and running programmes to reduce it.",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "note": "Link opened and title confirmed against the publicly accessible copy"
+   }
+  },
+  {
+   "id": "vct-esdp-2014-2019",
+   "title": "Education Sector Development Plan 2014–2019",
+   "country": "VCT",
+   "year": 2014,
+   "type": "Strategy or plan",
+   "url": "https://planipolis.iiep.unesco.org/sites/default/files/ressources/saint_vincent_and_the_grenadines_esdp2014-2019.pdf",
+   "publisher": "Ministry of Education, St Vincent and the Grenadines",
+   "summary": "National plan that localises the OECS Education Sector Strategy and draws on earlier national literacy assessments.",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "note": "Link opened and title confirmed against the publicly accessible copy"
+   }
+  },
+  {
+   "id": "sur-national-education-policy-2024-2031",
+   "title": "National Education Policy Suriname 2024–2031: Towards a Future of Opportunities",
+   "country": "SUR",
+   "year": 2024,
+   "type": "Strategy or plan",
+   "url": "https://gov.sr/wp-content/uploads/2025/03/National-Education-Policy-Suriname-2024-2031-ENGLISH_FINAL-1.pdf",
+   "publisher": "Ministry of Education, Science and Culture (MinOWC), Suriname",
+   "summary": "Suriname's national education policy (English edition; a Dutch edition is also published), developed with UNICEF support.",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "note": "Link opened and title confirmed against the publicly accessible copy"
+   }
+  },
+  {
+   "id": "tto-education-policy-paper-2017-2022",
+   "title": "Education Policy Paper (White Paper) 2017–2022",
+   "country": "TTO",
+   "year": 2017,
+   "type": "Strategy or plan",
+   "url": "https://storage.moe.gov.tt/wpdevelopment/2023/05/Education-Policy-Paper-2017-2022.pdf",
+   "publisher": "Ministry of Education, Trinidad and Tobago",
+   "summary": "Sets appropriate levels of literacy, numeracy and technological literacy as one of eight student learning outcomes.",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "note": "Link opened and title confirmed against the publicly accessible copy"
    }
   }
  ]

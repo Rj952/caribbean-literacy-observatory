@@ -574,3 +574,9 @@ select,input,textarea{border-color:var(--field);background:var(--bg)}
 .related h3{font-size:1.188rem}
 .related p{margin:0;font-size:0.9375rem}
 :root[data-contrast=high] .related article{border-color:var(--ink);box-shadow:none}
+
+/* policy archive */
+.pol-h{margin-top:28px;padding-bottom:6px;border-bottom:4px solid var(--sun)}
+.pol-c{margin:22px 0 10px;font-size:1.375rem}
+#polQ{min-width:min(100%,260px)}
+.pol-list{padding-left:1.2em}.pol-list li{margin-bottom:.5em}

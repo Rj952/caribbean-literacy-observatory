@@ -337,9 +337,12 @@ function renderCountry(iso) {
   const hist = S.obs.filter(o => o.country === iso && o.indicator === IND.YT).sort((a, b) => a.ref_year - b.ref_year);
   const histNote = hist.length > 1 ? `<p>Youth literacy has ${hist.length} published observations: ${hist.map(o => `${o.ref_year}: ${fmt(o.value)}`).join(' · ')}. No values are drawn between them.</p>` : '';
   const recs = S.obs.filter(o => o.country === iso);
+  const pols = (S.policy?.records || []).filter(r => r.country === iso && r.review && r.review.status === 'approved').sort((a, b) => (b.year || 0) - (a.year || 0));
+  const polHtml = `<h2 class="mt">Literacy policy and standards</h2>${pols.length ? `<ul class="pol-list">${pols.map(r => `<li>${safeUrl(r.url) ? `<a href="${safeUrl(r.url)}">${esc(r.title)}</a>` : esc(r.title)} <span class="note">· ${esc(r.type)}${r.year ? ', ' + esc(r.year) : ''}</span></li>`).join('')}</ul>` : '<p>No national documents in the archive yet.</p>'}<p class="note">Regional frameworks and standards that apply across member states, such as the CARICOM HRD 2030 Strategy and the CXC English and CPEA standards, are in the <a href="#policy">Policy archive</a>.</p>`;
   $('#cBody').innerHTML = `${c.in_wdi ? `<div class="kpis">${kpis}</div>${gpiNote}${histNote}` : `<div class="empty">This member state is not covered by the World Bank literacy series. Its national statistics office and ministry will be audited directly.</div>`}
     <div class="two mt"><div><h2>Gaps still to audit</h2><ul>${gaps.map(i => `<li>${esc(i.short)}${i.kind === 'proxy' ? ' <span class="note">(proxy indicator)</span>' : ''}</li>`).join('')}</ul></div>
     <div><h2>Sources</h2><p>World Bank World Development Indicators, data from the UNESCO Institute for Statistics. Licence CC BY 4.0.</p><p><button type="button" class="btn small ghost" id="citeCountryData" aria-expanded="false">Cite this data</button></p>${iso === 'JAM' ? '<p>National sources queued for audit: STATIN, PIOJ and the Ministry of Education and Youth.</p>' : ''}</div></div>
+    ${polHtml}
     ${recs.length ? `<h2 class="mt">Records</h2><div class="scroll"><table class="data stack"><thead><tr><th>Indicator</th><th>Year</th><th>Value</th><th>Notes</th><th>Source</th></tr></thead><tbody>${recs.sort((a, b) => a.indicator.localeCompare(b.indicator) || b.ref_year - a.ref_year).map(o => `<tr><td>${esc(S.indMap[o.indicator]?.short)}</td><td class="num">${o.ref_year}</td><td class="num">${fmt(o.value, S.indMap[o.indicator]?.unit)}</td><td>${obsFlags(o).map(x => `<span class="flag">${esc(x)}</span>`).join(' ')}</td><td>${srcLinks(o)} · <a href="#collaborate" data-report="${esc(o.id)}">Report</a></td></tr>`).join('')}</tbody></table></div>` : ''}`;
 }
 
@@ -432,14 +435,25 @@ function renderPubs() {
   $('#pubNow').innerHTML = recs.filter(p => p.status === 'published').map(card).join('') || '<div class="empty">Nothing published yet.</div>';
   $('#pubNext').innerHTML = recs.filter(p => p.status !== 'published').map(card).join('') || '<div class="empty">Nothing in preparation.</div>';
   const pol = S.policy.records.filter(r => r.review && r.review.status === 'approved');
-  $('#policyList').innerHTML = pol.length ? `<div class="toolbar"><label>Country <select id="polCountry"><option value="">All</option>${countryOptions()}</select></label></div><div class="results" id="polResults"></div>`
+  const types = [...new Set(pol.map(r => r.type))].sort();
+  $('#policyList').innerHTML = pol.length ? `<div class="toolbar"><label>Country or body <select id="polCountry"><option value="">All</option><option value="REGIONAL">Regional bodies (CARICOM, OECS, CXC)</option>${S.countries.records.map(c => `<option value="${esc(c.iso3)}">${esc(c.name)}</option>`).join('')}</select></label><label>Type <select id="polType"><option value="">All types</option>${types.map(t => `<option>${esc(t)}</option>`).join('')}</select></label><label>Search <input id="polQ" type="search" placeholder="reading, standards, Kreyòl…"></label></div><p class="count" id="polCount" role="status"></p><div id="polResults"></div>`
     : `<div class="empty"><p><b>The archive is open for entries but holds no documents yet.</b></p></div>`;
 }
 
 function renderPolicyList() {
   const sel = $('#polCountry'); if (!sel) return;
-  const pol = S.policy.records.filter(r => r.review && r.review.status === 'approved' && (!sel.value || r.country === sel.value)).sort((a, b) => (b.year || 0) - (a.year || 0));
-  $('#polResults').innerHTML = !pol.length ? `<div class="empty">No documents for ${esc(S.c[sel.value]?.name || 'this selection')} yet. Suggest one through the <a href="#collaborate">Collaborate</a> page.</div>` : pol.map(r => `<article class="result"><div class="meta"><span class="pill">${esc(S.c[r.country]?.name || r.country)}</span><span class="pill">${esc(r.year || 'Year not shown')}</span><span class="pill">${esc(r.type)}</span></div><h3>${safeUrl(r.url) ? `<a href="${safeUrl(r.url)}">${esc(r.title)}</a>` : esc(r.title)}</h3><p class="note">${r.publisher ? `<b>${esc(r.publisher)}.</b> ` : ''}${esc(r.summary || '')}</p></article>`).join('');
+  const ty = $('#polType')?.value || '', q = ($('#polQ')?.value || '').toLowerCase().split(/\s+/).filter(Boolean);
+  if (!sel.dataset.bound) { sel.dataset.bound = '1'; ['#polType', '#polQ'].forEach(id => $(id)?.addEventListener('input', renderPolicyList)); }
+  const name = c => c === 'REGIONAL' ? 'Regional' : (S.c[c]?.name || c);
+  const pol = S.policy.records.filter(r => r.review && r.review.status === 'approved' && (!sel.value || r.country === sel.value) && (!ty || r.type === ty) && q.every(w => [r.title, r.summary, r.publisher, r.type, name(r.country)].join(' ').toLowerCase().includes(w)))
+    .sort((a, b) => (a.country === 'REGIONAL' ? 0 : 1) - (b.country === 'REGIONAL' ? 0 : 1) || name(a.country).localeCompare(name(b.country)) || (b.year || 0) - (a.year || 0));
+  const card = r => `<article class="result"><div class="meta"><span class="pill">${esc(name(r.country))}</span><span class="pill">${esc(r.year || 'Year not shown')}</span><span class="pill">${esc(r.type)}</span></div><h3>${safeUrl(r.url) ? `<a href="${safeUrl(r.url)}">${esc(r.title)}</a>` : esc(r.title)}</h3><p class="note">${r.publisher ? `<b>${esc(r.publisher)}.</b> ` : ''}${esc(r.summary || '')}</p></article>`;
+  const reg = pol.filter(r => r.country === 'REGIONAL'), nat = pol.filter(r => r.country !== 'REGIONAL');
+  const states = new Set(nat.map(r => r.country)).size;
+  $('#polCount').textContent = `${pol.length} document${pol.length === 1 ? '' : 's'}${nat.length ? ` · ${states} member state${states === 1 ? '' : 's'}` : ''}${reg.length ? ` · ${reg.length} regional` : ''}`;
+  $('#polResults').innerHTML = !pol.length ? `<div class="empty">No documents match. Suggest one through the <a href="#collaborate">Collaborate</a> page.</div>`
+    : (reg.length ? `<h2 class="pol-h">Regional frameworks and standards</h2><div class="results">${reg.map(card).join('')}</div>` : '')
+    + (nat.length ? `<h2 class="pol-h">Member-state policies, plans and curricula</h2>${[...new Set(nat.map(r => r.country))].map(c => `<h3 class="pol-c">${esc(name(c))}</h3><div class="results">${nat.filter(r => r.country === c).map(card).join('')}</div>`).join('')}` : '');
 }
 
 function renderContact() {
