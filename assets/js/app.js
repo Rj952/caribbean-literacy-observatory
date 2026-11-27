@@ -10,7 +10,7 @@ const safeUrl = u => /^https:\/\//.test(String(u || '')) ? esc(u) : '';
 const fmt = (v, unit) => v == null ? '—' : unit === 'index' ? Number(v).toFixed(3) : Number(v).toFixed(1) + '%';
 const NOW_YEAR = new Date().getFullYear();
 const wbPage = (code, iso3) => `https://data.worldbank.org/indicator/${encodeURIComponent(code)}?locations=${encodeURIComponent((S.c && S.c[iso3] && S.c[iso3].iso2) || iso3)}`;
-const srcLinks = o => `<a href="${esc(wbPage(o.indicator, o.country))}">World Bank page</a>${safeUrl(o.source_url) ? ` <small>(<a href="${safeUrl(o.source_url)}">raw data</a>)</small>` : ''}`;
+const srcLinks = o => `<a href="${esc(wbPage(o.indicator, o.country))}">World Bank page</a>`;
 const WB = 'https://api.worldbank.org/v2';
 const LIVE_EVERY_MS = 30 * 60 * 1000;
 
