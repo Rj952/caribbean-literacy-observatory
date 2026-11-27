@@ -25,6 +25,7 @@
     <a href="#about">About</a>
     <a href="#director">Founder</a>
     <a href="#agenda">Research agenda</a>
+    <a href="#strategies">Strategies</a>
     <a href="#news">Daily briefing</a>
     <a href="#dashboard">Dashboard</a>
     <a href="#profiles">Country profiles</a>
@@ -58,6 +59,7 @@
       <p class="lede" id="heroFinding">Loading the public record…</p>
       <div class="actions">
         <a class="btn sun" href="#dashboard">Open the dashboard</a>
+        <a class="btn ghost" href="#strategies">What works</a>
         <a class="btn ghost" href="#methods">How we verify</a>
       </div>
     </div>
@@ -303,6 +305,24 @@
       <li>Keep a transparent data catalogue, version history and correction log.</li>
     </ol>
     <p class="note">Artificial intelligence may help retrieve, organise, validate, analyse and visualise data. It is never the source of a statistic. The Observatory's credibility comes before the volume of data or the sophistication of its technology.</p>
+  </div>
+</section>
+
+<!-- STRATEGIES -->
+<section data-view="strategies" hidden>
+  <div class="band page-head"><div class="wrap"><p class="kicker">Research-based strategies</p><h1>What works to grow readers, from first words to adulthood</h1><p class="sub">Practical strategies for homes, schools and communities, drawn from major research reviews and from Caribbean evidence. Each one links to its source.</p></div></div>
+  <div class="band wrap">
+    <ol class="lifeline" id="lifeline" aria-label="Life stages"></ol>
+    <div class="toolbar">
+      <label>Life stage <select id="sStage"><option value="">All stages</option></select></label>
+      <label>Setting <select id="sSetting"><option value="">Home, school and community</option><option>Home</option><option>School</option><option>Community</option></select></label>
+      <label>Evidence <select id="sStrength"><option value="">Any</option><option>Strong</option><option>Moderate</option><option>Emerging</option><option>Caribbean evidence</option></select></label>
+    </div>
+    <p class="count" id="sCount" role="status"></p>
+    <div class="strat-grid" id="stratList"></div>
+    <details class="schema"><summary>How to read the evidence labels</summary><p id="sNote"></p></details>
+    <h2 class="mt">Sources</h2>
+    <ol class="note" id="sSources"></ol>
   </div>
 </section>
 

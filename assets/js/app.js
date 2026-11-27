@@ -46,7 +46,7 @@ async function load() {
   const core = ['countries', 'indicators', 'observations', 'sources'];
   const optional = { research: { records: [] }, policy: { records: [] }, publications: { records: [] }, changelog: { records: [] },
     settings: { outdated_after_years: 10, gpi_tolerance: 0.01, public_requires_review_status: 'approved', statuses: {}, contact: {} },
-    news: null, benchmarks: { meta: { caution: '' }, aggregates: [], records: [], pisa: null } };
+    news: null, strategies: null, benchmarks: { meta: { caution: '' }, aggregates: [], records: [], pisa: null } };
   const got = await Promise.all(core.map(n => getJSON(`data/${n}.json`)));
   core.forEach((n, i) => S[n] = got[i]);
   await Promise.all(Object.entries(optional).map(async ([n, fb]) => { try { S[n] = await getJSON(`data/${n}.json`); } catch (e) { S[n] = fb; console.warn('Optional data file missing:', n); } }));
@@ -180,13 +180,14 @@ function renderLiveBadge() {
   const L = S.live, when = L.checkedAt ? new Date(L.checkedAt).toLocaleString([], { dateStyle: 'medium', timeStyle: 'short' }) : '';
   const src = L.sourceUpdated ? ` · source updated ${esc(L.sourceUpdated)}` : '';
   const ch = L.changed || L.added ? ` · <b>${L.changed + L.added} change(s) awaiting review</b>` : '';
+  const maxH = S.gov.data_max_age_hours || 48, ageH = (Date.now() - new Date(S.observations.meta.retrieved + 'T12:00:00Z')) / 36e5;
   b.innerHTML = L.mode === 'snapshot'
-    ? `<span class="pulse off"></span>Verified snapshot · ${esc(S.observations.meta.retrieved)}`
+    ? (ageH > maxH ? `<span class="pulse off"></span><b>Data last refreshed ${esc(S.observations.meta.retrieved)} — over ${maxH} hours ago; the scheduled update is overdue.</b>` : `<span class="pulse off"></span>Data refreshed ${esc(S.observations.meta.retrieved)} · updated at least every ${maxH} hours`)
     : `<span class="pulse"></span>Live · checked ${esc(when)}${src}${ch}`;
 }
 
 /* ---------- views ---------- */
-const VIEWS = ['home', 'about', 'agenda', 'director', 'dashboard', 'profiles', 'repository', 'publications', 'policy', 'methods', 'collaborate', 'accessibility', 'news'];
+const VIEWS = ['home', 'about', 'agenda', 'director', 'dashboard', 'profiles', 'repository', 'publications', 'policy', 'methods', 'collaborate', 'accessibility', 'news', 'strategies'];
 function route() {
   let h = location.hash.slice(1) || 'home', view = h;
   if (h.startsWith('country-')) { view = 'country'; renderCountry(h.slice(8).toUpperCase()); }
@@ -405,6 +406,27 @@ function renderMethods() {
 
 function renderAll() { renderLiveBadge(); renderHome(); renderNews(); renderDashboard(); renderProfiles(); renderRepo(); renderMethods(); if (location.hash.startsWith('#country-')) renderCountry(location.hash.slice(9).toUpperCase()); }
 
+/* ---------- strategies ---------- */
+function renderStrategies() {
+  const D = S.strategies; if (!D || !Array.isArray(D.strategies)) return;
+  const stages = [...new Set(D.strategies.map(x => x.stage))];
+  const stSel = $('#sStage');
+  if (stSel.options.length < 2) {
+    stSel.innerHTML += stages.map(x => `<option>${esc(x)}</option>`).join('');
+    $('#lifeline').innerHTML = stages.map((x, i) => `<li><button type="button" data-stage="${esc(x)}" aria-pressed="false"><span class="dot2" aria-hidden="true">${i + 1}</span><b>${esc(x)}</b><small>${(n => n + (n === 1 ? ' strategy' : ' strategies'))(D.strategies.filter(y => y.stage === x).length)}</small></button></li>`).join('');
+    $('#lifeline').addEventListener('click', e => { const b = e.target.closest('button[data-stage]'); if (!b) return; stSel.value = stSel.value === b.dataset.stage ? '' : b.dataset.stage; renderStrategies(); });
+    ['#sStage', '#sSetting', '#sStrength'].forEach(id => $(id).addEventListener('input', renderStrategies));
+    $('#sNote').textContent = D.meta.note;
+    const used = Object.entries(D.sources);
+    $('#sSources').innerHTML = used.map(([, v]) => `<li>${esc(v.publisher)} (${esc(v.year)}). ${safeUrl(v.url) ? `<a href="${safeUrl(v.url)}">${esc(v.title)}</a>` : esc(v.title)}.</li>`).join('');
+  }
+  $$('#lifeline button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.stage === stSel.value)));
+  const fs = stSel.value, fset = $('#sSetting').value, fev = $('#sStrength').value;
+  const list = D.strategies.filter(x => (!fs || x.stage === fs) && (!fset || x.settings.includes(fset)) && (!fev || x.strength === fev));
+  $('#sCount').textContent = `${list.length} of ${D.strategies.length} strategies`;
+  $('#stratList').innerHTML = list.length ? list.map(x => `<article class="strat"><div class="meta"><span class="pill">${esc(x.stage)}</span>${x.settings.map(t => `<span class="pill">${esc(t)}</span>`).join('')}<span class="pill ev ev-${esc(String(x.strength).split(' ')[0])}">${esc(x.strength)}</span></div><h3>${esc(x.title)}</h3><p class="lbl">What to do</p><p>${esc(x.do)}</p><p class="lbl">Why it works</p><p>${esc(x.why)}</p>${x.caribbean ? `<p class="carib"><b>Caribbean lens.</b> ${esc(x.caribbean)}</p>` : ''}<p class="src">Sources: ${x.sources.map(k => D.sources[k]).filter(Boolean).map(v => safeUrl(v.url) ? `<a href="${safeUrl(v.url)}">${esc(v.publisher)} (${esc(v.year)})</a>` : esc(v.publisher)).join('; ')}</p></article>`).join('') : '<div class="empty">No strategies match these filters.</div>';
+}
+
 /* ---------- daily briefing ---------- */
 const TYPE_LABEL = { news: 'News', official: 'Official release', opinion: 'Opinion', research: 'Research', headline: 'Automated headline' };
 const fmtDate = d => { if (!d) return 'Date not shown'; const p = String(d).split('-'); const dt = new Date(Date.UTC(+p[0], (+p[1] || 1) - 1, +p[2] || 1)); return dt.toLocaleDateString('en-GB', { timeZone: 'UTC', day: p[2] ? 'numeric' : undefined, month: 'long', year: 'numeric' }); };
@@ -516,7 +538,7 @@ function bind() {
     return;
   }
   if (window.claude) $$('a[href="admin/"]').forEach(a => a.closest('div').lastElementChild === a && (a.previousElementSibling?.remove(), a.remove()));
-  renderAgenda(); renderPubs(); renderPolicyList(); $('#polCountry')?.addEventListener('input', renderPolicyList); renderContrast(); renderContact(); bind(); renderAll(); route();
+  renderAgenda(); renderPubs(); renderPolicyList(); $('#polCountry')?.addEventListener('input', renderPolicyList); renderContrast(); renderContact(); renderStrategies(); bind(); renderAll(); route();
   refreshLive(false);
   setInterval(() => refreshLive(false), LIVE_EVERY_MS);
   liveViaClaude();

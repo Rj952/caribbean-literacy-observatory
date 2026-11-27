@@ -1,0 +1,314 @@
+{
+ "meta": {
+  "note": "Plain-language summaries in the Observatory's own words. Each strategy links to the research reviews it draws on. Evidence labels: Strong = consistent findings in major international reviews; Moderate = supported but with fewer or weaker studies; Emerging = promising, limited evidence; Caribbean evidence = studies or programmes from the region.",
+  "checked_on": "2026-11-27"
+ },
+ "sources": {
+  "eef-ey": {
+   "title": "Preparing for Literacy: Improving Communication, Language and Literacy in the Early Years",
+   "publisher": "Education Endowment Foundation",
+   "year": 2018,
+   "url": "https://educationendowmentfoundation.org.uk/education-evidence/guidance-reports/literacy-early-years"
+  },
+  "eef-ey-agenda": {
+   "title": "Research agenda: early language (Early Years Toolkit evidence)",
+   "publisher": "Education Endowment Foundation",
+   "year": 2025,
+   "url": "https://educationendowmentfoundation.org.uk/projects-and-evaluation/research-agenda-themes-priority-areas/research-agenda-theme-early-language"
+  },
+  "eef-parents": {
+   "title": "Working with Parents to Support Children's Learning",
+   "publisher": "Education Endowment Foundation",
+   "year": 2018,
+   "url": "https://educationendowmentfoundation.org.uk/education-evidence/guidance-reports/supporting-parents"
+  },
+  "eef-ks1": {
+   "title": "Improving Literacy in Key Stage 1 (2nd edition)",
+   "publisher": "Education Endowment Foundation",
+   "year": 2020,
+   "url": "https://educationendowmentfoundation.org.uk/education-evidence/guidance-reports/literacy-ks-1"
+  },
+  "wwc-k3": {
+   "title": "Foundational Skills to Support Reading for Understanding in Kindergarten Through 3rd Grade",
+   "publisher": "What Works Clearinghouse, Institute of Education Sciences (US)",
+   "year": 2016,
+   "url": "https://ies.ed.gov/ncee/wwc/PracticeGuide/21"
+  },
+  "wwc-adol": {
+   "title": "Improving Adolescent Literacy: Effective Classroom and Intervention Practices",
+   "publisher": "What Works Clearinghouse, Institute of Education Sciences (US)",
+   "year": 2008,
+   "url": "https://ies.ed.gov/ncee/wwc/practiceguide/8"
+  },
+  "bep": {
+   "title": "Bilingual Education Project (2004\u20132008)",
+   "publisher": "Jamaican Language Unit, The University of the West Indies, Mona",
+   "year": 2008,
+   "url": "https://www.mona.uwi.edu/dllp/node/181"
+  },
+  "lep": {
+   "title": "Language Education Policy",
+   "publisher": "Ministry of Education, Youth and Culture, Jamaica",
+   "year": 2001,
+   "url": "https://uwispace.sta.uwi.edu/items/fa0d0f70-758d-43c8-abba-44e720965ddc"
+  },
+  "bb-nlp": {
+   "title": "Reading levels improve by over 40 per cent in two years",
+   "publisher": "Barbados Today",
+   "year": 2026,
+   "url": "https://barbadostoday.bb/2026/04/03/reading-levels-improved-by-over-40-per-cent-in-two-years/"
+  },
+  "pisa-jm": {
+   "title": "PISA 2022 Results \u2014 Country Notes: Jamaica",
+   "publisher": "OECD",
+   "year": 2023,
+   "url": "https://www.oecd.org/en/publications/pisa-2022-results-volume-i-and-ii-country-notes_ed6fbcc5-en/jamaica_d5d0d9e2-en.html"
+  },
+  "alrwg": {
+   "title": "Adult Education Literacy Instruction: A Review of the Research",
+   "publisher": "National Institute for Literacy (US) \u2014 Kruidenier, MacArthur & Wrigley",
+   "year": 2010,
+   "url": "https://eric.ed.gov/?id=ED521229"
+  },
+  "nrc": {
+   "title": "Improving Adult Literacy Instruction: Options for Practice and Research",
+   "publisher": "National Research Council (US)",
+   "year": 2012,
+   "url": "https://www.nationalacademies.org/read/13242/chapter/5"
+  },
+  "uil-multi": {
+   "title": "Literacy in Multilingual and Multicultural Contexts: Effective Approaches to Adult Learning and Education",
+   "publisher": "UNESCO Institute for Lifelong Learning",
+   "year": 2016,
+   "url": "https://epub.sub.uni-hamburg.de/epub/volltexte/2021/119336/pdf/245513eng.pdf"
+  }
+ },
+ "strategies": [
+  {
+   "id": "talk-early",
+   "stage": "Early years (0\u20135)",
+   "settings": [
+    "Home",
+    "School"
+   ],
+   "title": "Talk with young children \u2014 a lot, and back and forth",
+   "do": "Make everyday conversation the first priority: name things, ask open questions, wait for answers, and build on what the child says. Nurseries and early-childhood settings should plan for rich adult\u2013child talk every day.",
+   "why": "Leading reviews put communication and language first in preparing children for reading. The Education Endowment Foundation's early-years evidence rates these approaches as having a very high impact for very low cost.",
+   "strength": "Strong",
+   "sources": [
+    "eef-ey",
+    "eef-ey-agenda"
+   ]
+  },
+  {
+   "id": "shared-reading",
+   "stage": "Early years (0\u20135)",
+   "settings": [
+    "Home",
+    "Community"
+   ],
+   "title": "Read books together at home, and talk about them",
+   "do": "Share a book most days: look at the pictures, talk about the story, let the child turn the pages and ask questions. Schools and libraries can show parents how, rather than only sending books home.",
+   "why": "Shared book reading is the recommended centre of work with families of young children. Giving books away on its own is unlikely to help, but books combined with practical advice can.",
+   "strength": "Moderate",
+   "sources": [
+    "eef-parents"
+   ]
+  },
+  {
+   "id": "eyesight",
+   "stage": "Early years (0\u20135)",
+   "settings": [
+    "Home",
+    "School",
+    "Community"
+   ],
+   "title": "Check children's eyesight before they learn to read",
+   "do": "Make sure every young child has an eye check, and that children who are given glasses actually wear them in class and at home.",
+   "why": "The early-years literacy guidance specifically calls for identifying possible eyesight problems and making sure treatment is used.",
+   "strength": "Moderate",
+   "sources": [
+    "eef-ey"
+   ]
+  },
+  {
+   "id": "sounds-letters",
+   "stage": "Early primary (5\u20138)",
+   "settings": [
+    "School"
+   ],
+   "title": "Teach sounds and letters clearly and in order",
+   "do": "Teach children to hear the separate sounds in words, link those sounds to letters, and blend them to read and spell \u2014 step by step, every day, with plenty of practice.",
+   "why": "International practice guides based on hundreds of studies recommend explicit teaching of sound awareness and decoding in the first years of school.",
+   "caribbean": "Barbados's national literacy programme uses this kind of structured approach; the Ministry reports reading gains in a sample of primary pupils, while cautioning that these are not national results.",
+   "strength": "Strong",
+   "sources": [
+    "wwc-k3",
+    "bb-nlp"
+   ]
+  },
+  {
+   "id": "academic-language",
+   "stage": "Early primary (5\u20138)",
+   "settings": [
+    "School",
+    "Home"
+   ],
+   "title": "Build vocabulary and the language of learning",
+   "do": "Teach new words on purpose, use them in conversation, and give children chances to explain, retell and reason out loud \u2014 in class and at home.",
+   "why": "Both major sets of guidance start with oral language: speaking, listening and vocabulary underpin reading comprehension later on.",
+   "strength": "Strong",
+   "sources": [
+    "wwc-k3",
+    "eef-ks1"
+   ]
+  },
+  {
+   "id": "home-language",
+   "stage": "Early primary (5\u20138)",
+   "settings": [
+    "School"
+   ],
+   "title": "Use the child's home language as a bridge to English",
+   "do": "Where children arrive speaking Jamaican Creole or another Creole, value that language in class and use it to explain and discuss, while teaching Standard English literacy explicitly.",
+   "why": "Jamaica's Language Education Policy recognises a bilingual situation. The University of the West Indies' Bilingual Education Project tested teaching literacy and content in both Jamaican and English in Grades 1\u20134 between 2004 and 2008.",
+   "caribbean": "This is one of the region's most important open research questions, and a core focus of the Observatory's language and identity stream.",
+   "strength": "Caribbean evidence",
+   "sources": [
+    "lep",
+    "bep"
+   ]
+  },
+  {
+   "id": "catch-up",
+   "stage": "Early primary (5\u20138)",
+   "settings": [
+    "School"
+   ],
+   "title": "Give structured, early help to children who fall behind",
+   "do": "Check reading progress regularly and give children who are struggling a well-designed, structured programme in small groups or one-to-one, delivered by trained staff.",
+   "why": "High-quality structured interventions are a core recommendation for pupils who struggle with literacy.",
+   "strength": "Strong",
+   "sources": [
+    "eef-ks1"
+   ]
+  },
+  {
+   "id": "vocab-every-subject",
+   "stage": "Older children and teens (9\u201318)",
+   "settings": [
+    "School"
+   ],
+   "title": "Teach vocabulary explicitly in every subject",
+   "do": "Every teacher \u2014 science, history, maths \u2014 teaches the key words of their subject directly, and gives students repeated chances to use them.",
+   "why": "Explicit vocabulary instruction is the first recommendation of the adolescent literacy practice guide.",
+   "strength": "Strong",
+   "sources": [
+    "wwc-adol"
+   ]
+  },
+  {
+   "id": "comprehension-strategies",
+   "stage": "Older children and teens (9\u201318)",
+   "settings": [
+    "School"
+   ],
+   "title": "Show students how good readers make sense of text",
+   "do": "Model and practise strategies such as summarising, questioning and predicting, then gradually hand responsibility to students.",
+   "why": "Direct, explicit teaching of comprehension strategies is recommended for students in upper primary and secondary school.",
+   "strength": "Strong",
+   "sources": [
+    "wwc-adol"
+   ]
+  },
+  {
+   "id": "discussion",
+   "stage": "Older children and teens (9\u201318)",
+   "settings": [
+    "School"
+   ],
+   "title": "Make time for deep discussion of what students read",
+   "do": "Plan regular, extended conversations about the meaning of texts, where students explain, challenge and justify their ideas.",
+   "why": "Extended discussion of text meaning and interpretation is one of the practice guide's core recommendations.",
+   "strength": "Moderate",
+   "sources": [
+    "wwc-adol"
+   ]
+  },
+  {
+   "id": "engagement",
+   "stage": "Older children and teens (9\u201318)",
+   "settings": [
+    "School",
+    "Home"
+   ],
+   "title": "Win back reluctant readers, especially boys",
+   "do": "Offer choice of reading material, connect reading to students' interests and goals, and celebrate progress. Pay particular attention to boys' engagement.",
+   "why": "Increasing motivation and engagement is a recommendation of the adolescent literacy guide.",
+   "caribbean": "In PISA 2022, Jamaican girls outscored boys in reading by 35 points, so engagement strategies for boys matter here.",
+   "strength": "Moderate",
+   "sources": [
+    "wwc-adol",
+    "pisa-jm"
+   ]
+  },
+  {
+   "id": "intensive-teens",
+   "stage": "Older children and teens (9\u201318)",
+   "settings": [
+    "School"
+   ],
+   "title": "Offer intensive, individual support to teens who still struggle",
+   "do": "Students who reach secondary school without secure reading need individual assessment and targeted teaching from a trained reading specialist.",
+   "why": "Intensive, individualised intervention by trained specialists is recommended for struggling adolescent readers.",
+   "strength": "Strong",
+   "sources": [
+    "wwc-adol"
+   ]
+  },
+  {
+   "id": "home-routines",
+   "stage": "All school ages",
+   "settings": [
+    "Home"
+   ],
+   "title": "Support routines at home rather than doing homework for children",
+   "do": "Help children keep a regular time and place for reading and homework, and show interest in what they learn. Encourage reading over the long school holidays.",
+   "why": "Guidance on working with parents recommends supporting routines and good habits, and is cautious about direct help with homework for older children. Summer reading initiatives show promise.",
+   "strength": "Emerging",
+   "sources": [
+    "eef-parents"
+   ]
+  },
+  {
+   "id": "adult-skills",
+   "stage": "Adults",
+   "settings": [
+    "Community"
+   ],
+   "title": "Teach adults the building blocks of reading, explicitly",
+   "do": "Adult programmes should assess each learner and teach the parts of reading they need \u2014 decoding, vocabulary, fluency and comprehension \u2014 with material that matters in their lives and work.",
+   "why": "Systematic reviews of adult literacy instruction identify stronger and weaker findings and draw on school-age research where adult studies are thin. The evidence base for adults is smaller than for children.",
+   "strength": "Emerging",
+   "sources": [
+    "alrwg",
+    "nrc"
+   ]
+  },
+  {
+   "id": "adult-multilingual",
+   "stage": "Adults",
+   "settings": [
+    "Community"
+   ],
+   "title": "Build adult and family literacy programmes that respect home languages",
+   "do": "Design community and family literacy programmes around learners' languages and cultures, and learn from documented programmes elsewhere.",
+   "why": "UNESCO's Institute for Lifelong Learning collects effective adult literacy practice, including approaches for multilingual and multicultural communities.",
+   "caribbean": "Relevant across the region's Creole-speaking communities, including Haiti and the Kw\u00e9y\u00f2l-speaking Eastern Caribbean.",
+   "strength": "Emerging",
+   "sources": [
+    "uil-multi"
+   ]
+  }
+ ]
+}

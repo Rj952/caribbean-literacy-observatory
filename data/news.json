@@ -12,7 +12,7 @@
   "date": "2026-11-27",
   "points": [
    "Secondary literacy is in focus in Jamaica: a mid-November letter in the Jamaica Observer cites the Ministry's reading of the 2026 Primary Exit Profile, that about 8,700 students entered high school below proficiency in language arts.",
-   "Teacher capacity remains the main lever across the region — from reading-methods training in Jamaica to Barbados's structured literacy programme, which the Ministry links to reading gains in a sample of primary students.",
+   "Teacher capacity remains the main lever across the region \u2014 from reading-methods training in Jamaica to Barbados's structured literacy programme, which the Ministry links to reading gains in a sample of primary students.",
    "Regional assessment is expanding: CXC has new literacy and numeracy standards, Guyana is adding Grade 2 and Grade 4 literacy assessments, and the OECS runs annual Grade 2 reading assessments.",
    "Data watch: the World Bank's literacy series were last updated on 11 November 2026; the dashboard reflects that release."
   ]
@@ -29,7 +29,7 @@
    "url": "https://ourworldindata.org/grapher/literacy-rate-by-country"
   },
   {
-   "label": "UN SDG Report 2026 — Goal 4",
+   "label": "UN SDG Report 2026 \u2014 Goal 4",
    "detail": "Reports 273 million children and young people out of school and low reading and mathematics proficiency worldwide.",
    "url": "https://unstats.un.org/sdgs/report/2026/goal-04/"
   }
@@ -82,7 +82,7 @@
   {
    "id": "n-2026-08-24-gleaner-grade7",
    "date": "2026-08-24",
-   "title": "Reading renaissance — results continue to give implementers of grade-seven literacy initiative reason to smile",
+   "title": "Reading renaissance \u2014 results continue to give implementers of grade-seven literacy initiative reason to smile",
    "source": "The Gleaner",
    "url": "https://jamaica-gleaner.com/index%2ephp/article/news/20260824/reading-renaissance-results-continue-give-implementers-grade-seven-literacy",
    "country": "JAM",
@@ -160,7 +160,7 @@
    "id": "n-uwi-mori-coy",
    "date": "",
    "title": "LITERACY: AI-Powered Reading Support for Classrooms",
-   "source": "UWI Mona — MORI research spotlight",
+   "source": "UWI Mona \u2014 MORI research spotlight",
    "url": "https://www.mona.uwi.edu/mori/research-spotlight/literacy-ai-powered-reading-support-classrooms",
    "country": "JAM",
    "topic": "Digital and AI literacy",

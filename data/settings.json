@@ -13,5 +13,6 @@
  "contact": {
   "email": "rohanjowallah@gmail.com",
   "form_endpoint": ""
- }
+ },
+ "data_max_age_hours": 48
 }

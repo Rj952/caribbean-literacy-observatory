@@ -89,6 +89,12 @@ for (const r of benchmarks.records) {
   if (typeof r.value !== 'number' || r.value < 0 || r.value > 100) err(`benchmarks/${r.id}: bad value`);
 }
 if (!https(benchmarks.pisa?.url)) err('benchmarks: PISA source url required');
+const maxH = gov.data_max_age_hours || 48;
+const dataAgeH = (Date.now() - new Date(obs.meta.retrieved + 'T12:00:00Z')) / 36e5;
+if (dataAgeH > maxH) warn(`observations: data is ${dataAgeH.toFixed(0)} hours old (limit ${maxH})`);
+const strategies = JSON.parse(readFileSync(new URL('../data/strategies.json', import.meta.url)));
+for (const st of strategies.strategies) { for (const k of st.sources) if (!strategies.sources[k]) err(`strategies/${st.id}: unknown source ${k}`); }
+for (const [k, s2] of Object.entries(strategies.sources)) if (!https(s2.url)) err(`strategies source ${k}: url must be https`);
 const age = (Date.now() - new Date(news.meta.updated)) / 864e5;
 if (age > 2) warn(`news: briefing is ${age.toFixed(1)} days old`);
 

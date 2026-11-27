@@ -13,6 +13,7 @@ A research website for literacy across the Caribbean. Every statistic on it come
 | About | Founding statement and open data commitment |
 | Research agenda | Seven streams, first 90 days, flagship project, long-term ecosystem |
 | Founder | Profile |
+| Strategies | Research-based strategies for improving literacy from the early years to adulthood, at home, in school and in the community |
 | Daily briefing | Caribbean literacy news, a short written briefing and a data watch, updated every day |
 | Benchmarks | World, OECD, Latin America & Caribbean and Caribbean small states averages beside every figure; OECD PISA 2022 reading proficiency for Jamaica |
 | Dashboard | Youth, gender and adult literacy; data-landscape matrix; every record, copyable as CSV |
@@ -36,7 +37,7 @@ The page checks the World Bank API when it opens and every 30 minutes. Values ar
 - **Changed or new at source** — shown with the live value and flagged *awaiting review*. The header badge counts them.
 - **Source unreachable** — the verified snapshot is shown and the badge says so.
 
-A daily GitHub Action (`daily-update.yml`, 05:17 Jamaica time) re-retrieves the series, preserves the raw responses, gathers news headlines, validates everything, commits and redeploys, so the public site is always current. New or changed statistics go live at once with `scholarly_review: pending` and are flagged on the site until reviewed.
+Data must never be more than 48 hours old (`data_max_age_hours` in `data/settings.json`); the site warns openly if that limit is passed. A daily GitHub Action (`daily-update.yml`, 05:17 Jamaica time) re-retrieves the series, preserves the raw responses, gathers news headlines, validates everything, commits and redeploys, so the public site is always current. New or changed statistics go live at once with `scholarly_review: pending` and are flagged on the site until reviewed.
 
 ## Daily briefing
 
