@@ -1,6 +1,6 @@
 name: Test site, data and links
 on:
-  push: { branches: [main] }
+  push: { branches: [main, 'coverage/**'] }
   pull_request:
   workflow_dispatch:
   schedule:
