@@ -21,7 +21,7 @@
       "type": "object", "required": ["status"],
       "properties": {
         "status": { "enum": ["draft", "in_review", "approved", "rejected"] },
-        "approved_by": { "type": "string" }, "approved_on": { "type": "string" }
+        "checked_on": { "type": "string" }
       }
     }
   }

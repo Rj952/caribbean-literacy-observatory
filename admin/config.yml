@@ -43,8 +43,7 @@ collections:
                 widget: object
                 fields:
                   - { name: status, label: Status, widget: select, options: [draft, in_review, approved, rejected], default: draft }
-                  - { name: approved_by, label: Approved by, widget: string, required: false }
-                  - { name: approved_on, label: Approved on, widget: datetime, format: 'YYYY-MM-DD', date_format: 'YYYY-MM-DD', time_format: false, required: false }
+                  - { name: checked_on, label: Checked against source on, widget: datetime, format: 'YYYY-MM-DD', date_format: 'YYYY-MM-DD', time_format: false, required: false }
       - name: policy
         label: Policy and curriculum archive
         file: data/policy.json
@@ -62,13 +61,14 @@ collections:
               - { name: year, label: Year, widget: number, value_type: int }
               - { name: type, label: Type, widget: select, options: [Literacy policy, Curriculum framework, Assessment framework, Language-in-education policy, Strategy or plan, Other] }
               - { name: url, label: Link to official public copy (https), widget: string }
+              - { name: publisher, label: Publisher, widget: string, required: false }
               - { name: summary, label: Summary, widget: text, required: false }
               - name: review
                 label: Review
                 widget: object
                 fields:
                   - { name: status, label: Status, widget: select, options: [draft, in_review, approved, rejected], default: draft }
-                  - { name: approved_by, label: Approved by, widget: string, required: false }
+                  - { name: checked_on, label: Checked against source on, widget: string, required: false }
       - name: publications
         label: Publications and working papers
         file: data/publications.json

@@ -1,6 +1,142 @@
 {
  "meta": {
-  "note": "Policy and curriculum archive. Only approved records are shown."
+  "note": "Policy and curriculum archive. Each entry links to a publicly accessible copy; documents are not re-hosted."
  },
- "records": []
+ "records": [
+  {
+   "id": "jm-language-education-policy-2001",
+   "title": "Language Education Policy",
+   "country": "JAM",
+   "year": 2001,
+   "type": "Language-in-education policy",
+   "url": "https://uwispace.sta.uwi.edu/items/fa0d0f70-758d-43c8-abba-44e720965ddc",
+   "publisher": "Ministry of Education, Youth and Culture, Jamaica",
+   "summary": "Sets direction for language issues in Jamaican education to improve language and literacy competencies, recognising Standard Jamaican English as the official language and Jamaican Creole as the most widely used. Copy held in the UWI library repository.",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "note": "Checked against the publicly accessible source"
+   }
+  },
+  {
+   "id": "jm-legacy-policies-2022",
+   "title": "Legacy Policies of the Ministry of Education and Youth (revised)",
+   "country": "JAM",
+   "year": 2022,
+   "type": "Other",
+   "url": "https://moey.gov.jm/wp-content/uploads/2022/08/LEGACY-POLICIES-OF-THE-MOEY-REVISED-AUGUST-3-2022.pdf",
+   "publisher": "Ministry of Education and Youth, Jamaica",
+   "summary": "Ministry overview of its legacy policies. Notes that the 2001 Language Education Policy was reviewed by the National Literacy Team and that an updated 2022 draft exists.",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "note": "Checked against the publicly accessible source"
+   }
+  },
+  {
+   "id": "jm-nsc-grade2-2018",
+   "title": "National Standards Curriculum Guide, Grade 2: Integrated Studies, Language Arts, Mathematics",
+   "country": "JAM",
+   "year": 2018,
+   "type": "Curriculum framework",
+   "url": "https://moey.gov.jm/wp-content/uploads/2020/08/MOE-NSC-GRADE-2-Int.-Studies-Language-Math-FINAL.pdf",
+   "publisher": "Ministry of Education, Youth and Information, Jamaica",
+   "summary": "Early-grade curriculum guide including the Language Arts standards for Grade 2.",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "note": "Checked against the publicly accessible source"
+   }
+  },
+  {
+   "id": "jm-nsc-english-7-9-2018",
+   "title": "National Standards Curriculum Guide, Grades 7\u20139: English Language/Literature",
+   "country": "JAM",
+   "year": 2018,
+   "type": "Curriculum framework",
+   "url": "https://moey.gov.jm/wp-content/uploads/2020/08/English-Language.pdf",
+   "publisher": "Ministry of Education, Youth and Information, Jamaica",
+   "summary": "Lower-secondary English language and literature curriculum guide.",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "note": "Checked against the publicly accessible source"
+   }
+  },
+  {
+   "id": "jm-nesp-2011-2020",
+   "title": "National Education Strategic Plan 2011\u20132020",
+   "country": "JAM",
+   "year": 2012,
+   "type": "Strategy or plan",
+   "url": "https://www.mona.uwi.edu/cop/sites/default/files/Jamaica_NESP_2011-2020.pdf",
+   "publisher": "Ministry of Education, Jamaica",
+   "summary": "National education plan whose main elements include national literacy and numeracy thrusts. Revised draft dated July 2012.",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "note": "Checked against the publicly accessible source"
+   }
+  },
+  {
+   "id": "jm-ict-in-education-2022",
+   "title": "ICT in Education Policy",
+   "country": "JAM",
+   "year": 2022,
+   "type": "Strategy or plan",
+   "url": "https://planipolis.iiep.unesco.org/sites/default/files/ressources/ICT-in-Education-Policy-Jamaica-Ministry-of-Education-and-Youth-2022.pdf",
+   "publisher": "Ministry of Education and Youth, Jamaica",
+   "summary": "National policy on technology in education, relevant to digital literacy. Copy held by UNESCO IIEP Planipolis.",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "note": "Checked against the publicly accessible source"
+   }
+  },
+  {
+   "id": "tt-education-policy-2023-2027",
+   "title": "Education Policy 2023\u20132027",
+   "country": "TTO",
+   "year": 2023,
+   "type": "Strategy or plan",
+   "url": "https://www.moe.gov.tt/?p=9397",
+   "publisher": "Ministry of Education, Trinidad and Tobago",
+   "summary": "Five-year strategic roadmap for the education system of Trinidad and Tobago.",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "note": "Checked against the publicly accessible source"
+   }
+  },
+  {
+   "id": "tt-primary-ela-2013",
+   "title": "Primary School Curriculum: English Language Arts, Infants 1 \u2013 Standard 5",
+   "country": "TTO",
+   "year": 2013,
+   "type": "Curriculum framework",
+   "url": "https://uwispace.sta.uwi.edu/bitstreams/9acb5af9-8eec-4ce9-9e7b-80a5fb2c67b9/download",
+   "publisher": "Curriculum Planning and Development Division, Ministry of Education, Trinidad and Tobago",
+   "summary": "National primary English Language Arts curriculum guides. Copy held in the UWI library repository.",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "note": "Checked against the publicly accessible source"
+   }
+  },
+  {
+   "id": "tt-secondary-ela-2008",
+   "title": "Secondary School Curriculum, Forms 1\u20133: English Language Arts",
+   "country": "TTO",
+   "year": 2008,
+   "type": "Curriculum framework",
+   "url": "https://uwispace.sta.uwi.edu/bitstreams/40731486-7103-455e-b061-b345ea946662/download",
+   "publisher": "Curriculum Planning and Development Division, Ministry of Education, Trinidad and Tobago",
+   "summary": "Lower-secondary English Language Arts curriculum from the Secondary Education Modernization Programme. Copy held in the UWI library repository.",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "note": "Checked against the publicly accessible source"
+   }
+  }
+ ]
 }

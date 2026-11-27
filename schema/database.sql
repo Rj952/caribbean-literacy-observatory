@@ -40,13 +40,13 @@ create table research_records (
   year int not null, methodology text not null, framework text, findings text, indicators text, limitations text,
   citation text not null, url text check (url is null or url like 'https://%'),
   review_status text not null default 'draft' check (review_status in ('draft','in_review','approved','rejected')),
-  approved_by text, approved_on date,
-  check (review_status <> 'approved' or approved_by is not null));
+  checked_on date,
+  check (review_status <> 'approved' or checked_on is not null));
 
 create table policy_documents (
   id text primary key, title text not null, country text not null, year int, type text,
   url text not null check (url like 'https://%'), summary text,
-  review_status text not null default 'draft' check (review_status in ('draft','in_review','approved','rejected')), approved_by text);
+  review_status text not null default 'draft' check (review_status in ('draft','in_review','approved','rejected')), checked_on date, publisher text);
 
 create table publications (
   id text primary key, series text not null, number text, title text not null,

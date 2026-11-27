@@ -64,7 +64,7 @@ for (const r of research) {
   for (const k of ['id', 'title', 'country', 'domain', 'level', 'year', 'methodology', 'citation']) if (!r[k]) err(`${at}: ${k} missing`);
   if (r.url && !https(r.url)) err(`${at}: url must be https`);
   if (!r.review || !reviewStates.includes(r.review.status)) err(`${at}: review.status must be one of ${reviewStates}`);
-  if (r.review?.status === 'approved' && !r.review.approved_by) err(`${at}: approved without approved_by`);
+  if (r.review?.status === 'approved' && !r.review.checked_on) err(`${at}: approved without checked_on date`);
 }
 for (const r of policy) {
   if (!https(r.url)) err(`policy/${r.id}: url to the official public copy required`);

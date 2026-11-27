@@ -9,105 +9,120 @@
    "name": "Antigua and Barbuda",
    "lat": 17.12,
    "lon": -61.85,
-   "in_wdi": true
+   "in_wdi": true,
+   "iso2": "AG"
   },
   {
    "iso3": "BHS",
    "name": "The Bahamas",
    "lat": 25.05,
    "lon": -77.35,
-   "in_wdi": true
+   "in_wdi": true,
+   "iso2": "BS"
   },
   {
    "iso3": "BRB",
    "name": "Barbados",
    "lat": 13.1,
    "lon": -59.6,
-   "in_wdi": true
+   "in_wdi": true,
+   "iso2": "BB"
   },
   {
    "iso3": "BLZ",
    "name": "Belize",
    "lat": 17.25,
    "lon": -88.77,
-   "in_wdi": true
+   "in_wdi": true,
+   "iso2": "BZ"
   },
   {
    "iso3": "DMA",
    "name": "Dominica",
    "lat": 15.3,
    "lon": -61.39,
-   "in_wdi": true
+   "in_wdi": true,
+   "iso2": "DM"
   },
   {
    "iso3": "GRD",
    "name": "Grenada",
    "lat": 12.05,
    "lon": -61.75,
-   "in_wdi": true
+   "in_wdi": true,
+   "iso2": "GD"
   },
   {
    "iso3": "GUY",
    "name": "Guyana",
    "lat": 6.8,
    "lon": -58.16,
-   "in_wdi": true
+   "in_wdi": true,
+   "iso2": "GY"
   },
   {
    "iso3": "HTI",
    "name": "Haiti",
    "lat": 18.54,
    "lon": -72.34,
-   "in_wdi": true
+   "in_wdi": true,
+   "iso2": "HT"
   },
   {
    "iso3": "JAM",
    "name": "Jamaica",
    "lat": 18.0,
    "lon": -76.8,
-   "in_wdi": true
+   "in_wdi": true,
+   "iso2": "JM"
   },
   {
    "iso3": "MSR",
    "name": "Montserrat",
    "lat": 16.7,
    "lon": -62.2,
-   "in_wdi": false
+   "in_wdi": false,
+   "iso2": "MS"
   },
   {
    "iso3": "KNA",
    "name": "Saint Kitts and Nevis",
    "lat": 17.3,
    "lon": -62.72,
-   "in_wdi": true
+   "in_wdi": true,
+   "iso2": "KN"
   },
   {
    "iso3": "LCA",
    "name": "Saint Lucia",
    "lat": 14.01,
    "lon": -60.99,
-   "in_wdi": true
+   "in_wdi": true,
+   "iso2": "LC"
   },
   {
    "iso3": "VCT",
    "name": "Saint Vincent and the Grenadines",
    "lat": 13.16,
    "lon": -61.23,
-   "in_wdi": true
+   "in_wdi": true,
+   "iso2": "VC"
   },
   {
    "iso3": "SUR",
    "name": "Suriname",
    "lat": 5.85,
    "lon": -55.2,
-   "in_wdi": true
+   "in_wdi": true,
+   "iso2": "SR"
   },
   {
    "iso3": "TTO",
    "name": "Trinidad and Tobago",
    "lat": 10.65,
    "lon": -61.5,
-   "in_wdi": true
+   "in_wdi": true,
+   "iso2": "TT"
   }
  ]
 }

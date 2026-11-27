@@ -9,6 +9,8 @@ const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt
 const safeUrl = u => /^https:\/\//.test(String(u || '')) ? esc(u) : '';
 const fmt = (v, unit) => v == null ? '—' : unit === 'index' ? Number(v).toFixed(3) : Number(v).toFixed(1) + '%';
 const NOW_YEAR = new Date().getFullYear();
+const wbPage = (code, iso3) => `https://data.worldbank.org/indicator/${encodeURIComponent(code)}?locations=${encodeURIComponent((S.c && S.c[iso3] && S.c[iso3].iso2) || iso3)}`;
+const srcLinks = o => `<a href="${esc(wbPage(o.indicator, o.country))}">World Bank page</a>${safeUrl(o.source_url) ? ` <small>(<a href="${safeUrl(o.source_url)}">raw data</a>)</small>` : ''}`;
 const WB = 'https://api.worldbank.org/v2';
 const LIVE_EVERY_MS = 30 * 60 * 1000;
 
@@ -307,7 +309,7 @@ function renderObsTable() {
   $('#obsTable').innerHTML = `<caption class="sr-only">Every published record for the selected indicator</caption><thead><tr><th>Country</th><th>Indicator</th><th>Year</th><th>Value</th><th>World</th><th>OECD</th><th>vs world†</th><th>Notes</th><th>Source</th><th>Record</th></tr></thead><tbody>${rows.map(o => {
     const u = safeUrl(o.source_url), ind = S.indMap[o.indicator], w = bench('WLD', o.indicator), oe = bench('OED', o.indicator);
     const d = w ? o.value - w.value : null;
-    return `<tr><td>${esc(S.c[o.country]?.name || o.country)}</td><td>${esc(ind?.short || o.indicator)}</td><td class="num">${esc(o.ref_year)}</td><td class="num">${fmt(o.value, ind?.unit)}</td><td class="num">${w ? `${fmt(w.value)} <small>${w.ref_year}</small>` : '—'}</td><td class="num">${oe ? `${fmt(oe.value)} <small>${oe.ref_year}</small>` : '—'}</td><td class="num">${d == null ? '—' : (d >= 0 ? '+' : '−') + Math.abs(d).toFixed(1) + ' pts'}</td><td>${obsFlags(o).map(x => `<span class="flag">${esc(x)}</span>`).join(' ')}</td><td>${u ? `<a href="${u}">API query</a>` : ''}</td><td><code>${esc(o.id)}</code> <a href="#collaborate" data-report="${esc(o.id)}">Report</a></td></tr>`; }).join('')}</tbody>`;
+    return `<tr><td>${esc(S.c[o.country]?.name || o.country)}</td><td>${esc(ind?.short || o.indicator)}</td><td class="num">${esc(o.ref_year)}</td><td class="num">${fmt(o.value, ind?.unit)}</td><td class="num">${w ? `${fmt(w.value)} <small>${w.ref_year}</small>` : '—'}</td><td class="num">${oe ? `${fmt(oe.value)} <small>${oe.ref_year}</small>` : '—'}</td><td class="num">${d == null ? '—' : (d >= 0 ? '+' : '−') + Math.abs(d).toFixed(1) + ' pts'}</td><td>${obsFlags(o).map(x => `<span class="flag">${esc(x)}</span>`).join(' ')}</td><td>${srcLinks(o)}</td><td><code>${esc(o.id)}</code> <a href="#collaborate" data-report="${esc(o.id)}">Report</a></td></tr>`; }).join('')}</tbody>`;
 }
 
 function renderProfiles() {
@@ -332,14 +334,14 @@ function renderCountry(iso) {
   $('#cBody').innerHTML = `${c.in_wdi ? `<div class="kpis">${kpis}</div>${gpiNote}${histNote}` : `<div class="empty">This member state is not covered by the World Bank literacy series. Its national statistics office and ministry will be audited directly.</div>`}
     <div class="two mt"><div><h2>Gaps still to audit</h2><ul>${gaps.map(i => `<li>${esc(i.short)}${i.kind === 'proxy' ? ' <span class="note">(proxy indicator)</span>' : ''}</li>`).join('')}</ul></div>
     <div><h2>Sources</h2><p>World Bank World Development Indicators, data from the UNESCO Institute for Statistics. Licence CC BY 4.0.</p>${iso === 'JAM' ? '<p>National sources queued for audit: STATIN, PIOJ and the Ministry of Education and Youth.</p>' : ''}</div></div>
-    ${recs.length ? `<h2 class="mt">Records</h2><div class="scroll"><table class="data stack"><thead><tr><th>Indicator</th><th>Year</th><th>Value</th><th>Notes</th><th>Source</th></tr></thead><tbody>${recs.sort((a, b) => a.indicator.localeCompare(b.indicator) || b.ref_year - a.ref_year).map(o => `<tr><td>${esc(S.indMap[o.indicator]?.short)}</td><td class="num">${o.ref_year}</td><td class="num">${fmt(o.value, S.indMap[o.indicator]?.unit)}</td><td>${obsFlags(o).map(x => `<span class="flag">${esc(x)}</span>`).join(' ')}</td><td>${safeUrl(o.source_url) ? `<a href="${safeUrl(o.source_url)}">API query</a>` : ''} · <a href="#collaborate" data-report="${esc(o.id)}">Report</a></td></tr>`).join('')}</tbody></table></div>` : ''}`;
+    ${recs.length ? `<h2 class="mt">Records</h2><div class="scroll"><table class="data stack"><thead><tr><th>Indicator</th><th>Year</th><th>Value</th><th>Notes</th><th>Source</th></tr></thead><tbody>${recs.sort((a, b) => a.indicator.localeCompare(b.indicator) || b.ref_year - a.ref_year).map(o => `<tr><td>${esc(S.indMap[o.indicator]?.short)}</td><td class="num">${o.ref_year}</td><td class="num">${fmt(o.value, S.indMap[o.indicator]?.unit)}</td><td>${obsFlags(o).map(x => `<span class="flag">${esc(x)}</span>`).join(' ')}</td><td>${srcLinks(o)} · <a href="#collaborate" data-report="${esc(o.id)}">Report</a></td></tr>`).join('')}</tbody></table></div>` : ''}`;
 }
 
 /* ---------- repository ---------- */
 function repoIndex() {
   const items = [];
-  S.research.records.filter(r => r.review && r.review.status === S.gov.public_requires_review_status).forEach(r => items.push({ type: 'Research record', title: r.title, country: r.country, domain: r.domain, year: r.year, text: [r.title, r.findings, r.methodology, r.framework, r.citation].join(' '), url: r.url, body: r.citation }));
-  S.obs.forEach(o => { const i = S.indMap[o.indicator], c = S.c[o.country]; items.push({ type: 'Statistic', title: `${c?.name}: ${i?.short} ${fmt(o.value, i?.unit)} (${o.ref_year})`, country: o.country, domain: i?.domain, year: o.ref_year, text: `${c?.name} ${i?.name} ${i?.domain} ${o.ref_year}`, url: o.source_url, body: `${i?.name}. Source: World Bank WDI / UIS. Record ${o.id}.` }); });
+  S.research.records.filter(r => r.review && r.review.status === S.gov.public_requires_review_status).forEach(r => items.push({ type: 'Research record', title: r.title, country: r.country, domain: r.domain, year: r.year, text: [r.title, r.findings, r.methodology, r.framework, r.citation, r.level].join(' '), url: r.url, body: `${r.findings} Method: ${r.methodology}.${r.limitations ? ' Limitations: ' + r.limitations : ''} ${r.citation}` }));
+  S.obs.forEach(o => { const i = S.indMap[o.indicator], c = S.c[o.country]; items.push({ type: 'Statistic', title: `${c?.name}: ${i?.short} ${fmt(o.value, i?.unit)} (${o.ref_year})`, country: o.country, domain: i?.domain, year: o.ref_year, text: `${c?.name} ${i?.name} ${i?.domain} ${o.ref_year}`, url: wbPage(o.indicator, o.country), body: `${i?.name}. Source: World Bank WDI / UIS. Record ${o.id}.` }); });
   S.sources.records.forEach(s => items.push({ type: 'Source', title: `${s.name} — ${s.publisher}`, country: '', domain: s.indicators.join(', '), year: '', text: [s.name, s.publisher, s.coverage, s.notes, s.indicators.join(' ')].join(' '), url: s.url, body: `${s.coverage}. Access: ${s.access}. Licence: ${s.licence}${s.licence_status === 'verified' ? ' (verified)' : ''}. Audit: ${s.audit}.${s.notes ? ' ' + s.notes : ''}` }));
   return items;
 }
@@ -353,7 +355,9 @@ function renderRepo() {
   const q = $('#q').value.toLowerCase().split(/\s+/).filter(Boolean), t = $('#fType').value, cc = fc.value, d = fd.value;
   const hits = repoIndex().filter(it => (!t || it.type === t) && (!cc || it.country === cc) && (!d || String(it.domain).includes(d)) && q.every(w => (it.title + ' ' + it.text).toLowerCase().includes(w)));
   const approved = S.research.records.filter(r => r.review && r.review.status === 'approved').length;
-  $('#repoCount').textContent = `${hits.length} result${hits.length === 1 ? '' : 's'} · ${approved} approved research record${approved === 1 ? '' : 's'} so far`;
+  $('#repoCount').textContent = `${hits.length} result${hits.length === 1 ? '' : 's'} · ${approved} research record${approved === 1 ? "" : "s"}`;
+  const order = { 'Research record': 0, 'Source': 1, 'Statistic': 2 };
+  hits.sort((a, b) => order[a.type] - order[b.type] || String(b.year).localeCompare(String(a.year)));
   const shown = hits.slice(0, 60);
   $('#repoResults').innerHTML = (t === 'Research record' && !approved ? `<div class="empty">No research records have been added yet. Entries appear here once they are checked against their sources.</div>` : '') +
     shown.map(it => `<article class="result"><div class="meta"><span class="pill">${esc(it.type)}</span>${it.year ? `<span class="pill">${esc(it.year)}</span>` : ''}${it.domain ? `<span class="pill">${esc(it.domain)}</span>` : ''}</div><h3>${safeUrl(it.url) ? `<a href="${safeUrl(it.url)}">${esc(it.title)}</a>` : esc(it.title)}</h3><p class="note">${esc(it.body)}</p></article>`).join('') +
@@ -361,10 +365,16 @@ function renderRepo() {
 }
 
 function renderPubs() {
-  $('#pubList').innerHTML = S.publications.records.map(p => `<article class="pub"><div><span class="series">${esc(p.series)}${p.number ? ' ' + esc(p.number) : ''}</span><br><span class="st ${esc(p.status)}">${esc({ draft: 'Draft for review', planned: 'Planned', published: 'Published' }[p.status] || p.status)}</span></div><div><h3>${p.url && p.url.startsWith('#') ? `<a href="${esc(p.url)}">${esc(p.title)}</a>` : esc(p.title)}</h3><p class="note">${esc(p.summary)}${p.date ? ' · ' + esc(p.date) : ''}</p></div></article>`).join('');
+  $('#pubList').innerHTML = S.publications.records.map(p => `<article class="pub"><div><span class="series">${esc(p.series)}${p.number ? ' ' + esc(p.number) : ''}</span><br><span class="st ${esc(p.status)}">${esc({ draft: 'Draft for review', planned: 'Planned', published: 'Online' }[p.status] || p.status)}</span></div><div><h3>${p.url && p.url.startsWith('#') ? `<a href="${esc(p.url)}">${esc(p.title)}</a>` : esc(p.title)}</h3><p class="note">${esc(p.summary)}${p.date ? ' · ' + esc(p.date) : ''}</p></div></article>`).join('');
   const pol = S.policy.records.filter(r => r.review && r.review.status === 'approved');
-  $('#policyList').innerHTML = pol.length ? pol.map(r => `<article class="result"><h3>${safeUrl(r.url) ? `<a href="${safeUrl(r.url)}">${esc(r.title)}</a>` : esc(r.title)}</h3><p class="note">${esc(r.country)} · ${esc(r.year)} · ${esc(r.type)}</p></article>`).join('')
+  $('#policyList').innerHTML = pol.length ? `<div class="toolbar"><label>Country <select id="polCountry"><option value="">All</option>${[...new Set(pol.map(r => r.country))].map(c => `<option value="${esc(c)}">${esc(S.c[c]?.name || c)}</option>`).join('')}</select></label></div><div class="results" id="polResults"></div>`
     : `<div class="empty"><p><b>The archive is open for entries but holds no approved documents yet.</b></p><p>It will collect national literacy policies, curriculum frameworks, assessment frameworks and language-in-education policies, starting with Jamaica and continuing country by country. Each document is linked to its official public copy, never re-hosted without permission.</p></div>`;
+}
+
+function renderPolicyList() {
+  const sel = $('#polCountry'); if (!sel) return;
+  const pol = S.policy.records.filter(r => r.review && r.review.status === 'approved' && (!sel.value || r.country === sel.value)).sort((a, b) => (b.year || 0) - (a.year || 0));
+  $('#polResults').innerHTML = pol.map(r => `<article class="result"><div class="meta"><span class="pill">${esc(S.c[r.country]?.name || r.country)}</span><span class="pill">${esc(r.year || 'Year not shown')}</span><span class="pill">${esc(r.type)}</span></div><h3>${safeUrl(r.url) ? `<a href="${safeUrl(r.url)}">${esc(r.title)}</a>` : esc(r.title)}</h3><p class="note">${r.publisher ? `<b>${esc(r.publisher)}.</b> ` : ''}${esc(r.summary || '')}</p></article>`).join('');
 }
 
 function renderMethods() {
@@ -496,7 +506,7 @@ function bind() {
     return;
   }
   if (window.claude) $$('a[href="admin/"]').forEach(a => a.closest('div').lastElementChild === a && (a.previousElementSibling?.remove(), a.remove()));
-  renderAgenda(); renderPubs(); renderContrast(); bind(); renderAll(); route();
+  renderAgenda(); renderPubs(); renderPolicyList(); $('#polCountry')?.addEventListener('input', renderPolicyList); renderContrast(); bind(); renderAll(); route();
   refreshLive(false);
   setInterval(() => refreshLive(false), LIVE_EVERY_MS);
   liveViaClaude();

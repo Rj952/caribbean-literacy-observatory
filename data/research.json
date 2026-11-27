@@ -1,6 +1,6 @@
 {
  "meta": {
-  "note": "Curated research records. Only records with review.status 'approved' are shown publicly.",
+  "note": "Research records. Each is checked against its publicly accessible source before it appears.",
   "fields": [
    "country",
    "domain",
@@ -14,5 +14,106 @@
    "citation"
   ]
  },
- "records": []
+ "records": [
+  {
+   "id": "amorim-2008-literacy-numeracy-caribbean",
+   "title": "Literacy and Numeracy in Select Countries in the Caribbean",
+   "country": "REGIONAL",
+   "domain": "Literacy policy",
+   "level": "Multiple",
+   "year": 2008,
+   "methodology": "Analysis of nine Caribbean education systems, literature survey, questionnaires and interviews with education officers",
+   "framework": "",
+   "findings": "Reviews the status of literacy and numeracy in Barbados, Dominica, Grenada, Guyana, Jamaica, St Kitts and Nevis, St Lucia, St Vincent and the Grenadines, and Trinidad and Tobago.",
+   "indicators": "",
+   "limitations": "Pre-dates current national assessments.",
+   "citation": "de Amorim, A. C. A. (2008). Literacy and numeracy in select Caribbean countries. The University of the West Indies repository (UWISpace).",
+   "url": "https://uwispace.sta.uwi.edu/server/api/core/bitstreams/3483c91d-94be-4be3-aba0-47f7a301c8aa/content",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "note": "Checked against the publicly accessible source"
+   }
+  },
+  {
+   "id": "idb-cdb-2008-literacy-numeracy-meeting",
+   "title": "Literacy and Numeracy in the Caribbean: Report of the Caribbean Subregional Meeting",
+   "country": "REGIONAL",
+   "domain": "Literacy policy",
+   "level": "Multiple",
+   "year": 2008,
+   "methodology": "Regional policy dialogue report with commissioned papers",
+   "framework": "",
+   "findings": "Report of the 2\u20133 December 2008 meeting in Bridgetown, including a chapter on Trinidad and Tobago's experience of international reading literacy assessment.",
+   "indicators": "",
+   "limitations": "Conference report; findings vary by chapter.",
+   "citation": "Inter-American Development Bank & Caribbean Development Bank. (2008). Literacy and numeracy in the Caribbean: Report of the Caribbean subregional meeting, December 2\u20133, 2008, Bridgetown, Barbados. Regional Policy Dialogue on Education.",
+   "url": "https://uwispace.sta.uwi.edu/bitstreams/e849eff9-1a5e-433e-b4d9-1d25d9674e01/download",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "note": "Checked against the publicly accessible source"
+   }
+  },
+  {
+   "id": "oecd-2023-pisa-jamaica",
+   "title": "PISA 2022 Results (Volume I and II) \u2014 Country Notes: Jamaica",
+   "country": "JAM",
+   "domain": "Reading proficiency",
+   "level": "Secondary",
+   "year": 2023,
+   "methodology": "International large-scale assessment of 15-year-old students",
+   "framework": "PISA reading literacy framework",
+   "findings": "Half of Jamaican students reached at least Level 2 in reading (OECD average 74%); 1% reached Level 5 or above (OECD 7%); girls outperformed boys in reading by 35 score points.",
+   "indicators": "Share of students by reading proficiency level; gender gap",
+   "limitations": "Student response rates were substantially below PISA technical standards, so bias cannot be excluded.",
+   "citation": "OECD. (2023). PISA 2022 results (Volume I and II) \u2013 Country notes: Jamaica. OECD Publishing.",
+   "url": "https://www.oecd.org/en/publications/pisa-2022-results-volume-i-and-ii-country-notes_ed6fbcc5-en/jamaica_d5d0d9e2-en.html",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "note": "Checked against the publicly accessible source"
+   }
+  },
+  {
+   "id": "iea-pirls2016-encyclopedia-tto",
+   "title": "PIRLS 2016 Encyclopedia: Trinidad and Tobago \u2014 Reading Instruction in the Primary Grades",
+   "country": "TTO",
+   "domain": "Literacy pedagogy",
+   "level": "Primary",
+   "year": 2017,
+   "methodology": "National education system profile prepared for the IEA PIRLS 2016 Encyclopedia",
+   "framework": "",
+   "findings": "Describes the 2013 primary curriculum, the use of literacy coaches from 2014 to 2016, and that classroom teachers are responsible for reading instruction throughout primary school.",
+   "indicators": "",
+   "limitations": "Descriptive profile; not an evaluation.",
+   "citation": "International Association for the Evaluation of Educational Achievement. (2017). PIRLS 2016 encyclopedia: Trinidad and Tobago. TIMSS & PIRLS International Study Center.",
+   "url": "https://pirls2016.org/encyclopedia/countries/trinidad-tobago/reading-instruction-in-the-primary-grades/",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "note": "Checked against the publicly accessible source"
+   }
+  },
+  {
+   "id": "best-1993-able-barbados",
+   "title": "A Description and Evaluation of Adult Basic Literacy Education (ABLE) Provision in Barbados: Individual, Institutional and National Goals, 1990\u20131993",
+   "country": "BRB",
+   "domain": "Adult literacy",
+   "level": "Adult and community",
+   "year": 1993,
+   "methodology": "Doctoral study describing and evaluating adult basic literacy provision",
+   "framework": "",
+   "findings": "Examines adult basic literacy provision in Barbados against individual, institutional and national goals between 1990 and 1993.",
+   "indicators": "",
+   "limitations": "Historical; reflects provision in the early 1990s.",
+   "citation": "Best, E. V. (1993). A description and evaluation of Adult Basic Literacy Education (ABLE) provision in Barbados: Individual, institutional and national goals 1990\u20131993 [Doctoral dissertation, Institute of Education, University of London]. UCL Discovery.",
+   "url": "https://discovery-pp.ucl.ac.uk/10021500/1/130393.pdf",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "note": "Checked against the publicly accessible source"
+   }
+  }
+ ]
 }
