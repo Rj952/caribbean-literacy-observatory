@@ -316,16 +316,26 @@
 
 <!-- STRATEGIES -->
 <section data-view="strategies" hidden>
-  <div class="band page-head"><div class="wrap"><p class="kicker">Research-based strategies</p><h1>What works to grow readers, from first words to adulthood</h1><p class="sub">Practical strategies for homes, schools and communities, drawn from major research reviews and from Caribbean evidence. Each one links to its source.</p></div></div>
+  <div class="band page-head"><div class="wrap"><p class="kicker">Research-based strategies</p><h1>What works to grow readers, from first words to adulthood</h1><p class="sub">Practical strategies for homes, schools and communities, grounded in the international science of reading and in Caribbean evidence. Each one links to its source.</p></div></div>
   <div class="band wrap">
+    <h2>The science of reading, in plain language</h2>
+    <p class="lead" id="sciIntro"></p>
+    <div class="sci-grid" id="sciModels"></div>
+    <div class="two mt"><p class="callout" id="sciBeyond"></p><p class="callout" id="sciCarib"></p></div>
+  </div>
+  <div class="band wrap strat-band">
+    <h2>The strategies</h2>
     <ol class="lifeline" id="lifeline" aria-label="Life stages"></ol>
     <div class="toolbar">
       <label>Life stage <select id="sStage"><option value="">All stages</option></select></label>
       <label>Setting <select id="sSetting"><option value="">Home, school and community</option><option>Home</option><option>School</option><option>Community</option></select></label>
+      <label>Builds <select id="sBuilds"><option value="">Any part of reading</option><option>Word recognition</option><option>Language comprehension</option><option>Conditions for learning</option></select></label>
       <label>Evidence <select id="sStrength"><option value="">Any</option><option>Strong</option><option>Moderate</option><option>Emerging</option><option>Caribbean evidence</option></select></label>
+      <button class="btn small" type="button" id="sOpenAll">Expand all</button>
+      <button class="btn small ghost" type="button" id="sCloseAll">Collapse all</button>
     </div>
     <p class="count" id="sCount" role="status"></p>
-    <div class="strat-grid" id="stratList"></div>
+    <div id="stratList"></div>
     <details class="schema"><summary>How to read the evidence labels</summary><p id="sNote"></p></details>
     <h2 class="mt">Sources</h2>
     <ol class="note" id="sSources"></ol>

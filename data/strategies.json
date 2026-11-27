@@ -81,6 +81,84 @@
    "publisher": "UNESCO Institute for Lifelong Learning",
    "year": 2016,
    "url": "https://epub.sub.uni-hamburg.de/epub/volltexte/2021/119336/pdf/245513eng.pdf"
+  },
+  "nrc-motivation": {
+   "title": "Improving Adult Literacy Instruction: Supporting Learning and Motivation",
+   "publisher": "National Research Council (US)",
+   "year": 2012,
+   "url": "https://www.nationalacademies.org/read/13469/chapter/5"
+  },
+  "nrc-tech": {
+   "title": "Improving Adult Literacy Instruction, Chapter 6: Technology to Promote Adult Literacy",
+   "publisher": "National Research Council (US)",
+   "year": 2012,
+   "url": "https://www.nationalacademies.org/read/13242/chapter/8"
+  },
+  "ibest-ccrc": {
+   "title": "Educational Outcomes of I-BEST, Washington State's Integrated Basic Education and Skills Training Program",
+   "publisher": "Community College Research Center, Columbia University",
+   "year": 2009,
+   "url": "https://academiccommons.columbia.edu/doi/10.7916/D8668NBB"
+  },
+  "ibest-wwc": {
+   "title": "Integrated Basic Education and Skills Training (I-BEST): Intervention Report",
+   "publisher": "What Works Clearinghouse, Institute of Education Sciences (US)",
+   "year": 2020,
+   "url": "https://ies.ed.gov/ncee/wwc/Docs/InterventionReports/WWC_I-BEST_Report_508.pdf"
+  },
+  "heart-hsde": {
+   "title": "Adult learners can access HEART/NSTA Trust's HSDE programme",
+   "publisher": "Jamaica Observer",
+   "year": 2023,
+   "url": "https://www.jamaicaobserver.com/2023/08/10/adult-learners-can-access-heart-nsta-trusts-hsde-programme/"
+  },
+  "jfll-workplace": {
+   "title": "Changing course: JFLL, former JAMAL, morphs into full-fledged adult education",
+   "publisher": "The Gleaner",
+   "year": 2014,
+   "url": "https://jamaica-gleaner.com/article/lead-stories/20141214/changing-course-jfll-former-jamal-morphs-full-fledged-adult-education"
+  },
+  "uil-family": {
+   "title": "Guidelines for Family Literacy and Learning Programmes",
+   "publisher": "UNESCO Institute for Lifelong Learning",
+   "year": 2017,
+   "url": "https://epub.sub.uni-hamburg.de/epub/volltexte/2021/119370/pdf/248446eng.pdf"
+  },
+  "uil-brief9": {
+   "title": "Engaging Families in Literacy and Learning (UIL Policy Brief 9)",
+   "publisher": "UNESCO Institute for Lifelong Learning",
+   "year": 2017,
+   "url": "https://unesdoc.unesco.org/ark:/48223/pf0000249463"
+  },
+  "nrp": {
+   "title": "Teaching Children to Read: Report of the National Reading Panel",
+   "publisher": "National Institute of Child Health and Human Development (US)",
+   "year": 2000,
+   "url": "https://www.nichd.nih.gov/publications/pubs/nrp/report"
+  },
+  "castles": {
+   "title": "Ending the Reading Wars: Reading Acquisition From Novice to Expert (Castles, Rastle & Nation), Psychological Science in the Public Interest, 19(1), 5\u201351",
+   "publisher": "Association for Psychological Science",
+   "year": 2018,
+   "url": "https://doi.org/10.1177/1529100618772271"
+  },
+  "svr": {
+   "title": "The Simple View of Reading (Hoover & Gough), Reading and Writing, 2, 127\u2013160",
+   "publisher": "Springer",
+   "year": 1990,
+   "url": "https://doi.org/10.1007/BF00401799"
+  },
+  "svr-practice": {
+   "title": "The Simple View of Reading: what it means for assessment and teaching",
+   "publisher": "Reading Rockets",
+   "year": 2019,
+   "url": "https://www.readingrockets.org/topics/about-reading/articles/simple-view-reading"
+  },
+  "rope": {
+   "title": "Scarborough's Reading Rope (from Scarborough, 2001, in Neuman & Dickinson, Handbook of Early Literacy Research)",
+   "publisher": "Connecticut State Department of Education (explainer)",
+   "year": 2001,
+   "url": "https://portal.ct.gov/sde/academic-office/center-for-literacy-research-and-reading-success/for-educators/explore-the-center/instruction-aligned-to-evidence/components-of-evidence-aligned-instruction/scarborough-reading-rope"
   }
  },
  "strategies": [
@@ -98,6 +176,9 @@
    "sources": [
     "eef-ey",
     "eef-ey-agenda"
+   ],
+   "builds": [
+    "Language comprehension"
    ]
   },
   {
@@ -113,6 +194,9 @@
    "strength": "Moderate",
    "sources": [
     "eef-parents"
+   ],
+   "builds": [
+    "Language comprehension"
    ]
   },
   {
@@ -129,6 +213,9 @@
    "strength": "Moderate",
    "sources": [
     "eef-ey"
+   ],
+   "builds": [
+    "Conditions for learning"
    ]
   },
   {
@@ -139,12 +226,17 @@
    ],
    "title": "Teach sounds and letters clearly and in order",
    "do": "Teach children to hear the separate sounds in words, link those sounds to letters, and blend them to read and spell \u2014 step by step, every day, with plenty of practice.",
-   "why": "International practice guides based on hundreds of studies recommend explicit teaching of sound awareness and decoding in the first years of school.",
+   "why": "International practice guides and the US National Reading Panel recommend explicit, systematic teaching of sound awareness and phonics in the first years of school. A major review of more than 300 studies explains why phonics is central in English, while stressing that children need more than phonics to become skilled readers.",
    "caribbean": "Barbados's national literacy programme uses this kind of structured approach; the Ministry reports reading gains in a sample of primary pupils, while cautioning that these are not national results.",
    "strength": "Strong",
    "sources": [
     "wwc-k3",
+    "nrp",
+    "castles",
     "bb-nlp"
+   ],
+   "builds": [
+    "Word recognition"
    ]
   },
   {
@@ -161,6 +253,9 @@
    "sources": [
     "wwc-k3",
     "eef-ks1"
+   ],
+   "builds": [
+    "Language comprehension"
    ]
   },
   {
@@ -177,6 +272,9 @@
    "sources": [
     "lep",
     "bep"
+   ],
+   "builds": [
+    "Language comprehension"
    ]
   },
   {
@@ -191,6 +289,29 @@
    "strength": "Strong",
    "sources": [
     "eef-ks1"
+   ],
+   "builds": [
+    "Word recognition",
+    "Language comprehension"
+   ]
+  },
+  {
+   "id": "fluency",
+   "stage": "Early primary (5\u20138)",
+   "settings": [
+    "School",
+    "Home"
+   ],
+   "title": "Practise reading aloud until it flows",
+   "do": "Give children daily, short practice reading real texts aloud, with feedback from a teacher, parent or older child, re-reading until the reading is accurate, smooth and expressive.",
+   "why": "Fluency is one of the five components identified by the National Reading Panel. When word reading becomes automatic, attention is freed for understanding.",
+   "strength": "Strong",
+   "sources": [
+    "nrp",
+    "wwc-k3"
+   ],
+   "builds": [
+    "Word recognition"
    ]
   },
   {
@@ -205,6 +326,9 @@
    "strength": "Strong",
    "sources": [
     "wwc-adol"
+   ],
+   "builds": [
+    "Language comprehension"
    ]
   },
   {
@@ -219,6 +343,9 @@
    "strength": "Strong",
    "sources": [
     "wwc-adol"
+   ],
+   "builds": [
+    "Language comprehension"
    ]
   },
   {
@@ -233,6 +360,9 @@
    "strength": "Moderate",
    "sources": [
     "wwc-adol"
+   ],
+   "builds": [
+    "Language comprehension"
    ]
   },
   {
@@ -250,6 +380,9 @@
    "sources": [
     "wwc-adol",
     "pisa-jm"
+   ],
+   "builds": [
+    "Conditions for learning"
    ]
   },
   {
@@ -264,6 +397,10 @@
    "strength": "Strong",
    "sources": [
     "wwc-adol"
+   ],
+   "builds": [
+    "Word recognition",
+    "Language comprehension"
    ]
   },
   {
@@ -278,6 +415,28 @@
    "strength": "Emerging",
    "sources": [
     "eef-parents"
+   ],
+   "builds": [
+    "Conditions for learning"
+   ]
+  },
+  {
+   "id": "assess-both",
+   "stage": "All school ages",
+   "settings": [
+    "School"
+   ],
+   "title": "Find out whether a struggling reader needs help with words, meaning, or both",
+   "do": "Before choosing support, check two things separately: how well the learner reads words, and how well they understand language when it is read to them. Then target help at the weaker side.",
+   "why": "The Simple View of Reading shows that reading comprehension depends on both word recognition and language comprehension, and that help works best when it targets the specific weakness.",
+   "strength": "Strong",
+   "sources": [
+    "svr",
+    "svr-practice"
+   ],
+   "builds": [
+    "Word recognition",
+    "Language comprehension"
    ]
   },
   {
@@ -293,6 +452,10 @@
    "sources": [
     "alrwg",
     "nrc"
+   ],
+   "builds": [
+    "Word recognition",
+    "Language comprehension"
    ]
   },
   {
@@ -308,7 +471,173 @@
    "strength": "Emerging",
    "sources": [
     "uil-multi"
+   ],
+   "builds": [
+    "Conditions for learning",
+    "Language comprehension"
+   ]
+  },
+  {
+   "id": "adult-persistence",
+   "stage": "Adults",
+   "settings": [
+    "Community"
+   ],
+   "title": "Design adult programmes so learners can keep coming back",
+   "do": "Offer classes at times and places that fit work and family life \u2014 evenings, weekends, workplaces, churches and community centres \u2014 and keep in touch with learners who drop out so they can return.",
+   "why": "Adults lead busy lives, and most stay in literacy programmes far less time than they need to make strong gains. Convenient times and places may be critical to helping them persist.",
+   "strength": "Emerging",
+   "sources": [
+    "nrc-motivation"
+   ],
+   "builds": [
+    "Conditions for learning"
+   ]
+  },
+  {
+   "id": "adult-integrated",
+   "stage": "Adults",
+   "settings": [
+    "Community"
+   ],
+   "title": "Teach reading and writing alongside job skills",
+   "do": "Pair a literacy teacher with a trade or job-skills instructor so adults build reading, writing and maths while training for real work, instead of having to finish basic classes first.",
+   "why": "In Washington State's I-BEST model, basic-skills and occupational instructors team-teach. Students were more likely than other basic-skills students to earn college credits and certificates and to improve their basic-skills test scores.",
+   "caribbean": "This fits the Caribbean's strong vocational training systems, such as Jamaica's HEART/NSTA Trust.",
+   "strength": "Moderate",
+   "sources": [
+    "ibest-ccrc",
+    "ibest-wwc"
+   ],
+   "builds": [
+    "Language comprehension",
+    "Conditions for learning"
+   ]
+  },
+  {
+   "id": "adult-pathway",
+   "stage": "Adults",
+   "settings": [
+    "Community"
+   ],
+   "title": "Offer clear steps from basic literacy to a recognised qualification",
+   "do": "Start each adult with a diagnostic assessment, place them at the right level, and give them a visible ladder of levels that leads to a certificate employers recognise.",
+   "why": "Adults are more willing to invest time when the goal is concrete and the next step is clear.",
+   "caribbean": "Jamaica's High School Diploma Equivalency programme has three levels, from Grade 1 up to Grades 10\u201311, leading to CXC-level work, and begins with a diagnostic test.",
+   "strength": "Caribbean evidence",
+   "sources": [
+    "heart-hsde"
+   ],
+   "builds": [
+    "Conditions for learning"
+   ]
+  },
+  {
+   "id": "adult-technology",
+   "stage": "Adults",
+   "settings": [
+    "Community",
+    "Home"
+   ],
+   "title": "Use phones and computers to add practice, not to replace teaching",
+   "do": "Give adults well-chosen apps, audio and online exercises to practise between classes, tied closely to what they learn with their teacher.",
+   "why": "Research reviews find that technology does not produce learning on its own; it amplifies the teaching strategy behind it. Used well, it can free busy adults from having to be in one place to practise.",
+   "strength": "Emerging",
+   "sources": [
+    "nrc-tech",
+    "nrc-motivation"
+   ],
+   "builds": [
+    "Conditions for learning"
+   ]
+  },
+  {
+   "id": "adult-family",
+   "stage": "Adults",
+   "settings": [
+    "Home",
+    "Community"
+   ],
+   "title": "Help parents and children learn to read together",
+   "do": "Run family literacy sessions where parents build their own reading and writing while learning simple ways to support their children's learning at home.",
+   "why": "UNESCO guidance on family literacy holds that it is never too early or too late to learn to read, and that parents with weak literacy skills need targeted support to help their children.",
+   "strength": "Emerging",
+   "sources": [
+    "uil-family",
+    "uil-brief9"
+   ],
+   "builds": [
+    "Conditions for learning",
+    "Language comprehension"
+   ]
+  },
+  {
+   "id": "adult-workplace",
+   "stage": "Adults",
+   "settings": [
+    "Community"
+   ],
+   "title": "Take literacy classes into the workplace",
+   "do": "Partner with employers to offer literacy and numeracy classes on site or at shift change, using real workplace materials.",
+   "why": "Workplace delivery removes travel and timing barriers, which matter greatly for adult persistence.",
+   "caribbean": "Jamaica's adult education agency deployed its high-school equivalency programme through a dedicated workplace unit.",
+   "strength": "Emerging",
+   "sources": [
+    "jfll-workplace",
+    "nrc-motivation"
+   ],
+   "builds": [
+    "Conditions for learning"
    ]
   }
- ]
+ ],
+ "science": {
+  "intro": "Decades of international research \u2014 often called the science of reading \u2014 explain how people learn to read and why some struggle. Three ideas sit at its core.",
+  "models": [
+   {
+    "title": "The Simple View of Reading",
+    "text": "Understanding what you read depends on two things multiplied together: reading the words on the page, and understanding the language they express. If either is weak, understanding suffers, and neither is enough on its own.",
+    "formula": [
+     "Word recognition",
+     "Language comprehension",
+     "Reading comprehension"
+    ],
+    "source": "svr"
+   },
+   {
+    "title": "The Reading Rope",
+    "text": "Each side is made of strands. Word recognition grows from awareness of sounds, decoding, and recognising familiar words by sight. Language comprehension grows from background knowledge, vocabulary, sentence and text structure, reasoning, and knowledge of how texts work. With practice the strands become tightly woven into skilled reading.",
+    "strands": {
+     "Word recognition": [
+      "Sound awareness",
+      "Decoding and spelling",
+      "Sight recognition of familiar words"
+     ],
+     "Language comprehension": [
+      "Background knowledge",
+      "Vocabulary",
+      "Language structures",
+      "Verbal reasoning",
+      "Literacy knowledge"
+     ]
+    },
+    "source": "rope"
+   },
+   {
+    "title": "Five components of reading instruction",
+    "text": "A major US review of reading research identified five areas that effective early reading teaching covers: awareness of the sounds in words, phonics, fluency, vocabulary and comprehension.",
+    "items": [
+     "Phonemic awareness",
+     "Phonics",
+     "Fluency",
+     "Vocabulary",
+     "Comprehension"
+    ],
+    "source": "nrp"
+   }
+  ],
+  "caribbean": "Most of this research comes from English-speaking countries where children's home language is English. In the Caribbean many children grow up speaking a Creole, so the language-comprehension side of reading needs particular care. How best to bridge home language and the language of school is one of the Observatory's priority research questions.",
+  "beyond": "A review of more than 300 studies concludes that phonics is central for learning to read English, but that becoming an expert reader takes much more: wide reading, rich vocabulary and knowledge, built over many years.",
+  "beyond_source": "castles"
+ }
 }

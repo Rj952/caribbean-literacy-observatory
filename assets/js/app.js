@@ -189,6 +189,7 @@ function renderLiveBadge() {
 /* ---------- views ---------- */
 const VIEWS = ['home', 'about', 'agenda', 'director', 'dashboard', 'profiles', 'repository', 'publications', 'policy', 'methods', 'collaborate', 'accessibility', 'news', 'strategies'];
 function route() {
+  closeCite();
   let h = location.hash.slice(1) || 'home', view = h;
   if (h.startsWith('country-')) { view = 'country'; renderCountry(h.slice(8).toUpperCase()); }
   else if (!VIEWS.includes(h)) view = 'home';
@@ -279,6 +280,7 @@ function renderDashboard() {
   const sel = $('#obsInd');
   if (!sel.options.length) { sel.innerHTML = `<option value="">All audited indicators</option>` + S.indicators.records.filter(i => i.audited).map(i => `<option value="${esc(i.code)}">${esc(i.short)}</option>`).join(''); sel.value = IND.YT; sel.onchange = renderObsTable; }
   renderObsTable();
+  if (!$('#citeData')) $('#copyCsv').insertAdjacentHTML('beforebegin', '<button class="btn small ghost" id="citeData" type="button" aria-expanded="false">Cite this data</button>');
   if (!$('#obsCalc')) $('#obsTable').insertAdjacentHTML('afterend', '<p class="calc" id="obsCalc">† Calculated by the Observatory: country value minus the world average, in percentage points. Reference years usually differ, so read it as context, not a ranking.</p>');
 }
 
@@ -335,14 +337,14 @@ function renderCountry(iso) {
   const recs = S.obs.filter(o => o.country === iso);
   $('#cBody').innerHTML = `${c.in_wdi ? `<div class="kpis">${kpis}</div>${gpiNote}${histNote}` : `<div class="empty">This member state is not covered by the World Bank literacy series. Its national statistics office and ministry will be audited directly.</div>`}
     <div class="two mt"><div><h2>Gaps still to audit</h2><ul>${gaps.map(i => `<li>${esc(i.short)}${i.kind === 'proxy' ? ' <span class="note">(proxy indicator)</span>' : ''}</li>`).join('')}</ul></div>
-    <div><h2>Sources</h2><p>World Bank World Development Indicators, data from the UNESCO Institute for Statistics. Licence CC BY 4.0.</p>${iso === 'JAM' ? '<p>National sources queued for audit: STATIN, PIOJ and the Ministry of Education and Youth.</p>' : ''}</div></div>
+    <div><h2>Sources</h2><p>World Bank World Development Indicators, data from the UNESCO Institute for Statistics. Licence CC BY 4.0.</p><p><button type="button" class="btn small ghost" id="citeCountryData" aria-expanded="false">Cite this data</button></p>${iso === 'JAM' ? '<p>National sources queued for audit: STATIN, PIOJ and the Ministry of Education and Youth.</p>' : ''}</div></div>
     ${recs.length ? `<h2 class="mt">Records</h2><div class="scroll"><table class="data stack"><thead><tr><th>Indicator</th><th>Year</th><th>Value</th><th>Notes</th><th>Source</th></tr></thead><tbody>${recs.sort((a, b) => a.indicator.localeCompare(b.indicator) || b.ref_year - a.ref_year).map(o => `<tr><td>${esc(S.indMap[o.indicator]?.short)}</td><td class="num">${o.ref_year}</td><td class="num">${fmt(o.value, S.indMap[o.indicator]?.unit)}</td><td>${obsFlags(o).map(x => `<span class="flag">${esc(x)}</span>`).join(' ')}</td><td>${srcLinks(o)} · <a href="#collaborate" data-report="${esc(o.id)}">Report</a></td></tr>`).join('')}</tbody></table></div>` : ''}`;
 }
 
 /* ---------- repository ---------- */
 function repoIndex() {
   const items = [];
-  S.research.records.filter(r => r.review && r.review.status === S.gov.public_requires_review_status).forEach(r => items.push({ type: 'Research record', title: r.title, country: r.country, domain: r.domain, year: r.year, text: [r.title, r.findings, r.methodology, r.framework, r.citation, r.level].join(' '), url: r.url, body: `${r.findings} Method: ${r.methodology}.${r.limitations ? ' Limitations: ' + r.limitations : ''} ${r.citation}` }));
+  S.research.records.filter(r => r.review && r.review.status === S.gov.public_requires_review_status).forEach(r => items.push({ type: 'Research record', cite: r.citation, title: r.title, country: r.country, domain: r.domain, year: r.year, text: [r.title, r.findings, r.methodology, r.framework, r.citation, r.level].join(' '), url: r.url, body: `${r.findings} Method: ${r.methodology}.${r.limitations ? ' Limitations: ' + r.limitations : ''} ${r.citation}` }));
   S.obs.forEach(o => { const i = S.indMap[o.indicator], c = S.c[o.country]; items.push({ type: 'Statistic', title: `${c?.name}: ${i?.short} ${fmt(o.value, i?.unit)} (${o.ref_year})`, country: o.country, domain: i?.domain, year: o.ref_year, text: `${c?.name} ${i?.name} ${i?.domain} ${o.ref_year}`, url: wbPage(o.indicator, o.country), body: `${i?.name}. Source: World Bank WDI / UIS. Record ${o.id}.` }); });
   S.sources.records.forEach(s => items.push({ type: 'Source', title: `${s.name} — ${s.publisher}`, country: '', domain: s.indicators.join(', '), year: '', text: [s.name, s.publisher, s.coverage, s.notes, s.indicators.join(' ')].join(' '), url: s.url, body: `${s.coverage}. Access: ${s.access}. Licence: ${s.licence}${s.licence_status === 'verified' ? ' (verified)' : ''}. Audit: ${s.audit}.${s.notes ? ' ' + s.notes : ''}` }));
   return items;
@@ -362,7 +364,7 @@ function renderRepo() {
   hits.sort((a, b) => order[a.type] - order[b.type] || String(b.year).localeCompare(String(a.year)));
   const shown = hits.slice(0, 60);
   $('#repoResults').innerHTML = (t === 'Research record' && !approved ? `<div class="empty">No research records have been added yet. Entries appear here once they are checked against their sources.</div>` : '') +
-    shown.map(it => `<article class="result"><div class="meta"><span class="pill">${esc(it.type)}</span>${it.year ? `<span class="pill">${esc(it.year)}</span>` : ''}${it.domain ? `<span class="pill">${esc(it.domain)}</span>` : ''}</div><h3>${safeUrl(it.url) ? `<a href="${safeUrl(it.url)}">${esc(it.title)}</a>` : esc(it.title)}</h3><p class="note">${esc(it.body)}</p></article>`).join('') +
+    shown.map(it => `<article class="result"><div class="meta"><span class="pill">${esc(it.type)}</span>${it.year ? `<span class="pill">${esc(it.year)}</span>` : ''}${it.domain ? `<span class="pill">${esc(it.domain)}</span>` : ''}</div><h3>${safeUrl(it.url) ? `<a href="${safeUrl(it.url)}">${esc(it.title)}</a>` : esc(it.title)}</h3><p class="note">${esc(it.body)}</p>${it.cite ? `<button type="button" class="btn small ghost cite-item" data-cite-text="${esc(it.cite)}" aria-expanded="false">Copy citation</button>` : ''}</article>`).join('') +
     (hits.length > 60 ? `<p class="note">Showing 60 of ${hits.length}. Narrow the search to see more.</p>` : '');
 }
 
@@ -415,25 +417,98 @@ function renderMethods() {
 
 function renderAll() { renderLiveBadge(); renderHome(); renderNews(); renderDashboard(); renderProfiles(); renderRepo(); renderMethods(); if (location.hash.startsWith('#country-')) renderCountry(location.hash.slice(9).toUpperCase()); }
 
+/* ---------- citations (APA 7, MLA 9, BibTeX) ---------- */
+const SITE_URL = 'https://rj952.github.io/caribbean-literacy-observatory/';
+const ORG = 'Caribbean Literacy Observatory';
+const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+const MLA_M = ['Jan.', 'Feb.', 'Mar.', 'Apr.', 'May', 'June', 'July', 'Aug.', 'Sept.', 'Oct.', 'Nov.', 'Dec.'];
+function citeFormats(c) {
+  const now = new Date(), year = c.year || String(now.getFullYear());
+  const acc = `${MONTHS[now.getMonth()]} ${now.getDate()}, ${now.getFullYear()}`, accMla = `${now.getDate()} ${MLA_M[now.getMonth()]} ${now.getFullYear()}`;
+  const author = c.author || ORG, url = c.url || SITE_URL;
+  const isData = c.type === 'dataset';
+  const apa = isData
+    ? `${author}. (${year}). ${c.title} [Data set]. ${c.container || ''}${c.container ? '. ' : ''}Retrieved ${acc}, from ${url}`
+    : `${author}. (${year}). ${c.title}${c.kind ? ` [${c.kind}]` : ''}. ${c.container || ORG}. Retrieved ${acc}, from ${url}`;
+  const mla = `${author}. "${c.title}." ${c.container || ORG}, ${year}, ${url.replace(/^https?:\/\//, '')}. Accessed ${accMla}.`;
+  const key = (author.split(/[\s,]+/)[0] + '_' + year + '_' + String(c.title).split(/\W+/).filter(Boolean).slice(0, 3).join('')).toLowerCase().replace(/[^a-z0-9_]/g, '');
+  const bib = `@misc{${key},\n  author = {{${author}}},\n  title = {${c.title}},\n  year = {${year}},\n  howpublished = {\\url{${url}}},\n  note = {${isData ? 'Data set. ' : ''}Accessed ${now.toISOString().slice(0, 10)}}\n}`;
+  return [['APA 7', apa], ['MLA 9', mla], ['BibTeX', bib]];
+}
+function closeCite() { const p = $('#citePanel'); if (!p) return; const b = S.citeBtn; p.remove(); if (b) { b.setAttribute('aria-expanded', 'false'); b.focus(); } S.citeBtn = null; }
+function openCite(btn, c) {
+  if (S.citeBtn === btn) { closeCite(); return; }
+  closeCite();
+  const p = document.createElement('div');
+  p.id = 'citePanel'; p.className = 'cite-panel'; p.setAttribute('role', 'dialog'); p.setAttribute('aria-label', 'Cite: ' + c.title);
+  p.innerHTML = `<div class="cite-head"><b>Cite this ${esc(c.what || 'page')}</b><button type="button" class="cite-x" aria-label="Close">×</button></div>` +
+    citeFormats(c).map(([f, txt], i) => `<div class="cite-row"><div class="cite-f">${f}</div><pre class="cite-t" id="cite-${i}">${esc(txt)}</pre><button type="button" class="btn small" data-copy="cite-${i}">Copy ${f}</button></div>`).join('') +
+    '<p class="note cite-msg" role="status"></p>';
+  btn.insertAdjacentElement('afterend', p);
+  btn.setAttribute('aria-expanded', 'true'); S.citeBtn = btn;
+  p.querySelector('.cite-x').addEventListener('click', closeCite);
+  p.addEventListener('keydown', e => { if (e.key === 'Escape') closeCite(); });
+  p.addEventListener('click', async e => { const b = e.target.closest('[data-copy]'); if (!b) return; const txt = $('#' + b.dataset.copy).textContent; try { await navigator.clipboard.writeText(txt); p.querySelector('.cite-msg').textContent = `${b.textContent.replace('Copy ', '')} citation copied.`; } catch (err) { const r = document.createRange(); r.selectNodeContents($('#' + b.dataset.copy)); const sel = getSelection(); sel.removeAllRanges(); sel.addRange(r); p.querySelector('.cite-msg').textContent = 'Copy was blocked — the citation is selected; press Ctrl+C or Cmd+C.'; } });
+  p.querySelector('[data-copy]').focus();
+}
+function pageCitation() {
+  const h = location.hash.slice(1) || 'home', sec = $$('[data-view]').find(s => !s.hidden), title = sec && $('h1', sec) ? $('h1', sec).textContent.trim() : ORG;
+  return { title: h === 'home' ? 'Caribbean Literacy Observatory: An open data research initiative' : title, url: SITE_URL + (h === 'home' ? '' : '#' + h), what: 'page' };
+}
+function addPageCiteButtons() {
+  $$('[data-view]').forEach(sec => {
+    const head = $('.page-head .wrap', sec) || $('.hero-text', sec); if (!head || $('.cite-page', head)) return;
+    const b = document.createElement('button'); b.type = 'button'; b.className = 'btn small cite-page'; b.setAttribute('aria-expanded', 'false');
+    b.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z" fill="currentColor"/></svg>Cite this page';
+    b.addEventListener('click', () => openCite(b, pageCitation()));
+    head.appendChild(b);
+  });
+}
+const DATASET_CITE = code => ({ type: 'dataset', what: 'data set', author: 'World Bank', year: (S.observations.meta.source_last_updated || '').slice(0, 4) || String(NOW_YEAR), title: S.indMap[code] ? S.indMap[code].name : 'Literacy indicators', container: 'World Development Indicators (data from the UNESCO Institute for Statistics)', url: `https://data.worldbank.org/indicator/${code}` });
+
 /* ---------- strategies ---------- */
+function stratCard(x, D) {
+  return `<details class="strat-acc" id="st-${esc(x.id)}"><summary><span class="st-title">${esc(x.title)}</span><span class="st-tags">${x.builds.map(b => `<span class="pill bld">${esc(b)}</span>`).join('')}<span class="pill ev ev-${esc(String(x.strength).split(' ')[0])}">${esc(x.strength)}</span></span></summary>
+    <div class="st-body"><div class="meta">${x.settings.map(t => `<span class="pill">${esc(t)}</span>`).join('')}</div><p class="lbl">What to do</p><p>${esc(x.do)}</p><p class="lbl">Why it works</p><p>${esc(x.why)}</p>${x.caribbean ? `<p class="carib"><b>Caribbean lens.</b> ${esc(x.caribbean)}</p>` : ''}<p class="src">Sources: ${x.sources.map(k => D.sources[k]).filter(Boolean).map(v => safeUrl(v.url) ? `<a href="${safeUrl(v.url)}">${esc(v.publisher)} (${esc(v.year)})</a>` : esc(v.publisher)).join('; ')}</p><button type="button" class="btn small ghost cite-item" data-cite-strategy="${esc(x.id)}" aria-expanded="false">Cite</button></div></details>`;
+}
 function renderStrategies() {
   const D = S.strategies; if (!D || !Array.isArray(D.strategies)) return;
   const stages = [...new Set(D.strategies.map(x => x.stage))];
   const stSel = $('#sStage');
+  const plural = n => n + (n === 1 ? ' strategy' : ' strategies');
   if (stSel.options.length < 2) {
     stSel.innerHTML += stages.map(x => `<option>${esc(x)}</option>`).join('');
-    $('#lifeline').innerHTML = stages.map((x, i) => `<li><button type="button" data-stage="${esc(x)}" aria-pressed="false"><span class="dot2" aria-hidden="true">${i + 1}</span><b>${esc(x)}</b><small>${(n => n + (n === 1 ? ' strategy' : ' strategies'))(D.strategies.filter(y => y.stage === x).length)}</small></button></li>`).join('');
-    $('#lifeline').addEventListener('click', e => { const b = e.target.closest('button[data-stage]'); if (!b) return; stSel.value = stSel.value === b.dataset.stage ? '' : b.dataset.stage; renderStrategies(); });
-    ['#sStage', '#sSetting', '#sStrength'].forEach(id => $(id).addEventListener('input', renderStrategies));
+    $('#lifeline').innerHTML = stages.map((x, i) => `<li><button type="button" data-stage="${esc(x)}" aria-pressed="false"><span class="dot2" aria-hidden="true">${i + 1}</span><b>${esc(x)}</b><small>${plural(D.strategies.filter(y => y.stage === x).length)}</small></button></li>`).join('');
+    $('#lifeline').addEventListener('click', e => { const b = e.target.closest('button[data-stage]'); if (!b) return; stSel.value = stSel.value === b.dataset.stage ? '' : b.dataset.stage; renderStrategies(); if (stSel.value) { const g = $(`.stage-acc[data-stage="${CSS.escape(stSel.value)}"]`); if (g) { g.open = true; g.scrollIntoView({ block: 'start' }); } } });
+    ['#sStage', '#sSetting', '#sStrength', '#sBuilds'].forEach(id => $(id).addEventListener('input', renderStrategies));
+    $('#sOpenAll').addEventListener('click', () => $$('#stratList details').forEach(d => d.open = true));
+    $('#sCloseAll').addEventListener('click', () => $$('#stratList details').forEach(d => d.open = false));
     $('#sNote').textContent = D.meta.note;
-    const used = Object.entries(D.sources);
-    $('#sSources').innerHTML = used.map(([, v]) => `<li>${esc(v.publisher)} (${esc(v.year)}). ${safeUrl(v.url) ? `<a href="${safeUrl(v.url)}">${esc(v.title)}</a>` : esc(v.title)}.</li>`).join('');
+    $('#sSources').innerHTML = Object.values(D.sources).map(v => `<li>${esc(v.publisher)} (${esc(v.year)}). ${safeUrl(v.url) ? `<a href="${safeUrl(v.url)}">${esc(v.title)}</a>` : esc(v.title)}.</li>`).join('');
+    const sc = D.science;
+    if (sc) {
+      $('#sciIntro').textContent = sc.intro;
+      const srcLink = k => { const v = D.sources[k]; return v && safeUrl(v.url) ? `<p class="src">Source: <a href="${safeUrl(v.url)}">${esc(v.title.split(' (')[0])}</a> (${esc(v.year)})</p>` : ''; };
+      $('#sciModels').innerHTML = sc.models.map(m => {
+        let pic = '';
+        if (m.formula) pic = `<div class="formula" role="img" aria-label="${esc(m.formula[0])} times ${esc(m.formula[1])} equals ${esc(m.formula[2])}"><span>${esc(m.formula[0])}</span><b aria-hidden="true">×</b><span>${esc(m.formula[1])}</span><b aria-hidden="true">=</b><span class="res">${esc(m.formula[2])}</span></div>`;
+        if (m.strands) pic = `<div class="strands">${Object.entries(m.strands).map(([k, arr]) => `<div><b>${esc(k)}</b><ul>${arr.map(a => `<li>${esc(a)}</li>`).join('')}</ul></div>`).join('')}<div class="weave" aria-hidden="true">↘ woven together ↙<br><b>Skilled reading</b></div></div>`;
+        if (m.items) pic = `<ol class="five">${m.items.map(a => `<li>${esc(a)}</li>`).join('')}</ol>`;
+        return `<article class="sci"><h3>${esc(m.title)}</h3>${pic}<p>${esc(m.text)}</p>${srcLink(m.source)}</article>`;
+      }).join('');
+      $('#sciBeyond').innerHTML = `<b>Beyond phonics.</b> ${esc(sc.beyond)} ${(v => v ? `<a href="${safeUrl(v.url)}">Castles, Rastle &amp; Nation (${esc(v.year)})</a>` : '')(D.sources[sc.beyond_source])}`;
+      $('#sciCarib').innerHTML = `<b>Caribbean lens.</b> ${esc(sc.caribbean)}`;
+    }
   }
   $$('#lifeline button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.stage === stSel.value)));
-  const fs = stSel.value, fset = $('#sSetting').value, fev = $('#sStrength').value;
-  const list = D.strategies.filter(x => (!fs || x.stage === fs) && (!fset || x.settings.includes(fset)) && (!fev || x.strength === fev));
+  const fs = stSel.value, fset = $('#sSetting').value, fev = $('#sStrength').value, fb = $('#sBuilds').value;
+  const list = D.strategies.filter(x => (!fs || x.stage === fs) && (!fset || x.settings.includes(fset)) && (!fev || x.strength === fev) && (!fb || x.builds.includes(fb)));
   $('#sCount').textContent = `${list.length} of ${D.strategies.length} strategies`;
-  $('#stratList').innerHTML = list.length ? list.map(x => `<article class="strat"><div class="meta"><span class="pill">${esc(x.stage)}</span>${x.settings.map(t => `<span class="pill">${esc(t)}</span>`).join('')}<span class="pill ev ev-${esc(String(x.strength).split(' ')[0])}">${esc(x.strength)}</span></div><h3>${esc(x.title)}</h3><p class="lbl">What to do</p><p>${esc(x.do)}</p><p class="lbl">Why it works</p><p>${esc(x.why)}</p>${x.caribbean ? `<p class="carib"><b>Caribbean lens.</b> ${esc(x.caribbean)}</p>` : ''}<p class="src">Sources: ${x.sources.map(k => D.sources[k]).filter(Boolean).map(v => safeUrl(v.url) ? `<a href="${safeUrl(v.url)}">${esc(v.publisher)} (${esc(v.year)})</a>` : esc(v.publisher)).join('; ')}</p></article>`).join('') : '<div class="empty">No strategies match these filters.</div>';
+  const filtered = fs || fset || fev || fb;
+  $('#stratList').innerHTML = list.length ? stages.filter(st => list.some(x => x.stage === st)).map((st, i) => {
+    const items = list.filter(x => x.stage === st);
+    return `<details class="stage-acc" data-stage="${esc(st)}"${filtered || i === 0 ? ' open' : ''}><summary><span class="dot2" aria-hidden="true">${stages.indexOf(st) + 1}</span><span class="sa-t">${esc(st)}</span><span class="sa-n">${plural(items.length)}</span></summary><div class="stage-body">${items.map(x => stratCard(x, D)).join('')}</div></details>`;
+  }).join('') : '<div class="empty">No strategies match these filters.</div>';
 }
 
 /* ---------- daily briefing ---------- */
@@ -537,6 +612,15 @@ function bind() {
     } else m.textContent = 'Enquiry prepared. Copy it below to keep it.';
   });
   document.addEventListener('click', async e => { const b = e.target.closest('[data-cite]'); if (!b) return; try { await navigator.clipboard.writeText(b.dataset.cite); $('#pubMsg').textContent = 'Citation copied.'; } catch (err) { $('#pubMsg').textContent = b.dataset.cite; } });
+  document.addEventListener('click', e => {
+    const s = e.target.closest('[data-cite-strategy]');
+    if (s) { const x = S.strategies.strategies.find(y => y.id === s.dataset.citeStrategy); if (x) openCite(s, { what: 'strategy', title: `${x.title}. In What works to grow readers: Research-based literacy strategies from the early years to adulthood`, url: SITE_URL + '#strategies', year: '2026' }); return; }
+    const r = e.target.closest('[data-cite-text]');
+    if (r) { (async () => { try { await navigator.clipboard.writeText(r.dataset.citeText); r.textContent = 'Citation copied'; } catch (err) { r.textContent = 'Copy blocked'; } setTimeout(() => { r.textContent = 'Copy citation'; }, 2000); })(); return; }
+    if (e.target.closest('#citeData')) { const v = $('#obsInd').value || IND.YT; openCite($('#citeData'), DATASET_CITE(v)); return; }
+    if (e.target.closest('#citeCountryData')) { const iso = location.hash.slice(9).toUpperCase(); const c = DATASET_CITE(IND.YT); c.title = `Literacy indicators for ${S.c[iso]?.name || iso} (youth, adult and gender parity series)`; c.url = `https://data.worldbank.org/indicator/${IND.YT}?locations=${S.c[iso]?.iso2 || ''}`; openCite($('#citeCountryData'), c); return; }
+    if (S.citeBtn && !e.target.closest('#citePanel') && e.target !== S.citeBtn && !S.citeBtn.contains(e.target)) closeCite();
+  });
   $('#copyEnquiry').addEventListener('click', async () => { try { await navigator.clipboard.writeText($('#enquiryOut').textContent); $('#formMsg').textContent = 'Copied.'; } catch (e) { $('#formMsg').textContent = 'Copy was blocked; select the text instead.'; } });
   document.addEventListener('visibilitychange', () => { if (!document.hidden && S.live.mode === 'live-api' && Date.now() - new Date(S.live.checkedAt) > LIVE_EVERY_MS) refreshLive(false); });
 }
@@ -548,7 +632,7 @@ function bind() {
     return;
   }
   if (window.claude) $$('a[href="admin/"]').forEach(a => a.closest('div').lastElementChild === a && (a.previousElementSibling?.remove(), a.remove()));
-  renderAgenda(); renderPubs(); renderPolicyList(); $('#polCountry')?.addEventListener('input', renderPolicyList); renderContrast(); renderContact(); renderStrategies(); bind(); renderAll(); route();
+  renderAgenda(); renderPubs(); renderPolicyList(); $('#polCountry')?.addEventListener('input', renderPolicyList); renderContrast(); renderContact(); renderStrategies(); addPageCiteButtons(); bind(); renderAll(); route();
   refreshLive(false);
   setInterval(() => refreshLive(false), LIVE_EVERY_MS);
   liveViaClaude();
