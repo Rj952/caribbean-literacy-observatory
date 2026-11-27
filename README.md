@@ -11,19 +11,22 @@ A research website for literacy across the Caribbean. Every statistic on it come
 |---|---|
 | Home | Star-chart overview of what the public record holds for the 15 CARICOM member states |
 | About | Founding statement and open data commitment |
-| Research agenda | Seven streams, first 90 days, flagship project, long-term ecosystem |
+| Research agenda | Seven research streams, flagship project, long-term ecosystem |
 | Founder | Profile |
 | Strategies | Research-based strategies for improving literacy from the early years to adulthood, at home, in school and in the community |
 | Daily briefing | Caribbean literacy news, a short written briefing and a data watch, updated every day |
 | Benchmarks | World, OECD, Latin America & Caribbean and Caribbean small states averages beside every figure; OECD PISA 2022 reading proficiency for Jamaica |
 | Dashboard | Youth, gender and adult literacy; data-landscape matrix; every record, copyable as CSV |
-| Country profiles | One page per member state with status, consistency checks and gaps |
+| Country profiles | One page per member state with status, consistency checks and gaps, and a printable country brief (save as PDF) |
+| Compare | Up to three member states side by side against world, Latin America & Caribbean, Caribbean small states and OECD averages; shareable link |
 | Repository | Search across approved research records, statistics and sources |
 | Publications | Working papers and reports, labelled planned / draft / published |
 | Policy archive | Policy and curriculum documents (approved entries only) |
-| Methods & data | Pipeline, status definitions, audit note, correction log, data integrity principles |
+| Methods and data | Pipeline, status definitions, audit note, correction log, data integrity principles, related platforms |
 | Collaborate | Enquiry and error-report form |
 | Accessibility | Statement, measured contrast ratios, how to report a barrier |
+
+Also: printable strategy cards and stage toolkits for families and teachers; a Share button on every page; social preview card; installable as an app (web manifest) with offline reading through a network-first service worker (`sw.js`, registered on GitHub Pages only). Brand: "Sun over Deep Sea", Gloock and Atkinson Hyperlegible.
 
 ## Accessibility
 

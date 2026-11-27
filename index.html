@@ -9,14 +9,25 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloock&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap">
 <link rel="stylesheet" href="assets/css/site.css?v=dev">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='15' fill='%231240ff'/%3E%3Cpath d='M8 13h16M8 17h12M8 21h9' stroke='%23ffd23f' stroke-width='2.4' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="icon" href="assets/img/logo.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#071A5C">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Caribbean Literacy Observatory">
+<meta property="og:title" content="Caribbean Literacy Observatory">
+<meta property="og:description" content="Open data on literacy across the 15 CARICOM member states. Every figure traced to a public source, with research-based strategies for growing readers.">
+<meta property="og:url" content="https://rj952.github.io/caribbean-literacy-observatory/">
+<meta property="og:image" content="https://rj952.github.io/caribbean-literacy-observatory/assets/img/social-card.png">
+<meta property="og:image:alt" content="Caribbean Literacy Observatory: a yellow sun rising over a deep blue sea, with the title in white.">
+<meta name="twitter:card" content="summary_large_image">
 </head>
 <body>
 <a class="skip" href="#view" id="skipLink">Skip to content</a>
 
 <header class="top">
   <a class="brand" href="#home" aria-label="Caribbean Literacy Observatory, home">
-    <svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="18.5" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="20" cy="20" r="12" fill="var(--sun)"/><path d="M13 17h14M13 21h10M13 25h6" stroke="var(--blue)" stroke-width="2.6" stroke-linecap="round"/></svg>
+    <svg viewBox="0 0 512 512" aria-hidden="true"><rect width="512" height="512" rx="40" fill="#071A5C"/><circle cx="256" cy="262" r="148" fill="#FFD21F"/><g stroke="#071A5C" stroke-width="22" stroke-linecap="round"><path d="M178 214h156"/><path d="M178 258h118"/></g><path d="M0 330Q64 290 128 330T256 330T384 330T512 330V512H0Z" fill="#1740E0"/><path d="M0 392Q64 356 128 392T256 392T384 392T512 392V512H0Z" fill="#071A5C"/><g fill="#19B4F0"><rect x="356" y="300" width="20" height="20"/><rect x="392" y="282" width="20" height="20"/><rect x="428" y="266" width="20" height="20"/></g></svg>
     <span><b>Caribbean Literacy</b> Observatory</span>
   </a>
   <button class="opt-btn" id="optBtn" type="button" aria-expanded="false" aria-controls="a11yPanel"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18 8 5h1.6l5 13h-2l-1.3-3.6H6.3L5 18zm3.9-5.3h4L8.8 7.1zM15.5 18v-1.2c.6-.9 1.5-1.4 2.6-1.4.7 0 1.3.2 1.7.6V15c0-.8-.6-1.3-1.5-1.3-.7 0-1.3.3-1.8.8l-.8-1c.7-.7 1.7-1.1 2.7-1.1 1.8 0 2.9.9 2.9 2.6V18h-1.5v-.6c-.4.5-1.1.8-1.9.8-1.3 0-2.4-.8-2.4-2.1" fill="currentColor"/></svg><span>Reading options</span></button>
@@ -216,12 +227,28 @@
 
 <!-- PROFILES -->
 <section data-view="profiles" hidden>
-  <div class="band page-head"><div class="wrap"><p class="kicker">National literacy profiles</p><h1>Fifteen member states</h1><p class="sub">Choose a country to see every audited figure, its status and its source.</p></div></div>
+  <div class="band page-head"><div class="wrap"><p class="kicker">National literacy profiles</p><h1>Fifteen member states</h1><p class="sub">Choose a country to see every audited figure, its status and its source.</p><div class="actions"><a class="btn sun" href="#compare">Compare countries side by side</a></div></div></div>
   <div class="band wrap"><div class="country-grid" id="countryGrid"></div></div>
 </section>
 <section data-view="country" hidden>
-  <div class="band page-head"><div class="wrap"><p class="kicker"><a href="#profiles">Country profiles</a></p><h1 id="cName"></h1><p class="sub" id="cSub"></p></div></div>
+  <div class="band page-head"><div class="wrap"><p class="kicker"><a href="#profiles">Country profiles</a></p><h1 id="cName"></h1><p class="sub" id="cSub"></p><div class="actions"><a class="btn sun" id="cCompare" href="#compare">Compare with other states</a><button type="button" class="btn ghost" id="cBrief">Download country brief</button></div></div></div>
   <div class="band wrap" id="cBody"></div>
+</section>
+
+<!-- COMPARE -->
+<section data-view="compare" hidden>
+  <div class="band page-head"><div class="wrap"><p class="kicker"><a href="#profiles">Country profiles</a></p><h1>Compare member states</h1><p class="sub">Put up to three CARICOM member states side by side, against world, Latin America and Caribbean, Caribbean small states and OECD averages. Every bar shows its own reference year.</p></div></div>
+  <div class="band wrap">
+    <div class="toolbar compare-pick">
+      <label>First country <select id="cmpA"></select></label>
+      <label>Second country <select id="cmpB"></select></label>
+      <label>Third country <select id="cmpC"></select></label>
+      <button type="button" class="btn small" id="cmpShare">Copy link to this comparison</button>
+    </div>
+    <p class="note" id="cmpMsg" role="status"></p>
+    <div id="cmpBody" class="cmp-grid"></div>
+    <p class="note mt">Bars with stripes are older than the cut-off year used across the Observatory. Averages are World Bank aggregates of UNESCO Institute for Statistics data and are not recalculated here. Years differ between countries, so read each comparison with its year.</p>
+  </div>
 </section>
 
 <!-- REPOSITORY -->
@@ -311,6 +338,20 @@
       <li>Keep a transparent data catalogue, version history and correction log.</li>
     </ol>
     <p class="note">Artificial intelligence may help retrieve, organise, validate, analyse and visualise data. It is never the source of a statistic. The Observatory's credibility comes before the volume of data or the sophistication of its technology.</p>
+  </div>
+  <div class="band strat-band">
+    <div class="wrap">
+      <h2>Related <span class="mark">platforms</span></h2>
+      <p class="prose">Other public sources cover parts of the same ground. The Observatory draws on some of them and points readers to the rest. What it adds is a single focus on literacy across all fifteen CARICOM member states, gaps shown openly, live checks against the source, a daily briefing, and research-based strategies.</p>
+      <div class="related">
+        <article><h3><a href="https://cima.iadb.org/en/about-cima">CIMA, Inter-American Development Bank</a></h3><p>Harmonised education indicators for 26 countries in Latin America and the Caribbean, with country profiles and maps. All of education, region-wide.</p></article>
+        <article><h3><a href="https://oecs.int/en/our-work/knowledge/library/education/oecs-education-statistical-digest">OECS Education Statistical Digest</a></h3><p>Yearly reports on enrolment, teachers, examination results and education spending in the Eastern Caribbean. Published as downloadable reports.</p></article>
+        <article><h3><a href="https://www.caribank.org/node/5193">Caribbean Development Bank Knowledge Hub</a></h3><p>A data warehouse that includes an education database drawn from UNESCO, CARICOM and the World Development Indicators.</p></article>
+        <article><h3><a href="https://statistics.caricom.org/">CARICOM Regional Statistics Programme</a></h3><p>Official regional statistics, including education tables that can be downloaded as spreadsheets.</p></article>
+        <article><h3><a href="https://edudata.summaedu.org/what-is/?lang=en">EduData, KIX Latin America and the Caribbean</a></h3><p>Education, social and economic indicators for a group of countries that includes Dominica, Grenada, Guyana and Haiti.</p></article>
+        <article><h3><a href="https://databrowser.uis.unesco.org/">UNESCO Institute for Statistics data browser</a></h3><p>The original source of the literacy rates shown here, which the World Bank republishes.</p></article>
+      </div>
+    </div>
   </div>
 </section>
 

@@ -187,14 +187,15 @@ function renderLiveBadge() {
 }
 
 /* ---------- views ---------- */
-const VIEWS = ['home', 'about', 'agenda', 'director', 'dashboard', 'profiles', 'repository', 'publications', 'policy', 'methods', 'collaborate', 'accessibility', 'news', 'strategies'];
+const VIEWS = ['compare', 'home', 'about', 'agenda', 'director', 'dashboard', 'profiles', 'repository', 'publications', 'policy', 'methods', 'collaborate', 'accessibility', 'news', 'strategies'];
 function route() {
   closeCite();
   let h = location.hash.slice(1) || 'home', view = h;
   if (h.startsWith('country-')) { view = 'country'; renderCountry(h.slice(8).toUpperCase()); }
+  else if (h === 'compare' || h.startsWith('compare-')) { view = 'compare'; renderCompare(h.slice(8)); }
   else if (!VIEWS.includes(h)) view = 'home';
   $$('[data-view]').forEach(s => s.hidden = s.dataset.view !== view);
-  $$('#nav a').forEach(a => a.toggleAttribute('aria-current', a.getAttribute('href') === '#' + (view === 'country' ? 'profiles' : view)));
+  $$('#nav a').forEach(a => a.toggleAttribute('aria-current', a.getAttribute('href') === '#' + (view === 'country' || view === 'compare' ? 'profiles' : view)));
   $('#nav').classList.remove('open'); $('#menuBtn').setAttribute('aria-expanded', 'false');
   if (view === 'collaborate' && S.prefill) { $('#fPurpose').value = 'Report a data error'; $('#fRef').value = S.prefill; S.prefill = null; }
   window.scrollTo(0, 0);
@@ -327,6 +328,7 @@ function renderCountry(iso) {
   const c = S.c[iso];
   if (!c || !S.obs) { $('#cName').textContent = 'Country not found'; $('#cBody').innerHTML = ''; return; }
   $('#cName').textContent = c.name;
+  const cc = $('#cCompare'); if (cc) cc.href = '#compare-' + [iso, ...['JAM', 'TTO', 'BRB'].filter(x => x !== iso)].slice(0, 3).join('-').toLowerCase();
   const audited = S.indicators.records.filter(i => i.audited), gaps = S.indicators.records.filter(i => !i.audited);
   $('#cSub').textContent = c.in_wdi ? `${audited.filter(i => latest(iso, i.code)).length} of ${audited.length} audited international indicators have a published value.` : 'Not covered by the World Bank series. National sources are yet to be audited.';
   const kpis = audited.map(i => { const o = latest(iso, i.code), st = status(iso, i.code); return `<div class="kpi"><span>${esc(i.short)}</span><b>${o ? fmt(o.value, i.unit) : '—'}</b><span>${o ? 'Reference year ' + o.ref_year : 'No published figure'}</span>${(() => { const w = bench('WLD', i.code), oe = bench('OED', i.code); return w || oe ? `<span>World ${w ? fmt(w.value, i.unit) + ' (' + w.ref_year + ')' : '—'} · OECD ${oe ? fmt(oe.value, i.unit) + ' (' + oe.ref_year + ')' : '—'}</span>` : ''; })()}<div>${pill(st)}</div></div>`; }).join('');
@@ -339,6 +341,56 @@ function renderCountry(iso) {
     <div class="two mt"><div><h2>Gaps still to audit</h2><ul>${gaps.map(i => `<li>${esc(i.short)}${i.kind === 'proxy' ? ' <span class="note">(proxy indicator)</span>' : ''}</li>`).join('')}</ul></div>
     <div><h2>Sources</h2><p>World Bank World Development Indicators, data from the UNESCO Institute for Statistics. Licence CC BY 4.0.</p><p><button type="button" class="btn small ghost" id="citeCountryData" aria-expanded="false">Cite this data</button></p>${iso === 'JAM' ? '<p>National sources queued for audit: STATIN, PIOJ and the Ministry of Education and Youth.</p>' : ''}</div></div>
     ${recs.length ? `<h2 class="mt">Records</h2><div class="scroll"><table class="data stack"><thead><tr><th>Indicator</th><th>Year</th><th>Value</th><th>Notes</th><th>Source</th></tr></thead><tbody>${recs.sort((a, b) => a.indicator.localeCompare(b.indicator) || b.ref_year - a.ref_year).map(o => `<tr><td>${esc(S.indMap[o.indicator]?.short)}</td><td class="num">${o.ref_year}</td><td class="num">${fmt(o.value, S.indMap[o.indicator]?.unit)}</td><td>${obsFlags(o).map(x => `<span class="flag">${esc(x)}</span>`).join(' ')}</td><td>${srcLinks(o)} · <a href="#collaborate" data-report="${esc(o.id)}">Report</a></td></tr>`).join('')}</tbody></table></div>` : ''}`;
+}
+
+
+
+/* ---------- printing: country briefs and strategy toolkits ---------- */
+function printPack(title, kicker, html) {
+  let pa = $('#printArea');
+  if (!pa) { pa = document.createElement('div'); pa.id = 'printArea'; document.body.appendChild(pa); }
+  const today = new Date().toISOString().slice(0, 10);
+  pa.innerHTML = `<header class="pr-head"><img src="assets/img/logo.svg" alt="" width="56" height="56"><div><b>Caribbean Literacy Observatory</b><span>${esc(kicker)}</span></div></header><h1>${esc(title)}</h1>${html}<footer class="pr-foot"><p>Printed ${esc(fmtDate(today))} from ${esc(SITE_URL)}${esc(location.hash)}. Statistics: World Bank World Development Indicators, data from the UNESCO Institute for Statistics, CC BY 4.0. Strategies link to their published research.</p><p>Created by Dr. Rohan Jowallah, Ed.D., FHEA · Caribbean Literacy Observatory</p></footer>`;
+  $$('button, .cite-panel, [data-report]', pa).forEach(b => b.remove());
+  $$('details', pa).forEach(d => d.open = true);
+  document.body.classList.add('print-one');
+  const done = () => document.body.classList.remove('print-one');
+  window.addEventListener('afterprint', done, { once: true });
+  try { window.print(); } catch (e) { done(); }
+}
+function printCountry() {
+  const name = $('#cName').textContent;
+  const body = $('#cBody').cloneNode(true);
+  printPack(`${name}: literacy country brief`, 'Country brief', `<p class="pr-sub">${esc($('#cSub').textContent)}</p>${body.innerHTML}`);
+}
+function printStrategies(list, title, kicker) {
+  const D = S.strategies;
+  printPack(title, kicker, `<p class="pr-sub">${esc(D.meta.note || '')}</p>` + list.map(x => stratCard(x, D)).join(''));
+}
+
+/* ---------- compare ---------- */
+const CMP_AGG = [['WLD', 'World'], ['LCN', 'Latin America & Caribbean'], ['CSS', 'Caribbean small states'], ['OED', 'OECD members']];
+function renderCompare(arg) {
+  const sels = ['#cmpA', '#cmpB', '#cmpC'].map(x => $(x));
+  if (!sels[0].options.length) {
+    const opts = S.countries.records.map(c => `<option value="${esc(c.iso3)}">${esc(c.name)}</option>`).join('');
+    sels.forEach((x, i) => { x.innerHTML = (i ? '<option value="">None</option>' : '') + opts; x.addEventListener('input', () => { const codes = sels.map(y => y.value).filter(Boolean); history.replaceState(null, '', '#compare-' + codes.join('-').toLowerCase()); renderCompare(codes.join('-')); }); });
+    $('#cmpShare').addEventListener('click', async () => { try { await navigator.clipboard.writeText(location.href.split('#')[0] + location.hash); $('#cmpMsg').textContent = 'Link copied. Anyone who opens it sees this comparison.'; } catch (e) { $('#cmpMsg').textContent = 'Copy this address from your browser bar to share the comparison.'; } });
+  }
+  let codes = String(arg || '').toUpperCase().split('-').filter(c => S.c[c]).slice(0, 3);
+  if (!codes.length) codes = ['JAM', 'TTO', 'GUY'].filter(c => S.c[c]);
+  sels.forEach((x, i) => x.value = codes[i] || '');
+  const inds = S.indicators.records.filter(i => i.audited);
+  $('#cmpBody').innerHTML = inds.map(i => {
+    const idx = i.unit === 'index', w = v => idx ? Math.min(100, v / 1.2 * 100) : Math.max(0, Math.min(100, v));
+    const row = (name, o, st, cls) => o
+      ? `<div class="bar ${cls}"><span class="lab">${st ? icon(st) : ''}${esc(name)}</span><div class="track"><span class="fill${st === 'outdated' ? ' old' : ''}" style="width:${w(o.value)}%"></span><span class="val">${fmt(o.value, i.unit)} <small>${o.ref_year}</small></span></div></div>`
+      : `<div class="bar none ${cls}"><span class="lab">${st ? icon(st) : ''}${esc(name)}</span><div class="track"><span class="val">${st === 'not-audited' ? 'Not in this series' : 'No published figure'}</span></div></div>`;
+    const countries = codes.map(c => row(S.c[c].name, latest(c, i.code), status(c, i.code), 'cmp-c')).join('');
+    const aggs = CMP_AGG.map(([k, n]) => { const b = bench(k, i.code); return b ? row(n, b, null, 'cmp-agg') : ''; }).join('');
+    return `<section class="panel cmp-panel"><h2>${esc(i.name || i.short)}</h2>${idx ? '<p class="note">1.00 means equal rates for young women and young men; above 1 favours young women.</p>' : ''}<div class="bars">${countries}</div>${aggs ? `<p class="lbl cmp-sep">Averages for comparison</p><div class="bars">${aggs}</div>` : ''}</section>`;
+  }).join('');
+  if (S.routed) document.title = 'Compare ' + codes.map(c => S.c[c].name).join(', ') + ' · Caribbean Literacy Observatory';
 }
 
 /* ---------- repository ---------- */
@@ -465,6 +517,12 @@ function markHeadings() {
     const m = document.createElement('span'); m.className = 'mark'; m.textContent = t.slice(i + 1); h.appendChild(m);
   });
 }
+async function sharePage(btn) {
+  const url = SITE_URL + location.hash, title = document.title;
+  const say = t => { let r = $('#toast'); if (!r) { r = document.createElement('p'); r.id = 'toast'; r.setAttribute('role', 'status'); r.className = 'toast'; document.body.appendChild(r); } r.textContent = t; r.classList.add('on'); clearTimeout(r._t); r._t = setTimeout(() => r.classList.remove('on'), 3500); };
+  if (navigator.share) { try { await navigator.share({ title, url }); return; } catch (e) { if (e && e.name === 'AbortError') return; } }
+  try { await navigator.clipboard.writeText(url); say('Link copied: ' + url); } catch (e) { say('Copy this link: ' + url); }
+}
 function addPageCiteButtons() {
   $$('[data-view]').forEach(sec => {
     const head = $('.page-head .wrap', sec) || $('.hero-text', sec); if (!head || $('.cite-page', head)) return;
@@ -472,6 +530,10 @@ function addPageCiteButtons() {
     b.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z" fill="currentColor"/></svg>Cite this page';
     b.addEventListener('click', () => openCite(b, pageCitation()));
     head.appendChild(b);
+    const sh = document.createElement('button'); sh.type = 'button'; sh.className = 'btn small cite-page share-page';
+    sh.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 16a3 3 0 0 0-2.2 1l-7-4a3 3 0 0 0 0-2l7-4A3 3 0 1 0 15 5l-7 4a3 3 0 1 0 0 6l7 4a3 3 0 1 0 3-3" fill="currentColor"/></svg>Share';
+    sh.addEventListener('click', () => sharePage(sh));
+    head.appendChild(sh);
   });
 }
 const DATASET_CITE = code => ({ type: 'dataset', what: 'data set', author: 'World Bank', year: (S.observations.meta.source_last_updated || '').slice(0, 4) || String(NOW_YEAR), title: S.indMap[code] ? S.indMap[code].name : 'Literacy indicators', container: 'World Development Indicators (data from the UNESCO Institute for Statistics)', url: `https://data.worldbank.org/indicator/${code}` });
@@ -479,7 +541,7 @@ const DATASET_CITE = code => ({ type: 'dataset', what: 'data set', author: 'Worl
 /* ---------- strategies ---------- */
 function stratCard(x, D) {
   return `<details class="strat-acc" id="st-${esc(x.id)}"><summary><span class="st-title">${esc(x.title)}</span><span class="st-tags">${x.builds.map(b => `<span class="pill bld">${esc(b)}</span>`).join('')}<span class="pill ev ev-${esc(String(x.strength).split(' ')[0])}">${esc(x.strength)}</span></span></summary>
-    <div class="st-body"><div class="meta">${x.settings.map(t => `<span class="pill">${esc(t)}</span>`).join('')}</div><p class="lbl">What to do</p><p>${esc(x.do)}</p><p class="lbl">Why it works</p><p>${esc(x.why)}</p>${x.caribbean ? `<p class="carib"><b>Caribbean lens.</b> ${esc(x.caribbean)}</p>` : ''}<p class="src">Sources: ${x.sources.map(k => D.sources[k]).filter(Boolean).map(v => safeUrl(v.url) ? `<a href="${safeUrl(v.url)}">${esc(v.publisher)} (${esc(v.year)})</a>` : esc(v.publisher)).join('; ')}</p><button type="button" class="btn small ghost cite-item" data-cite-strategy="${esc(x.id)}" aria-expanded="false">Cite</button></div></details>`;
+    <div class="st-body"><div class="meta">${x.settings.map(t => `<span class="pill">${esc(t)}</span>`).join('')}</div><p class="lbl">What to do</p><p>${esc(x.do)}</p><p class="lbl">Why it works</p><p>${esc(x.why)}</p>${x.caribbean ? `<p class="carib"><b>Caribbean lens.</b> ${esc(x.caribbean)}</p>` : ''}<p class="src">Sources: ${x.sources.map(k => D.sources[k]).filter(Boolean).map(v => safeUrl(v.url) ? `<a href="${safeUrl(v.url)}">${esc(v.publisher)} (${esc(v.year)})</a>` : esc(v.publisher)).join('; ')}</p><div class="pub-actions"><button type="button" class="btn small ghost cite-item" data-cite-strategy="${esc(x.id)}" aria-expanded="false">Cite</button><button type="button" class="btn small ghost" data-print-strategy="${esc(x.id)}">Print as a card</button></div></div></details>`;
 }
 function renderStrategies() {
   const D = S.strategies; if (!D || !Array.isArray(D.strategies)) return;
@@ -517,7 +579,7 @@ function renderStrategies() {
   const filtered = fs || fset || fev || fb;
   $('#stratList').innerHTML = list.length ? stages.filter(st => list.some(x => x.stage === st)).map((st, i) => {
     const items = list.filter(x => x.stage === st);
-    return `<details class="stage-acc" data-stage="${esc(st)}"${filtered || i === 0 ? ' open' : ''}><summary><span class="dot2" aria-hidden="true">${stages.indexOf(st) + 1}</span><span class="sa-t">${esc(st)}</span><span class="sa-n">${plural(items.length)}</span></summary><div class="stage-body">${items.map(x => stratCard(x, D)).join('')}</div></details>`;
+    return `<details class="stage-acc" data-stage="${esc(st)}"${filtered || i === 0 ? ' open' : ''}><summary><span class="dot2" aria-hidden="true">${stages.indexOf(st) + 1}</span><span class="sa-t">${esc(st)}</span><span class="sa-n">${plural(items.length)}</span></summary><div class="stage-body"><div class="stage-tools"><button type="button" class="btn small" data-print-stage="${esc(st)}">Print this stage as a toolkit (${plural(items.length)})</button></div>${items.map(x => stratCard(x, D)).join('')}</div></details>`;
   }).join('') : '<div class="empty">No strategies match these filters.</div>';
 }
 
@@ -589,6 +651,11 @@ function renderContrast() {
 
 /* ---------- interactions ---------- */
 function bind() {
+  $('#cBrief')?.addEventListener('click', printCountry);
+  document.addEventListener('click', e => {
+    const ps = e.target.closest('[data-print-stage]'); if (ps) { const st = ps.dataset.printStage; printStrategies(S.strategies.strategies.filter(x => x.stage === st), `What works: ${st}`, 'Strategy toolkit for families, teachers and communities'); return; }
+    const pc = e.target.closest('[data-print-strategy]'); if (pc) { const x = S.strategies.strategies.find(y => y.id === pc.dataset.printStrategy); if (x) printStrategies([x], x.title, `Strategy card · ${x.stage}`); }
+  });
   $('#menuBtn').addEventListener('click', () => { const o = $('#nav').classList.toggle('open'); $('#menuBtn').setAttribute('aria-expanded', String(o)); });
   window.addEventListener('hashchange', route);
   document.addEventListener('click', e => { const a = e.target.closest('[data-report]'); if (a) S.prefill = a.dataset.report; const p = e.target.closest('[data-purpose]'); if (p) S.purpose = p.dataset.purpose; });
@@ -639,6 +706,7 @@ function bind() {
   }
   if (window.claude) $$('a[href="admin/"]').forEach(a => a.closest('div').lastElementChild === a && (a.previousElementSibling?.remove(), a.remove()));
   renderAgenda(); renderPubs(); renderPolicyList(); $('#polCountry')?.addEventListener('input', renderPolicyList); renderContrast(); renderContact(); renderStrategies(); markHeadings(); addPageCiteButtons(); bind(); renderAll(); route();
+  if ('serviceWorker' in navigator && window.top === window && /github\.io$|^localhost$|^127\.0\.0\.1$/.test(location.hostname)) navigator.serviceWorker.register('sw.js').catch(() => {});
   refreshLive(false);
   setInterval(() => refreshLive(false), LIVE_EVERY_MS);
   liveViaClaude();

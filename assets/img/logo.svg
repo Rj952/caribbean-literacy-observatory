@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Caribbean Literacy Observatory">
+  <rect width="512" height="512" rx="40" fill="#071A5C"/>
+  <g fill="#FFF4C9"><circle cx="92" cy="96" r="6"/><circle cx="150" cy="60" r="4"/><circle cx="420" cy="88" r="5"/><circle cx="446" cy="160" r="4"/><circle cx="70" cy="196" r="4"/></g>
+  <circle cx="256" cy="262" r="148" fill="#FFD21F"/>
+  <g stroke="#071A5C" stroke-width="22" stroke-linecap="round"><path d="M178 214h156"/><path d="M178 258h118"/></g>
+  <path d="M0 330 Q64 290 128 330 T256 330 T384 330 T512 330 V512 H0Z" fill="#1740E0"/>
+  <path d="M0 392 Q64 356 128 392 T256 392 T384 392 T512 392 V512 H0Z" fill="#071A5C"/>
+  <g fill="#19B4F0"><rect x="356" y="300" width="20" height="20"/><rect x="392" y="282" width="20" height="20"/><rect x="428" y="266" width="20" height="20"/></g>
+</svg>
