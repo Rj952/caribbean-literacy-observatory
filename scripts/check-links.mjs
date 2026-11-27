@@ -9,7 +9,7 @@ for (const r of load('country_sources').records) add(r.url, `country_sources/${r
 for (const r of load('policy').records) add(r.url, `policy/${r.id}`);
 for (const r of load('sources').records) add(r.url, `sources/${r.id}`);
 for (const r of load('research').records) add(r.url, `research/${r.id}`);
-{ const html = readFileSync(new URL('../index.html', import.meta.url), 'utf8'); for (const m of html.matchAll(/href="(https?:\/\/[^"]+)"/g)) add(m[1].replace(/&amp;/g, '&'), 'index.html'); }
+{ const html = readFileSync(new URL('../index.html', import.meta.url), 'utf8'); for (const m of html.matchAll(/<a\s[^>]*href="(https?:\/\/[^"]+)"/g)) add(m[1].replace(/&amp;/g, '&'), 'index.html'); }
 try { const s = load('strategies'); for (const [k, v] of Object.entries(s.sources || {})) add(v.url, `strategies/${k}`); } catch {}
 const only = process.argv.includes('--changed') ? null : null; void only;
 const UA = 'Mozilla/5.0 (compatible; CaribbeanLiteracyObservatory-linkcheck/1.0; +https://rj952.github.io/caribbean-literacy-observatory/)';
