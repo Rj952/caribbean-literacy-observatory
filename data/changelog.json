@@ -14,6 +14,12 @@
    "type": "flag",
    "summary": "Youth gender parity index for Jamaica (2022) and Trinidad and Tobago (2022) cannot be reproduced from the published female and male rates. Values shown as published; query to be raised with the source.",
    "records": 2
+  },
+  {
+   "date": "2026-11-27",
+   "type": "refresh",
+   "summary": "World Bank refresh: 77 new, 0 changed, 0 no longer published. Published at once and flagged; scholarly review pending.",
+   "records": 77
   }
  ]
 }

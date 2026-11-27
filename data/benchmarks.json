@@ -64,46 +64,6 @@
    "retrieved": "2026-11-27"
   },
   {
-   "id": "wb-se-adt-litr-zs-css-2008",
-   "aggregate": "CSS",
-   "indicator": "SE.ADT.LITR.ZS",
-   "ref_year": 2008,
-   "value": 91.0199966430664,
-   "source_url": "https://api.worldbank.org/v2/country/CSS/indicator/SE.ADT.LITR.ZS?format=json&date=2008",
-   "licence": "CC BY 4.0",
-   "retrieved": "2026-11-27"
-  },
-  {
-   "id": "wb-se-adt-litr-zs-lcn-2024",
-   "aggregate": "LCN",
-   "indicator": "SE.ADT.LITR.ZS",
-   "ref_year": 2024,
-   "value": 94.9499969482422,
-   "source_url": "https://api.worldbank.org/v2/country/LCN/indicator/SE.ADT.LITR.ZS?format=json&date=2024",
-   "licence": "CC BY 4.0",
-   "retrieved": "2026-11-27"
-  },
-  {
-   "id": "wb-se-adt-litr-zs-oed-2020",
-   "aggregate": "OED",
-   "indicator": "SE.ADT.LITR.ZS",
-   "ref_year": 2020,
-   "value": 97.2099990844727,
-   "source_url": "https://api.worldbank.org/v2/country/OED/indicator/SE.ADT.LITR.ZS?format=json&date=2020",
-   "licence": "CC BY 4.0",
-   "retrieved": "2026-11-27"
-  },
-  {
-   "id": "wb-se-adt-litr-zs-wld-2024",
-   "aggregate": "WLD",
-   "indicator": "SE.ADT.LITR.ZS",
-   "ref_year": 2024,
-   "value": 87.7399978637695,
-   "source_url": "https://api.worldbank.org/v2/country/WLD/indicator/SE.ADT.LITR.ZS?format=json&date=2024",
-   "licence": "CC BY 4.0",
-   "retrieved": "2026-11-27"
-  },
-  {
    "id": "wb-se-adt-1524-lt-fe-zs-css-2009",
    "aggregate": "CSS",
    "indicator": "SE.ADT.1524.LT.FE.ZS",
@@ -182,11 +142,51 @@
    "source_url": "https://api.worldbank.org/v2/country/WLD/indicator/SE.ADT.1524.LT.MA.ZS?format=json&date=2024",
    "licence": "CC BY 4.0",
    "retrieved": "2026-11-27"
+  },
+  {
+   "id": "wb-se-adt-litr-zs-css-2008",
+   "aggregate": "CSS",
+   "indicator": "SE.ADT.LITR.ZS",
+   "ref_year": 2008,
+   "value": 91.0199966430664,
+   "source_url": "https://api.worldbank.org/v2/country/CSS/indicator/SE.ADT.LITR.ZS?format=json&date=2008",
+   "licence": "CC BY 4.0",
+   "retrieved": "2026-11-27"
+  },
+  {
+   "id": "wb-se-adt-litr-zs-lcn-2024",
+   "aggregate": "LCN",
+   "indicator": "SE.ADT.LITR.ZS",
+   "ref_year": 2024,
+   "value": 94.9499969482422,
+   "source_url": "https://api.worldbank.org/v2/country/LCN/indicator/SE.ADT.LITR.ZS?format=json&date=2024",
+   "licence": "CC BY 4.0",
+   "retrieved": "2026-11-27"
+  },
+  {
+   "id": "wb-se-adt-litr-zs-oed-2020",
+   "aggregate": "OED",
+   "indicator": "SE.ADT.LITR.ZS",
+   "ref_year": 2020,
+   "value": 97.2099990844727,
+   "source_url": "https://api.worldbank.org/v2/country/OED/indicator/SE.ADT.LITR.ZS?format=json&date=2020",
+   "licence": "CC BY 4.0",
+   "retrieved": "2026-11-27"
+  },
+  {
+   "id": "wb-se-adt-litr-zs-wld-2024",
+   "aggregate": "WLD",
+   "indicator": "SE.ADT.LITR.ZS",
+   "ref_year": 2024,
+   "value": 87.7399978637695,
+   "source_url": "https://api.worldbank.org/v2/country/WLD/indicator/SE.ADT.LITR.ZS?format=json&date=2024",
+   "licence": "CC BY 4.0",
+   "retrieved": "2026-11-27"
   }
  ],
  "pisa": {
-  "assessment": "OECD PISA 2022 \u2014 reading (15-year-old students)",
-  "source": "OECD, PISA 2022 Results (Volume I and II) \u2014 Country Notes: Jamaica",
+  "assessment": "OECD PISA 2022 — reading (15-year-old students)",
+  "source": "OECD, PISA 2022 Results (Volume I and II) — Country Notes: Jamaica",
   "url": "https://www.oecd.org/en/publications/pisa-2022-results-volume-i-and-ii-country-notes_ed6fbcc5-en/jamaica_d5d0d9e2-en.html",
   "retrieved": "2026-11-27",
   "measures": [
