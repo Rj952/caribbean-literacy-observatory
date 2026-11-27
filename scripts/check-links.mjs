@@ -9,6 +9,7 @@ for (const r of load('country_sources').records) add(r.url, `country_sources/${r
 for (const r of load('policy').records) add(r.url, `policy/${r.id}`);
 for (const r of load('sources').records) add(r.url, `sources/${r.id}`);
 for (const r of load('research').records) add(r.url, `research/${r.id}`);
+{ const html = readFileSync(new URL('../index.html', import.meta.url), 'utf8'); for (const m of html.matchAll(/href="(https?:\/\/[^"]+)"/g)) add(m[1].replace(/&amp;/g, '&'), 'index.html'); }
 try { const s = load('strategies'); for (const [k, v] of Object.entries(s.sources || {})) add(v.url, `strategies/${k}`); } catch {}
 const only = process.argv.includes('--changed') ? null : null; void only;
 const UA = 'Mozilla/5.0 (compatible; CaribbeanLiteracyObservatory-linkcheck/1.0; +https://rj952.github.io/caribbean-literacy-observatory/)';
@@ -20,7 +21,7 @@ async function check(url) {
       clearTimeout(t); try { await r.body?.cancel(); } catch {}
       if (r.status < 400) return { ok: true, status: r.status };
       if ([404, 410].includes(r.status)) return { ok: false, status: r.status };
-      if (attempt === 3) return { ok: 'warn', status: [401, 403, 429].includes(r.status) ? `${r.status} (site blocks automated checks)` : r.status };
+      if (attempt === 3) return { ok: 'warn', status: [401, 403, 429].includes(r.status) ? `${r.status} (site blocks automated checks)` : r.status >= 500 ? `${r.status} (SITE DOWN — check by hand; replace the link if it stays down)` : r.status };
     } catch (e) { clearTimeout(t); if (attempt === 3) { const c = e.cause?.code || e.message; return { ok: 'warn', status: e.name === 'AbortError' ? 'timeout' : /CERT|SIGNATURE|SSL|TLS/.test(c) ? 'certificate chain incomplete on publisher site (opens in browsers)' : c }; } }
     await new Promise(r => setTimeout(r, 2000 * attempt));
   }
