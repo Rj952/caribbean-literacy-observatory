@@ -47,9 +47,14 @@ const pill = st => `<span class="pill">${icon(st)}${LABEL[st]}</span>`;
 async function getJSON(p) { const r = await fetch(p, { cache: 'no-cache' }); if (!r.ok) throw new Error(p + ' ' + r.status); return r.json(); }
 
 async function load() {
-  const names = ['countries', 'indicators', 'observations', 'sources', 'research', 'policy', 'publications', 'changelog', 'settings', 'news', 'benchmarks'];
-  const got = await Promise.all(names.map(n => getJSON(`data/${n}.json`)));
-  names.forEach((n, i) => S[n] = got[i]);
+  // Core files must load; optional ones fall back to empty so one missing file never blanks the site.
+  const core = ['countries', 'indicators', 'observations', 'sources'];
+  const optional = { research: { records: [] }, policy: { records: [] }, publications: { records: [] }, changelog: { records: [] },
+    settings: { outdated_after_years: 10, gpi_tolerance: 0.01, public_requires_review_status: 'approved', statuses: {}, contact: {} },
+    news: null, benchmarks: { meta: { caution: '' }, aggregates: [], records: [], pisa: null } };
+  const got = await Promise.all(core.map(n => getJSON(`data/${n}.json`)));
+  core.forEach((n, i) => S[n] = got[i]);
+  await Promise.all(Object.entries(optional).map(async ([n, fb]) => { try { S[n] = await getJSON(`data/${n}.json`); } catch (e) { S[n] = fb; console.warn('Optional data file missing:', n); } }));
   S.gov = S.settings;
   S.snapshot = S.observations.records.map(r => ({ ...r, origin: 'snapshot' }));
   S.obs = S.snapshot.slice();
@@ -282,13 +287,14 @@ function renderDashboard() {
 }
 
 function renderBench() {
+  if (!S.benchmarks.aggregates.length) { $('#comparePanel').hidden = true; $('#pisaPanel').hidden = true; return; }
   const cols = [IND.YT, IND.YF, IND.YM, IND.AD], jam = c => latest('JAM', c);
   const cell = r => r ? `<td class="num"><b>${fmt(r.value)}</b> <small>${r.ref_year}</small>${r.live === 'changed' ? ' <span class="flag">changed at source</span>' : ''}</td>` : '<td class="num">—</td>';
   $('#benchTable').innerHTML = `<caption class="sr-only">Literacy rates for benchmark groups and Jamaica</caption><thead><tr><th>Group</th>${cols.map(c => `<th class="num">${esc(S.indMap[c].short)}</th>`).join('')}</tr></thead><tbody>` +
     S.benchmarks.aggregates.map(a => `<tr><td>${esc(a.name)}</td>${cols.map(c => cell(bench(a.code, c))).join('')}</tr>`).join('') +
     `<tr><td><b>Jamaica</b> <small class="note">(for reference)</small></td>${cols.map(c => cell(jam(c))).join('')}</tr></tbody>`;
   $('#benchNote').textContent = S.benchmarks.meta.caution + ' The Caribbean small states average was last computed for 2008–2009.';
-  const P = S.benchmarks.pisa;
+  const P = S.benchmarks.pisa; if (!P) { $('#pisaPanel').hidden = true; return; }
   $('#pisaSub').innerHTML = `A different measure: how well 15-year-olds read on a common test. Source: <a href="${safeUrl(P.url)}">${esc(P.source)}</a>.`;
   $('#pisaBars').innerHTML = P.measures.map(m => `<div class="m"><h3>${esc(m.label)}</h3><div class="row"><span>Jamaica</span><div class="t"><span class="f" style="width:${m.value}%"></span></div><span class="v">${m.value}%</span></div><div class="row"><span>OECD average</span><div class="t"><span class="f o" style="width:${m.oecd}%"></span></div><span class="v">${m.oecd}%</span></div></div>`).join('');
   $('#pisaNotes').innerHTML = P.notes.map(n => `<li>${esc(n)}</li>`).join('');
@@ -394,7 +400,7 @@ const TYPE_LABEL = { news: 'News', official: 'Official release', opinion: 'Opini
 const fmtDate = d => { if (!d) return 'Date not shown'; const p = String(d).split('-'); const dt = new Date(Date.UTC(+p[0], (+p[1] || 1) - 1, +p[2] || 1)); return dt.toLocaleDateString('en-GB', { timeZone: 'UTC', day: p[2] ? 'numeric' : undefined, month: 'long', year: 'numeric' }); };
 const daysOld = iso => Math.floor((Date.now() - new Date(iso)) / 86400000);
 function renderNews() {
-  const N = S.news; if (!N) return;
+  const N = S.news; if (!N || !N.meta) return;
   const ed = N.meta.edition, age = daysOld(N.meta.updated);
   $('#newsTitle').textContent = `Caribbean literacy briefing — ${fmtDate(ed)}`;
   $('#newsSub').textContent = `${N.meta.schedule}. Last updated ${new Date(N.meta.updated).toLocaleString([], { dateStyle: 'medium', timeStyle: 'short' })}.`;
@@ -494,7 +500,7 @@ function bind() {
 (async () => {
   buildOpts();
   try { await load(); } catch (e) {
-    $('#view').insertAdjacentHTML('afterbegin', `<div class="band wrap"><div class="empty">The data files could not be loaded. If you opened index.html directly from disk, serve the folder instead (see README).</div></div>`);
+    $('#view').insertAdjacentHTML('afterbegin', `<div class="band wrap"><div class="empty" role="alert"><p><b>The Observatory's data could not be loaded just now.</b></p><p>This is usually a brief connection or update problem. <button class="btn small" type="button" onclick="location.reload()">Try again</button></p></div></div>`);
     return;
   }
   if (window.claude) $$('a[href="admin/"]').forEach(a => a.closest('div').lastElementChild === a && (a.previousElementSibling?.remove(), a.remove()));
