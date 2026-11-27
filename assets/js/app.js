@@ -61,6 +61,7 @@ async function load() {
 const latest = (iso, code) => S.obs.filter(o => o.country === iso && o.indicator === code).sort((a, b) => b.ref_year - a.ref_year)[0];
 const threshold = () => NOW_YEAR - S.gov.outdated_after_years;
 const bench = (agg, code) => S.bench.filter(b => b.aggregate === agg && b.indicator === code).sort((a, b) => b.ref_year - a.ref_year)[0];
+const countryOptions = () => S.countries.records.map(c => `<option value="${esc(c.iso3)}">${esc(c.name)}</option>`).join('') + '<option value="REGIONAL">Regional (several countries)</option>';
 const AGG_SHORT = { WLD: 'World', OED: 'OECD', LCN: 'Latin America & Caribbean', CSS: 'Caribbean small states' };
 
 function status(iso, code) {
@@ -348,7 +349,7 @@ function repoIndex() {
 function renderRepo() {
   const fc = $('#fCountry'), fd = $('#fDomain');
   if (fc.options.length < 2) {
-    fc.innerHTML += S.countries.records.map(c => `<option value="${c.iso3}">${esc(c.name)}</option>`).join('');
+    fc.innerHTML += countryOptions();
     fd.innerHTML += [...new Set(S.indicators.records.map(i => i.domain))].map(d => `<option>${esc(d)}</option>`).join('');
     ['#q', '#fType', '#fCountry', '#fDomain'].forEach(s => $(s).addEventListener('input', renderRepo));
   }
@@ -367,14 +368,21 @@ function renderRepo() {
 function renderPubs() {
   $('#pubList').innerHTML = S.publications.records.map(p => `<article class="pub"><div><span class="series">${esc(p.series)}${p.number ? ' ' + esc(p.number) : ''}</span><br><span class="st ${esc(p.status)}">${esc({ draft: 'Draft for review', planned: 'Planned', published: 'Online' }[p.status] || p.status)}</span></div><div><h3>${p.url && p.url.startsWith('#') ? `<a href="${esc(p.url)}">${esc(p.title)}</a>` : esc(p.title)}</h3><p class="note">${esc(p.summary)}${p.date ? ' · ' + esc(p.date) : ''}</p></div></article>`).join('');
   const pol = S.policy.records.filter(r => r.review && r.review.status === 'approved');
-  $('#policyList').innerHTML = pol.length ? `<div class="toolbar"><label>Country <select id="polCountry"><option value="">All</option>${[...new Set(pol.map(r => r.country))].map(c => `<option value="${esc(c)}">${esc(S.c[c]?.name || c)}</option>`).join('')}</select></label></div><div class="results" id="polResults"></div>`
+  $('#policyList').innerHTML = pol.length ? `<div class="toolbar"><label>Country <select id="polCountry"><option value="">All</option>${countryOptions()}</select></label></div><div class="results" id="polResults"></div>`
     : `<div class="empty"><p><b>The archive is open for entries but holds no approved documents yet.</b></p><p>It will collect national literacy policies, curriculum frameworks, assessment frameworks and language-in-education policies, starting with Jamaica and continuing country by country. Each document is linked to its official public copy, never re-hosted without permission.</p></div>`;
 }
 
 function renderPolicyList() {
   const sel = $('#polCountry'); if (!sel) return;
   const pol = S.policy.records.filter(r => r.review && r.review.status === 'approved' && (!sel.value || r.country === sel.value)).sort((a, b) => (b.year || 0) - (a.year || 0));
-  $('#polResults').innerHTML = pol.map(r => `<article class="result"><div class="meta"><span class="pill">${esc(S.c[r.country]?.name || r.country)}</span><span class="pill">${esc(r.year || 'Year not shown')}</span><span class="pill">${esc(r.type)}</span></div><h3>${safeUrl(r.url) ? `<a href="${safeUrl(r.url)}">${esc(r.title)}</a>` : esc(r.title)}</h3><p class="note">${r.publisher ? `<b>${esc(r.publisher)}.</b> ` : ''}${esc(r.summary || '')}</p></article>`).join('');
+  $('#polResults').innerHTML = !pol.length ? `<div class="empty">No documents for ${esc(S.c[sel.value]?.name || 'this selection')} yet. Suggest one through the <a href="#collaborate">Collaborate</a> page.</div>` : pol.map(r => `<article class="result"><div class="meta"><span class="pill">${esc(S.c[r.country]?.name || r.country)}</span><span class="pill">${esc(r.year || 'Year not shown')}</span><span class="pill">${esc(r.type)}</span></div><h3>${safeUrl(r.url) ? `<a href="${safeUrl(r.url)}">${esc(r.title)}</a>` : esc(r.title)}</h3><p class="note">${r.publisher ? `<b>${esc(r.publisher)}.</b> ` : ''}${esc(r.summary || '')}</p></article>`).join('');
+}
+
+function renderContact() {
+  const mail = S.gov.contact && S.gov.contact.email;
+  if (!mail || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(mail)) return;
+  $('#contactLine').innerHTML = `Email the Observatory at <a href="mailto:${esc(mail)}">${esc(mail)}</a>.`;
+  $('#footEmail').innerHTML = `<a href="mailto:${esc(mail)}">${esc(mail)}</a><br>`;
 }
 
 function renderMethods() {
@@ -413,8 +421,7 @@ function renderNews() {
   const items = (N.items || []).slice().sort((a, b) => String(b.date || '0').localeCompare(String(a.date || '0')));
   const cSel = $('#nCountry'), tSel = $('#nTopic');
   if (cSel.options.length < 2) {
-    const cs = [...new Set(items.map(i => i.country).filter(Boolean))];
-    cSel.innerHTML += cs.map(c => `<option value="${esc(c)}">${esc(S.c[c]?.name || (c === 'REGIONAL' ? 'Regional' : c))}</option>`).join('');
+    cSel.innerHTML += countryOptions();
     tSel.innerHTML += [...new Set(items.map(i => i.topic).filter(Boolean))].sort().map(t => `<option>${esc(t)}</option>`).join('');
     ['#nCountry', '#nTopic', '#nType'].forEach(id => $(id).addEventListener('input', renderNews));
   }
@@ -493,7 +500,10 @@ function bind() {
     if (ep && /^https:\/\//.test(ep)) {
       try { const r = await fetch(ep, { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify({ name: v('#fName'), email: v('#fEmail'), affiliation: v('#fAff'), purpose: v('#fPurpose'), record: v('#fRef'), message: v('#fMsg') }) }); m.textContent = r.ok ? 'Thank you — your enquiry has been received.' : 'The form service did not accept the enquiry. Please copy it instead.'; }
       catch (err) { m.textContent = 'The form service could not be reached. Please copy the enquiry instead.'; }
-    } else m.textContent = mail ? `Enquiry prepared. Copy it and send it to ${mail}.` : 'Enquiry prepared. The Observatory\'s contact address will be published here once confirmed; copy the enquiry to keep it.';
+    } else if (mail) {
+      const href = `mailto:${mail}?subject=${encodeURIComponent('Caribbean Literacy Observatory: ' + v('#fPurpose'))}&body=${encodeURIComponent(text)}`;
+      m.innerHTML = `Your enquiry is ready. <a class="btn small" href="${esc(href)}">Open it in your email app</a> or copy it below and send it to <b>${esc(mail)}</b>.`;
+    } else m.textContent = 'Enquiry prepared. Copy it below to keep it.';
   });
   $('#copyEnquiry').addEventListener('click', async () => { try { await navigator.clipboard.writeText($('#enquiryOut').textContent); $('#formMsg').textContent = 'Copied.'; } catch (e) { $('#formMsg').textContent = 'Copy was blocked; select the text instead.'; } });
   document.addEventListener('visibilitychange', () => { if (!document.hidden && S.live.mode === 'live-api' && Date.now() - new Date(S.live.checkedAt) > LIVE_EVERY_MS) refreshLive(false); });
@@ -506,7 +516,7 @@ function bind() {
     return;
   }
   if (window.claude) $$('a[href="admin/"]').forEach(a => a.closest('div').lastElementChild === a && (a.previousElementSibling?.remove(), a.remove()));
-  renderAgenda(); renderPubs(); renderPolicyList(); $('#polCountry')?.addEventListener('input', renderPolicyList); renderContrast(); bind(); renderAll(); route();
+  renderAgenda(); renderPubs(); renderPolicyList(); $('#polCountry')?.addEventListener('input', renderPolicyList); renderContrast(); renderContact(); bind(); renderAll(); route();
   refreshLive(false);
   setInterval(() => refreshLive(false), LIVE_EVERY_MS);
   liveViaClaude();
