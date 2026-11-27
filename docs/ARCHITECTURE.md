@@ -12,7 +12,7 @@ Validation ── scripts/validate.mjs (provenance, licence, ranges, parity cons
         ▼
 Research database ── data/*.json now; schema/database.sql when it outgrows the repo
         ▼
-Scholarly review ── pull requests + /admin editorial workflow; only "approved" scholarship is public
+Review ── /admin editorial workflow; research and policy records appear once marked "approved"
         ▼
 Public observatory ── static site (GitHub Pages or Claude) with a live check against source
 ```

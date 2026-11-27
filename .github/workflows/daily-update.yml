@@ -20,7 +20,7 @@ jobs:
       - name: Gather today's headlines
         run: node scripts/fetch-news.mjs
         continue-on-error: true
-      - name: Enforce the public data governance directive
+      - name: Check data integrity rules
         run: node scripts/validate.mjs
       - name: Commit if anything changed
         run: |

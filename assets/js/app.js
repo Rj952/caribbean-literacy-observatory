@@ -24,7 +24,7 @@ const STREAMS = [
   ['Digital and AI literacy', 'How are emerging technologies transforming literacy practices?'],
   ['Lifelong literacy', 'How does literacy develop beyond formal schooling?']];
 const PLAN = [
-  ['Days 1–15', 'Founding charter, research agenda and governance framework', 'In draft'],
+  ['Days 1–15', 'Founding statement and research agenda', 'Done'],
   ['Days 16–30', 'Website prototype and literacy data source audit', 'Started'],
   ['Days 31–45', 'Searchable literacy research repository', 'Structure built'],
   ['Days 46–60', 'Jamaica literacy profile and verified statistical dashboard', 'Planned'],
@@ -47,10 +47,10 @@ const pill = st => `<span class="pill">${icon(st)}${LABEL[st]}</span>`;
 async function getJSON(p) { const r = await fetch(p, { cache: 'no-cache' }); if (!r.ok) throw new Error(p + ' ' + r.status); return r.json(); }
 
 async function load() {
-  const names = ['countries', 'indicators', 'observations', 'sources', 'research', 'policy', 'publications', 'changelog', 'governance', 'news', 'benchmarks'];
+  const names = ['countries', 'indicators', 'observations', 'sources', 'research', 'policy', 'publications', 'changelog', 'settings', 'news', 'benchmarks'];
   const got = await Promise.all(names.map(n => getJSON(`data/${n}.json`)));
   names.forEach((n, i) => S[n] = got[i]);
-  S.gov = S.governance;
+  S.gov = S.settings;
   S.snapshot = S.observations.records.map(r => ({ ...r, origin: 'snapshot' }));
   S.obs = S.snapshot.slice();
   S.countries.records.forEach(c => S.c[c.iso3] = c);

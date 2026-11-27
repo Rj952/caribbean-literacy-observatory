@@ -1,4 +1,4 @@
-# Editor for the Research Director: review, edit, approve and publish without code.
+# Editor for the founder: add, edit and publish content without code.
 # Setup: replace OWNER/REPO below, then follow docs/EDITOR-SETUP.md for GitHub sign-in.
 backend:
   name: github

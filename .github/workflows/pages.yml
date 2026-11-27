@@ -12,7 +12,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with: { node-version: 20 }
-      - name: Enforce the public data governance directive
+      - name: Check data integrity rules
         run: node scripts/validate.mjs
   deploy:
     if: github.event_name != 'pull_request'

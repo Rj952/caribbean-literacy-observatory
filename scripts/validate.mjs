@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Enforces the Public Data Governance Directive on every commit.
+// Enforces the Observatory's data integrity principles on every commit.
 // Usage: node scripts/validate.mjs        (exit code 1 on any error)
 import { readFileSync } from 'node:fs';
 
@@ -7,7 +7,7 @@ const load = n => JSON.parse(readFileSync(new URL(`../data/${n}.json`, import.me
 const errors = [], warnings = [];
 const err = m => errors.push(m), warn = m => warnings.push(m);
 
-const gov = load('governance');
+const gov = load('settings');
 const countries = load('countries').records;
 const indicators = load('indicators').records;
 const sources = load('sources').records;

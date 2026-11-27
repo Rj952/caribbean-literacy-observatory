@@ -1,7 +1,7 @@
 # Caribbean Literacy Observatory
 
 **An open data research initiative.** Open Data · Open Scholarship · Research Integrity
-Founder and Research Director: Dr. Rohan Jowallah
+Founder: Dr. Rohan Jowallah
 
 A research website for literacy across the Caribbean. Every statistic on it comes from a public source, carries its reference year, licence and retrieval date, and links to the exact query that returned it. Missing and outdated data are shown as findings, never filled in.
 
@@ -10,9 +10,9 @@ A research website for literacy across the Caribbean. Every statistic on it come
 | Section | What it does |
 |---|---|
 | Home | Star-chart overview of what the public record holds for the 15 CARICOM member states |
-| About | Founding statement, open data commitment, governance |
+| About | Founding statement and open data commitment |
 | Research agenda | Seven streams, first 90 days, flagship project, long-term ecosystem |
-| Research director | Profile (draft, awaiting approval) |
+| Founder | Profile |
 | Daily briefing | Caribbean literacy news, a short written briefing and a data watch, updated every day |
 | Benchmarks | World, OECD, Latin America & Caribbean and Caribbean small states averages beside every figure; OECD PISA 2022 reading proficiency for Jamaica |
 | Dashboard | Youth, gender and adult literacy; data-landscape matrix; every record, copyable as CSV |
@@ -20,7 +20,7 @@ A research website for literacy across the Caribbean. Every statistic on it come
 | Repository | Search across approved research records, statistics and sources |
 | Publications | Working papers and reports, labelled planned / draft / published |
 | Policy archive | Policy and curriculum documents (approved entries only) |
-| Methods & data | Pipeline, status definitions, audit note, correction log, governance directive |
+| Methods & data | Pipeline, status definitions, audit note, correction log, data integrity principles |
 | Collaborate | Enquiry and error-report form |
 | Accessibility | Statement, measured contrast ratios, how to report a barrier |
 
@@ -52,7 +52,7 @@ No build step and no dependencies.
 
 ```bash
 python3 -m http.server 8000      # then open http://localhost:8000
-node scripts/validate.mjs        # governance checks (Node 18+)
+node scripts/validate.mjs        # data integrity checks (Node 18+)
 node scripts/fetch-worldbank.mjs # refresh data from the World Bank API
 ```
 
@@ -73,7 +73,7 @@ Opening `index.html` straight from disk will not load the data; serve the folder
 
 - Statistics: World Bank World Development Indicators, data from the UNESCO Institute for Statistics, **CC BY 4.0**. Please keep this attribution.
 - Licences of other sources are recorded in `data/sources.json`; those marked `to-verify` are not reused until checked.
-- Code: MIT (see `LICENSE`). Site text: proposed CC BY 4.0, subject to the Research Director's approval.
+- Code: MIT (see `LICENSE`).
 
 ## Repository layout
 
@@ -81,13 +81,13 @@ Opening `index.html` straight from disk will not load the data; serve the folder
 index.html                 site shell and written content
 assets/css/site.css        design
 assets/js/app.js           data loading, live checks, charts, search, routing
-data/*.json                verified snapshot, catalogue, governance settings
+data/*.json                verified snapshot, catalogue, news, benchmarks, settings
 data/raw/                  preserved original retrievals
 admin/                     no-code editor
 schema/                    PostgreSQL schema and JSON Schemas
 scripts/                   validator and World Bank retrieval
-docs/                      architecture, governance, implementation plan, audit
+docs/                      architecture, data integrity, implementation plan, audit
 .github/workflows/         validation, deployment, daily refresh
 ```
 
-See `docs/` for the architecture, data governance directive, implementation plan and the first audit note.
+See `docs/` for the architecture, data integrity principles, implementation plan and the first audit note.
