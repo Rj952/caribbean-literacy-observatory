@@ -1,0 +1,1594 @@
+{
+ "meta": {
+  "note": "Country literacy sources: statistics offices, ministry education statistics, literacy assessments, household surveys, international assessments and global country databases. Every link points to the publisher's or an archive's public copy. Gaps are recorded, not guessed.",
+  "categories": {
+   "statistics": "National statistics office and census",
+   "ministry": "Ministry education statistics",
+   "assessment": "National or regional literacy assessment",
+   "survey": "Household survey measuring literacy or foundational learning",
+   "international": "International assessment",
+   "database": "Global country database"
+  },
+  "required": [
+   "statistics",
+   "ministry",
+   "assessment",
+   "survey",
+   "database"
+  ],
+  "updated": "2026-11-27",
+  "procedure": "docs/COVERAGE-AUDIT.md"
+ },
+ "records": [
+  {
+   "id": "oecs-education-statistical-digest",
+   "countries": [
+    "ATG",
+    "DMA",
+    "GRD",
+    "KNA",
+    "LCA",
+    "VCT",
+    "MSR"
+   ],
+   "categories": [
+    "ministry"
+   ],
+   "title": "OECS Regional Education Statistical Digest (all editions)",
+   "publisher": "OECS Commission",
+   "url": "https://oecs.int/en/our-work/knowledge/library/education/oecs-education-statistical-digest",
+   "year": 2025,
+   "literacy": "Primary and secondary examination results, including national language arts and reading assessments reported by member states.",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "level": "Search result and page title confirmed"
+   }
+  },
+  {
+   "id": "oecs-early-reading-assessment-2026",
+   "countries": [
+    "ATG",
+    "DMA",
+    "GRD",
+    "KNA",
+    "LCA",
+    "VCT",
+    "MSR"
+   ],
+   "categories": [
+    "assessment"
+   ],
+   "title": "OECS Early Reading Assessment (OERA), Grade 2: 2026 preliminary findings",
+   "publisher": "Government of the Virgin Islands, reporting OECS PEARL results",
+   "url": "https://gov.vg/news/british-virgin-islands-tops-oecs-grade-2-reading-and-mathematics-assessments",
+   "year": 2026,
+   "literacy": "Annual regional Grade 2 reading assessment across participating OECS member states, reporting minimum proficiency (SDG 4.1.1a). Participation varies by state and year.",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "level": "Listed by search; live check by link test"
+   }
+  },
+  {
+   "id": "atg-census-2001-report",
+   "countries": [
+    "ATG"
+   ],
+   "categories": [
+    "statistics"
+   ],
+   "title": "National Census Report 2001, Antigua and Barbuda",
+   "publisher": "CARICOM Secretariat with the Statistics Division",
+   "url": "https://statistics.caricom.org/wp-content/uploads/2025/08/Antigua.pdf",
+   "year": 2009,
+   "literacy": "Census analysis including educational attainment.",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "level": "Listed by search; live check by link test"
+   }
+  },
+  {
+   "id": "atg-census-2011-profile",
+   "countries": [
+    "ATG"
+   ],
+   "categories": [
+    "statistics"
+   ],
+   "title": "2011 Population and Housing Census: A Demographic Profile",
+   "publisher": "Statistics Division, Antigua and Barbuda",
+   "url": "https://statistics.gov.ag/wp-content/uploads/2017/11/2011-Antigua-and-Barbuda-Population-and-Housing-Census-A-Demographic-Profile.pdf",
+   "year": 2017,
+   "literacy": "Demographic and education characteristics from the 2011 census.",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "level": "Listed by search; live check by link test"
+   }
+  },
+  {
+   "id": "atg-education-digest-2012",
+   "countries": [
+    "ATG"
+   ],
+   "categories": [
+    "ministry"
+   ],
+   "title": "Antigua and Barbuda Educational Statistical Digest 2012",
+   "publisher": "Ministry of Education, Education Planning Unit (copy in UWI library repository)",
+   "url": "https://uwispace.sta.uwi.edu/items/4fbdfe64-6d66-4d3d-939c-383dd46d4437",
+   "year": 2012,
+   "literacy": "Enrolment, examination results and national assessment data.",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "level": "Listed by search; live check by link test"
+   }
+  },
+  {
+   "id": "bhs-bnsi-census",
+   "countries": [
+    "BHS"
+   ],
+   "categories": [
+    "statistics"
+   ],
+   "title": "Census of Population and Housing (Bahamas National Statistical Institute)",
+   "publisher": "Bahamas National Statistical Institute",
+   "url": "https://stats.gov.bs/census/",
+   "year": 2022,
+   "literacy": "Census releases, including education characteristics.",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "level": "Listed by search; live check by link test"
+   }
+  },
+  {
+   "id": "bhs-education-digest-2005",
+   "countries": [
+    "BHS"
+   ],
+   "categories": [
+    "ministry"
+   ],
+   "title": "Bahamas National Education Statistics Digest 2005–2006",
+   "publisher": "Ministry of Education, Science and Technology (copy in UWI library repository)",
+   "url": "https://uwispace.sta.uwi.edu/items/a54643a9-5cbe-45b9-9315-c05ba200cb57",
+   "year": 2006,
+   "literacy": "Key education indicators, including national examination results.",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "level": "Listed by search; live check by link test"
+   }
+  },
+  {
+   "id": "bhs-examinations-division",
+   "countries": [
+    "BHS"
+   ],
+   "categories": [
+    "assessment"
+   ],
+   "title": "Examinations and Assessment Division: GLAT, BJC and BGCSE",
+   "publisher": "Ministry of Education, The Bahamas",
+   "url": "https://ministryofeducationbahamas.com/examination-assessment-division",
+   "year": null,
+   "literacy": "The Grade Level Assessment Test (GLAT) assesses language arts at Grades 3 and 6.",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "level": "Listed by search; live check by link test"
+   }
+  },
+  {
+   "id": "brb-bss-census",
+   "countries": [
+    "BRB"
+   ],
+   "categories": [
+    "statistics"
+   ],
+   "title": "Population and Housing Census (Barbados Statistical Service)",
+   "publisher": "Barbados Statistical Service",
+   "url": "https://stats.gov.bb/census/",
+   "year": 2021,
+   "literacy": "Census publications, including education.",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "level": "Listed by search; live check by link test"
+   }
+  },
+  {
+   "id": "brb-mics-2012",
+   "countries": [
+    "BRB"
+   ],
+   "categories": [
+    "survey"
+   ],
+   "title": "Barbados Multiple Indicator Cluster Survey 2012: Final Report",
+   "publisher": "Barbados Statistical Service with UNICEF",
+   "url": "https://mics-surveys-prod.s3.amazonaws.com/MICS4/Latin%20America%20and%20Caribbean/Barbados/2012/Final/Barbados%202012%20MICS_English.pdf",
+   "year": 2014,
+   "literacy": "Household survey including women's literacy and early childhood development.",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "level": "Listed by search; live check by link test"
+   }
+  },
+  {
+   "id": "blz-census-2022-key-findings",
+   "countries": [
+    "BLZ"
+   ],
+   "categories": [
+    "statistics"
+   ],
+   "title": "Population and Housing Census 2022: Key Findings Report",
+   "publisher": "Statistical Institute of Belize",
+   "url": "https://sib.org.bz/wp-content/uploads/CensusKeyFindingsReport_2022.pdf",
+   "year": 2026,
+   "literacy": "Census findings including education and literacy topics.",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "level": "Listed by search; live check by link test"
+   }
+  },
+  {
+   "id": "blz-abstract-education-statistics-2022",
+   "countries": [
+    "BLZ"
+   ],
+   "categories": [
+    "ministry",
+    "assessment"
+   ],
+   "title": "Abstract of Education Statistics 2022–2023",
+   "publisher": "Ministry of Education, Policy, Planning, Research and Evaluation Unit (copy in UWI library repository)",
+   "url": "https://uwispace.sta.uwi.edu/items/3df2c4c7-e4d2-43d5-834f-34ebce5890c2",
+   "year": 2023,
+   "literacy": "Education statistics; earlier editions include Primary School Examination (PSE) English results.",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "level": "Listed by search; live check by link test"
+   }
+  },
+  {
+   "id": "blz-mics-2015",
+   "countries": [
+    "BLZ"
+   ],
+   "categories": [
+    "survey"
+   ],
+   "title": "Belize Multiple Indicator Cluster Survey 2015–2016: Key Findings",
+   "publisher": "Statistical Institute of Belize with UNICEF",
+   "url": "https://mics-surveys-prod.s3.amazonaws.com/MICS5/Latin%20America%20and%20Caribbean/Belize/2015-2016/Key%20findings/Belize%202015-16%20MICS%20KFR_English.pdf",
+   "year": 2017,
+   "literacy": "Household survey with education and early learning indicators. A seventh-round MICS is under way.",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "level": "Listed by search; live check by link test"
+   }
+  },
+  {
+   "id": "dma-cso",
+   "countries": [
+    "DMA"
+   ],
+   "categories": [
+    "statistics"
+   ],
+   "title": "Central Statistics Office of Dominica",
+   "publisher": "Central Statistics Office, Ministry of Finance",
+   "url": "https://stats.gov.dm/",
+   "year": null,
+   "literacy": "National statistics and census data.",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "level": "Listed by search; live check by link test"
+   }
+  },
+  {
+   "id": "dma-census-2011-tables",
+   "countries": [
+    "DMA"
+   ],
+   "categories": [
+    "statistics"
+   ],
+   "title": "Dominica Census 2011 Tables",
+   "publisher": "Central Statistics Office (via CARICOM)",
+   "url": "https://statistics.caricom.org/wp-content/uploads/2026/01/DominicaCensus-Tables-2011-2.pdf",
+   "year": 2011,
+   "literacy": "Census tables including highest education by sex.",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "level": "Listed by search; live check by link test"
+   }
+  },
+  {
+   "id": "dma-education-statistics-archive",
+   "countries": [
+    "DMA"
+   ],
+   "categories": [
+    "ministry"
+   ],
+   "title": "CSO publications archive: Education Statistics (2010 and earlier)",
+   "publisher": "Central Statistics Office of Dominica",
+   "url": "https://stats.gov.dm/publications/archives/",
+   "year": 2010,
+   "literacy": "Education statistics bulletins.",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "level": "Listed by search; live check by link test"
+   }
+  },
+  {
+   "id": "grd-education-digest-2022",
+   "countries": [
+    "GRD"
+   ],
+   "categories": [
+    "ministry"
+   ],
+   "title": "Grenada Education Statistical Digest 2022",
+   "publisher": "Ministry of Education, Planning and Development Unit",
+   "url": "https://stats.gov.gd/wp-content/uploads/2024/12/2022-Grenada-Education-Statistical-Digest.pdf",
+   "year": 2022,
+   "literacy": "Students, teachers, institutions and examination results for 2021/22.",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "level": "Listed by search; live check by link test"
+   }
+  },
+  {
+   "id": "grd-census-education-2011",
+   "countries": [
+    "GRD"
+   ],
+   "categories": [
+    "statistics"
+   ],
+   "title": "Census 2011: population by cumulative educational attainment",
+   "publisher": "Central Statistical Office, Grenada",
+   "url": "https://stats.gov.gd/subjects/education/population-15-years-and-over-by-cumulative-educational-attainment-2011/",
+   "year": 2011,
+   "literacy": "Census education tables.",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "level": "Listed by search; live check by link test"
+   }
+  },
+  {
+   "id": "guy-census-2012-compendium-education",
+   "countries": [
+    "GUY"
+   ],
+   "categories": [
+    "statistics"
+   ],
+   "title": "2012 Census Compendium 4: Education (including adult literacy levels)",
+   "publisher": "Bureau of Statistics, Guyana",
+   "url": "https://statisticsguyana.gov.gy/wp-content/uploads/2019/10/Final_2012_Census_Compendium4.pdf",
+   "year": 2017,
+   "literacy": "Enrolment rates and the literacy level of the adult population. Note: the census infers literacy from schooling rather than asking about reading and writing.",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "level": "Listed by search; live check by link test"
+   }
+  },
+  {
+   "id": "guy-bos-surveys-mics",
+   "countries": [
+    "GUY"
+   ],
+   "categories": [
+    "survey"
+   ],
+   "title": "Bureau of Statistics surveys page (including MICS 2019–2020)",
+   "publisher": "Bureau of Statistics, Guyana",
+   "url": "https://statisticsguyana.gov.gy/?p=18",
+   "year": 2020,
+   "literacy": "Guyana MICS 2019–2020 with UNICEF, which includes foundational learning skills.",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "level": "Listed by search; live check by link test"
+   }
+  },
+  {
+   "id": "guy-national-literacy-assessments",
+   "countries": [
+    "GUY"
+   ],
+   "categories": [
+    "assessment"
+   ],
+   "title": "National Literacy Department: Grades 2 and 4 reading assessments",
+   "publisher": "Ministry of Education, Guyana",
+   "url": "https://nld.gov.gy/",
+   "year": 2026,
+   "literacy": "National reading assessments at Grades 2 and 4 and literacy resources.",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "level": "Listed by search; live check by link test"
+   }
+  },
+  {
+   "id": "hti-ecvh-education",
+   "countries": [
+    "HTI"
+   ],
+   "categories": [
+    "statistics"
+   ],
+   "title": "Enquête sur les conditions de vie en Haïti (ECVH): éducation",
+   "publisher": "Institut Haïtien de Statistique et d'Informatique (IHSI)",
+   "url": "https://flagship.social-protection.org/gimi/Media.action?id=10244",
+   "year": 2003,
+   "literacy": "Self-reported literacy of people aged 15 and over, by sex and department (in French).",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "level": "Listed by search; live check by link test"
+   }
+  },
+  {
+   "id": "hti-emmus-vi-2016",
+   "countries": [
+    "HTI"
+   ],
+   "categories": [
+    "survey"
+   ],
+   "title": "Enquête Mortalité, Morbidité et Utilisation des Services (EMMUS-VI) 2016–2017",
+   "publisher": "Institut Haïtien de l'Enfance with the DHS Program",
+   "url": "https://dhsprogram.com/publications/publication-FR326-DHS-Final-Reports.cfm",
+   "year": 2018,
+   "literacy": "National household survey reporting literacy of women and men (in French).",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "level": "Listed by search; live check by link test"
+   }
+  },
+  {
+   "id": "hti-annuaire-statistique-2013",
+   "countries": [
+    "HTI"
+   ],
+   "categories": [
+    "ministry"
+   ],
+   "title": "Annuaire statistique 2013–2014",
+   "publisher": "MENFP, Direction de la Planification (copy hosted by MIT–Haiti Initiative)",
+   "url": "https://mit-ayiti.net/wp-content/uploads/2023/06/Annuaire-Statistique-2013-14-DPCE-and-MENFP.pdf",
+   "year": 2015,
+   "literacy": "Ministry education statistics yearbook (in French).",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "level": "Listed by search; live check by link test"
+   }
+  },
+  {
+   "id": "jam-statin-education-tables",
+   "countries": [
+    "JAM"
+   ],
+   "categories": [
+    "statistics",
+    "assessment"
+   ],
+   "title": "STATIN education tables (including Grade 4 Literacy Test results)",
+   "publisher": "Statistical Institute of Jamaica",
+   "url": "https://www.statinja.gov.jm/Demo_SocialStats/Education.aspx",
+   "year": null,
+   "literacy": "Enrolment, completion and Grade 4 literacy and numeracy results.",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "level": "Listed by search; live check by link test"
+   }
+  },
+  {
+   "id": "jam-census-2011-education",
+   "countries": [
+    "JAM"
+   ],
+   "categories": [
+    "statistics"
+   ],
+   "title": "Population and Housing Census 2011, Volume 4: Education",
+   "publisher": "Statistical Institute of Jamaica",
+   "url": "https://census.statinja.gov.jm/wp-content/themes/futurio-child/Census2011Reports/Population%20and%20Housing%20Census%202011%20Jamaica%20Education%20Vol%204.pdf",
+   "year": 2013,
+   "literacy": "Census education tables; the 2011 census included literacy as a topic.",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "level": "Listed by search; live check by link test"
+   }
+  },
+  {
+   "id": "jam-mics-2022",
+   "countries": [
+    "JAM"
+   ],
+   "categories": [
+    "survey"
+   ],
+   "title": "Jamaica Multiple Indicator Cluster Survey (MICS) 2022",
+   "publisher": "PIOJ and STATIN with UNICEF and the IDB",
+   "url": "https://www.unicef.org/jamaica/reports/jamaica-multiple-indicator-cluster-survey-mics-2022-situation-women-and-children",
+   "year": 2023,
+   "literacy": "Household survey including foundational learning skills.",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "level": "Listed by search; live check by link test"
+   }
+  },
+  {
+   "id": "jam-pisa-2022",
+   "countries": [
+    "JAM"
+   ],
+   "categories": [
+    "international"
+   ],
+   "title": "PISA 2022 Results: Country Note, Jamaica",
+   "publisher": "OECD",
+   "url": "https://www.oecd.org/en/publications/pisa-2022-results-volume-i-and-ii-country-notes_ed6fbcc5-en/jamaica_d5d0d9e2-en.html",
+   "year": 2023,
+   "literacy": "Reading performance of 15-year-olds. Jamaica's first PISA; results carry a sampling caution.",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "level": "Listed by search; live check by link test"
+   }
+  },
+  {
+   "id": "msr-statistics-department",
+   "countries": [
+    "MSR"
+   ],
+   "categories": [
+    "statistics"
+   ],
+   "title": "Statistics Department of Montserrat (2023 Population and Housing Census)",
+   "publisher": "Statistics Department, Ministry of Finance and Economic Management",
+   "url": "https://www.gov.ms/government/ministries/ministry-of-finance-economic-management/statistics-department/",
+   "year": 2024,
+   "literacy": "Census releases and data requests.",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "level": "Listed by search; live check by link test"
+   }
+  },
+  {
+   "id": "msr-education-digest-2013",
+   "countries": [
+    "MSR"
+   ],
+   "categories": [
+    "ministry"
+   ],
+   "title": "Montserrat Education Statistical Digest 2013–2014",
+   "publisher": "Ministry of Education (via OECS)",
+   "url": "https://oecs.int/en/our-work/knowledge/library/education/oecs-education-statistical-digest/montserrat/montserrat-education-statistical-digest-2013-2014",
+   "year": 2014,
+   "literacy": "Education statistics including examination results.",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "level": "Listed by search; live check by link test"
+   }
+  },
+  {
+   "id": "kna-census-2021-summary",
+   "countries": [
+    "KNA"
+   ],
+   "categories": [
+    "statistics"
+   ],
+   "title": "Population and Housing Census Summary Report (2021/22)",
+   "publisher": "Department of Statistics, Ministry of Sustainable Development",
+   "url": "https://statistics.caricom.org/wp-content/uploads/2025/11/SKN-Census-Report-2021-2022.pdf",
+   "year": 2024,
+   "literacy": "Census summary including education.",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "level": "Listed by search; live check by link test"
+   }
+  },
+  {
+   "id": "kna-education-digest",
+   "countries": [
+    "KNA"
+   ],
+   "categories": [
+    "ministry"
+   ],
+   "title": "St Kitts and Nevis Education Statistical Digest",
+   "publisher": "Ministry of Education (via OECS)",
+   "url": "https://oecs.int/en/our-work/knowledge/library/education/oecs-education-statistical-digest/st-kitts-nevis",
+   "year": null,
+   "literacy": "Education statistics editions.",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "level": "Listed by search; live check by link test"
+   }
+  },
+  {
+   "id": "lca-national-assessment-grade4",
+   "countries": [
+    "LCA"
+   ],
+   "categories": [
+    "statistics",
+    "assessment"
+   ],
+   "title": "National mean performance, Grade 4 (Language Arts and Mathematics), 2005–2019",
+   "publisher": "Central Statistics Office of Saint Lucia",
+   "url": "https://stats.gov.lc/subjects/society/education/national-mean-performance-grade-4-2005-to-2019/",
+   "year": 2019,
+   "literacy": "Grade 4 national assessment (formerly Minimum Standards) results for language arts.",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "level": "Listed by search; live check by link test"
+   }
+  },
+  {
+   "id": "lca-education-digest-2014",
+   "countries": [
+    "LCA"
+   ],
+   "categories": [
+    "ministry"
+   ],
+   "title": "Education Statistical Digest 2014",
+   "publisher": "Ministry of Education, Saint Lucia",
+   "url": "https://www.govt.lc/media.govt.lc/www/resources/publications/education-digest--2014-electronic-version.pdf",
+   "year": 2014,
+   "literacy": "Enrolment, examinations and national assessments.",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "level": "Listed by search; live check by link test"
+   }
+  },
+  {
+   "id": "lca-mics-2012",
+   "countries": [
+    "LCA"
+   ],
+   "categories": [
+    "survey"
+   ],
+   "title": "Saint Lucia Multiple Indicator Cluster Survey 2012",
+   "publisher": "Ministry of Social Transformation and Central Statistics Office with UNICEF",
+   "url": "https://microdata.worldbank.org/catalog/2209",
+   "year": 2014,
+   "literacy": "Household survey including women's literacy (catalogue with report link).",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "level": "Listed by search; live check by link test"
+   }
+  },
+  {
+   "id": "vct-education-digest-2024",
+   "countries": [
+    "VCT"
+   ],
+   "categories": [
+    "ministry"
+   ],
+   "title": "Education Statistical Digest 2024–2025",
+   "publisher": "Ministry of Education, St Vincent and the Grenadines",
+   "url": "https://education.gov.vc/education/images/Stories/pdf/2024_25_Statistical_Digest.pdf",
+   "year": 2025,
+   "literacy": "Latest education statistics, including examination and assessment results.",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "level": "Listed by search; live check by link test"
+   }
+  },
+  {
+   "id": "vct-education-digest-index",
+   "countries": [
+    "VCT"
+   ],
+   "categories": [
+    "ministry"
+   ],
+   "title": "Educational Statistical Digest (all editions)",
+   "publisher": "Ministry of Education, St Vincent and the Grenadines",
+   "url": "https://education.gov.vc/education/index.php/publications/241-educational-statistical-digest",
+   "year": null,
+   "literacy": "Index of digest editions.",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "level": "Listed by search; live check by link test"
+   }
+  },
+  {
+   "id": "vct-digest-of-statistics-2019",
+   "countries": [
+    "VCT"
+   ],
+   "categories": [
+    "statistics"
+   ],
+   "title": "Digest of Statistics 2019",
+   "publisher": "Statistical Office, Economic Planning Division",
+   "url": "https://stats.gov.vc/wp-content/uploads/2022/05/Digest-of-Statistics-2019.pdf",
+   "year": 2022,
+   "literacy": "National statistics including education.",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "level": "Listed by search; live check by link test"
+   }
+  },
+  {
+   "id": "sur-census-2012-vol2",
+   "countries": [
+    "SUR"
+   ],
+   "categories": [
+    "statistics"
+   ],
+   "title": "Census 2012, Volume II: Onderwijs, Werkgelegenheid en Vervoer",
+   "publisher": "Algemeen Bureau voor de Statistiek (General Bureau of Statistics)",
+   "url": "https://unstats.un.org/unsd/demographic/sources/census/wphc/Suriname/SUR-Census2012-vol2_2014-01.pdf",
+   "year": 2014,
+   "literacy": "Census education results (in Dutch).",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "level": "Listed by search; live check by link test"
+   }
+  },
+  {
+   "id": "sur-mics-2018",
+   "countries": [
+    "SUR"
+   ],
+   "categories": [
+    "survey"
+   ],
+   "title": "Suriname MICS 2018: Snapshots of Key Findings (Early Grade Learning)",
+   "publisher": "Ministry of Social Affairs and Public Housing with the General Bureau of Statistics and UNICEF",
+   "url": "https://statistics-suriname.org/wp-content/uploads/2020/03/Suriname_MICS_2018_Snapshots_English-resized.pdf",
+   "year": 2020,
+   "literacy": "Foundational learning skills, including early grade reading.",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "level": "Listed by search; live check by link test"
+   }
+  },
+  {
+   "id": "sur-statistical-yearbook-2017",
+   "countries": [
+    "SUR"
+   ],
+   "categories": [
+    "statistics"
+   ],
+   "title": "Statistisch Jaarboek / Statistical Yearbook 2017–2018",
+   "publisher": "Algemeen Bureau voor de Statistiek",
+   "url": "https://statistics-suriname.org/wp-content/uploads/2020/02/Statistisch-Jaarboek-2017-2018.pdf",
+   "year": 2020,
+   "literacy": "Bilingual yearbook including education statistics.",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "level": "Listed by search; live check by link test"
+   }
+  },
+  {
+   "id": "tto-census-2011-demographic",
+   "countries": [
+    "TTO"
+   ],
+   "categories": [
+    "statistics"
+   ],
+   "title": "2011 Population and Housing Census: Demographic Report",
+   "publisher": "Central Statistical Office of Trinidad and Tobago",
+   "url": "https://prod.redatam.org/redtto/census/TT2011/TT2011_demog_report.pdf",
+   "year": 2012,
+   "literacy": "Census results including education; the 2011 census defined literacy.",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "level": "Listed by search; live check by link test"
+   }
+  },
+  {
+   "id": "tto-mics-2022",
+   "countries": [
+    "TTO"
+   ],
+   "categories": [
+    "survey"
+   ],
+   "title": "Trinidad and Tobago MICS 2022 findings, snapshots and datasets",
+   "publisher": "Central Statistical Office with UNICEF",
+   "url": "https://mics.unicef.org/news_entries/256/JUST-RELEASED:-TRINIDAD-AND-TOBAGO-2022-MICS",
+   "year": 2024,
+   "literacy": "Household survey including foundational learning skills.",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "level": "Listed by search; live check by link test"
+   }
+  },
+  {
+   "id": "tto-sea-2024-analysis",
+   "countries": [
+    "TTO"
+   ],
+   "categories": [
+    "assessment"
+   ],
+   "title": "Analysis of the Secondary Entrance Assessment (SEA) 2024 Results",
+   "publisher": "Ministry of Education, Trinidad and Tobago",
+   "url": "https://storage.moe.gov.tt/corporate/2024/06/Media-Release-Results-of-the-2024-Secondary-Entrace-Assessment-SEA.pdf",
+   "year": 2024,
+   "literacy": "National results in English Language Arts and writing at the end of primary school.",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "level": "Listed by search; live check by link test"
+   }
+  },
+  {
+   "id": "tto-pirls-encyclopedia",
+   "countries": [
+    "TTO"
+   ],
+   "categories": [
+    "international"
+   ],
+   "title": "PIRLS Encyclopedia: Trinidad and Tobago",
+   "publisher": "IEA TIMSS & PIRLS International Study Center",
+   "url": "https://pirls2016.org/encyclopedia/countries/trinidad-tobago",
+   "year": 2017,
+   "literacy": "How reading is taught and assessed; Trinidad and Tobago took part in PIRLS 2006 and 2011.",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "level": "Listed by search; live check by link test"
+   }
+  },
+  {
+   "id": "atg-unicef-data",
+   "countries": [
+    "ATG"
+   ],
+   "categories": [
+    "database"
+   ],
+   "title": "UNICEF Data: Antigua and Barbuda",
+   "publisher": "UNICEF",
+   "url": "https://data.unicef.org/country/atg/",
+   "year": null,
+   "literacy": "Child-focused indicators, including foundational learning and MICS results where available.",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "level": "Listed by search; live check by link test"
+   }
+  },
+  {
+   "id": "atg-world-bank-data",
+   "countries": [
+    "ATG"
+   ],
+   "categories": [
+    "database"
+   ],
+   "title": "World Bank Open Data: Antigua and Barbuda",
+   "publisher": "World Bank",
+   "url": "https://data.worldbank.org/country/AG",
+   "year": null,
+   "literacy": "Country indicators, including the UIS literacy series used on this site.",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "level": "Listed by search; live check by link test"
+   }
+  },
+  {
+   "id": "bhs-unicef-data",
+   "countries": [
+    "BHS"
+   ],
+   "categories": [
+    "database"
+   ],
+   "title": "UNICEF Data: The Bahamas",
+   "publisher": "UNICEF",
+   "url": "https://data.unicef.org/country/bhs/",
+   "year": null,
+   "literacy": "Child-focused indicators, including foundational learning and MICS results where available.",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "level": "Listed by search; live check by link test"
+   }
+  },
+  {
+   "id": "bhs-world-bank-data",
+   "countries": [
+    "BHS"
+   ],
+   "categories": [
+    "database"
+   ],
+   "title": "World Bank Open Data: The Bahamas",
+   "publisher": "World Bank",
+   "url": "https://data.worldbank.org/country/BS",
+   "year": null,
+   "literacy": "Country indicators, including the UIS literacy series used on this site.",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "level": "Listed by search; live check by link test"
+   }
+  },
+  {
+   "id": "brb-unicef-data",
+   "countries": [
+    "BRB"
+   ],
+   "categories": [
+    "database"
+   ],
+   "title": "UNICEF Data: Barbados",
+   "publisher": "UNICEF",
+   "url": "https://data.unicef.org/country/brb/",
+   "year": null,
+   "literacy": "Child-focused indicators, including foundational learning and MICS results where available.",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "level": "Listed by search; live check by link test"
+   }
+  },
+  {
+   "id": "brb-world-bank-data",
+   "countries": [
+    "BRB"
+   ],
+   "categories": [
+    "database"
+   ],
+   "title": "World Bank Open Data: Barbados",
+   "publisher": "World Bank",
+   "url": "https://data.worldbank.org/country/BB",
+   "year": null,
+   "literacy": "Country indicators, including the UIS literacy series used on this site.",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "level": "Listed by search; live check by link test"
+   }
+  },
+  {
+   "id": "blz-unicef-data",
+   "countries": [
+    "BLZ"
+   ],
+   "categories": [
+    "database"
+   ],
+   "title": "UNICEF Data: Belize",
+   "publisher": "UNICEF",
+   "url": "https://data.unicef.org/country/blz/",
+   "year": null,
+   "literacy": "Child-focused indicators, including foundational learning and MICS results where available.",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "level": "Listed by search; live check by link test"
+   }
+  },
+  {
+   "id": "blz-world-bank-data",
+   "countries": [
+    "BLZ"
+   ],
+   "categories": [
+    "database"
+   ],
+   "title": "World Bank Open Data: Belize",
+   "publisher": "World Bank",
+   "url": "https://data.worldbank.org/country/BZ",
+   "year": null,
+   "literacy": "Country indicators, including the UIS literacy series used on this site.",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "level": "Listed by search; live check by link test"
+   }
+  },
+  {
+   "id": "dma-unicef-data",
+   "countries": [
+    "DMA"
+   ],
+   "categories": [
+    "database"
+   ],
+   "title": "UNICEF Data: Dominica",
+   "publisher": "UNICEF",
+   "url": "https://data.unicef.org/country/dma/",
+   "year": null,
+   "literacy": "Child-focused indicators, including foundational learning and MICS results where available.",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "level": "Listed by search; live check by link test"
+   }
+  },
+  {
+   "id": "dma-world-bank-data",
+   "countries": [
+    "DMA"
+   ],
+   "categories": [
+    "database"
+   ],
+   "title": "World Bank Open Data: Dominica",
+   "publisher": "World Bank",
+   "url": "https://data.worldbank.org/country/DM",
+   "year": null,
+   "literacy": "Country indicators, including the UIS literacy series used on this site.",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "level": "Listed by search; live check by link test"
+   }
+  },
+  {
+   "id": "grd-unicef-data",
+   "countries": [
+    "GRD"
+   ],
+   "categories": [
+    "database"
+   ],
+   "title": "UNICEF Data: Grenada",
+   "publisher": "UNICEF",
+   "url": "https://data.unicef.org/country/grd/",
+   "year": null,
+   "literacy": "Child-focused indicators, including foundational learning and MICS results where available.",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "level": "Listed by search; live check by link test"
+   }
+  },
+  {
+   "id": "grd-world-bank-data",
+   "countries": [
+    "GRD"
+   ],
+   "categories": [
+    "database"
+   ],
+   "title": "World Bank Open Data: Grenada",
+   "publisher": "World Bank",
+   "url": "https://data.worldbank.org/country/GD",
+   "year": null,
+   "literacy": "Country indicators, including the UIS literacy series used on this site.",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "level": "Listed by search; live check by link test"
+   }
+  },
+  {
+   "id": "guy-unicef-data",
+   "countries": [
+    "GUY"
+   ],
+   "categories": [
+    "database"
+   ],
+   "title": "UNICEF Data: Guyana",
+   "publisher": "UNICEF",
+   "url": "https://data.unicef.org/country/guy/",
+   "year": null,
+   "literacy": "Child-focused indicators, including foundational learning and MICS results where available.",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "level": "Listed by search; live check by link test"
+   }
+  },
+  {
+   "id": "guy-world-bank-data",
+   "countries": [
+    "GUY"
+   ],
+   "categories": [
+    "database"
+   ],
+   "title": "World Bank Open Data: Guyana",
+   "publisher": "World Bank",
+   "url": "https://data.worldbank.org/country/GY",
+   "year": null,
+   "literacy": "Country indicators, including the UIS literacy series used on this site.",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "level": "Listed by search; live check by link test"
+   }
+  },
+  {
+   "id": "hti-unicef-data",
+   "countries": [
+    "HTI"
+   ],
+   "categories": [
+    "database"
+   ],
+   "title": "UNICEF Data: Haiti",
+   "publisher": "UNICEF",
+   "url": "https://data.unicef.org/country/hti/",
+   "year": null,
+   "literacy": "Child-focused indicators, including foundational learning and MICS results where available.",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "level": "Listed by search; live check by link test"
+   }
+  },
+  {
+   "id": "hti-world-bank-data",
+   "countries": [
+    "HTI"
+   ],
+   "categories": [
+    "database"
+   ],
+   "title": "World Bank Open Data: Haiti",
+   "publisher": "World Bank",
+   "url": "https://data.worldbank.org/country/HT",
+   "year": null,
+   "literacy": "Country indicators, including the UIS literacy series used on this site.",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "level": "Listed by search; live check by link test"
+   }
+  },
+  {
+   "id": "jam-unicef-data",
+   "countries": [
+    "JAM"
+   ],
+   "categories": [
+    "database"
+   ],
+   "title": "UNICEF Data: Jamaica",
+   "publisher": "UNICEF",
+   "url": "https://data.unicef.org/country/jam/",
+   "year": null,
+   "literacy": "Child-focused indicators, including foundational learning and MICS results where available.",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "level": "Listed by search; live check by link test"
+   }
+  },
+  {
+   "id": "jam-world-bank-data",
+   "countries": [
+    "JAM"
+   ],
+   "categories": [
+    "database"
+   ],
+   "title": "World Bank Open Data: Jamaica",
+   "publisher": "World Bank",
+   "url": "https://data.worldbank.org/country/JM",
+   "year": null,
+   "literacy": "Country indicators, including the UIS literacy series used on this site.",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "level": "Listed by search; live check by link test"
+   }
+  },
+  {
+   "id": "msr-unicef-data",
+   "countries": [
+    "MSR"
+   ],
+   "categories": [
+    "database"
+   ],
+   "title": "UNICEF Data: Montserrat",
+   "publisher": "UNICEF",
+   "url": "https://data.unicef.org/country/msr/",
+   "year": null,
+   "literacy": "Child-focused indicators, including foundational learning and MICS results where available.",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "level": "Listed by search; live check by link test"
+   }
+  },
+  {
+   "id": "kna-unicef-data",
+   "countries": [
+    "KNA"
+   ],
+   "categories": [
+    "database"
+   ],
+   "title": "UNICEF Data: Saint Kitts and Nevis",
+   "publisher": "UNICEF",
+   "url": "https://data.unicef.org/country/kna/",
+   "year": null,
+   "literacy": "Child-focused indicators, including foundational learning and MICS results where available.",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "level": "Listed by search; live check by link test"
+   }
+  },
+  {
+   "id": "kna-world-bank-data",
+   "countries": [
+    "KNA"
+   ],
+   "categories": [
+    "database"
+   ],
+   "title": "World Bank Open Data: Saint Kitts and Nevis",
+   "publisher": "World Bank",
+   "url": "https://data.worldbank.org/country/KN",
+   "year": null,
+   "literacy": "Country indicators, including the UIS literacy series used on this site.",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "level": "Listed by search; live check by link test"
+   }
+  },
+  {
+   "id": "lca-unicef-data",
+   "countries": [
+    "LCA"
+   ],
+   "categories": [
+    "database"
+   ],
+   "title": "UNICEF Data: Saint Lucia",
+   "publisher": "UNICEF",
+   "url": "https://data.unicef.org/country/lca/",
+   "year": null,
+   "literacy": "Child-focused indicators, including foundational learning and MICS results where available.",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "level": "Listed by search; live check by link test"
+   }
+  },
+  {
+   "id": "lca-world-bank-data",
+   "countries": [
+    "LCA"
+   ],
+   "categories": [
+    "database"
+   ],
+   "title": "World Bank Open Data: Saint Lucia",
+   "publisher": "World Bank",
+   "url": "https://data.worldbank.org/country/LC",
+   "year": null,
+   "literacy": "Country indicators, including the UIS literacy series used on this site.",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "level": "Listed by search; live check by link test"
+   }
+  },
+  {
+   "id": "vct-unicef-data",
+   "countries": [
+    "VCT"
+   ],
+   "categories": [
+    "database"
+   ],
+   "title": "UNICEF Data: Saint Vincent and the Grenadines",
+   "publisher": "UNICEF",
+   "url": "https://data.unicef.org/country/vct/",
+   "year": null,
+   "literacy": "Child-focused indicators, including foundational learning and MICS results where available.",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "level": "Listed by search; live check by link test"
+   }
+  },
+  {
+   "id": "vct-world-bank-data",
+   "countries": [
+    "VCT"
+   ],
+   "categories": [
+    "database"
+   ],
+   "title": "World Bank Open Data: Saint Vincent and the Grenadines",
+   "publisher": "World Bank",
+   "url": "https://data.worldbank.org/country/VC",
+   "year": null,
+   "literacy": "Country indicators, including the UIS literacy series used on this site.",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "level": "Listed by search; live check by link test"
+   }
+  },
+  {
+   "id": "sur-unicef-data",
+   "countries": [
+    "SUR"
+   ],
+   "categories": [
+    "database"
+   ],
+   "title": "UNICEF Data: Suriname",
+   "publisher": "UNICEF",
+   "url": "https://data.unicef.org/country/sur/",
+   "year": null,
+   "literacy": "Child-focused indicators, including foundational learning and MICS results where available.",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "level": "Listed by search; live check by link test"
+   }
+  },
+  {
+   "id": "sur-world-bank-data",
+   "countries": [
+    "SUR"
+   ],
+   "categories": [
+    "database"
+   ],
+   "title": "World Bank Open Data: Suriname",
+   "publisher": "World Bank",
+   "url": "https://data.worldbank.org/country/SR",
+   "year": null,
+   "literacy": "Country indicators, including the UIS literacy series used on this site.",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "level": "Listed by search; live check by link test"
+   }
+  },
+  {
+   "id": "tto-unicef-data",
+   "countries": [
+    "TTO"
+   ],
+   "categories": [
+    "database"
+   ],
+   "title": "UNICEF Data: Trinidad and Tobago",
+   "publisher": "UNICEF",
+   "url": "https://data.unicef.org/country/tto/",
+   "year": null,
+   "literacy": "Child-focused indicators, including foundational learning and MICS results where available.",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "level": "Listed by search; live check by link test"
+   }
+  },
+  {
+   "id": "tto-world-bank-data",
+   "countries": [
+    "TTO"
+   ],
+   "categories": [
+    "database"
+   ],
+   "title": "World Bank Open Data: Trinidad and Tobago",
+   "publisher": "World Bank",
+   "url": "https://data.worldbank.org/country/TT",
+   "year": null,
+   "literacy": "Country indicators, including the UIS literacy series used on this site.",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "level": "Listed by search; live check by link test"
+   }
+  },
+  {
+   "id": "jam-uis-sdg4-profile",
+   "countries": [
+    "JAM"
+   ],
+   "categories": [
+    "database"
+   ],
+   "title": "UIS SDG 4 Country Profile: Jamaica",
+   "publisher": "UNESCO Institute for Statistics",
+   "url": "https://uis.unesco.org/sites/default/files/country-profile/SDG4-Profile-Jamaica.pdf",
+   "year": null,
+   "literacy": "SDG 4 indicators, including learning proficiency and literacy.",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "level": "Listed by search; live check by link test"
+   }
+  },
+  {
+   "id": "guy-uis-sdg4-profile",
+   "countries": [
+    "GUY"
+   ],
+   "categories": [
+    "database"
+   ],
+   "title": "UIS SDG 4 Country Profile: Guyana",
+   "publisher": "UNESCO Institute for Statistics",
+   "url": "https://uis.unesco.org/sites/default/files/country-profile/SDG4-Profile-Guyana.pdf",
+   "year": null,
+   "literacy": "SDG 4 indicators, including learning proficiency and literacy.",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "level": "Listed by search; live check by link test"
+   }
+  },
+  {
+   "id": "dma-uis-sdg4-profile",
+   "countries": [
+    "DMA"
+   ],
+   "categories": [
+    "database"
+   ],
+   "title": "UIS SDG 4 Country Profile: Dominica",
+   "publisher": "UNESCO Institute for Statistics",
+   "url": "https://uis.unesco.org/sites/default/files/country-profile/SDG4-Profile-Dominica.pdf",
+   "year": null,
+   "literacy": "SDG 4 indicators, including learning proficiency and literacy.",
+   "review": {
+    "status": "approved",
+    "checked_on": "2026-11-27",
+    "level": "Listed by search; live check by link test"
+   }
+  }
+ ],
+ "gaps": [
+  {
+   "country": "ATG",
+   "category": "survey",
+   "note": "No MICS or DHS survey with literacy found.",
+   "checked_on": "2026-11-27"
+  },
+  {
+   "country": "BHS",
+   "category": "survey",
+   "note": "No MICS or DHS survey with literacy found.",
+   "checked_on": "2026-11-27"
+  },
+  {
+   "country": "BRB",
+   "category": "ministry",
+   "note": "No recent education statistical digest found online.",
+   "checked_on": "2026-11-27"
+  },
+  {
+   "country": "BRB",
+   "category": "assessment",
+   "note": "No published national literacy assessment results found.",
+   "checked_on": "2026-11-27"
+  },
+  {
+   "country": "DMA",
+   "category": "survey",
+   "note": "No MICS or DHS survey with literacy found.",
+   "checked_on": "2026-11-27"
+  },
+  {
+   "country": "GRD",
+   "category": "survey",
+   "note": "No MICS or DHS survey with literacy found.",
+   "checked_on": "2026-11-27"
+  },
+  {
+   "country": "GUY",
+   "category": "ministry",
+   "note": "No recent education statistical digest found online.",
+   "checked_on": "2026-11-27"
+  },
+  {
+   "country": "HTI",
+   "category": "assessment",
+   "note": "No published national literacy assessment results found online.",
+   "checked_on": "2026-11-27"
+  },
+  {
+   "country": "JAM",
+   "category": "ministry",
+   "note": "Ministry education statistics not yet linked; Grade 4 results are via STATIN.",
+   "checked_on": "2026-11-27"
+  },
+  {
+   "country": "KNA",
+   "category": "survey",
+   "note": "No MICS or DHS survey with literacy found.",
+   "checked_on": "2026-11-27"
+  },
+  {
+   "country": "MSR",
+   "category": "survey",
+   "note": "A 2020 MICS was planned; no published results found.",
+   "checked_on": "2026-11-27"
+  },
+  {
+   "country": "SUR",
+   "category": "ministry",
+   "note": "No ministry education statistics digest found online.",
+   "checked_on": "2026-11-27"
+  },
+  {
+   "country": "SUR",
+   "category": "assessment",
+   "note": "No published national literacy assessment results found.",
+   "checked_on": "2026-11-27"
+  },
+  {
+   "country": "TTO",
+   "category": "ministry",
+   "note": "No recent education statistical digest found online.",
+   "checked_on": "2026-11-27"
+  },
+  {
+   "country": "VCT",
+   "category": "survey",
+   "note": "No MICS or DHS survey with literacy found.",
+   "checked_on": "2026-11-27"
+  }
+ ]
+}

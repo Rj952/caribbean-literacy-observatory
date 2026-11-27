@@ -46,7 +46,7 @@ async function load() {
   const core = ['countries', 'indicators', 'observations', 'sources'];
   const optional = { research: { records: [] }, policy: { records: [] }, publications: { records: [] }, changelog: { records: [] },
     settings: { outdated_after_years: 10, gpi_tolerance: 0.01, public_requires_review_status: 'approved', statuses: {}, contact: {} },
-    news: null, strategies: null, benchmarks: { meta: { caution: '' }, aggregates: [], records: [], pisa: null } };
+    news: null, strategies: null, country_sources: { meta: { categories: {}, required: [] }, records: [], gaps: [] }, benchmarks: { meta: { caution: '' }, aggregates: [], records: [], pisa: null } };
   const got = await Promise.all(core.map(n => getJSON(`data/${n}.json`)));
   core.forEach((n, i) => S[n] = got[i]);
   await Promise.all(Object.entries(optional).map(async ([n, fb]) => { try { S[n] = await getJSON(`data/${n}.json`); } catch (e) { S[n] = fb; console.warn('Optional data file missing:', n); } }));
@@ -343,10 +343,37 @@ function renderCountry(iso) {
     <div class="two mt"><div><h2>Gaps still to audit</h2><ul>${gaps.map(i => `<li>${esc(i.short)}${i.kind === 'proxy' ? ' <span class="note">(proxy indicator)</span>' : ''}</li>`).join('')}</ul></div>
     <div><h2>Sources</h2><p>World Bank World Development Indicators, data from the UNESCO Institute for Statistics. Licence CC BY 4.0.</p><p><button type="button" class="btn small ghost" id="citeCountryData" aria-expanded="false">Cite this data</button></p>${iso === 'JAM' ? '<p>National sources queued for audit: STATIN, PIOJ and the Ministry of Education and Youth.</p>' : ''}</div></div>
     ${polHtml}
+    ${countrySources(iso)}
     ${recs.length ? `<h2 class="mt">Records</h2><div class="scroll"><table class="data stack"><thead><tr><th>Indicator</th><th>Year</th><th>Value</th><th>Notes</th><th>Source</th></tr></thead><tbody>${recs.sort((a, b) => a.indicator.localeCompare(b.indicator) || b.ref_year - a.ref_year).map(o => `<tr><td>${esc(S.indMap[o.indicator]?.short)}</td><td class="num">${o.ref_year}</td><td class="num">${fmt(o.value, S.indMap[o.indicator]?.unit)}</td><td>${obsFlags(o).map(x => `<span class="flag">${esc(x)}</span>`).join(' ')}</td><td>${srcLinks(o)} · <a href="#collaborate" data-report="${esc(o.id)}">Report</a></td></tr>`).join('')}</tbody></table></div>` : ''}`;
 }
 
 
+
+
+/* ---------- country literacy sources ---------- */
+const CS_ICON = { statistics: '▦', ministry: '✎', assessment: '✓', survey: '⌂', international: '◎', database: '⛁' };
+function countrySources(iso) {
+  const D = S.country_sources; if (!D || !D.records) return '';
+  const cats = D.meta.categories || {};
+  const recs = D.records.filter(r => r.countries.includes(iso) && r.review?.status === 'approved');
+  const gaps = (D.gaps || []).filter(g => g.country === iso);
+  const groups = Object.keys(cats).map(k => {
+    const items = recs.filter(r => r.categories.includes(k));
+    const g = gaps.find(x => x.category === k);
+    if (!items.length && !g) return '';
+    return `<div class="src-group"><h3><span aria-hidden="true">${CS_ICON[k] || '•'}</span> ${esc(cats[k])}</h3>${items.length ? `<ul class="src-list">${items.map(r => `<li><a href="${safeUrl(r.url)}">${esc(r.title)}</a><span class="note"> · ${esc(r.publisher)}${r.year ? ', ' + esc(r.year) : ''}${r.countries.length > 1 ? ' · regional' : ''}</span><br><span class="src-why">${esc(r.literacy)}</span></li>`).join('')}</ul>` : ''}${g ? `<p class="src-gap"><b>Gap.</b> ${esc(g.note)} <span class="note">Last searched ${esc(fmtDate(g.checked_on))}.</span></p>` : ''}</div>`;
+  }).join('');
+  return `<h2 class="mt" id="cSources">Literacy data and files</h2><p class="note">Statistics offices, ministry statistics, literacy assessments, household surveys and country databases. Gaps are shown, not filled with guesses. Coverage is re-checked every 48 hours.</p><div class="src-grid">${groups}</div>`;
+}
+function renderCoverage() {
+  const el = $('#coverageMatrix'), D = S.country_sources; if (!el || !D || !D.records.length) return;
+  const req = D.meta.required || [], cats = D.meta.categories || {};
+  const cell = (iso, k) => D.records.some(r => r.countries.includes(iso) && r.categories.includes(k)) ? ['source', '● Source'] : (D.gaps || []).some(g => g.country === iso && g.category === k) ? ['gap', '○ Gap'] : ['missing', '— Missing'];
+  let n = 0; const total = S.countries.records.length * req.length;
+  const rows = S.countries.records.map(c => `<tr><td><a href="#country-${c.iso3.toLowerCase()}">${esc(c.name)}</a></td>${req.map(k => { const [cls, t] = cell(c.iso3, k); if (cls === 'source') n++; return `<td class="cov ${cls}">${t}</td>`; }).join('')}</tr>`).join('');
+  el.innerHTML = `<caption class="sr-only">Literacy source coverage by member state</caption><thead><tr><th>Member state</th>${req.map(k => `<th>${esc(cats[k])}</th>`).join('')}</tr></thead><tbody>${rows}</tbody>`;
+  $('#coverageSummary').textContent = `${D.records.length} country sources. ${n} of ${total} country–category cells have at least one source (${Math.round(n / total * 100)}%); the rest are recorded gaps. Last updated ${fmtDate(D.meta.updated)}.`;
+}
 
 /* ---------- printing: country briefs and strategy toolkits ---------- */
 function printPack(title, kicker, html) {
@@ -402,6 +429,7 @@ function repoIndex() {
   S.research.records.filter(r => r.review && r.review.status === S.gov.public_requires_review_status).forEach(r => items.push({ type: 'Research record', cite: r.citation, title: r.title, country: r.country, domain: r.domain, year: r.year, text: [r.title, r.findings, r.methodology, r.framework, r.citation, r.level].join(' '), url: r.url, body: `${r.findings} Method: ${r.methodology}.${r.limitations ? ' Limitations: ' + r.limitations : ''} ${r.citation}` }));
   S.obs.forEach(o => { const i = S.indMap[o.indicator], c = S.c[o.country]; items.push({ type: 'Statistic', title: `${c?.name}: ${i?.short} ${fmt(o.value, i?.unit)} (${o.ref_year})`, country: o.country, domain: i?.domain, year: o.ref_year, text: `${c?.name} ${i?.name} ${i?.domain} ${o.ref_year}`, url: wbPage(o.indicator, o.country), body: `${i?.name}. Source: World Bank WDI / UIS. Record ${o.id}.` }); });
   S.sources.records.forEach(s => items.push({ type: 'Source', title: `${s.name} — ${s.publisher}`, country: '', domain: s.indicators.join(', '), year: '', text: [s.name, s.publisher, s.coverage, s.notes, s.indicators.join(' ')].join(' '), url: s.url, body: `${s.coverage}. Access: ${s.access}. Licence: ${s.licence}${s.licence_status === 'verified' ? ' (verified)' : ''}. Audit: ${s.audit}.${s.notes ? ' ' + s.notes : ''}` }));
+  (S.country_sources?.records || []).forEach(r => items.push({ type: 'Country source', title: r.title, country: r.countries.length === 1 ? r.countries[0] : '', domain: (r.categories || []).map(k => S.country_sources.meta.categories[k]).join(', '), year: r.year || '', text: [r.title, r.publisher, r.literacy, r.countries.map(c => S.c[c]?.name).join(' ')].join(' '), url: r.url, body: `${r.publisher}. ${r.literacy}` }));
   return items;
 }
 function renderRepo() {
@@ -415,7 +443,7 @@ function renderRepo() {
   const hits = repoIndex().filter(it => (!t || it.type === t) && (!cc || it.country === cc) && (!d || String(it.domain).includes(d)) && q.every(w => (it.title + ' ' + it.text).toLowerCase().includes(w)));
   const approved = S.research.records.filter(r => r.review && r.review.status === 'approved').length;
   $('#repoCount').textContent = `${hits.length} result${hits.length === 1 ? '' : 's'} · ${approved} research record${approved === 1 ? "" : "s"}`;
-  const order = { 'Research record': 0, 'Source': 1, 'Statistic': 2 };
+  const order = { 'Research record': 0, 'Country source': 1, 'Source': 2, 'Statistic': 3 };
   hits.sort((a, b) => order[a.type] - order[b.type] || String(b.year).localeCompare(String(a.year)));
   const shown = hits.slice(0, 60);
   $('#repoResults').innerHTML = (t === 'Research record' && !approved ? `<div class="empty">No research records have been added yet. Entries appear here once they are checked against their sources.</div>` : '') +
@@ -719,7 +747,7 @@ function bind() {
     return;
   }
   if (window.claude) $$('a[href="admin/"]').forEach(a => a.closest('div').lastElementChild === a && (a.previousElementSibling?.remove(), a.remove()));
-  renderAgenda(); renderPubs(); renderPolicyList(); $('#polCountry')?.addEventListener('input', renderPolicyList); renderContrast(); renderContact(); renderStrategies(); markHeadings(); addPageCiteButtons(); bind(); renderAll(); route();
+  renderAgenda(); renderPubs(); renderPolicyList(); $('#polCountry')?.addEventListener('input', renderPolicyList); renderContrast(); renderCoverage(); renderContact(); renderStrategies(); markHeadings(); addPageCiteButtons(); bind(); renderAll(); route();
   if ('serviceWorker' in navigator && window.top === window && /github\.io$|^localhost$|^127\.0\.0\.1$/.test(location.hostname)) navigator.serviceWorker.register('sw.js').catch(() => {});
   refreshLive(false);
   setInterval(() => refreshLive(false), LIVE_EVERY_MS);

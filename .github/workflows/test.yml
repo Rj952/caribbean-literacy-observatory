@@ -1,0 +1,39 @@
+name: Test site, data and links
+on:
+  push: { branches: [main] }
+  pull_request:
+  workflow_dispatch:
+  schedule:
+    - cron: '23 10 */2 * *'   # every 48 hours, 05:23 Jamaica time
+permissions: { contents: read }
+jobs:
+  data:
+    name: Data integrity and coverage
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 20 }
+      - run: node scripts/validate.mjs
+      - run: node scripts/coverage.mjs
+  links:
+    name: Every link is live
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 20 }
+      - run: node scripts/check-links.mjs
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with: { name: link-report, path: reports/links-latest.json, if-no-files-found: ignore }
+  smoke:
+    name: Every page opens without errors
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 20 }
+      - run: npm install --no-audit --no-fund
+      - run: npx playwright install --with-deps chromium
+      - run: node tests/smoke.mjs

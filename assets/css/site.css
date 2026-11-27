@@ -580,3 +580,18 @@ select,input,textarea{border-color:var(--field);background:var(--bg)}
 .pol-c{margin:22px 0 10px;font-size:1.375rem}
 #polQ{min-width:min(100%,260px)}
 .pol-list{padding-left:1.2em}.pol-list li{margin-bottom:.5em}
+
+/* country sources + coverage */
+.src-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:16px;margin-top:12px}
+.src-group{border:3px solid var(--frame);border-radius:8px;padding:14px 16px;background:var(--bg);box-shadow:5px 5px 0 var(--shadow)}
+.src-group h3{font-size:1.125rem;margin-bottom:6px}
+.src-group h3 span{color:var(--cobalt);font-family:var(--body)}
+.src-list{list-style:none;padding:0;margin:0;display:grid;gap:10px}
+.src-list li{overflow-wrap:anywhere}
+.src-why{font-size:0.875rem;color:var(--muted)}
+.src-gap{margin:8px 0 0;padding:8px 10px;border:2px dashed var(--frame);border-radius:6px;font-size:0.9375rem}
+.cov-table td.cov{white-space:nowrap;font-weight:700}
+.cov-table td.source{color:var(--ink)}
+.cov-table td.gap{color:var(--muted);font-weight:400}
+.cov-table td.missing{color:light-dark(#b3261e,#ffb4ab)}
+:root[data-contrast=high] .src-group{border-color:var(--ink);box-shadow:none}
