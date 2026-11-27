@@ -38,7 +38,7 @@ const SHAPE = {
   'incomplete': f => `<circle cx="10" cy="10" r="6" fill="none" stroke="${f}" stroke-width="2.2"/><path d="M10 4a6 6 0 0 1 0 12z" fill="${f}"/>`,
   'unavailable': f => `<circle cx="10" cy="10" r="6" fill="none" stroke="${f}" stroke-width="2" stroke-dasharray="2.6 2.4"/>`,
   'not-comparable': f => `<path d="M5 5l10 10M15 5L5 15" stroke="${f}" stroke-width="2.6" stroke-linecap="round"/>`,
-  'not-audited': () => `<circle cx="10" cy="10" r="3" fill="#8a93b8"/>`};
+  'not-audited': f => `<circle cx="10" cy="10" r="3.2" fill="${f === '#fff' ? '#fff' : '#6b7499'}"/>`};
 const LABEL = { 'available': 'Available', 'outdated': 'Outdated', 'incomplete': 'Incomplete', 'unavailable': 'Unavailable', 'not-comparable': 'Not comparable', 'not-audited': 'Not yet audited' };
 const icon = (st, f = 'var(--avail)') => `<svg viewBox="0 0 20 20" role="img" aria-label="${LABEL[st]}">${SHAPE[st](f)}</svg>`;
 const pill = st => `<span class="pill">${icon(st)}${LABEL[st]}</span>`;
@@ -163,7 +163,7 @@ function renderLiveBadge() {
 }
 
 /* ---------- views ---------- */
-const VIEWS = ['home', 'about', 'agenda', 'director', 'dashboard', 'profiles', 'repository', 'publications', 'policy', 'methods', 'collaborate'];
+const VIEWS = ['home', 'about', 'agenda', 'director', 'dashboard', 'profiles', 'repository', 'publications', 'policy', 'methods', 'collaborate', 'accessibility'];
 function route() {
   let h = location.hash.slice(1) || 'home', view = h;
   if (h.startsWith('country-')) { view = 'country'; renderCountry(h.slice(8).toUpperCase()); }
@@ -173,6 +173,10 @@ function route() {
   $('#nav').classList.remove('open'); $('#menuBtn').setAttribute('aria-expanded', 'false');
   if (view === 'collaborate' && S.prefill) { $('#fPurpose').value = 'Report a data error'; $('#fRef').value = S.prefill; S.prefill = null; }
   window.scrollTo(0, 0);
+  const sec = $(`[data-view="${view}"]`), hd = sec && $("h1", sec);
+  if (hd) { document.title = (view === "home" ? "" : hd.textContent + ' · ') + 'Caribbean Literacy Observatory'; if (S.routed) { hd.tabIndex = -1; hd.focus({ preventScroll: true }); } }
+  S.routed = true;
+  if (view === 'collaborate' && S.purpose) { $('#fPurpose').value = S.purpose; S.purpose = null; }
 }
 
 function renderHome() {
@@ -193,8 +197,8 @@ function drawSky() {
   let stars = '', seed = 7; const rnd = () => (seed = (seed * 9301 + 49297) % 233280) / 233280;
   for (let i = 0; i < 70; i++) stars += `<circle cx="${(rnd() * 610).toFixed(1)}" cy="${(rnd() * 400).toFixed(1)}" r="${(rnd() * 1.1 + .3).toFixed(2)}" fill="#fff" opacity="${(rnd() * .35 + .1).toFixed(2)}"${i % 9 === 0 ? ' class="twinkle"' : ''}/>`;
   let grid = '';
-  for (let lon = -85; lon <= -55; lon += 10) grid += `<line x1="${X(lon)}" y1="22" x2="${X(lon)}" y2="392" stroke="#fff" stroke-opacity=".12"/><text x="${X(lon) + 3}" y="16" font-size="10" fill="#fff" fill-opacity=".45">${-lon}°W</text>`;
-  for (let lat = 10; lat <= 25; lat += 5) grid += `<line x1="12" y1="${Y(lat)}" x2="600" y2="${Y(lat)}" stroke="#fff" stroke-opacity=".12"/><text x="14" y="${Y(lat) - 3}" font-size="10" fill="#fff" fill-opacity=".45">${lat}°N</text>`;
+  for (let lon = -85; lon <= -55; lon += 10) grid += `<line x1="${X(lon)}" y1="22" x2="${X(lon)}" y2="392" stroke="#fff" stroke-opacity=".12"/><text x="${X(lon) + 3}" y="16" font-size="11" fill="#fff" fill-opacity=".85">${-lon}°W</text>`;
+  for (let lat = 10; lat <= 25; lat += 5) grid += `<line x1="12" y1="${Y(lat)}" x2="600" y2="${Y(lat)}" stroke="#fff" stroke-opacity=".12"/><text x="14" y="${Y(lat) - 3}" font-size="11" fill="#fff" fill-opacity=".85">${lat}°N</text>`;
   let marks = '', labels = '';
   const cl = right.map(k => S.c[k]).sort((a, b) => Y(a.lat) - Y(b.lat));
   let ly = 130;
@@ -202,12 +206,13 @@ function drawSky() {
   S.countries.records.forEach(c => {
     const st = status(c.iso3, IND.YT), [dx, dy] = nudge[c.iso3] || [0, 0], x = X(c.lon) + dx, y = Y(c.lat) + dy, o = latest(c.iso3, IND.YT);
     const tip = `${c.name}: ${o ? fmt(o.value) + ' (' + o.ref_year + ')' : 'no published youth literacy figure'} — ${LABEL[st]}`;
-    marks += `<a href="#country-${c.iso3.toLowerCase()}"><title>${esc(tip)}</title><g transform="translate(${x - 11} ${y - 11}) scale(1.1)">${st === 'available' ? '<circle cx="10" cy="10" r="10" fill="#ffd23f" opacity=".25"/>' : ''}${SHAPE[st](st === 'available' ? '#ffd23f' : '#fff')}</g></a>`;
+    marks += `<a href="#country-${c.iso3.toLowerCase()}" aria-label="${esc(tip)}"><title>${esc(tip)}</title><g transform="translate(${x - 11} ${y - 11}) scale(1.1)">${st === 'available' ? '<circle cx="10" cy="10" r="10" fill="#ffd23f" opacity=".25"/>' : ''}${SHAPE[st](st === 'available' ? '#ffd23f' : '#fff')}</g></a>`;
     const short = c.name.replace('Saint Vincent and the Grenadines', 'St Vincent & Gren.').replace('Saint Kitts and Nevis', 'St Kitts & Nevis').replace('Saint Lucia', 'St Lucia').replace('Antigua and Barbuda', 'Antigua & Barbuda').replace('Trinidad and Tobago', 'Trinidad & Tobago').replace('The Bahamas', 'Bahamas');
     if (c._lab) { const [, , yy] = c._lab; labels += `<path d="M${x + 9} ${y} L462 ${yy - 4} H468" fill="none" stroke="#fff" stroke-opacity=".35"/><text x="472" y="${yy}" font-size="12" fill="#fff">${esc(short)}</text>`; }
     else { const [a, ox, oy] = place[c.iso3]; labels += `<text x="${x + ox}" y="${y + oy}" text-anchor="${a}" font-size="13" font-weight="700" fill="#fff">${esc(short)}</text>`; }
   });
-  svg.innerHTML = `${stars}${grid}<text x="250" y="230" font-size="15" font-style="italic" fill="#fff" fill-opacity=".55" font-family="Fraunces, Georgia, serif">Caribbean Sea</text><text x="330" y="80" font-size="15" font-style="italic" fill="#fff" fill-opacity=".55" font-family="Fraunces, Georgia, serif">Atlantic Ocean</text>${labels}${marks}`;
+  svg.innerHTML = `${stars}${grid}<text x="250" y="230" font-size="15" font-style="italic" fill="#fff" fill-opacity=".85" font-family="Fraunces, Georgia, serif">Caribbean Sea</text><text x="330" y="80" font-size="15" font-style="italic" fill="#fff" fill-opacity=".85" font-family="Fraunces, Georgia, serif">Atlantic Ocean</text>${labels}${marks}`;
+  $('#skyList').innerHTML = S.countries.records.map(c => { const o = latest(c.iso3, IND.YT); return `<li><a href="#country-${c.iso3.toLowerCase()}">${esc(c.name)}</a>: ${LABEL[status(c.iso3, IND.YT)]}${o ? `, ${fmt(o.value)} in ${o.ref_year}` : ''}</li>`; }).join('');
   $('#skyLegend').innerHTML = ['available', 'outdated', 'unavailable', 'not-audited'].map(k => `<span><svg viewBox="0 0 20 20">${SHAPE[k](k === 'available' ? '#ffd23f' : '#fff')}</svg>${LABEL[k]}</span>`).join('');
 }
 
@@ -235,10 +240,10 @@ function renderDashboard() {
   const rows = S.countries.records.map(c => ({ c, f: latest(c.iso3, IND.YF), m: latest(c.iso3, IND.YM) })).filter(r => r.f && r.m && r.f.ref_year === r.m.ref_year);
   $('#dumbbell').innerHTML = rows.map(({ c, f, m }) => {
     const a = pos(Math.min(f.value, m.value)), b = pos(Math.max(f.value, m.value)), g = f.value - m.value;
-    return `<div class="db"><span>${esc(c.name.replace('Saint ', 'St ').replace(' and the Grenadines', ' & Gren.').replace('Trinidad and Tobago', 'Trinidad & Tobago'))} <small class="note">${f.ref_year}</small></span><div class="line" title="Female ${fmt(f.value)}, male ${fmt(m.value)}"><span class="seg" style="left:${a}%;width:${b - a}%"></span><span class="pt m" style="left:${pos(m.value)}%"></span><span class="pt f" style="left:${pos(f.value)}%"></span></div><span class="gap">${g >= 0 ? '+' : '−'}${Math.abs(g).toFixed(1)}</span></div>`;
-  }).join('') + `<div class="db-axis"><span></span><div><span>85%</span><span>90%</span><span>95%</span><span>100%</span></div><span>F − M</span></div>`;
+    return `<div class="db"><span>${esc(c.name.replace('Saint ', 'St ').replace(' and the Grenadines', ' & Gren.').replace('Trinidad and Tobago', 'Trinidad & Tobago'))} <small class="note">${f.ref_year}</small></span><span class="sr-only">Female ${fmt(f.value)}, male ${fmt(m.value)}, difference</span><div class="line" aria-hidden="true" title="Female ${fmt(f.value)}, male ${fmt(m.value)}"><span class="seg" style="left:${a}%;width:${b - a}%"></span><span class="pt m" style="left:${pos(m.value)}%"></span><span class="pt f" style="left:${pos(f.value)}%"></span></div><span class="gap">${g >= 0 ? '+' : '−'}${Math.abs(g).toFixed(1)}</span></div>`;
+  }).join('') + `<div class="db-axis" aria-hidden="true"><span></span><div><span>85%</span><span>90%</span><span>95%</span><span>100%</span></div><span>F − M</span></div>`;
   const cols = S.indicators.records;
-  $('#matrix').innerHTML = `<thead><tr><th>Country</th>${cols.map(i => `<th title="${esc(i.name)}">${esc(i.short)}${i.kind === 'proxy' ? ' (proxy)' : ''}</th>`).join('')}</tr></thead><tbody>${S.countries.records.map(c => `<tr><td><a href="#country-${c.iso3.toLowerCase()}">${esc(c.name)}</a></td>${cols.map(i => { const st = status(c.iso3, i.code), o = latest(c.iso3, i.code); return `<td title="${esc(LABEL[st] + (o ? ' · ' + o.ref_year : ''))}">${icon(st)}</td>`; }).join('')}</tr>`).join('')}</tbody>`;
+  $('#matrix').innerHTML = `<caption class="sr-only">Data status of each indicator for each member state</caption><thead><tr><th>Country</th>${cols.map(i => `<th title="${esc(i.name)}">${esc(i.short)}${i.kind === 'proxy' ? ' (proxy)' : ''}</th>`).join('')}</tr></thead><tbody>${S.countries.records.map(c => `<tr><td><a href="#country-${c.iso3.toLowerCase()}">${esc(c.name)}</a></td>${cols.map(i => { const st = status(c.iso3, i.code), o = latest(c.iso3, i.code); return `<td title="${esc(LABEL[st] + (o ? ' · ' + o.ref_year : ''))}">${icon(st)}</td>`; }).join('')}</tr>`).join('')}</tbody>`;
   $('#matrixLegend').innerHTML = Object.keys(LABEL).map(k => `<span>${icon(k)}${LABEL[k]}</span>`).join('');
   const sel = $('#obsInd');
   if (!sel.options.length) { sel.innerHTML = `<option value="">All audited indicators</option>` + S.indicators.records.filter(i => i.audited).map(i => `<option value="${esc(i.code)}">${esc(i.short)}</option>`).join(''); sel.value = IND.YT; sel.onchange = renderObsTable; }
@@ -257,7 +262,7 @@ function obsFlags(o) {
 function filteredObs() { const v = $('#obsInd').value; return S.obs.filter(o => !v || o.indicator === v).sort((a, b) => a.country.localeCompare(b.country) || a.indicator.localeCompare(b.indicator) || b.ref_year - a.ref_year); }
 function renderObsTable() {
   const rows = filteredObs();
-  $('#obsTable').innerHTML = `<thead><tr><th>Country</th><th>Indicator</th><th>Year</th><th>Value</th><th>Notes</th><th>Source</th><th>Record</th></tr></thead><tbody>${rows.map(o => {
+  $('#obsTable').innerHTML = `<caption class="sr-only">Every published record for the selected indicator</caption><thead><tr><th>Country</th><th>Indicator</th><th>Year</th><th>Value</th><th>Notes</th><th>Source</th><th>Record</th></tr></thead><tbody>${rows.map(o => {
     const u = safeUrl(o.source_url), ind = S.indMap[o.indicator];
     return `<tr><td>${esc(S.c[o.country]?.name || o.country)}</td><td>${esc(ind?.short || o.indicator)}</td><td class="num">${esc(o.ref_year)}</td><td class="num">${fmt(o.value, ind?.unit)}</td><td>${obsFlags(o).map(x => `<span class="flag">${esc(x)}</span>`).join(' ')}</td><td>${u ? `<a href="${u}">API query</a>` : ''}</td><td><code>${esc(o.id)}</code> <a href="#collaborate" data-report="${esc(o.id)}">Report</a></td></tr>`; }).join('')}</tbody>`;
 }
@@ -339,11 +344,53 @@ function renderMethods() {
 
 function renderAll() { renderLiveBadge(); renderHome(); renderDashboard(); renderProfiles(); renderRepo(); renderMethods(); if (location.hash.startsWith('#country-')) renderCountry(location.hash.slice(9).toUpperCase()); }
 
+/* ---------- reading options ---------- */
+const OPTS = [
+  ['size', 'Text size', [['standard', 'Standard'], ['large', 'Large'], ['larger', 'Larger']]],
+  ['contrast', 'Contrast', [['standard', 'Standard'], ['high', 'High contrast']]],
+  ['font', 'Font', [['expressive', 'Expressive headings'], ['plain', 'Plain headings'], ['lexend', 'Lexend (easy reading)']]],
+  ['spacing', 'Spacing', [['standard', 'Standard'], ['wide', 'Wider']]],
+  ['motion', 'Motion', [['system', 'Follow my system'], ['reduce', 'No animation']]],
+  ['links', 'Links', [['standard', 'Standard'], ['underline', 'Underline all']]]];
+const A11Y_KEY = 'clo-reading-options';
+function readOpts() { try { return JSON.parse(localStorage.getItem(A11Y_KEY)) || {}; } catch (e) { return {}; } }
+function saveOpts(o) { try { localStorage.setItem(A11Y_KEY, JSON.stringify(o)); } catch (e) { /* not available: settings last for this visit */ } }
+function applyOpts(o) {
+  const root = document.documentElement;
+  const prefersMore = window.matchMedia && matchMedia('(prefers-contrast: more)').matches;
+  const eff = { ...o }; if (!eff.contrast && prefersMore) eff.contrast = 'high';
+  OPTS.forEach(([k, , vals]) => { const v = eff[k]; if (v && v !== vals[0][0]) root.dataset[k] = v; else delete root.dataset[k]; });
+  if (eff.font === 'lexend' && !$('#lexendFont')) { const l = document.createElement('link'); l.id = 'lexendFont'; l.rel = 'stylesheet'; l.href = 'https://fonts.googleapis.com/css2?family=Lexend:wght@400;700&display=swap'; document.head.appendChild(l); }
+  OPTS.forEach(([k, , vals]) => { const cur = eff[k] || vals[0][0]; const r = $(`input[name="opt-${k}"][value="${cur}"]`); if (r) r.checked = true; });
+}
+function buildOpts() {
+  $('#optGrid').innerHTML = OPTS.map(([k, label, vals]) => `<fieldset><legend>${label}</legend><div class="seg">${vals.map(([v, t]) => `<label><input type="radio" name="opt-${k}" value="${v}"><span>${t}</span></label>`).join('')}</div></fieldset>`).join('');
+  $('#optGrid').addEventListener('change', e => { const m = e.target.name && e.target.name.match(/^opt-(.+)$/); if (!m) return; const o = readOpts(); o[m[1]] = e.target.value; saveOpts(o); S.opts = o; applyOpts(o); });
+  const btn = $('#optBtn'), panel = $('#a11yPanel');
+  const toggle = open => { panel.hidden = !open; btn.setAttribute('aria-expanded', String(open)); if (open) $('input', panel).focus(); else btn.focus(); };
+  btn.addEventListener('click', () => toggle(panel.hidden));
+  $('#optClose').addEventListener('click', () => toggle(false));
+  panel.addEventListener('keydown', e => { if (e.key === 'Escape') toggle(false); });
+  $('#optReset').addEventListener('click', () => { saveOpts({}); applyOpts({}); });
+  applyOpts(readOpts());
+  if (window.matchMedia) matchMedia('(prefers-contrast: more)').addEventListener?.('change', () => applyOpts(readOpts()));
+}
+const CONTRAST = [
+  ['Body text on white', '#0b1236', '#ffffff', 18.20, 4.5], ['Secondary text on white', '#46507a', '#ffffff', 7.81, 4.5], ['Links on white', '#0b2ccc', '#ffffff', 9.35, 4.5],
+  ['White text on cobalt', '#ffffff', '#0f36e0', 8.00, 4.5], ['Yellow text on cobalt', '#ffd23f', '#0f36e0', 5.54, 4.5], ['Pale text on cobalt', '#e6ebff', '#0f36e0', 6.74, 4.5],
+  ['Dark text on yellow', '#0b1236', '#ffd23f', 12.60, 4.5], ['Form field borders', '#66729f', '#ffffff', 4.70, 3], ['Chart bars', '#0f36e0', '#f2f5ff', 7.35, 3],
+  ['Body text, dark mode', '#eef1ff', '#070c26', 17.13, 4.5], ['Secondary text, dark mode', '#aab3dd', '#070c26', 9.36, 4.5], ['Links, dark mode', '#9fb3ff', '#070c26', 9.51, 4.5],
+  ['Chart bars, dark mode', '#6f8cff', '#070c26', 6.31, 3], ['Focus ring on cobalt', '#ffd23f', '#0f36e0', 5.54, 3],
+  ['High contrast: text', '#000000', '#ffffff', 21.00, 7], ['High contrast: links', '#0000c8', '#ffffff', 11.45, 7], ['High contrast: yellow on deep blue', '#ffd23f', '#0a2290', 8.84, 7]];
+function renderContrast() {
+  $('#contrastTable').innerHTML = `<caption class="sr-only">Measured contrast ratios</caption><thead><tr><th>Pair</th><th>Colours</th><th>Ratio</th><th>Needed</th></tr></thead><tbody>${CONTRAST.map(([n, a, b, r, need]) => `<tr><td>${n}</td><td><span class="swatch" style="background:${a}" aria-hidden="true"></span><span class="swatch" style="background:${b}" aria-hidden="true"></span>${a} on ${b}</td><td class="num">${r.toFixed(2)}:1</td><td class="num">${need}:1 ✓</td></tr>`).join('')}</tbody>`;
+}
+
 /* ---------- interactions ---------- */
 function bind() {
   $('#menuBtn').addEventListener('click', () => { const o = $('#nav').classList.toggle('open'); $('#menuBtn').setAttribute('aria-expanded', String(o)); });
   window.addEventListener('hashchange', route);
-  document.addEventListener('click', e => { const a = e.target.closest('[data-report]'); if (a) S.prefill = a.dataset.report; });
+  document.addEventListener('click', e => { const a = e.target.closest('[data-report]'); if (a) S.prefill = a.dataset.report; const p = e.target.closest('[data-purpose]'); if (p) S.purpose = p.dataset.purpose; });
   $('#copyCsv').addEventListener('click', async () => {
     const head = ['record_id', 'country', 'indicator_code', 'indicator', 'ref_year', 'value', 'licence', 'retrieved', 'source_url', 'notes'];
     const q = v => `"${String(v ?? '').replace(/"/g, '""')}"`;
@@ -354,7 +401,10 @@ function bind() {
   $('#contactForm').addEventListener('submit', async e => {
     e.preventDefault();
     const v = id => $(id).value.trim(), m = $('#formMsg');
-    if (!v('#fName') || !/^\S+@\S+\.\S+$/.test(v('#fEmail')) || !v('#fMsg')) { m.textContent = 'Please add your name, a valid email and a message.'; return; }
+    const bad = [['#fName', !v('#fName'), 'your name'], ['#fEmail', !/^\S+@\S+\.\S+$/.test(v('#fEmail')), 'a valid email address'], ['#fMsg', !v('#fMsg'), 'a message']];
+    bad.forEach(([id, b]) => { $(id).setAttribute('aria-invalid', String(b)); if (b) $(id).setAttribute('aria-describedby', 'formMsg'); else $(id).removeAttribute('aria-describedby'); });
+    const miss = bad.filter(x => x[1]);
+    if (miss.length) { m.innerHTML = `<span class="err">Please add ${miss.map(x => x[2]).join(', ')}.</span>`; $(miss[0][0]).focus(); return; }
     const text = `To: Caribbean Literacy Observatory\nPurpose: ${v('#fPurpose')}\nFrom: ${v('#fName')} <${v('#fEmail')}>${v('#fAff') ? '\nAffiliation: ' + v('#fAff') : ''}${v('#fRef') ? '\nRecord: ' + v('#fRef') : ''}\n\n${v('#fMsg')}`;
     const out = $('#enquiryOut'); out.textContent = text; out.hidden = false; $('#copyEnquiry').hidden = false;
     const ep = S.gov.contact && S.gov.contact.form_endpoint, mail = S.gov.contact && S.gov.contact.email;
@@ -368,12 +418,13 @@ function bind() {
 }
 
 (async () => {
+  buildOpts();
   try { await load(); } catch (e) {
     $('#view').insertAdjacentHTML('afterbegin', `<div class="band wrap"><div class="empty">The data files could not be loaded. If you opened index.html directly from disk, serve the folder instead (see README).</div></div>`);
     return;
   }
   if (window.claude) $$('a[href="admin/"]').forEach(a => a.closest('div').lastElementChild === a && (a.previousElementSibling?.remove(), a.remove()));
-  renderAgenda(); renderPubs(); bind(); renderAll(); route();
+  renderAgenda(); renderPubs(); renderContrast(); bind(); renderAll(); route();
   refreshLive(false);
   setInterval(() => refreshLive(false), LIVE_EVERY_MS);
   liveViaClaude();

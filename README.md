@@ -20,6 +20,11 @@ A research website for literacy across the Caribbean. Every statistic on it come
 | Policy archive | Policy and curriculum documents (approved entries only) |
 | Methods & data | Pipeline, status definitions, audit note, correction log, governance directive |
 | Collaborate | Enquiry and error-report form |
+| Accessibility | Statement, measured contrast ratios, how to report a barrier |
+
+## Accessibility
+
+Targets WCAG 2.2 AA. Every colour pair is measured (text ≥ 4.5:1, chart marks, borders and focus rings ≥ 3:1); high-contrast mode meets 7:1. A **Reading options** panel lets each reader set text size, high contrast (also automatic with the system's *more contrast* setting), plain or Lexend fonts, wider spacing, no animation and underlined links. Colour never carries meaning alone, every chart has a text equivalent, and focus moves to the page heading on navigation. Not yet independently audited or tested with screen-reader users.
 
 ## Live updates
 
