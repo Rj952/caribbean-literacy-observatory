@@ -20,8 +20,8 @@ async function check(url) {
       clearTimeout(t); try { await r.body?.cancel(); } catch {}
       if (r.status < 400) return { ok: true, status: r.status };
       if ([404, 410].includes(r.status)) return { ok: false, status: r.status };
-      if (attempt === 3) return { ok: 'warn', status: r.status };
-    } catch (e) { clearTimeout(t); if (attempt === 3) return { ok: 'warn', status: e.name === 'AbortError' ? 'timeout' : (e.cause?.code || e.message) }; }
+      if (attempt === 3) return { ok: 'warn', status: [401, 403, 429].includes(r.status) ? `${r.status} (site blocks automated checks)` : r.status };
+    } catch (e) { clearTimeout(t); if (attempt === 3) { const c = e.cause?.code || e.message; return { ok: 'warn', status: e.name === 'AbortError' ? 'timeout' : /CERT|SIGNATURE|SSL|TLS/.test(c) ? 'certificate chain incomplete on publisher site (opens in browsers)' : c }; } }
     await new Promise(r => setTimeout(r, 2000 * attempt));
   }
 }

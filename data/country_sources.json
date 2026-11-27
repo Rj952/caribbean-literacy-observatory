@@ -517,15 +517,15 @@
    "categories": [
     "statistics"
    ],
-   "title": "Population and Housing Census 2011, Volume 4: Education",
+   "title": "Population and Housing Census 2011 (education and literacy topics)",
    "publisher": "Statistical Institute of Jamaica",
-   "url": "https://census.statinja.gov.jm/wp-content/themes/futurio-child/Census2011Reports/Population%20and%20Housing%20Census%202011%20Jamaica%20Education%20Vol%204.pdf",
+   "url": "https://statinja.gov.jm/Census/PopCensus/Popcensus2011Index.aspx",
    "year": 2013,
-   "literacy": "Census education tables; the 2011 census included literacy as a topic.",
+   "literacy": "Census 2011 results by theme, including an Education section; the 2011 census included literacy as a topic.",
    "review": {
     "status": "approved",
     "checked_on": "2026-11-27",
-    "level": "Listed by search; live check by link test"
+    "level": "Search result and page title confirmed"
    }
   },
   {
@@ -1233,25 +1233,6 @@
    }
   },
   {
-   "id": "msr-unicef-data",
-   "countries": [
-    "MSR"
-   ],
-   "categories": [
-    "database"
-   ],
-   "title": "UNICEF Data: Montserrat",
-   "publisher": "UNICEF",
-   "url": "https://data.unicef.org/country/msr/",
-   "year": null,
-   "literacy": "Child-focused indicators, including foundational learning and MICS results where available.",
-   "review": {
-    "status": "approved",
-    "checked_on": "2026-11-27",
-    "level": "Listed by search; live check by link test"
-   }
-  },
-  {
    "id": "kna-unicef-data",
    "countries": [
     "KNA"
@@ -1440,63 +1421,6 @@
     "checked_on": "2026-11-27",
     "level": "Listed by search; live check by link test"
    }
-  },
-  {
-   "id": "jam-uis-sdg4-profile",
-   "countries": [
-    "JAM"
-   ],
-   "categories": [
-    "database"
-   ],
-   "title": "UIS SDG 4 Country Profile: Jamaica",
-   "publisher": "UNESCO Institute for Statistics",
-   "url": "https://uis.unesco.org/sites/default/files/country-profile/SDG4-Profile-Jamaica.pdf",
-   "year": null,
-   "literacy": "SDG 4 indicators, including learning proficiency and literacy.",
-   "review": {
-    "status": "approved",
-    "checked_on": "2026-11-27",
-    "level": "Listed by search; live check by link test"
-   }
-  },
-  {
-   "id": "guy-uis-sdg4-profile",
-   "countries": [
-    "GUY"
-   ],
-   "categories": [
-    "database"
-   ],
-   "title": "UIS SDG 4 Country Profile: Guyana",
-   "publisher": "UNESCO Institute for Statistics",
-   "url": "https://uis.unesco.org/sites/default/files/country-profile/SDG4-Profile-Guyana.pdf",
-   "year": null,
-   "literacy": "SDG 4 indicators, including learning proficiency and literacy.",
-   "review": {
-    "status": "approved",
-    "checked_on": "2026-11-27",
-    "level": "Listed by search; live check by link test"
-   }
-  },
-  {
-   "id": "dma-uis-sdg4-profile",
-   "countries": [
-    "DMA"
-   ],
-   "categories": [
-    "database"
-   ],
-   "title": "UIS SDG 4 Country Profile: Dominica",
-   "publisher": "UNESCO Institute for Statistics",
-   "url": "https://uis.unesco.org/sites/default/files/country-profile/SDG4-Profile-Dominica.pdf",
-   "year": null,
-   "literacy": "SDG 4 indicators, including learning proficiency and literacy.",
-   "review": {
-    "status": "approved",
-    "checked_on": "2026-11-27",
-    "level": "Listed by search; live check by link test"
-   }
   }
  ],
  "gaps": [
@@ -1588,6 +1512,12 @@
    "country": "VCT",
    "category": "survey",
    "note": "No MICS or DHS survey with literacy found.",
+   "checked_on": "2026-11-27"
+  },
+  {
+   "country": "MSR",
+   "category": "database",
+   "note": "Montserrat is not in the World Bank series and no UNICEF Data country page was found.",
    "checked_on": "2026-11-27"
   }
  ]
