@@ -177,12 +177,12 @@ async function liveViaClaude() {
 function renderLiveBadge() {
   let b = $('#liveBadge');
   if (!b) { b = document.createElement('p'); b.id = 'liveBadge'; b.className = 'live-badge'; b.setAttribute('role', 'status'); $('.top').appendChild(b); }
-  const L = S.live, when = L.checkedAt ? new Date(L.checkedAt).toLocaleString([], { dateStyle: 'medium', timeStyle: 'short' }) : '';
+  const L = S.live, when = L.checkedAt ? fmtDateTime(L.checkedAt) : '';
   const src = L.sourceUpdated ? ` · source updated ${esc(L.sourceUpdated)}` : '';
   const ch = L.changed || L.added ? ` · <b>${L.changed + L.added} change(s) awaiting review</b>` : '';
   const maxH = S.gov.data_max_age_hours || 48, ageH = (Date.now() - new Date(S.observations.meta.retrieved + 'T12:00:00Z')) / 36e5;
   b.innerHTML = L.mode === 'snapshot'
-    ? (ageH > maxH ? `<span class="pulse off"></span><b>Data last refreshed ${esc(S.observations.meta.retrieved)} — over ${maxH} hours ago; the scheduled update is overdue.</b>` : `<span class="pulse off"></span>Data refreshed ${esc(S.observations.meta.retrieved)} · updated at least every ${maxH} hours`)
+    ? (ageH > maxH ? `<span class="pulse off"></span><b>Data last refreshed ${esc(fmtDate(S.observations.meta.retrieved))} — over ${maxH} hours ago; the scheduled update is overdue.</b>` : `<span class="pulse off"></span>Data refreshed ${esc(fmtDate(S.observations.meta.retrieved))} · updated at least every ${maxH} hours`)
     : `<span class="pulse"></span>Live · checked ${esc(when)}${src}${ch}`;
 }
 
@@ -231,14 +231,14 @@ function drawSky() {
   S.countries.records.forEach(c => {
     const st = status(c.iso3, IND.YT), [dx, dy] = nudge[c.iso3] || [0, 0], x = X(c.lon) + dx, y = Y(c.lat) + dy, o = latest(c.iso3, IND.YT);
     const tip = `${c.name}: ${o ? fmt(o.value) + ' (' + o.ref_year + ')' : 'no published youth literacy figure'} — ${LABEL[st]}`;
-    marks += `<a href="#country-${c.iso3.toLowerCase()}" aria-label="${esc(tip)}"><title>${esc(tip)}</title><g transform="translate(${x - 11} ${y - 11}) scale(1.1)">${st === 'available' ? '<circle cx="10" cy="10" r="10" fill="#ffd23f" opacity=".25"/>' : ''}${SHAPE[st](st === 'available' ? '#ffd23f' : '#fff')}</g></a>`;
+    marks += `<a href="#country-${c.iso3.toLowerCase()}" aria-label="${esc(tip)}"><title>${esc(tip)}</title><g transform="translate(${x - 11} ${y - 11}) scale(1.1)">${st === 'available' ? '<circle cx="10" cy="10" r="10" fill="#FFD21F" opacity=".25"/>' : ''}${SHAPE[st](st === 'available' ? '#FFD21F' : '#fff')}</g></a>`;
     const short = c.name.replace('Saint Vincent and the Grenadines', 'St Vincent & Gren.').replace('Saint Kitts and Nevis', 'St Kitts & Nevis').replace('Saint Lucia', 'St Lucia').replace('Antigua and Barbuda', 'Antigua & Barbuda').replace('Trinidad and Tobago', 'Trinidad & Tobago').replace('The Bahamas', 'Bahamas');
     if (c._lab) { const [, , yy] = c._lab; labels += `<path d="M${x + 9} ${y} L462 ${yy - 4} H468" fill="none" stroke="#fff" stroke-opacity=".35"/><text x="472" y="${yy}" font-size="12" fill="#fff">${esc(short)}</text>`; }
     else { const [a, ox, oy] = place[c.iso3]; labels += `<text x="${x + ox}" y="${y + oy}" text-anchor="${a}" font-size="13" font-weight="700" fill="#fff">${esc(short)}</text>`; }
   });
-  svg.innerHTML = `${stars}${grid}<text x="250" y="230" font-size="15" font-style="italic" fill="#fff" fill-opacity=".85" font-family="Fraunces, Georgia, serif">Caribbean Sea</text><text x="330" y="80" font-size="15" font-style="italic" fill="#fff" fill-opacity=".85" font-family="Fraunces, Georgia, serif">Atlantic Ocean</text>${labels}${marks}`;
+  svg.innerHTML = `${stars}${grid}<text x="250" y="230" font-size="15" font-style="italic" fill="#fff" fill-opacity=".85" font-family="Gloock, Georgia, serif">Caribbean Sea</text><text x="330" y="80" font-size="15" font-style="italic" fill="#fff" fill-opacity=".85" font-family="Gloock, Georgia, serif">Atlantic Ocean</text>${labels}${marks}`;
   $('#skyList').innerHTML = S.countries.records.map(c => { const o = latest(c.iso3, IND.YT); return `<li><a href="#country-${c.iso3.toLowerCase()}">${esc(c.name)}</a>: ${LABEL[status(c.iso3, IND.YT)]}${o ? `, ${fmt(o.value)} in ${o.ref_year}` : ''}</li>`; }).join('');
-  $('#skyLegend').innerHTML = ['available', 'outdated', 'unavailable', 'not-audited'].map(k => `<span><svg viewBox="0 0 20 20">${SHAPE[k](k === 'available' ? '#ffd23f' : '#fff')}</svg>${LABEL[k]}</span>`).join('');
+  $('#skyLegend').innerHTML = ['available', 'outdated', 'unavailable', 'not-audited'].map(k => `<span><svg viewBox="0 0 20 20">${SHAPE[k](k === 'available' ? '#FFD21F' : '#fff')}</svg>${LABEL[k]}</span>`).join('');
 }
 
 function renderAgenda() {
@@ -404,15 +404,15 @@ function renderMethods() {
   const oldest = S.obs.filter(o => o.indicator === IND.YT).map(o => o.ref_year);
   const mism = cs.map(c => [c, gpiCheck(c.iso3)]).filter(([, g]) => g && g.mismatch).map(([c, g]) => `${c.name} (${g.year})`);
   const adultOld = cs.filter(c => status(c.iso3, IND.AD) === 'outdated').length;
-  $('#auditNote').innerHTML = `<p>Five international literacy series were checked for the ${cs.length} CARICOM member states on ${esc(S.observations.meta.retrieved)}.</p><ul>
+  $('#auditNote').innerHTML = `<p>Five international literacy series were checked for the ${cs.length} CARICOM member states on ${esc(fmtDate(S.observations.meta.retrieved))}.</p><ul>
     <li>${aud.map(i => `${esc(i.short)}: ${cs.filter(c => status(c.iso3, i.code) === 'available').length} available, ${cs.filter(c => status(c.iso3, i.code) === 'outdated').length} outdated, ${cs.filter(c => status(c.iso3, i.code) === 'unavailable').length} unavailable`).join('</li><li>')}</li>
     <li>No youth literacy figure at all: ${esc(noYouth.join(', ') || 'none')}. Montserrat is outside the series.</li>
     <li>The most recent youth figures span ${Math.min(...oldest)} to ${Math.max(...oldest)}; ${adultOld} member states' latest adult figure predates ${threshold()}.</li>
     <li>Parity index cannot be reproduced from the published female and male rates for: ${esc(mism.join(', ') || 'none')}.</li></ul>
     <p class="note">Draft for review. Foundational reading, national assessments, examination results, digital and disability-disaggregated literacy are not yet audited.</p>`;
   const log = S.changelog.records.concat(S.sessionLog);
-  $('#changelog').innerHTML = log.map(e => `<li><b>${esc(e.date)}</b> — ${esc(e.summary)}</li>`).join('') + (S.live.changed + S.live.added ? `<li><b>Live</b> — ${S.live.changed + S.live.added} value(s) differ from the verified snapshot and are awaiting review.</li>` : '');
-  $('#retrieved').textContent = S.observations.meta.retrieved;
+  $('#changelog').innerHTML = log.map(e => `<li><b>${esc(fmtDate(e.date))}</b> — ${esc(e.summary)}</li>`).join('') + (S.live.changed + S.live.added ? `<li><b>Live</b> — ${S.live.changed + S.live.added} value(s) differ from the verified snapshot and are awaiting review.</li>` : '');
+  $('#retrieved').textContent = fmtDate(S.observations.meta.retrieved);
 }
 
 function renderAll() { renderLiveBadge(); renderHome(); renderNews(); renderDashboard(); renderProfiles(); renderRepo(); renderMethods(); if (location.hash.startsWith('#country-')) renderCountry(location.hash.slice(9).toUpperCase()); }
@@ -454,6 +454,16 @@ function openCite(btn, c) {
 function pageCitation() {
   const h = location.hash.slice(1) || 'home', sec = $$('[data-view]').find(s => !s.hidden), title = sec && $('h1', sec) ? $('h1', sec).textContent.trim() : ORG;
   return { title: h === 'home' ? 'Caribbean Literacy Observatory: An open data research initiative' : title, url: SITE_URL + (h === 'home' ? '' : '#' + h), what: 'page' };
+}
+// Brand: marker highlight on the key word of each page heading
+function markHeadings() {
+  $$('.page-head h1').forEach(h => {
+    if (h.querySelector('.mark') || h.children.length) return;
+    const t = h.textContent.trim(), i = t.lastIndexOf(' ');
+    if (i < 1) return;
+    h.textContent = t.slice(0, i + 1);
+    const m = document.createElement('span'); m.className = 'mark'; m.textContent = t.slice(i + 1); h.appendChild(m);
+  });
 }
 function addPageCiteButtons() {
   $$('[data-view]').forEach(sec => {
@@ -513,13 +523,14 @@ function renderStrategies() {
 
 /* ---------- daily briefing ---------- */
 const TYPE_LABEL = { news: 'News', official: 'Official release', opinion: 'Opinion', research: 'Research', headline: 'Automated headline' };
+const fmtDateTime = d => { const x = new Date(d); if (isNaN(x)) return ''; return x.toLocaleString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit', hour12: false }).replace(/,? (\d\d:\d\d)$/, ', $1'); };
 const fmtDate = d => { if (!d) return 'Date not shown'; const p = String(d).split('-'); if (p.length === 1) return p[0]; const dt = new Date(Date.UTC(+p[0], (+p[1] || 1) - 1, +p[2] || 1)); return dt.toLocaleDateString('en-GB', { timeZone: 'UTC', day: p[2] ? 'numeric' : undefined, month: 'long', year: 'numeric' }); };
 const daysOld = iso => Math.floor((Date.now() - new Date(iso)) / 86400000);
 function renderNews() {
   const N = S.news; if (!N || !N.meta) return;
   const ed = N.meta.edition, age = daysOld(N.meta.updated);
   $('#newsTitle').textContent = `Caribbean literacy briefing — ${fmtDate(ed)}`;
-  $('#newsSub').textContent = `${N.meta.schedule}. Last updated ${new Date(N.meta.updated).toLocaleString([], { dateStyle: 'medium', timeStyle: 'short' })}.`;
+  $('#newsSub').textContent = `${N.meta.schedule}. Last updated ${fmtDateTime(N.meta.updated)}.`;
   const st = $('#newsStale');
   if (age >= (N.meta.stale_after_days || 2)) { st.hidden = false; st.textContent = `This briefing is ${age} days old. The daily update has not run since; the stories below may not include the latest news.`; } else st.hidden = true;
   $('#briefPoints').innerHTML = (N.briefing.points || []).map(p => `<li>${esc(p)}</li>`).join('');
@@ -571,12 +582,7 @@ function buildOpts() {
   if (window.matchMedia) matchMedia('(prefers-contrast: more)').addEventListener?.('change', () => applyOpts(readOpts()));
 }
 const CONTRAST = [
-  ['Body text on white', '#0b1236', '#ffffff', 18.20, 4.5], ['Secondary text on white', '#46507a', '#ffffff', 7.81, 4.5], ['Links on white', '#0b2ccc', '#ffffff', 9.35, 4.5],
-  ['White text on cobalt', '#ffffff', '#0f36e0', 8.00, 4.5], ['Yellow text on cobalt', '#ffd23f', '#0f36e0', 5.54, 4.5], ['Pale text on cobalt', '#e6ebff', '#0f36e0', 6.74, 4.5],
-  ['Dark text on yellow', '#0b1236', '#ffd23f', 12.60, 4.5], ['Form field borders', '#66729f', '#ffffff', 4.70, 3], ['Chart bars', '#0f36e0', '#f2f5ff', 7.35, 3],
-  ['Body text, dark mode', '#eef1ff', '#070c26', 17.13, 4.5], ['Secondary text, dark mode', '#aab3dd', '#070c26', 9.36, 4.5], ['Links, dark mode', '#9fb3ff', '#070c26', 9.51, 4.5],
-  ['Chart bars, dark mode', '#6f8cff', '#070c26', 6.31, 3], ['Focus ring on cobalt', '#ffd23f', '#0f36e0', 5.54, 3],
-  ['High contrast: text', '#000000', '#ffffff', 21.00, 7], ['High contrast: links', '#0000c8', '#ffffff', 11.45, 7], ['High contrast: yellow on deep blue', '#ffd23f', '#0a2290', 8.84, 7]];
+  ['Body text on Sea Salt', '#050E33', '#FFF4C9', 17.04, 4.5], ['Body text on pale sun panels', '#050E33', '#FFE9A0', 15.59, 4.5], ['Secondary text on Sea Salt', '#3A4472', '#FFF4C9', 8.46, 4.5], ['Secondary text on pale sun panels', '#3A4472', '#FFE9A0', 7.74, 4.5], ['Links on Sea Salt', '#1740E0', '#FFF4C9', 6.69, 4.5], ['Links on pale sun panels', '#1740E0', '#FFE9A0', 6.12, 4.5], ['White text on Cobalt', '#FFFFFF', '#1740E0', 7.38, 4.5], ['Sun text on Cobalt', '#FFD21F', '#1740E0', 5.09, 4.5], ['Pale text on Cobalt', '#E6EBFF', '#1740E0', 6.22, 4.5], ['Sun text on Deep Sea', '#FFD21F', '#071A5C', 11.05, 4.5], ['White text on Deep Sea', '#FFFFFF', '#071A5C', 16.01, 4.5], ['Footer text on Deep Sea', '#DFE5FF', '#071A5C', 12.80, 4.5], ['Deep Sea text on Sun', '#071A5C', '#FFD21F', 11.05, 4.5], ['Deep Sea text on Mango', '#071A5C', '#FFAE00', 8.62, 4.5], ['Form field borders', '#4B5A92', '#FFF4C9', 5.99, 3], ['Frames', '#071A5C', '#FFF4C9', 14.52, 3], ['Chart bars on panel track', '#1740E0', '#FFE9A0', 6.12, 3], ['Focus ring on Sea Salt', '#071A5C', '#FFF4C9', 14.52, 3], ['Focus ring on Cobalt', '#FFD21F', '#1740E0', 5.09, 3], ['Body text, dark mode', '#FFF4C9', '#050E33', 17.04, 4.5], ['Secondary text, dark mode', '#C3CCF0', '#050E33', 11.83, 4.5], ['Links, dark mode', '#FFD21F', '#050E33', 12.97, 4.5], ['Text on dark panels', '#FFF4C9', '#0B2470', 12.69, 4.5], ['Secondary on dark panels', '#C3CCF0', '#0B2470', 8.81, 4.5], ['Chart bars, dark mode (Lagoon)', '#19B4F0', '#0B2470', 5.88, 3], ['Field borders, dark mode', '#8E9BD6', '#050E33', 6.99, 3], ['High contrast: text', '#000000', '#FFFFFF', 21.00, 7], ['High contrast: links', '#0000C8', '#FFFFFF', 11.45, 7], ['High contrast: yellow on deep blue', '#FFE066', '#0A2290', 9.79, 7]];
 function renderContrast() {
   $('#contrastTable').innerHTML = `<caption class="sr-only">Measured contrast ratios</caption><thead><tr><th>Pair</th><th>Colours</th><th>Ratio</th><th>Needed</th></tr></thead><tbody>${CONTRAST.map(([n, a, b, r, need]) => `<tr><td>${n}</td><td><span class="swatch" style="background:${a}" aria-hidden="true"></span><span class="swatch" style="background:${b}" aria-hidden="true"></span>${a} on ${b}</td><td class="num">${r.toFixed(2)}:1</td><td class="num">${need}:1 ✓</td></tr>`).join('')}</tbody>`;
 }
@@ -632,7 +638,7 @@ function bind() {
     return;
   }
   if (window.claude) $$('a[href="admin/"]').forEach(a => a.closest('div').lastElementChild === a && (a.previousElementSibling?.remove(), a.remove()));
-  renderAgenda(); renderPubs(); renderPolicyList(); $('#polCountry')?.addEventListener('input', renderPolicyList); renderContrast(); renderContact(); renderStrategies(); addPageCiteButtons(); bind(); renderAll(); route();
+  renderAgenda(); renderPubs(); renderPolicyList(); $('#polCountry')?.addEventListener('input', renderPolicyList); renderContrast(); renderContact(); renderStrategies(); markHeadings(); addPageCiteButtons(); bind(); renderAll(); route();
   refreshLive(false);
   setInterval(() => refreshLive(false), LIVE_EVERY_MS);
   liveViaClaude();
