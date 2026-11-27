@@ -1,0 +1,215 @@
+{
+ "meta": {
+  "description": "Comparative benchmarks. Literacy-rate averages are World Bank aggregates of UNESCO Institute for Statistics data (most recent non-empty value). PISA figures are from the OECD.",
+  "retrieved": "2026-11-27",
+  "caution": "Benchmark years differ from country years. Aggregates are computed by the World Bank, partly from UIS estimates; OECD members are near-universal on basic literacy rates, so the rate cannot show differences in reading proficiency."
+ },
+ "aggregates": [
+  {
+   "code": "WLD",
+   "name": "World"
+  },
+  {
+   "code": "OED",
+   "name": "OECD members"
+  },
+  {
+   "code": "LCN",
+   "name": "Latin America & Caribbean"
+  },
+  {
+   "code": "CSS",
+   "name": "Caribbean small states"
+  }
+ ],
+ "records": [
+  {
+   "id": "wb-se-adt-1524-lt-zs-css-2009",
+   "aggregate": "CSS",
+   "indicator": "SE.ADT.1524.LT.ZS",
+   "ref_year": 2009,
+   "value": 96.0199966430664,
+   "source_url": "https://api.worldbank.org/v2/country/CSS/indicator/SE.ADT.1524.LT.ZS?format=json&date=2009",
+   "licence": "CC BY 4.0",
+   "retrieved": "2026-11-27"
+  },
+  {
+   "id": "wb-se-adt-1524-lt-zs-lcn-2024",
+   "aggregate": "LCN",
+   "indicator": "SE.ADT.1524.LT.ZS",
+   "ref_year": 2024,
+   "value": 98.6800003051758,
+   "source_url": "https://api.worldbank.org/v2/country/LCN/indicator/SE.ADT.1524.LT.ZS?format=json&date=2024",
+   "licence": "CC BY 4.0",
+   "retrieved": "2026-11-27"
+  },
+  {
+   "id": "wb-se-adt-1524-lt-zs-oed-2022",
+   "aggregate": "OED",
+   "indicator": "SE.ADT.1524.LT.ZS",
+   "ref_year": 2022,
+   "value": 99.2799987792969,
+   "source_url": "https://api.worldbank.org/v2/country/OED/indicator/SE.ADT.1524.LT.ZS?format=json&date=2022",
+   "licence": "CC BY 4.0",
+   "retrieved": "2026-11-27"
+  },
+  {
+   "id": "wb-se-adt-1524-lt-zs-wld-2024",
+   "aggregate": "WLD",
+   "indicator": "SE.ADT.1524.LT.ZS",
+   "ref_year": 2024,
+   "value": 93.1100006103516,
+   "source_url": "https://api.worldbank.org/v2/country/WLD/indicator/SE.ADT.1524.LT.ZS?format=json&date=2024",
+   "licence": "CC BY 4.0",
+   "retrieved": "2026-11-27"
+  },
+  {
+   "id": "wb-se-adt-litr-zs-css-2008",
+   "aggregate": "CSS",
+   "indicator": "SE.ADT.LITR.ZS",
+   "ref_year": 2008,
+   "value": 91.0199966430664,
+   "source_url": "https://api.worldbank.org/v2/country/CSS/indicator/SE.ADT.LITR.ZS?format=json&date=2008",
+   "licence": "CC BY 4.0",
+   "retrieved": "2026-11-27"
+  },
+  {
+   "id": "wb-se-adt-litr-zs-lcn-2024",
+   "aggregate": "LCN",
+   "indicator": "SE.ADT.LITR.ZS",
+   "ref_year": 2024,
+   "value": 94.9499969482422,
+   "source_url": "https://api.worldbank.org/v2/country/LCN/indicator/SE.ADT.LITR.ZS?format=json&date=2024",
+   "licence": "CC BY 4.0",
+   "retrieved": "2026-11-27"
+  },
+  {
+   "id": "wb-se-adt-litr-zs-oed-2020",
+   "aggregate": "OED",
+   "indicator": "SE.ADT.LITR.ZS",
+   "ref_year": 2020,
+   "value": 97.2099990844727,
+   "source_url": "https://api.worldbank.org/v2/country/OED/indicator/SE.ADT.LITR.ZS?format=json&date=2020",
+   "licence": "CC BY 4.0",
+   "retrieved": "2026-11-27"
+  },
+  {
+   "id": "wb-se-adt-litr-zs-wld-2024",
+   "aggregate": "WLD",
+   "indicator": "SE.ADT.LITR.ZS",
+   "ref_year": 2024,
+   "value": 87.7399978637695,
+   "source_url": "https://api.worldbank.org/v2/country/WLD/indicator/SE.ADT.LITR.ZS?format=json&date=2024",
+   "licence": "CC BY 4.0",
+   "retrieved": "2026-11-27"
+  },
+  {
+   "id": "wb-se-adt-1524-lt-fe-zs-css-2009",
+   "aggregate": "CSS",
+   "indicator": "SE.ADT.1524.LT.FE.ZS",
+   "ref_year": 2009,
+   "value": 97.4499969482422,
+   "source_url": "https://api.worldbank.org/v2/country/CSS/indicator/SE.ADT.1524.LT.FE.ZS?format=json&date=2009",
+   "licence": "CC BY 4.0",
+   "retrieved": "2026-11-27"
+  },
+  {
+   "id": "wb-se-adt-1524-lt-fe-zs-lcn-2024",
+   "aggregate": "LCN",
+   "indicator": "SE.ADT.1524.LT.FE.ZS",
+   "ref_year": 2024,
+   "value": 98.870002746582,
+   "source_url": "https://api.worldbank.org/v2/country/LCN/indicator/SE.ADT.1524.LT.FE.ZS?format=json&date=2024",
+   "licence": "CC BY 4.0",
+   "retrieved": "2026-11-27"
+  },
+  {
+   "id": "wb-se-adt-1524-lt-fe-zs-oed-2022",
+   "aggregate": "OED",
+   "indicator": "SE.ADT.1524.LT.FE.ZS",
+   "ref_year": 2022,
+   "value": 99.3000030517578,
+   "source_url": "https://api.worldbank.org/v2/country/OED/indicator/SE.ADT.1524.LT.FE.ZS?format=json&date=2022",
+   "licence": "CC BY 4.0",
+   "retrieved": "2026-11-27"
+  },
+  {
+   "id": "wb-se-adt-1524-lt-fe-zs-wld-2024",
+   "aggregate": "WLD",
+   "indicator": "SE.ADT.1524.LT.FE.ZS",
+   "ref_year": 2024,
+   "value": 92.0199966430664,
+   "source_url": "https://api.worldbank.org/v2/country/WLD/indicator/SE.ADT.1524.LT.FE.ZS?format=json&date=2024",
+   "licence": "CC BY 4.0",
+   "retrieved": "2026-11-27"
+  },
+  {
+   "id": "wb-se-adt-1524-lt-ma-zs-css-2009",
+   "aggregate": "CSS",
+   "indicator": "SE.ADT.1524.LT.MA.ZS",
+   "ref_year": 2009,
+   "value": 94.620002746582,
+   "source_url": "https://api.worldbank.org/v2/country/CSS/indicator/SE.ADT.1524.LT.MA.ZS?format=json&date=2009",
+   "licence": "CC BY 4.0",
+   "retrieved": "2026-11-27"
+  },
+  {
+   "id": "wb-se-adt-1524-lt-ma-zs-lcn-2024",
+   "aggregate": "LCN",
+   "indicator": "SE.ADT.1524.LT.MA.ZS",
+   "ref_year": 2024,
+   "value": 98.4899978637695,
+   "source_url": "https://api.worldbank.org/v2/country/LCN/indicator/SE.ADT.1524.LT.MA.ZS?format=json&date=2024",
+   "licence": "CC BY 4.0",
+   "retrieved": "2026-11-27"
+  },
+  {
+   "id": "wb-se-adt-1524-lt-ma-zs-oed-2022",
+   "aggregate": "OED",
+   "indicator": "SE.ADT.1524.LT.MA.ZS",
+   "ref_year": 2022,
+   "value": 99.2699966430664,
+   "source_url": "https://api.worldbank.org/v2/country/OED/indicator/SE.ADT.1524.LT.MA.ZS?format=json&date=2022",
+   "licence": "CC BY 4.0",
+   "retrieved": "2026-11-27"
+  },
+  {
+   "id": "wb-se-adt-1524-lt-ma-zs-wld-2024",
+   "aggregate": "WLD",
+   "indicator": "SE.ADT.1524.LT.MA.ZS",
+   "ref_year": 2024,
+   "value": 94.129997253418,
+   "source_url": "https://api.worldbank.org/v2/country/WLD/indicator/SE.ADT.1524.LT.MA.ZS?format=json&date=2024",
+   "licence": "CC BY 4.0",
+   "retrieved": "2026-11-27"
+  }
+ ],
+ "pisa": {
+  "assessment": "OECD PISA 2022 \u2014 reading (15-year-old students)",
+  "source": "OECD, PISA 2022 Results (Volume I and II) \u2014 Country Notes: Jamaica",
+  "url": "https://www.oecd.org/en/publications/pisa-2022-results-volume-i-and-ii-country-notes_ed6fbcc5-en/jamaica_d5d0d9e2-en.html",
+  "retrieved": "2026-11-27",
+  "measures": [
+   {
+    "label": "Students at Level 2 or above in reading (basic proficiency)",
+    "country": "JAM",
+    "value": 50,
+    "oecd": 74,
+    "unit": "%"
+   },
+   {
+    "label": "Students at Level 5 or above in reading (top performers)",
+    "country": "JAM",
+    "value": 1,
+    "oecd": 7,
+    "unit": "%"
+   }
+  ],
+  "notes": [
+   "Jamaica took part in PISA for the first time in 2022. Other CARICOM members' participation in earlier rounds is still to be audited.",
+   "Girls outperformed boys in reading by 35 score points in Jamaica.",
+   "OECD caution: Jamaica's student response rates were substantially below PISA's technical standards, so bias cannot be ruled out.",
+   "PISA measures reading proficiency on a test; it is not comparable with the literacy rates above, which record a basic yes-or-no ability."
+  ]
+ }
+}

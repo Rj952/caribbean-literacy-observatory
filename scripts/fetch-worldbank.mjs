@@ -57,4 +57,15 @@ if (changed || added || removed) {
   log.records.push({ date: today, type: 'refresh', summary: `World Bank refresh: ${added} new, ${changed} changed, ${removed} no longer published. Published at once and flagged; scholarly review pending.`, records: added + changed + removed });
   write('data/changelog.json', log);
 }
+// Benchmarks: world, OECD and regional averages (most recent non-empty value).
+const bFile = 'data/benchmarks.json', b = read(bFile), aggs = b.aggregates.map(a => a.code).join(';'), bRecs = [];
+for (const code of ['SE.ADT.1524.LT.ZS', 'SE.ADT.1524.LT.FE.ZS', 'SE.ADT.1524.LT.MA.ZS', 'SE.ADT.LITR.ZS']) {
+  const res = await fetch(`https://api.worldbank.org/v2/country/${aggs}/indicator/${code}?format=json&per_page=100&mrnev=1`);
+  if (!res.ok) throw new Error(`benchmarks ${code}: HTTP ${res.status}`);
+  const text = await res.text();
+  writeFileSync(new URL(`data/raw/worldbank/${today}/benchmarks-${code}.json`, root), text);
+  for (const r of JSON.parse(text)[1] || []) if (r.value != null) bRecs.push({ id: `wb-${code}-${r.countryiso3code}-${r.date}`.toLowerCase().replace(/\./g, '-'), aggregate: r.countryiso3code, indicator: code, ref_year: +r.date, value: r.value, source_url: `https://api.worldbank.org/v2/country/${r.countryiso3code}/indicator/${code}?format=json&date=${r.date}`, licence: 'CC BY 4.0', retrieved: today });
+}
+if (bRecs.length) { b.records = bRecs; b.meta.retrieved = today; write(bFile, b); }
+
 console.log(`Retrieved ${records.length} values (source updated ${lastUpdated}). New ${added}, changed ${changed}, removed ${removed}.`);

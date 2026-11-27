@@ -47,7 +47,7 @@ const pill = st => `<span class="pill">${icon(st)}${LABEL[st]}</span>`;
 async function getJSON(p) { const r = await fetch(p, { cache: 'no-cache' }); if (!r.ok) throw new Error(p + ' ' + r.status); return r.json(); }
 
 async function load() {
-  const names = ['countries', 'indicators', 'observations', 'sources', 'research', 'policy', 'publications', 'changelog', 'governance', 'news'];
+  const names = ['countries', 'indicators', 'observations', 'sources', 'research', 'policy', 'publications', 'changelog', 'governance', 'news', 'benchmarks'];
   const got = await Promise.all(names.map(n => getJSON(`data/${n}.json`)));
   names.forEach((n, i) => S[n] = got[i]);
   S.gov = S.governance;
@@ -55,10 +55,13 @@ async function load() {
   S.obs = S.snapshot.slice();
   S.countries.records.forEach(c => S.c[c.iso3] = c);
   S.indMap = Object.fromEntries(S.indicators.records.map(i => [i.code, i]));
+  S.bench = S.benchmarks.records.slice();
 }
 
 const latest = (iso, code) => S.obs.filter(o => o.country === iso && o.indicator === code).sort((a, b) => b.ref_year - a.ref_year)[0];
 const threshold = () => NOW_YEAR - S.gov.outdated_after_years;
+const bench = (agg, code) => S.bench.filter(b => b.aggregate === agg && b.indicator === code).sort((a, b) => b.ref_year - a.ref_year)[0];
+const AGG_SHORT = { WLD: 'World', OED: 'OECD', LCN: 'Latin America & Caribbean', CSS: 'Caribbean small states' };
 
 function status(iso, code) {
   const ind = S.indMap[code], c = S.c[iso];
@@ -92,7 +95,14 @@ async function liveDirect() {
       updated = meta && meta.lastupdated || updated;
       (rows || []).forEach(x => { if (x.value != null) out.push({ country: x.countryiso3code, indicator: code, ref_year: +x.date, value: +x.value }); });
     }
-    return { records: out, sourceUpdated: updated, mode: 'live-api' };
+    const agg = [];
+    for (const code of [IND.YT, IND.YF, IND.YM, IND.AD]) {
+      const r = await fetch(`${WB}/country/WLD;OED;LCN;CSS/indicator/${code}?format=json&per_page=50&mrnev=1`, { signal: ctl.signal });
+      if (!r.ok) continue;
+      const [, rows] = await r.json();
+      (rows || []).forEach(x => { if (x.value != null) agg.push({ aggregate: x.countryiso3code, indicator: code, ref_year: +x.date, value: +x.value }); });
+    }
+    return { records: out, bench: agg, sourceUpdated: updated, mode: 'live-api' };
   } finally { clearTimeout(t); }
 }
 
@@ -116,6 +126,10 @@ function applyLive(live) {
     }
   }
   S.obs = merged;
+  if (Array.isArray(live.bench) && live.bench.length) {
+    const base = S.benchmarks.records;
+    S.bench = live.bench.filter(b => AGG_SHORT[b.aggregate]).map(b => { const old = base.find(x => x.aggregate === b.aggregate && x.indicator === b.indicator); return { ...b, live: old && (old.ref_year !== b.ref_year || Math.abs(old.value - b.value) > 1e-6) ? 'changed' : 'match' }; });
+  }
   S.live = { mode: live.mode, checkedAt: live.checkedAt || new Date().toISOString(), sourceUpdated: live.sourceUpdated, changed, added };
 }
 
@@ -227,13 +241,21 @@ function renderAgenda() {
   $('#timeline').innerHTML = PLAN.map(([d, t, s]) => `<li><span class="days">${d}</span><span>${t}</span><span class="state${s === 'Planned' ? '' : ' on'}">${s}</span></li>`).join('');
 }
 
+function refLines(code) {
+  const w = bench('WLD', code), o = bench('OED', code);
+  return (w ? `<span class="ref" style="left:${w.value}%" aria-hidden="true"></span>` : '') + (o ? `<span class="ref oecd" style="left:${o.value}%" aria-hidden="true"></span>` : '');
+}
+function refKey(el, code) {
+  const w = bench('WLD', code), o = bench('OED', code);
+  el.innerHTML = (w ? `<span><i></i>World ${fmt(w.value)} (${w.ref_year})</span>` : '') + (o ? `<span><i class="oecd"></i>OECD members ${fmt(o.value)} (${o.ref_year})</span>` : '');
+}
 function bars(el, code) {
   const unit = S.indMap[code].unit;
   el.innerHTML = S.countries.records.map(c => {
     const o = latest(c.iso3, code), st = status(c.iso3, code);
     if (!o) return `<div class="bar none"><span class="lab">${icon(st)}${esc(c.name)}</span><div class="track"><span class="val">${st === 'not-audited' ? 'Not in this series' : 'No published figure'}</span></div></div>`;
     const ch = o.live === 'changed' || o.live === 'new' ? ' <span class="flag">changed at source</span>' : '';
-    return `<div class="bar"><span class="lab">${icon(st)}${esc(c.name)}</span><div class="track" title="${esc(c.name)} ${fmt(o.value, unit)} (${o.ref_year})"><span class="fill${st === 'outdated' ? ' old' : ''}" style="width:${Math.max(0, Math.min(100, o.value))}%"></span><span class="val">${fmt(o.value, unit)} <small>${o.ref_year}</small>${ch}</span></div></div>`;
+    return `<div class="bar"><span class="lab">${icon(st)}${esc(c.name)}</span><div class="track" title="${esc(c.name)} ${fmt(o.value, unit)} (${o.ref_year})">${refLines(code)}<span class="fill${st === 'outdated' ? ' old' : ''}" style="width:${Math.max(0, Math.min(100, o.value))}%"></span><span class="val">${fmt(o.value, unit)} <small>${o.ref_year}</small>${ch}</span></div></div>`;
   }).join('');
 }
 
@@ -241,7 +263,7 @@ function renderDashboard() {
   const jm = latest('JAM', IND.YT), jf = latest('JAM', IND.YF), jmm = latest('JAM', IND.YM);
   if (jf && jmm && jf.ref_year === jmm.ref_year) $('#dashTitle').textContent = `In Jamaica, young women's literacy rate is ${(jf.value - jmm.value).toFixed(1)} points above young men's`;
   $('#dashSub').textContent = `${jm ? `Jamaica youth literacy ${fmt(jm.value)} (${jm.ref_year}). ` : ''}Every figure below is as published by the World Bank from UNESCO Institute for Statistics data, with its reference year.`;
-  bars($('#barsYouth'), IND.YT); bars($('#barsAdult'), IND.AD);
+  bars($('#barsYouth'), IND.YT); bars($('#barsAdult'), IND.AD); refKey($('#refKeyYouth'), IND.YT); refKey($('#refKeyAdult'), IND.AD); renderBench();
   const lo = 85, pos = v => Math.max(0, Math.min(100, (v - lo) / (100 - lo) * 100));
   const rows = S.countries.records.map(c => ({ c, f: latest(c.iso3, IND.YF), m: latest(c.iso3, IND.YM) })).filter(r => r.f && r.m && r.f.ref_year === r.m.ref_year);
   $('#dumbbell').innerHTML = rows.map(({ c, f, m }) => {
@@ -254,6 +276,20 @@ function renderDashboard() {
   const sel = $('#obsInd');
   if (!sel.options.length) { sel.innerHTML = `<option value="">All audited indicators</option>` + S.indicators.records.filter(i => i.audited).map(i => `<option value="${esc(i.code)}">${esc(i.short)}</option>`).join(''); sel.value = IND.YT; sel.onchange = renderObsTable; }
   renderObsTable();
+  if (!$('#obsCalc')) $('#obsTable').insertAdjacentHTML('afterend', '<p class="calc" id="obsCalc">† Calculated by the Observatory: country value minus the world average, in percentage points. Reference years usually differ, so read it as context, not a ranking.</p>');
+}
+
+function renderBench() {
+  const cols = [IND.YT, IND.YF, IND.YM, IND.AD], jam = c => latest('JAM', c);
+  const cell = r => r ? `<td class="num"><b>${fmt(r.value)}</b> <small>${r.ref_year}</small>${r.live === 'changed' ? ' <span class="flag">changed at source</span>' : ''}</td>` : '<td class="num">—</td>';
+  $('#benchTable').innerHTML = `<caption class="sr-only">Literacy rates for benchmark groups and Jamaica</caption><thead><tr><th>Group</th>${cols.map(c => `<th class="num">${esc(S.indMap[c].short)}</th>`).join('')}</tr></thead><tbody>` +
+    S.benchmarks.aggregates.map(a => `<tr><td>${esc(a.name)}</td>${cols.map(c => cell(bench(a.code, c))).join('')}</tr>`).join('') +
+    `<tr><td><b>Jamaica</b> <small class="note">(for reference)</small></td>${cols.map(c => cell(jam(c))).join('')}</tr></tbody>`;
+  $('#benchNote').textContent = S.benchmarks.meta.caution + ' The Caribbean small states average was last computed for 2008–2009.';
+  const P = S.benchmarks.pisa;
+  $('#pisaSub').innerHTML = `A different measure: how well 15-year-olds read on a common test. Source: <a href="${safeUrl(P.url)}">${esc(P.source)}</a>.`;
+  $('#pisaBars').innerHTML = P.measures.map(m => `<div class="m"><h3>${esc(m.label)}</h3><div class="row"><span>Jamaica</span><div class="t"><span class="f" style="width:${m.value}%"></span></div><span class="v">${m.value}%</span></div><div class="row"><span>OECD average</span><div class="t"><span class="f o" style="width:${m.oecd}%"></span></div><span class="v">${m.oecd}%</span></div></div>`).join('');
+  $('#pisaNotes').innerHTML = P.notes.map(n => `<li>${esc(n)}</li>`).join('');
 }
 
 function obsFlags(o) {
@@ -268,9 +304,10 @@ function obsFlags(o) {
 function filteredObs() { const v = $('#obsInd').value; return S.obs.filter(o => !v || o.indicator === v).sort((a, b) => a.country.localeCompare(b.country) || a.indicator.localeCompare(b.indicator) || b.ref_year - a.ref_year); }
 function renderObsTable() {
   const rows = filteredObs();
-  $('#obsTable').innerHTML = `<caption class="sr-only">Every published record for the selected indicator</caption><thead><tr><th>Country</th><th>Indicator</th><th>Year</th><th>Value</th><th>Notes</th><th>Source</th><th>Record</th></tr></thead><tbody>${rows.map(o => {
-    const u = safeUrl(o.source_url), ind = S.indMap[o.indicator];
-    return `<tr><td>${esc(S.c[o.country]?.name || o.country)}</td><td>${esc(ind?.short || o.indicator)}</td><td class="num">${esc(o.ref_year)}</td><td class="num">${fmt(o.value, ind?.unit)}</td><td>${obsFlags(o).map(x => `<span class="flag">${esc(x)}</span>`).join(' ')}</td><td>${u ? `<a href="${u}">API query</a>` : ''}</td><td><code>${esc(o.id)}</code> <a href="#collaborate" data-report="${esc(o.id)}">Report</a></td></tr>`; }).join('')}</tbody>`;
+  $('#obsTable').innerHTML = `<caption class="sr-only">Every published record for the selected indicator</caption><thead><tr><th>Country</th><th>Indicator</th><th>Year</th><th>Value</th><th>World</th><th>OECD</th><th>vs world†</th><th>Notes</th><th>Source</th><th>Record</th></tr></thead><tbody>${rows.map(o => {
+    const u = safeUrl(o.source_url), ind = S.indMap[o.indicator], w = bench('WLD', o.indicator), oe = bench('OED', o.indicator);
+    const d = w ? o.value - w.value : null;
+    return `<tr><td>${esc(S.c[o.country]?.name || o.country)}</td><td>${esc(ind?.short || o.indicator)}</td><td class="num">${esc(o.ref_year)}</td><td class="num">${fmt(o.value, ind?.unit)}</td><td class="num">${w ? `${fmt(w.value)} <small>${w.ref_year}</small>` : '—'}</td><td class="num">${oe ? `${fmt(oe.value)} <small>${oe.ref_year}</small>` : '—'}</td><td class="num">${d == null ? '—' : (d >= 0 ? '+' : '−') + Math.abs(d).toFixed(1) + ' pts'}</td><td>${obsFlags(o).map(x => `<span class="flag">${esc(x)}</span>`).join(' ')}</td><td>${u ? `<a href="${u}">API query</a>` : ''}</td><td><code>${esc(o.id)}</code> <a href="#collaborate" data-report="${esc(o.id)}">Report</a></td></tr>`; }).join('')}</tbody>`;
 }
 
 function renderProfiles() {
@@ -286,7 +323,7 @@ function renderCountry(iso) {
   $('#cName').textContent = c.name;
   const audited = S.indicators.records.filter(i => i.audited), gaps = S.indicators.records.filter(i => !i.audited);
   $('#cSub').textContent = c.in_wdi ? `${audited.filter(i => latest(iso, i.code)).length} of ${audited.length} audited international indicators have a published value.` : 'Not covered by the World Bank series. National sources are yet to be audited.';
-  const kpis = audited.map(i => { const o = latest(iso, i.code), st = status(iso, i.code); return `<div class="kpi"><span>${esc(i.short)}</span><b>${o ? fmt(o.value, i.unit) : '—'}</b><span>${o ? 'Reference year ' + o.ref_year : 'No published figure'}</span><div>${pill(st)}</div></div>`; }).join('');
+  const kpis = audited.map(i => { const o = latest(iso, i.code), st = status(iso, i.code); return `<div class="kpi"><span>${esc(i.short)}</span><b>${o ? fmt(o.value, i.unit) : '—'}</b><span>${o ? 'Reference year ' + o.ref_year : 'No published figure'}</span>${(() => { const w = bench('WLD', i.code), oe = bench('OED', i.code); return w || oe ? `<span>World ${w ? fmt(w.value, i.unit) + ' (' + w.ref_year + ')' : '—'} · OECD ${oe ? fmt(oe.value, i.unit) + ' (' + oe.ref_year + ')' : '—'}</span>` : ''; })()}<div>${pill(st)}</div></div>`; }).join('');
   const g = gpiCheck(iso);
   const gpiNote = g && g.mismatch ? `<div class="callout"><b>Consistency check.</b> The published gender parity index for ${g.year} is ${g.published.toFixed(3)}, but the published female and male rates give a ratio of ${g.ratio.toFixed(3)}. Both are shown as published; the difference has been logged for a query to the source.</div>` : '';
   const hist = S.obs.filter(o => o.country === iso && o.indicator === IND.YT).sort((a, b) => a.ref_year - b.ref_year);

@@ -16,6 +16,7 @@ const research = load('research').records;
 const policy = load('policy').records;
 const pubs = load('publications').records;
 const news = load('news');
+const benchmarks = load('benchmarks');
 
 const iso = new Set(countries.map(c => c.iso3));
 const ind = new Map(indicators.map(i => [i.code, i]));
@@ -81,6 +82,13 @@ for (const i of news.items || []) {
   if (!['news', 'official', 'opinion', 'research', 'headline'].includes(i.type)) err(`news/${i.id}: bad type`);
 }
 if (!news.briefing || !Array.isArray(news.briefing.points)) err('news: briefing.points missing');
+const aggCodes = new Set(benchmarks.aggregates.map(a => a.code));
+for (const r of benchmarks.records) {
+  if (!aggCodes.has(r.aggregate)) err(`benchmarks/${r.id}: unknown aggregate ${r.aggregate}`);
+  if (!https(r.source_url) || !r.licence || !r.retrieved) err(`benchmarks/${r.id}: provenance missing`);
+  if (typeof r.value !== 'number' || r.value < 0 || r.value > 100) err(`benchmarks/${r.id}: bad value`);
+}
+if (!https(benchmarks.pisa?.url)) err('benchmarks: PISA source url required');
 const age = (Date.now() - new Date(news.meta.updated)) / 864e5;
 if (age > 2) warn(`news: briefing is ${age.toFixed(1)} days old`);
 

@@ -14,6 +14,7 @@ A research website for literacy across the Caribbean. Every statistic on it come
 | Research agenda | Seven streams, first 90 days, flagship project, long-term ecosystem |
 | Research director | Profile (draft, awaiting approval) |
 | Daily briefing | Caribbean literacy news, a short written briefing and a data watch, updated every day |
+| Benchmarks | World, OECD, Latin America & Caribbean and Caribbean small states averages beside every figure; OECD PISA 2022 reading proficiency for Jamaica |
 | Dashboard | Youth, gender and adult literacy; data-landscape matrix; every record, copyable as CSV |
 | Country profiles | One page per member state with status, consistency checks and gaps |
 | Repository | Search across approved research records, statistics and sources |

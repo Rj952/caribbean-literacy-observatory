@@ -168,7 +168,8 @@
     <div class="dash-grid">
       <article class="panel wide">
         <h2>Youth literacy, ages 15–24</h2>
-        <p class="sub">Most recent published value per country. Shape shows data status.</p>
+        <p class="sub">Most recent published value per country. Shape shows data status. Dashed lines mark the world and OECD averages.</p>
+        <div class="ref-key" id="refKeyYouth"></div>
         <div id="barsYouth" class="bars"></div>
       </article>
       <article class="panel">
@@ -178,8 +179,21 @@
       </article>
       <article class="panel">
         <h2>Adult literacy, ages 15+</h2>
-        <p class="sub">Most recent published value. Several are decades old.</p>
+        <p class="sub">Most recent published value. Several are decades old. Dashed lines mark the world and OECD averages.</p>
+        <div class="ref-key" id="refKeyAdult"></div>
         <div id="barsAdult" class="bars"></div>
+      </article>
+      <article class="panel wide" id="comparePanel">
+        <h2>How the Caribbean compares: world and OECD benchmarks</h2>
+        <p class="sub">The same literacy-rate series, averaged by the World Bank for the world, OECD members and regional groups. Each figure shows its reference year.</p>
+        <div class="scroll"><table class="data bench" id="benchTable"></table></div>
+        <p class="note" id="benchNote"></p>
+      </article>
+      <article class="panel wide" id="pisaPanel">
+        <h2>Reading proficiency: OECD PISA 2022</h2>
+        <p class="sub" id="pisaSub"></p>
+        <div id="pisaBars" class="pisa"></div>
+        <ul class="note" id="pisaNotes"></ul>
       </article>
       <article class="panel wide">
         <h2>The data landscape</h2>
