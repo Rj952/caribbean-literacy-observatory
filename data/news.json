@@ -1,7 +1,7 @@
 {
  "meta": {
-  "edition": "2026-11-27",
-  "updated": "2026-11-27T14:20:19.306Z",
+  "edition": "2026-11-28",
+  "updated": "2026-11-28T10:47:52.000Z",
   "method": "Searched public news and official sources for literacy and education news on the Caribbean. Summaries are written by the Observatory in its own words; headlines link to the original publisher.",
   "disclaimer": "Inclusion is not endorsement. Figures quoted in news items are reported by those sources and have not been verified by the Observatory; they do not enter the statistics dashboard until audited.",
   "schedule": "Updated daily",
@@ -9,12 +9,12 @@
   "headline_source": "GDELT DOC 2.0 API (headline, link, source and date only)"
  },
  "briefing": {
-  "date": "2026-11-27",
+  "date": "2026-11-28",
   "points": [
-   "Secondary literacy is in focus in Jamaica: a mid-November letter in the Jamaica Observer cites the Ministry's reading of the 2026 Primary Exit Profile, that about 8,700 students entered high school below proficiency in language arts.",
-   "Teacher capacity remains the main lever across the region \u2014 from reading-methods training in Jamaica to Barbados's structured literacy programme, which the Ministry links to reading gains in a sample of primary students.",
-   "Regional assessment is expanding: CXC has new literacy and numeracy standards, Guyana is adding Grade 2 and Grade 4 literacy assessments, and the OECS runs annual Grade 2 reading assessments.",
-   "Data watch: the World Bank's literacy series were last updated on 11 November 2026; the dashboard reflects that release."
+   "Hurricane recovery is shaping literacy work in western Jamaica: The Gleaner reports that a WestEd-led reading and numeracy intervention in St James will extend to Falmouth, Trelawny, from January 2027, targeting students affected by Hurricane Melissa.",
+   "Private-sector partnerships remain a recurring delivery model for school literacy support in Jamaica, with hotel and service-club funding sitting alongside Ministry programmes.",
+   "Secondary-level literacy stays on the agenda after mid-November commentary on students entering high school below proficiency in language arts.",
+   "Data watch: this run could not reach the World Bank API, so the dashboard still reflects the series last updated on 11 November 2026."
   ]
  },
  "data_watch": [
@@ -35,6 +35,17 @@
   }
  ],
  "items": [
+  {
+   "id": "n-2026-11-27-gleaner-wested",
+   "date": "2026-11-27",
+   "title": "WestEd literacy and numeracy programme to be expanded to Trelawny",
+   "source": "The Gleaner",
+   "url": "https://jamaica-gleaner.com/article/news/20261127/wested-literacy-and-numeracy-programme-be-expanded-trelawny",
+   "country": "JAM",
+   "topic": "Literacy intervention",
+   "type": "news",
+   "summary": "A literacy and numeracy intervention run by the WestEd Educational Centre with a hotel group partner in St James is to be replicated in the Falmouth area from January 2027. The expansion will focus on primary students whose schooling was disrupted by Hurricane Melissa."
+  },
   {
    "id": "n-2026-11-16-jo-letter",
    "date": "2026-11-16",
